@@ -15,7 +15,6 @@ body {
     background-color: var(--background);
 }
 @font-face {
-<<<<<<< HEAD
     font-family: myFirstFont;
     src: url('Poker.ttf');
 }
@@ -28,7 +27,6 @@ body {
     border-bottom: 5px solid black;
     text-decoration: solid;
     text-align: center;
-=======
   font-family: myFirstFont;
   src: url("Poker.ttf");
 }
@@ -41,7 +39,6 @@ body {
   border-bottom: 5px solid black;
   text-decoration: solid;
   text-align: center;
->>>>>>> 032cd02a7f5b7d28bb91f706e8d2746493681d9f
 }
 
 .buttons {
@@ -69,16 +66,6 @@ body {
 }
 
 button:hover {
-<<<<<<< HEAD
     scale: 1.1;
     background-color: var(--buttonhover);
 }
-=======
-  scale: 1.1;
-  background-color: var(--buttonhover);
-}
-<<<<<<< HEAD
-=======
-
->>>>>>> 4abc61121e8fb0a8069f2c4fbdbc3818ff97922d
->>>>>>> 032cd02a7f5b7d28bb91f706e8d2746493681d9f
