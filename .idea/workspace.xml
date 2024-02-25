@@ -9,7 +9,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5b41b4e-fb7d-45b0-abad-445a3f106d72" name="Changes" comment="herro" />
+    <list default="true" id="b5b41b4e-fb7d-45b0-abad-445a3f106d72" name="Changes" comment="herro">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +53,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "themdonk",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,6 +74,8 @@
       <workItem from="1708392823556" duration="2333000" />
       <workItem from="1708399036508" duration="12000" />
       <workItem from="1708850391453" duration="438000" />
+      <workItem from="1708887779988" duration="915000" />
+      <workItem from="1708888819309" duration="1365000" />
     </task>
     <task id="LOCAL-00001" summary="herro">
       <option name="closed" value="true" />
@@ -86,6 +90,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="herro" />
