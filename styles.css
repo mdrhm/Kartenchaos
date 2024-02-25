@@ -1,0 +1,18 @@
+body {
+  background-color: #1C778B;
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url(Poker.ttf);
+}
+#title-of-game{
+  border: 1px solid black;
+  border-radius: 30px;
+  margin: 10px;
+  padding: 10px;
+  font-size: 100px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
