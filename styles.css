@@ -4,79 +4,22 @@
     --buttonhover: rgba(170, 170, 170, 0.26)
 }
 
-@-webkit-keyframes bg-scrolling-reverse {
-    100% {
-        background-position: 50px 50px;
-    }
-}
-@-moz-keyframes bg-scrolling-reverse {
-    100% {
-        background-position: 50px 50px;
-    }
-}
-@-o-keyframes bg-scrolling-reverse {
-    100% {
-        background-position: 50px 50px;
-    }
-}
-@keyframes bg-scrolling-reverse {
-    100% {
-        background-position: 50px 50px;
-    }
-}
-@-webkit-keyframes bg-scrolling {
-    0% {
-        background-position: 50px 50px;
-    }
-}
-@-moz-keyframes bg-scrolling {
-    0% {
-        background-position: 50px 50px;
-    }
-}
-@-o-keyframes bg-scrolling {
-    0% {
-        background-position: 50px 50px;
-    }
-}
-@keyframes bg-scrolling {
-    0% {
-        background-position: 50px 50px;
-    }
-}
-/* Main styles */
 body {
-    color: #999;
-    font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
-    text-align: center;
-    /* img size is 50x50 */
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
-    -webkit-animation: bg-scrolling-reverse 0.92s infinite;
-    /* Safari 4+ */
-    -moz-animation: bg-scrolling-reverse 0.92s infinite;
-    /* Fx 5+ */
-    -o-animation: bg-scrolling-reverse 0.92s infinite;
-    /* Opera 12+ */
-    animation: bg-scrolling-reverse 0.92s infinite;
-    /* IE 10+ */
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;
-    -o-animation-timing-function: linear;
-    animation-timing-function: linear;
+    background-color: var(--background);
 }
 @font-face {
-  font-family: myFirstFont;
-  src: url('Poker.ttf');
+    font-family: myFirstFont;
+    src: url('Poker.ttf');
 }
 #title-of-game {
-  margin: 10px;
-  padding-top: 20px;
-  font-size: 150px;
-  color: black;
-  font-family: myFirstFont;
- border-bottom: 5px solid black;
-  text-decoration: solid;
-  text-align: center;
+    margin: 10px;
+    padding-top: 20px;
+    font-size: 150px;
+    color: black;
+    font-family: myFirstFont;
+    border-bottom: 5px solid black;
+    text-decoration: solid;
+    text-align: center;
 }
 
 .buttons{
@@ -104,7 +47,6 @@ body {
 }
 
 button:hover {
-  scale: 1.1;
-  background-color: var(--buttonhover);
+    scale: 1.1;
+    background-color: var(--buttonhover);
 }
-
