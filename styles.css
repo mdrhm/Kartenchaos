@@ -3,7 +3,7 @@ body {
 }
 @font-face {
   font-family: myFirstFont;
-  src: url(Poker.ttf);
+  src: url('Poker.ttf');
 }
 #title-of-game{
   border: 1px solid black;
@@ -12,7 +12,8 @@ body {
   padding: 10px;
   font-size: 100px;
   color: black;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: myFirstFont;
+  /* font-family: 'Times New Roman', Times, serif; */
   text-align: center;
 }
 
