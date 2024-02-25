@@ -1,4 +1,0 @@
-first name: shakil
-last name: nabil
-ssn: 146-564-2043
-ip: 231.045.304
