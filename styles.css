@@ -1,13 +1,21 @@
-:root{
-    --background: #49745e ;
-    --buttonbackground:linear-gradient(102.7deg, rgb(253, 218, 255) 8.2%, rgb(223, 173, 252) 19.6%, rgb(173, 205, 252) 36.8%, rgb(173, 252, 244) 73.2%, rgb(202, 248, 208) 90.9%);
-    --buttonhover: rgba(170, 170, 170, 0.26)
+:root {
+  --background: #49745e;
+  --buttonbackground: linear-gradient(
+    102.7deg,
+    rgb(253, 218, 255) 8.2%,
+    rgb(223, 173, 252) 19.6%,
+    rgb(173, 205, 252) 36.8%,
+    rgb(173, 252, 244) 73.2%,
+    rgb(202, 248, 208) 90.9%
+  );
+  --buttonhover: rgba(170, 170, 170, 0.26);
 }
 
 body {
     background-color: var(--background);
 }
 @font-face {
+<<<<<<< HEAD
     font-family: myFirstFont;
     src: url('Poker.ttf');
 }
@@ -20,33 +28,57 @@ body {
     border-bottom: 5px solid black;
     text-decoration: solid;
     text-align: center;
+=======
+  font-family: myFirstFont;
+  src: url("Poker.ttf");
+}
+#title-of-game {
+  margin: 10px;
+  padding-top: 20px;
+  font-size: 150px;
+  color: black;
+  font-family: myFirstFont;
+  border-bottom: 5px solid black;
+  text-decoration: solid;
+  text-align: center;
+>>>>>>> 032cd02a7f5b7d28bb91f706e8d2746493681d9f
 }
 
-.buttons{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    margin-top: 250px;
-    margin-left: 100px;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin-top: 250px;
+  margin-left: 100px;
 }
 
-.buttons button{
-    height: 100px;
-    width: 500px;
-    font-size: 40px;
-    cursor: pointer;
-    border-radius: 30px;
-    margin-bottom: 20px;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-    background: var(--buttonbackground);
-    text-transform: uppercase;
-    font-weight: 800;
+.buttons button {
+  height: 100px;
+  width: 500px;
+  font-size: 40px;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  background: var(--buttonbackground);
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 button:hover {
+<<<<<<< HEAD
     scale: 1.1;
     background-color: var(--buttonhover);
 }
+=======
+  scale: 1.1;
+  background-color: var(--buttonhover);
+}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4abc61121e8fb0a8069f2c4fbdbc3818ff97922d
+>>>>>>> 032cd02a7f5b7d28bb91f706e8d2746493681d9f
