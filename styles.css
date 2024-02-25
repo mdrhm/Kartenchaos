@@ -1,19 +1,52 @@
+:root{
+    --background: #49745e ;
+    --buttonbackground:linear-gradient(102.7deg, rgb(253, 218, 255) 8.2%, rgb(223, 173, 252) 19.6%, rgb(173, 205, 252) 36.8%, rgb(173, 252, 244) 73.2%, rgb(202, 248, 208) 90.9%);
+    --buttonhover: rgba(170, 170, 170, 0.26)
+}
+
 body {
-  background-color: #1C778B;
+  background-color: var(--background);
 }
 @font-face {
   font-family: myFirstFont;
   src: url('Poker.ttf');
 }
-#title-of-game{
-  border: 1px solid black;
-  border-radius: 30px;
+#title-of-game {
   margin: 10px;
-  padding: 10px;
-  font-size: 100px;
+  padding-top: 20px;
+  font-size: 150px;
   color: black;
   font-family: myFirstFont;
-  /* font-family: 'Times New Roman', Times, serif; */
+ border-bottom: 5px solid black;
+  text-decoration: solid;
   text-align: center;
 }
 
+.buttons{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-top: 250px;
+    margin-left: 100px;
+}
+
+.buttons button{
+    height: 100px;
+    width: 500px;
+    font-size: 40px;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: var(--buttonbackground);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+button:hover {
+  scale: 1.1;
+  background-color: var(--buttonhover);
+}
