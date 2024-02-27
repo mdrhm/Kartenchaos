@@ -289,11 +289,11 @@ html {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: running;
-    height: 50px;
+    height: 40px;
     min-width: 50px;
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
-    right: 32%;
+    right: 31.37%;
     top: -1%;
 }
