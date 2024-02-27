@@ -1,163 +1,3 @@
-<<<<<<< HEAD
-:root {
-  --background: #49745e;
-  --buttonbackground: linear-gradient(
-    102.7deg,
-    rgb(253, 218, 255) 8.2%,
-    rgb(223, 173, 252) 19.6%,
-    rgb(173, 205, 252) 36.8%,
-    rgb(173, 252, 244) 73.2%,
-    rgb(202, 248, 208) 90.9%
-  );
-  --buttonhover: rgba(170, 170, 170, 0.26);
-}
-
-body {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  user-select: none;
-}
-.bg {
-  background-color: #49745e;
-  opacity: 0.8;
-  background: radial-gradient(
-      circle,
-      transparent 20%,
-      #49745e 20%,
-      #49745e 80%,
-      transparent 80%,
-      transparent
-    ),
-    radial-gradient(
-        circle,
-        transparent 20%,
-        #49745e 20%,
-        #49745e 80%,
-        transparent 80%,
-        transparent
-      )
-      10px 10px,
-    linear-gradient(#e5e5f7 0.8px, transparent 0.8px) 0 -0.4px,
-    linear-gradient(90deg, #e5e5f7 0.8px, #49745e 0.8px) -0.4px 0;
-  background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
-  animation-name: bg-animate;
-  animation-duration: 1.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-  height: 1000vh;
-  width: 1000vw;
-  background-repeat: repeat;
-  z-index: -1000;
-  position: fixed;
-}
-@font-face {
-  font-family: myFirstFont;
-  src: url("Poker.ttf");
-}
-.home-ui {
-  display: flex;
-  flex-direction: column;
-  flex-direction: column;
-  /* gap: 250px; */
-  height: 100%;
-  width: 100%;
-  justify-content: space-around;
-}
-#title-of-game {
-  margin: 10px;
-  padding-top: 20px;
-  font-size: 150px;
-  /*border-bottom: 5px solid black;*/
-  text-decoration: solid;
-  text-align: center;
-  font-family: myFirstFont;
-  src: url("Poker.ttf");
-  color: black;
-  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff,
-    -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-}
-
-html {
-  height: 100%;
-}
-.buttons button {
-  display: block;
-  font-family: "myFirstFont";
-  font-size: 5em;
-  color: black;
-  font-weight: 800;
-  text-decoration: none;
-  background: none;
-  transition: 0.4s;
-  border: none;
-  text-transform: uppercase;
-  max-width: fit-content;
-  cursor: pointer;
-  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff,
-    -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-}
-
-button:hover {
-  color: #333;
-}
-
-@keyframes bg-animate {
-  0% {
-    transform: translate(-100px, -100px);
-  }
-
-  100% {
-    transform: translate(-200px, -200px);
-  }
-}
-=======
-
-/* MD's background */
-/* :root {
-    --background: #49745e;
-    --buttonbackground: linear-gradient(
-            102.7deg,
-            rgb(253, 218, 255) 8.2%,
-            rgb(223, 173, 252) 19.6%,
-            rgb(173, 205, 252) 36.8%,
-            rgb(173, 252, 244) 73.2%,
-            rgb(202, 248, 208) 90.9%
-    );
-    --buttonhover: rgba(170, 170, 170, 0.26);
-}
-
-body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    user-select: none;
-}
-.bg{
-    background-color: #49745E;
-    opacity: 0.8;
-    background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
-    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
-    animation-name: bg-animate;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    height: 1000vh;
-    width: 1000vw;
-    background-repeat: repeat;
-    z-index: -1000;
-    position: fixed;
-} */
 :root {
     background-color: #245324;
     min-height: 100vh;
@@ -189,8 +29,8 @@ body {
 
 .home-pictures {
     display: flex;
-    position: absolute; 
-    justify-content: center; 
+    position: absolute;
+    justify-content: center;
     align-items: center; /* Align items vertically at the center */
     height: 50vh; /* Adjust height as needed */
     width: 45%; /* Occupy 45% of the viewport width */
@@ -270,7 +110,7 @@ html{
 .home-screen-buttons img {
     visibility: hidden;
     width: 40px;
-    
+
 }
 .home-screen-buttons button:hover img{
     visibility: visible;
@@ -283,7 +123,7 @@ html{
     animation-duration: 1.1s;
     border: solid black;
     background-color: white;
-    border-radius: 10%;   
+    border-radius: 10%;
 }
 
 @keyframes slideleft {
@@ -299,41 +139,18 @@ html{
 
 }
 
-
-
-
-/* Home screen button select, NO ANIMATED BUTTON + ANIMATED ICON */
-
-/* .home-screen-buttons img {
-    visibility: hidden;
-    width: 40px;
-    
-}
-.home-screen-buttons button:hover img{
-    visibility: visible;
-    transform: rotate(-0.25turn);
-    width: 40px;
-    display:inline-flex;
-    align-items: center;
-    position: relative;
-    animation-name: slideleft;
-    animation-duration: 1.1s;
-    /* border: solid black;
-    background-color: white;   
+/* Responsive padding for card images */
+@media only screen and (max-width: 768px) {
+    .home-pictures {
+        width: 90%; /* Adjust width for smaller screens */
+    }
 }
 
-@keyframes slideleft {
-
-    0%{
-        transform: translate(50px,0px)rotate(-0.25turn);
+@media only screen and (max-width: 480px) {
+    .home-pictures {
+        width: 100%; /* Adjust width for even smaller screens */
     }
-
-    100%{
-        transform: translate(0px,0px)rotate(-0.25turn);
-    }
-
-
-} */
+}
 
 @keyframes bg-animate {
     0%{
@@ -344,5 +161,3 @@ html{
         transform: translate(-200px,-200px);
     }
 }
-
->>>>>>> main
