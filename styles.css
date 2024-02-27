@@ -49,6 +49,23 @@ body {
     --buttonhover: rgba(170, 170, 170, 0.26);
 }
 
+.card {
+    animation: flip 2s infinite;
+}
+
+@keyframes flip {
+    0% {
+        transform: perspective(600px) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(600px) rotateY(180deg);
+    }
+    100% {
+        transform: perspective(600px) rotateY(360deg);
+    }
+}
+
+
 
 body {
 
