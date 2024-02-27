@@ -1,5 +1,7 @@
 :root {
-    --background: #49745e;
+    background-color: #245324;
+    min-height: 100vh;
+    background-image: url("classy-fabric.png");
     --buttonbackground: linear-gradient(
             102.7deg,
             rgb(253, 218, 255) 8.2%,
@@ -18,22 +20,7 @@ body {
     overflow: hidden;
     user-select: none;
 }
-.bg{
-    background-color: #49745E;
-    opacity: 0.8;
-    background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
-    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
-    animation-name: bg-animate;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    height: 1000vh;
-    width: 1000vw;
-    background-repeat: repeat;
-    z-index: -1000;
-    position: fixed;
-}
+
 @font-face {
     font-family: myFirstFont;
     src: url('Font.ttf');
