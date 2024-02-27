@@ -12,33 +12,30 @@
 }
 
 body {
-    background-color: var(--background);
+    background-color: #49745E;
+    opacity: 0.8;
+    background: radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent) 10px 10px, linear-gradient(#E5E5F7 0.8px, transparent 0.8px) 0 -0.4px, linear-gradient(90deg, #E5E5F7 0.8px, #49745E 0.8px) -0.4px 0;
+    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
 }
 @font-face {
     font-family: myFirstFont;
     src: url('Poker.ttf');
 }
-#title-of-game {
-    margin: 10px;
-    padding-top: 20px;
-    font-size: 150px;
-    color: black;
-    font-family: myFirstFont;
-    border-bottom: 5px solid black;
-    text-decoration: solid;
-    text-align: center;
-    font-family: myFirstFont;
-    src: url("Poker.ttf");
+.home-ui{
+    display: flex;
+    flex-direction: column;
+    gap: 250px;
 }
 #title-of-game {
     margin: 10px;
     padding-top: 20px;
     font-size: 150px;
-    color: black;
-    font-family: myFirstFont;
     border-bottom: 5px solid black;
     text-decoration: solid;
     text-align: center;
+    font-family: myFirstFont;
+    src: url("Poker.ttf");
+    color: black;
 }
 
 .buttons {
@@ -46,26 +43,27 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    margin-top: 250px;
-    margin-left: 100px;
+    align-items: center;
 }
 
+html{
+    height:100%
+}
 .buttons button {
-    height: 100px;
-    width: 500px;
-    font-size: 40px;
-    cursor: pointer;
-    border-radius: 30px;
-    margin-bottom: 20px;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-    background: var(--buttonbackground);
+    display:block;
+    font-family: 'myFirstFont';
+    font-size:3em;
+    color:black;
+    font-weight:800;
+    text-decoration:none;
+    background: none;
+    padding:5px 15px;
+    transition:0.4s;
+    border: none;
     text-transform: uppercase;
-    font-weight: 800;
+    max-width: fit-content;
 }
 
-button:hover {
-    scale: 1.01;
-    background-color: var(--buttonhover);
+button:hover{
+    color: #333;
 }
