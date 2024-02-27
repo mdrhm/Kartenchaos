@@ -30,12 +30,13 @@ body {
     margin: 10px;
     padding-top: 20px;
     font-size: 150px;
-    border-bottom: 5px solid black;
+    /*border-bottom: 5px solid black;*/
     text-decoration: solid;
     text-align: center;
     font-family: myFirstFont;
     src: url("Poker.ttf");
     color: black;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .buttons {
@@ -63,6 +64,8 @@ html{
     text-transform: uppercase;
     max-width: fit-content;
     cursor: pointer;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 button:hover{
