@@ -94,9 +94,9 @@ button:hover{
 }
 
 @keyframes bg-animate {
-0%{
+    0%{
         transform: translate(-100px,-100px);
-}
+    }
 
     100%{
         transform: translate(-200px,-200px);
