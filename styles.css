@@ -16,6 +16,9 @@ body {
     opacity: 0.8;
     background: radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent) 10px 10px, linear-gradient(#E5E5F7 0.8px, transparent 0.8px) 0 -0.4px, linear-gradient(90deg, #E5E5F7 0.8px, #49745E 0.8px) -0.4px 0;
     background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 @font-face {
     font-family: myFirstFont;
@@ -24,7 +27,10 @@ body {
 .home-ui{
     display: flex;
     flex-direction: column;
-    gap: 250px;
+    /* gap: 250px; */
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
 }
 #title-of-game {
     margin: 10px;
@@ -53,7 +59,7 @@ html{
 .buttons button {
     display:block;
     font-family: 'myFirstFont';
-    font-size:4em;
+    font-size: 5em;
     color:black;
     font-weight:800;
     text-decoration:none;
