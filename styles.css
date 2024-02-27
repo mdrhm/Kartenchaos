@@ -96,7 +96,7 @@ body {
 }
 #title-of-game {
     margin: 10px;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     font-size: 150px;
     /*border-bottom: 5px solid black;*/
     text-decoration: solid;
@@ -264,5 +264,5 @@ html{
     background-size: contain;
     position: relative;
     right: 32%;
-    top: 3%;
+    top: -1%;
 }
