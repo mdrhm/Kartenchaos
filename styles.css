@@ -1,7 +1,46 @@
+<<<<<<< HEAD
+=======
+/* MD's background */
+/* :root {
+    --background: #49745e;
+    --buttonbackground: linear-gradient(
+            102.7deg,
+            rgb(253, 218, 255) 8.2%,
+            rgb(223, 173, 252) 19.6%,
+            rgb(173, 205, 252) 36.8%,
+            rgb(173, 252, 244) 73.2%,
+            rgb(202, 248, 208) 90.9%
+    );
+    --buttonhover: rgba(170, 170, 170, 0.26);
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+.bg{
+    background-color: #49745E;
+    opacity: 0.8;
+    background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
+    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    height: 1000vh;
+    width: 1000vw;
+    background-repeat: repeat;
+    z-index: -1000;
+    position: fixed;
+} */
+>>>>>>> themdonk
 :root {
     background-color: #245324;
     min-height: 100vh;
-    background-image: url("classy-fabric.png");
+    background-image: url("Images/classy-fabric.png");
     --buttonbackground: linear-gradient(
             102.7deg,
             rgb(253, 218, 255) 8.2%,
@@ -29,9 +68,15 @@ body {
 
 .home-pictures {
     display: flex;
+<<<<<<< HEAD
     position: absolute;
     justify-content: center;
     align-items: center; /* Align items vertically at the center */
+=======
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+>>>>>>> themdonk
     height: 50vh; /* Adjust height as needed */
     width: 45%; /* Occupy 45% of the viewport width */
     padding: 20px; /* Add some padding for spacing */
@@ -39,12 +84,12 @@ body {
 }
 
 .home-pictures.left {
-    left: 0; /* Position the container on the left side */
+    /*left: 0; !* Position the container on the left side *!*/
     transform: rotate(-10deg)
 }
 
 .home-pictures.right {
-    right: 0; /* Position the container on the right side */
+    /*right: 0; !* Position the container on the right side *!*/
     transform: rotate(10deg)
 }
 
@@ -56,7 +101,7 @@ body {
     height: 100%;
     width: 100%;
     justify-content: space-around;
-
+    align-items: center;
 }
 #title-of-game {
     margin: 10px;
@@ -110,32 +155,47 @@ html{
 .home-screen-buttons img {
     visibility: hidden;
     width: 40px;
+<<<<<<< HEAD
 
 }
 .home-screen-buttons button:hover img{
     visibility: visible;
+=======
+>>>>>>> themdonk
     transform: rotate(-0.25turn);
     width: 40px;
     display:inline-flex;
     align-items: center;
     position: relative;
-    animation-name: slideleft;
-    animation-duration: 1.1s;
     border: solid black;
     background-color: white;
     border-radius: 10%;
+<<<<<<< HEAD
+=======
+}
+.home-screen-buttons button:hover img{
+    visibility: visible;
+    animation-name: slideleft;
+    animation-duration: 1.1s;
+    animation-iteration-count: infinite;
+>>>>>>> themdonk
 }
 
 @keyframes slideleft {
 
     0%{
-        margin-left: 15px;
+        transform: translateX(20px) rotate(-0.25turn);
+        /*margin-left: 15px;*/
     }
 
+    50%{
+        transform: translateX(5px) rotate(-0.25turn);
+        /*margin-left: 0px;*/
+    }
     100%{
-        margin-left: 0px;
+        transform: translateX(20px) rotate(-0.25turn);
+        /*margin-left: 0px;*/
     }
-
 
 }
 
@@ -161,3 +221,34 @@ html{
         transform: translate(-200px,-200px);
     }
 }
+<<<<<<< HEAD
+=======
+
+@keyframes logo-animation{
+    0%, 24.99%, 100%{
+        background-image: url("cards/clubs.svg");
+
+    }
+    25%, 49.99%{
+        background-image: url("cards/spades.svg");
+
+    }
+    50%, 74.99%{
+        background-image: url("cards/diamonds.svg");
+
+    }
+    75%, 99.99%{
+        background-image: url("cards/hearts.svg");
+
+    }
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 205px;
+}
+
+>>>>>>> themdonk
