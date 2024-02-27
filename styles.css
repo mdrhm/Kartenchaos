@@ -1,71 +1,104 @@
 :root {
-  --background: #49745e;
-  --buttonbackground: linear-gradient(
-    102.7deg,
-    rgb(253, 218, 255) 8.2%,
-    rgb(223, 173, 252) 19.6%,
-    rgb(173, 205, 252) 36.8%,
-    rgb(173, 252, 244) 73.2%,
-    rgb(202, 248, 208) 90.9%
-  );
-  --buttonhover: rgba(170, 170, 170, 0.26);
+    --background: #49745e;
+    --buttonbackground: linear-gradient(
+            102.7deg,
+            rgb(253, 218, 255) 8.2%,
+            rgb(223, 173, 252) 19.6%,
+            rgb(173, 205, 252) 36.8%,
+            rgb(173, 252, 244) 73.2%,
+            rgb(202, 248, 208) 90.9%
+    );
+    --buttonhover: rgba(170, 170, 170, 0.26);
 }
 
 body {
-    background-color: var(--background);
+
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+.bg{
+    background-color: #49745E;
+    opacity: 0.8;
+    background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
+    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    height: 1000vh;
+    width: 1000vw;
+    background-repeat: repeat;
+    z-index: -1000;
+    position: fixed;
 }
 @font-face {
     font-family: myFirstFont;
-    src: url('Poker.ttf');
+    src: url('Font.ttf');
+}
+.home-ui{
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    /* gap: 250px; */
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+
 }
 #title-of-game {
     margin: 10px;
     padding-top: 20px;
     font-size: 150px;
-    color: black;
-    font-family: myFirstFont;
-    border-bottom: 5px solid black;
+    /*border-bottom: 5px solid black;*/
     text-decoration: solid;
     text-align: center;
-  font-family: myFirstFont;
-  src: url("Poker.ttf");
-}
-#title-of-game {
-  margin: 10px;
-  padding-top: 20px;
-  font-size: 150px;
-  color: black;
-  font-family: myFirstFont;
-  border-bottom: 5px solid black;
-  text-decoration: solid;
-  text-align: center;
+    font-family: myFirstFont;
+    src: url("Poker.ttf");
+    color: black;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  margin-top: 250px;
-  margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: center;
 }
 
+html{
+    height:100%
+}
 .buttons button {
-  height: 100px;
-  width: 500px;
-  font-size: 40px;
-  cursor: pointer;
-  border-radius: 30px;
-  margin-bottom: 20px;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-  background: var(--buttonbackground);
-  text-transform: uppercase;
-  font-weight: 800;
+    display:block;
+    font-family: 'myFirstFont';
+    font-size: 5em;
+    color:black;
+    font-weight:800;
+    text-decoration:none;
+    background: none;
+    transition:0.4s;
+    border: none;
+    text-transform: uppercase;
+    max-width: fit-content;
+    cursor: pointer;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
-button:hover {
-    scale: 1.1;
-    background-color: var(--buttonhover);
+button:hover{
+    color: #333;
+}
+
+@keyframes bg-animate {
+    0%{
+        transform: translate(-100px,-100px);
+    }
+
+    100%{
+        transform: translate(-200px,-200px);
+    }
 }
