@@ -49,10 +49,13 @@ body {
     --buttonhover: rgba(170, 170, 170, 0.26);
 }
 
-.card {
+.card1 {
     animation: flip 2s infinite;
 }
 
+.card2 {
+    animation: flip-opposite 2s infinite;
+}
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(0deg);
@@ -62,6 +65,18 @@ body {
     }
     100% {
         transform: perspective(600px) rotateY(360deg);
+    }
+}
+
+@keyframes flip-opposite {
+    0% {
+        transform: perspective(600px) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(600px) rotateY(-180deg);
+    }
+    100% {
+        transform: perspective(600px) rotateY(-360deg);
     }
 }
 
