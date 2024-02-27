@@ -30,7 +30,7 @@ body {
 .home-pictures {
     display: flex;
     position: absolute; 
-    justify-content: center; /* Align items horizontally at the center */
+    justify-content: center; 
     align-items: center; /* Align items vertically at the center */
     height: 50vh; /* Adjust height as needed */
     width: 45%; /* Occupy 45% of the viewport width */
