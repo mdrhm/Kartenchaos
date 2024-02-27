@@ -12,13 +12,27 @@
 }
 
 body {
+
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+.bg{
     background-color: #49745E;
     opacity: 0.8;
     background: radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent) 10px 10px, linear-gradient(#E5E5F7 0.8px, transparent 0.8px) 0 -0.4px, linear-gradient(90deg, #E5E5F7 0.8px, #49745E 0.8px) -0.4px 0;
     background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+    animation-name: bg-animate;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    height: 1000vh;
+    width: 1000vw;
+    background-repeat: repeat;
+    z-index: -1000;
+    position: fixed;
 }
 @font-face {
     font-family: myFirstFont;
@@ -27,10 +41,12 @@ body {
 .home-ui{
     display: flex;
     flex-direction: column;
+    flex-direction: column;
     /* gap: 250px; */
     height: 100%;
     width: 100%;
     justify-content: space-around;
+
 }
 #title-of-game {
     margin: 10px;
@@ -75,4 +91,14 @@ html{
 
 button:hover{
     color: #333;
+}
+
+@keyframes bg-animate {
+0%{
+        transform: translate(-100px,-100px);
+}
+
+    100%{
+        transform: translate(-200px,-200px);
+    }
 }
