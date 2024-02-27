@@ -13,6 +13,7 @@
     --buttonhover: rgba(170, 170, 170, 0.26);
 }
 
+
 body {
 
     height: 100%;
@@ -25,6 +26,28 @@ body {
     font-family: myFirstFont;
     src: url('Font.ttf');
 }
+
+.home-pictures {
+    display: flex;
+    position: absolute; 
+    justify-content: center; /* Align items horizontally at the center */
+    align-items: center; /* Align items vertically at the center */
+    height: 50vh; /* Adjust height as needed */
+    width: 45%; /* Occupy 45% of the viewport width */
+    padding: 20px; /* Add some padding for spacing */
+    scale: 50%;
+}
+
+.home-pictures.left {
+    left: 0; /* Position the container on the left side */
+    transform: rotate(-10deg)
+}
+
+.home-pictures.right {
+    right: 0; /* Position the container on the right side */
+    transform: rotate(10deg)
+}
+
 .home-ui{
     display: flex;
     flex-direction: column;
@@ -161,3 +184,4 @@ html{
         transform: translate(-200px,-200px);
     }
 }
+
