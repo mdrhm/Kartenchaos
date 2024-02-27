@@ -38,7 +38,7 @@ body {
 :root {
     background-color: #245324;
     min-height: 100vh;
-    background-image: url("classy-fabric.png");
+    background-image: url("Images/classy-fabric.png");
     --buttonbackground: linear-gradient(
             102.7deg,
             rgb(253, 218, 255) 8.2%,
@@ -147,32 +147,37 @@ html{
 .home-screen-buttons img {
     visibility: hidden;
     width: 40px;
-    
-}
-.home-screen-buttons button:hover img{
-    visibility: visible;
     transform: rotate(-0.25turn);
     width: 40px;
     display:inline-flex;
     align-items: center;
     position: relative;
-    animation-name: slideleft;
-    animation-duration: 1.1s;
     border: solid black;
     background-color: white;
-    border-radius: 10%;   
+    border-radius: 10%;
+}
+.home-screen-buttons button:hover img{
+    visibility: visible;
+    animation-name: slideleft;
+    animation-duration: 1.1s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes slideleft {
 
     0%{
-        margin-left: 15px;
+        transform: translateX(20px) rotate(-0.25turn);
+        /*margin-left: 15px;*/
     }
 
+    50%{
+        transform: translateX(5px) rotate(-0.25turn);
+        /*margin-left: 0px;*/
+    }
     100%{
-        margin-left: 0px;
+        transform: translateX(20px) rotate(-0.25turn);
+        /*margin-left: 0px;*/
     }
-
 
 }
 
