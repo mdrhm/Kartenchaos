@@ -24,7 +24,7 @@ body {
     background: radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #49745E 20%, #49745E 80%, transparent 80%, transparent) 10px 10px, linear-gradient(#E5E5F7 0.8px, transparent 0.8px) 0 -0.4px, linear-gradient(90deg, #E5E5F7 0.8px, #49745E 0.8px) -0.4px 0;
     background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
     animation-name: bg-animate;
-    animation-duration: 1.5s;
+    animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: running;
