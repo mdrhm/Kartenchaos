@@ -61,7 +61,7 @@ body {
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
-.buttons {
+.home-screen-buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,7 +72,7 @@ body {
 html{
     height:100%
 }
-.buttons button {
+.home-screen-buttons button {
     display:block;
     font-family: 'myFirstFont';
     font-size: 5em;
@@ -89,9 +89,81 @@ html{
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
-button:hover{
+.home-screen-buttons button:hover{
     color: #333;
 }
+
+
+
+
+/* Home screen button select, ANIMATED BUTTON + ANIMATED ICON */
+.home-screen-buttons img {
+    visibility: hidden;
+    width: 40px;
+    
+}
+.home-screen-buttons button:hover img{
+    visibility: visible;
+    transform: rotate(-0.25turn);
+    width: 40px;
+    display:inline-flex;
+    align-items: center;
+    position: relative;
+    animation-name: slideleft;
+    animation-duration: 1.1s;
+    border: solid black;
+    background-color: white;
+    border-radius: 10%;   
+}
+
+@keyframes slideleft {
+
+    0%{
+        margin-left: 15px;
+    }
+
+    100%{
+        margin-left: 0px;
+    }
+
+
+}
+
+
+
+
+/* Home screen button select, NO ANIMATED BUTTON + ANIMATED ICON */
+
+/* .home-screen-buttons img {
+    visibility: hidden;
+    width: 40px;
+    
+}
+.home-screen-buttons button:hover img{
+    visibility: visible;
+    transform: rotate(-0.25turn);
+    width: 40px;
+    display:inline-flex;
+    align-items: center;
+    position: relative;
+    animation-name: slideleft;
+    animation-duration: 1.1s;
+    /* border: solid black;
+    background-color: white;   
+}
+
+@keyframes slideleft {
+
+    0%{
+        transform: translate(50px,0px)rotate(-0.25turn);
+    }
+
+    100%{
+        transform: translate(0px,0px)rotate(-0.25turn);
+    }
+
+
+} */
 
 @keyframes bg-animate {
     0%{
