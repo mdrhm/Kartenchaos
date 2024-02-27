@@ -36,7 +36,7 @@ body {
 }
 @font-face {
     font-family: myFirstFont;
-    src: url('Poker.ttf');
+    src: url('Font.ttf');
 }
 .home-ui{
     display: flex;
