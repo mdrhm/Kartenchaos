@@ -228,23 +228,22 @@ html{
 
 @keyframes logo-animation{
     0%, 24.99%, 100%{
-        background-image: url("cards/clubs.svg");
+        background-image: url("images/clubs.svg");
 
     }
     25%, 49.99%{
-        background-image: url("cards/spades.svg");
+        background-image: url("images/spades.svg");
 
     }
     50%, 74.99%{
-        background-image: url("cards/diamonds.svg");
+        background-image: url("images/diamonds.svg");
 
     }
     75%, 99.99%{
-        background-image: url("cards/hearts.svg");
+        background-image: url("images/hearts.svg");
 
     }
 }
-
 .header{
     display: flex;
     flex-direction: row;
@@ -253,3 +252,17 @@ html{
     height: 205px;
 }
 
+.logo{
+    animation-name: logo-animation;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    height: 50px;
+    min-width: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    right: 11.4%;
+    top: 3%;
+}
