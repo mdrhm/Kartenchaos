@@ -62,6 +62,7 @@ html{
     border: none;
     text-transform: uppercase;
     max-width: fit-content;
+    cursor: pointer;
 }
 
 button:hover{
