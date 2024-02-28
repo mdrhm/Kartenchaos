@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<!-- background music -->
-<audio id="bgMusic" loop src="jazzmusic.mp3"></audio>
+<!-- Background music -->
+<audio id="music" controls autoplay hidden="" >
+    <source src="music.mp3" type="audio/mp3">
+</audio>
 <script>
-    let bgMusic = document.getElementById("bgMusic");
-    bgMusic.volume = 0.1;
-    bgMusic.play();
+    var audio = document.getElementById("music");
+    music.volume = 0.025;
 </script>
 
 <div class="bg"></div>
@@ -23,14 +23,14 @@
     <div class="header">
 
         <div class="home-pictures left">
-            <img src="cards/AS.svg" alt="" class="card1">
+            <img src="cards/KD.svg" alt="" class="card1">
         </div>
 
         <h1 id="title-of-game">KARTENCHAOS</h1>
 
 
         <div class="home-pictures right">
-            <img src="cards/AS.svg" alt="" class="card2">
+            <img src="cards/QC.svg" alt="" class="card2">
         </div>
         <div class="logo"></div>
 
