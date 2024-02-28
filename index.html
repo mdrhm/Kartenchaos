@@ -10,10 +10,13 @@
 
 <!-- background music -->
 <audio id="bgMusic" loop src="jazzmusic.mp3"></audio>
+<audio class = "voiceover" src="play-game.mp3"></audio>
+<audio class = "voiceover" src="rules.mp3"></audio>
+<audio class = "voiceover" src="settings.mp3"></audio>
 <script>
-    let bgMusic = document.getElementById("bgMusic");
-    bgMusic.volume = 0.1;
-    bgMusic.play();
+    // let bgMusic = document.getElementById("bgMusic");
+    // bgMusic.volume = 0.1;
+    // bgMusic.play();
 </script>
 
 <div class="bg"></div>
@@ -36,10 +39,20 @@
 
     </div>
     <div class = "home-screen-buttons">
-      <button id="play-game">Play Game <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
-      <button id="rules">Rules <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
-      <button id="settings">Settings <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
+      <button id="play-game" class = "home-button">Play Game <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
+      <button id="rules" class = "home-button">Rules <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
+      <button id="settings" class = "home-button">Settings <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
     </div>
+    <script>
+        const voiceovers = document.querySelectorAll(".voiceover");
+        const buttons = document.querySelectorAll(".home-button");
+        for(let i = 0; i < 3; i++){
+            buttons[i].addEventListener('mouseover', (event) => {
+                voiceovers[i].volume = 0.2;
+                voiceovers[i].play();
+            })
+        }
+    </script>
 </div>
 </body>
 </html>
