@@ -8,21 +8,22 @@
 </head>
 <body>
 <!-- Background music -->
-<audio id="bgMusic" loop src="jazzmusic.mp3"></audio>
+<audio id="music" controls autoplay hidden="" >
+    <source src="music.mp3" type="audio/mp3">
+</audio>
 <script>
-    let bgMusic = document.getElementById("bgMusic");
-    bgMusic.volume = 0.115;
-    bgMusic.play();
+    var audio = document.getElementById("music");
+    music.volume = 0.025;
 </script>
 <div class="bg"></div>
 <div class="home-ui">
     <div class="header">
         <div class="home-pictures left">
-            <img alt="" class="card1" src="cards/AS.svg">
+            <img src="cards/KD.svg" alt="" class="card1">
         </div>
         <h1 id="title-of-game">KARTENCHAOS</h1>
         <div class="home-pictures right">
-            <img alt="" class="card2" src="cards/AS.svg">
+            <img src="cards/QC.svg" alt="" class="card2">
         </div>
         <div class="logo"></div>
     </div>
