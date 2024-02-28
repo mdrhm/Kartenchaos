@@ -51,6 +51,7 @@ body {
 
 .card1 {
     animation: flip 2s infinite;
+    background-image: url("cards/AS.svg");
 }
 
 .card2 {
@@ -59,12 +60,15 @@ body {
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(0deg);
+        background-image: url("cards/AS.svg");
     }
     50% {
         transform: perspective(600px) rotateY(180deg);
+        background-image: url("cards/2B.svg");
     }
     100% {
         transform: perspective(600px) rotateY(360deg);
+        background-image: url("cards/AS.svg");
     }
 }
 
