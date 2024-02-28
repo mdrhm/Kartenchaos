@@ -299,3 +299,50 @@ html {
     right: 31.37%;
     top: -1%;
 }
+
+.p1handcontainer{
+    
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p1handcontainer .card{
+    position: absolute;
+    width: 16vw;
+    height: 327px;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid white;
+    cursor: pointer;
+    transition: 0.5s;
+    transform-origin: 50% 100%;
+}
+
+.p1handcontainer .card img {
+    width: 12vw;
+    height: 90%;
+}
+
+
+
+.p1handcontainer:hover .card:nth-child(4) {
+    transform: rotate(2deg) translate(calc((var(--i)) * 50px), -40px);
+}
+
+
+.p1handcontainer:hover .card {
+    transform: rotate(calc(var(--i) * 5.5deg)) translate(calc((var(--i)) * 50px), -40px);
+}
+
+.p1handcontainer .card:active {
+    translate: calc(var(--i)*20px)-50px;
+}
+
