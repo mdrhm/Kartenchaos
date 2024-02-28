@@ -215,6 +215,9 @@ html {
 }
 
 
+
+
+
 /* Home screen button select, NO ANIMATED BUTTON + ANIMATED ICON */
 
 /* .home-screen-buttons img {
@@ -304,7 +307,7 @@ html {
     
     position: absolute;
     bottom: 0;
-    margin-bottom: 10%;
+    margin-bottom: 11.5%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -313,14 +316,15 @@ html {
 
 .p1handcontainer .card{
     position: absolute;
-    width: 16vw;
-    height: 327px;
+    width: 15vw;
+    height: 40vh;
     border-radius: 10px;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 10px solid white;
+    border: 2px solid rgb(0, 0, 0);
+    
     cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
@@ -330,6 +334,7 @@ html {
     width: 12vw;
     height: 90%;
 }
+
 
 
 
@@ -344,5 +349,11 @@ html {
 
 .p1handcontainer .card:active {
     translate: calc(var(--i)*20px)-50px;
+    margin-bottom: 0%;
+}
+
+.p1handcontainer:active{
+     
+     animation-duration: 1.1s;
 }
 
