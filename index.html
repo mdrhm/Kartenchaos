@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kartenchaos</title>
-  <link rel = "stylesheet" href="styles.css"></link>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartenchaos</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class = "home-ui">
-    <h1 id="title-of-game">Kartenchaos</h1>
-    <div class = "buttons">
-      <button>Play Game</button>
-      <button>Rules</button>
-      <button>Settings</button>
+
+<!-- Background music -->
+<audio id="bgMusic" loop src="jazzmusic.mp3"></audio>
+<script>
+    let bgMusic = document.getElementById("bgMusic");
+    bgMusic.volume = 0.1;
+    bgMusic.play();
+</script>
+
+<div class="bg"></div>
+
+<div class="home-ui">
+
+    <div class="header">
+
+        <div class="home-pictures left">
+            <img src="cards/AS.svg" alt="" class="card1">
+        </div>
+
+        <h1 id="title-of-game">KARTENCHAOS</h1>
+
+
+        <div class="home-pictures right">
+            <img src="cards/AS.svg" alt="" class="card2">
+        </div>
+        <div class="logo"></div>
+
+    </div>
+    <div class = "home-screen-buttons">
+      <button id="play-game">Play Game <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
+      <button id="rules">Rules <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
+      <button id="settings">Settings <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
     </div>
 </div>
-    <img src="/cards/2B.svg" alt="">
 </body>
 </html>
