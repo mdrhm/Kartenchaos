@@ -304,30 +304,38 @@ html {
 }
 
 .p1handcontainer{
-    
+
     position: absolute;
-    bottom: 0;
+
+    bottom: -15%;
+
     margin-bottom: 11.5%;
+
     width: 100%;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 }
 
 .p1handcontainer .card{
     position: absolute;
-    width: 15vw;
-    height: 40vh;
+    width: fit-content;
+    height: fit-content;
     border-radius: 10px;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid rgb(0, 0, 0);
-    
     cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
+    border-radius: 13px;
+    transform: rotate(calc(var(--i) * 5.5deg)) translate(calc((var(--i)) * 50px), -40px);
+
 }
 
 .p1handcontainer .card img {
@@ -338,22 +346,12 @@ html {
 
 
 
-.p1handcontainer:hover .card:nth-child(4) {
+.p1handcontainer:hover .card:nth-child(3) {
     transform: rotate(2deg) translate(calc((var(--i)) * 50px), -40px);
 }
 
-
-.p1handcontainer:hover .card {
-    transform: rotate(calc(var(--i) * 5.5deg)) translate(calc((var(--i)) * 50px), -40px);
-}
-
-.p1handcontainer .card:active {
+.p1handcontainer .card:hover {
     translate: calc(var(--i)*20px)-50px;
     margin-bottom: 0%;
-}
-
-.p1handcontainer:active{
-     
-     animation-duration: 1.1s;
 }
 
