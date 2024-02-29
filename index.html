@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Kartenchaos</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="styles.css" rel="stylesheet">
+    <script defer src="rules.js"></script> <!-- Add defer attribute to load script after DOMContentLoaded -->
 </head>
 <body>
 <!-- Background music -->
-<audio id="music" controls autoplay hidden="" >
+<audio autoplay controls hidden="" id="music">
     <source src="music.mp3" type="audio/mp3">
 </audio>
 <script>
@@ -19,27 +20,36 @@
 <div class="bg"></div>
 
 <div class="home-ui">
-
     <div class="header">
-
         <div class="home-pictures left">
-            <img src="cards/KD.svg" alt="" class="card1">
+            <img alt="" class="card1" src="cards/KD.svg">
         </div>
-
         <h1 id="title-of-game">KARTENCHAOS</h1>
-
-
         <div class="home-pictures right">
-            <img src="cards/QC.svg" alt="" class="card2">
+            <img alt="" class="card2" src="cards/QC.svg">
         </div>
         <div class="logo"></div>
-
     </div>
-    <div class = "home-screen-buttons">
-      <button id="play-game">Play Game <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
-      <button id="rules">Rules <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
-      <button id="settings">Settings <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
+    <div class="home-screen-buttons">
+        <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+        <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+        <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
     </div>
 </div>
+
+<!-- Rules Popup -->
+<div class="rules-popup" id="rules-popup">
+    <div class="rules-content">
+        <span class="close">&times;</span>
+        <!-- Rules content goes here -->
+        <h2>Rules</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Alias aut doloremque eaque exercitationem numquam odio quas quisquam suscipit.
+            Aspernatur distinctio doloribus eius iure, nesciunt obcaecati perferendis repellendus tempora! Quas,
+            reprehenderit!
+        </p>
+    </div>
+</div>
+
 </body>
 </html>
