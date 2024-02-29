@@ -297,3 +297,47 @@ html {
     right: 31.37%;
     top: -1%;
 }
+
+/* CSS for Rules */
+.rules-popup {
+    display: none; /* Hide popup by default */
+    position: fixed;
+    z-index: 9999; /* Ensure popup appears on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.rules-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Center the popup vertically and horizontally */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Adjust popup width as needed */
+    max-width: 600px; /* Max width for better readability */
+}
+
+.rules-content h2 {
+    text-align: center;
+}
+
+.rules-content p {
+    text-align: justify;
+}
+
+.rules-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.rules-content .close:hover,
+.rules-content .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
