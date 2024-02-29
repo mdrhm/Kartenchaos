@@ -3,35 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- PAGE-TITLE -->
     <title>Kartenchaos</title>
-    <link href="styles.css" rel="stylesheet">
+
+    <link rel="icon" href="data:,">
+
+    <!-- CSS-STYLES-LINKS -->
+    <link href="styles\home-page.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles\settings-page.css">
+
+   
 </head>
+
 <body>
-<!-- Background music -->
-<audio id="music" controls autoplay hidden="" >
-    <source src="music.mp3" type="audio/mp3">
-</audio>
-<script>
-    var audio = document.getElementById("music");
-    music.volume = 0.025;
-</script>
-<div class="bg"></div>
-<div class="home-ui">
-    <div class="header">
-        <div class="home-pictures left">
-            <img src="cards/KD.svg" alt="" class="card1">
+    <!-- JAVASCRIPT-SCRIPT-LINKS -->
+    <script src="settings-page.js" defer></script>
+
+
+    <!-- BACKGROUND-MUSIC -->
+    <!-- <audio id="music" controls autoplay hidden>
+        <source src="music.mp3" type="audio/mp3">
+    </audio> -->
+
+    <!-- BACKGROUND-IMAGE -->
+    <div class="bg"></div>
+
+    <!-- HOME-PAGE -->
+    <div class="home-ui" style="display: none;">
+        <div class="header">
+            <div class="home-pictures left">
+                <img src="cards/KD.svg" alt="" class="card1">
+            </div>
+            <h1 id="title-of-game">KARTENCHAOS</h1>
+            <div class="home-pictures right">
+                <img src="cards/QC.svg" alt="" class="card2">
+            </div>
+            <div class="logo"></div>
         </div>
-        <h1 id="title-of-game">KARTENCHAOS</h1>
-        <div class="home-pictures right">
-            <img src="cards/QC.svg" alt="" class="card2">
+        <div class="home-screen-buttons">
+            <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+            <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+            <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
         </div>
-        <div class="logo"></div>
     </div>
-    <div class="home-screen-buttons">
-        <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
-        <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
-        <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+
+    <!-- SETTINGS-PAGE -->
+    <div id="settings-page">
+        <div class="setting-background">
+            <div class="content-holder">
+
+                <!-- TOP PORTION OF SETTINGS -->
+                <div class="top-content">
+                    <div class="general">
+                        <button class="main-btn hover-enabled">General</button>
+                    </div>
+                    <div class="audio">
+                        <button class="main-btn hover-enabled">Audio</button>
+                    </div>
+
+                </div>
+
+                <!-- MIDDLE PORTION OF SETTINGS -->
+                <div class="middle-content">
+                    <div class="master-volume-option">
+                        <div class="master-volume">
+                            Master Volume
+                        </div>
+                        <div class="b">
+                            <div class="range">
+                                <div class="slider-value">
+                                    <span>100</span>
+                                </div>
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                    <input type="range" min="0" max="200" value="100" steps="1">
+                                    <div class="value right">200</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="music-volume"></div>
+                </div>
+
+                <!-- BOTTOM PORTION OF SETTINGS -->
+                <div class="bottom-content"></div>
+            </div>   
+        </div>
+
     </div>
-</div>
+
 </body>
 </html>

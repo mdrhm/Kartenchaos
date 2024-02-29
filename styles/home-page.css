@@ -37,7 +37,7 @@ body {
 :root {
     background-color: #245324;
     min-height: 100vh;
-    background-image: url("Images/classy-fabric.png");
+    background-image: url("../images/classy-fabric.png");
     --buttonbackground: linear-gradient(
             102.7deg,
             rgb(253, 218, 255) 8.2%,
@@ -59,15 +59,15 @@ body {
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(0deg);
-        background-image: url("cards/AS.svg");
+        background-image: url("../cards/AS.svg");
     }
     50% {
         transform: perspective(600px) rotateY(180deg);
-        background-image: url("cards/2B.svg");
+        background-image: url("../cards/2B.svg");
     }
     100% {
         transform: perspective(600px) rotateY(360deg);
-        background-image: url("cards/AS.svg");
+        background-image: url("../cards/AS.svg");
     }
 }
 
@@ -94,7 +94,7 @@ body {
 
 @font-face {
     font-family: myFirstFont;
-    src: url('Font.ttf');
+    src: url("../Font.ttf");
 }
 
 .home-pictures {
@@ -262,19 +262,19 @@ html {
 
 @keyframes logo-animation {
     0%, 24.99%, 100% {
-        background-image: url("images/clubs.svg");
+        background-image: url("../Images/clubs.svg");
 
     }
     25%, 49.99% {
-        background-image: url("images/spades.svg");
+        background-image: url("../Images/spades.svg");
 
     }
     50%, 74.99% {
-        background-image: url("images/diamonds.svg");
+        background-image: url("../Images/diamonds.svg");
 
     }
     75%, 99.99% {
-        background-image: url("images/hearts.svg");
+        background-image: url("../Images/hearts.svg");
 
     }
 }
