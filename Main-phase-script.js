@@ -46,7 +46,13 @@ console.log(y);
 console.log(z)
 
 
+
+function loadCards(){
+
+}
 /*
+
+
 
 
 
@@ -58,7 +64,7 @@ Then it addes that card to the dropport where it is formatted to fit in the spac
 for (let card of cards) {
     if (dropport.children.length === 0) {
         card.addEventListener("dragstart", function (e) {
-            if (count === 1) {
+            if (count > 0) {
                 // Set draggable attribute to false
                 card.draggable = false;
             } else {
