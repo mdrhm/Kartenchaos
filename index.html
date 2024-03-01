@@ -13,13 +13,17 @@
 <audio class = "voiceover" src="play-game.mp3"></audio>
 <audio class = "voiceover" src="rules.mp3"></audio>
 <audio class = "voiceover" src="settings.mp3"></audio>
+<!--
 <script>
     let bgMusic = document.getElementById("bgMusic");
     bgMusic.volume = 2;
     bgMusic.play();
 </script>
+-->
 
-<div class="bg"></div>
+
+    
+
 <!--
 <div class="home-ui">
 
@@ -44,15 +48,18 @@
       <button id="settings" class = "home-button">Settings <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
     </div>
   -->
-  
-  <div class="p1handcontainer" dis>
-    <div class="card" style="--i:-2"><img src="cards/6S.svg" alt=''></div>
-    <div class="card" style="--i:-1"><img src="cards/3H.svg" alt=''></div>
-    <div class="card" style="--i:0"><img src="cards/7D.svg" alt=''></div>
-    <div class="card" style="--i:1"><img src="cards/6D.svg" alt=''></div>
-    <div class="card" style="--i:2"><img src="cards/5D.svg" alt=''></div>
+  <div class = Main-phase>
+  <div class = "dropport" id = drop_port></div>
+  <div class="p1handcontainer">
+    
+      <div class="card " style="--i:-2" draggable="true"> <img src="cards/6S.svg" alt='' id="6S"></div>    
+      <div class="card " style="--i:-1" draggable="true"><img src="cards/3H.svg" alt='' id = "3H"></div>
+      <div class="card " style="--i:0" draggable="true"><img src="cards/7D.svg" alt='' id = "7D" ></div>
+      <div class="card " style="--i:1" draggable="true"><img src="cards/6D.svg" alt='' id = "6D"></div>
+      <div class="card " style="--i:2" draggable="true"><img src="cards/5D.svg" alt='' id = "5D"></div>
+  </div>
 </div>
 
-</div>
+<script src = "Main-phase-script.js"></script>
 </body>
 </html>

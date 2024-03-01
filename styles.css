@@ -303,13 +303,20 @@ html {
     top: -1%;
 }
 
+.Main-phase{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .p1handcontainer{
 
     position: absolute;
 
     bottom: -15%;
 
-    margin-bottom: 11.5%;
+    margin-bottom: 12.5%;
 
     width: 100%;
 
@@ -334,7 +341,7 @@ html {
     transition: 0.5s;
     transform-origin: 50% 100%;
     border-radius: 13px;
-    transform: rotate(calc(var(--i) * 5.5deg)) translate(calc((var(--i)) * 50px), -40px);
+    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
 
 }
 
@@ -355,3 +362,18 @@ html {
     margin-bottom: 0%;
 }
 
+
+
+.dropport{
+    height: 30%;
+   
+    background-color: white;
+    width: 30%;
+    border-style:double;
+    border-color: #767676;
+    border-radius: 8px;
+    border-left-width: 20px;
+    background-color: #8e8b8b;
+    margin-top: -5%; 
+    
+}
