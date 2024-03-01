@@ -2,44 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- PAGE-TITLE -->
     <title>Kartenchaos</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" href="data:,">
+
+    <!-- CSS-STYLES-LINKS -->
+    <link href="styles\home-page.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles\settings-page.css">
+
+   
 </head>
+
 <body>
+    <!-- JAVASCRIPT-SCRIPT-LINKS -->
+    <script src="settings-page.js" defer></script>
 
-<!-- Background music -->
-<audio id="bgMusic" loop src="jazzmusic.mp3"></audio>
-<script>
-    let bgMusic = document.getElementById("bgMusic");
-    bgMusic.volume = 0.1;
-    bgMusic.play();
-</script>
 
-<div class="bg"></div>
+    <!-- BACKGROUND-MUSIC -->
+    <!-- <audio id="music" controls autoplay hidden>
+        <source src="music.mp3" type="audio/mp3">
+    </audio> -->
 
-<div class="home-ui">
+    <!-- BACKGROUND-IMAGE -->
+    <div class="bg"></div>
 
-    <div class="header">
+    <!-- HOME-PAGE -->
+    <div class="home-ui" style="display: none;">
+        <div class="header">
+            <div class="home-pictures left">
+                <img src="cards/KD.svg" alt="" class="card1">
+            </div>
+            <h1 id="title-of-game">KARTENCHAOS</h1>
+            <div class="home-pictures right">
+                <img src="cards/QC.svg" alt="" class="card2">
+            </div>
+            <div class="logo"></div>
+        </div>
+        <div class="home-screen-buttons">
+            <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+            <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+            <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+        </div>
+    </div>
 
-        <div class="home-pictures left">
-            <img src="cards/AS.svg" alt="" class="card1">
+    <!-- SETTINGS-PAGE -->
+    <div id="settings-page">
+        <div class="setting-background">
+            <div class="content-holder">
+
+                <!-- TOP PORTION OF SETTINGS -->
+                <div class="top-content">
+                    <div class="general">
+                        <button class="main-btn hover-enabled">General</button>
+                    </div>
+                    <div class="audio">
+                        <button class="main-btn hover-enabled">Audio</button>
+                    </div>
+
+                </div>
+
+                <!-- MIDDLE PORTION OF SETTINGS -->
+                <div class="middle-content">
+                    <div class="master-volume-option">
+                        <div class="master-volume">
+                            Master Volume
+                        </div>
+                        <div class="b">
+                            <div class="range">
+                                <div class="slider-value">
+                                    <span>100</span>
+                                </div>
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                    <input type="range" min="0" max="200" value="100" steps="1">
+                                    <div class="value right">200</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="music-volume"></div>
+                </div>
+
+                <!-- BOTTOM PORTION OF SETTINGS -->
+                <div class="bottom-content"></div>
+            </div>   
         </div>
 
-        <h1 id="title-of-game">KARTENCHAOS</h1>
-
-
-        <div class="home-pictures right">
-            <img src="cards/AS.svg" alt="" class="card2">
-        </div>
-        <div class="logo"></div>
-
     </div>
-    <div class = "home-screen-buttons">
-      <button id="play-game">Play Game <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
-      <button id="rules">Rules <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
-      <button id="settings">Settings <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
-    </div>
-</div>
+
 </body>
 </html>
