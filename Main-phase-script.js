@@ -5,8 +5,10 @@ let dropport = document.getElementById("drop_port");
 let count = 0;
 let min = 25;
 let max = 35;
+const cardsInner = document.querySelectorAll(".card-inner");
+const suits = ["D","H","S","C"]
 
-function get5RandomCards(sum) {
+function generateHand(sum) {
 // Initialize an array with 5 cells
 // Initialize an array with 5 cells
 let cells = [0, 0, 0, 0, 0];
@@ -29,21 +31,23 @@ cells[4] = Math.min(sum, 10);
 return cells;
 }
 
-
-
-
-  function getRandominRange(min, max) {
+function getRandominRange(min, max) {
     return parseInt(Math.random() * (max - min)) + min;
-  }
-let x = getRandominRange(25,35);
-let y= get5RandomCards(x);
+}
+
+
+// let x = getRandominRange(25,35);
+let x = 30;
+let y= generateHand(x);
 let z = 0
 for(let i = 0; i < 5; i++){
     z += y[i];
 }
-console.log(x);
-console.log(y);
-console.log(z)
+
+
+for(let i = 0; i < y.length; i++){
+    cardsInner[i].src = "/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
+}
 
 
 /*
@@ -58,7 +62,7 @@ Then it addes that card to the dropport where it is formatted to fit in the spac
 for (let card of cards) {
     if (dropport.children.length === 0) {
         card.addEventListener("dragstart", function (e) {
-            if (count === 1) {
+            if (count > 0) {
                 // Set draggable attribute to false
                 card.draggable = false;
             } else {
