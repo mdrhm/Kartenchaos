@@ -45,6 +45,8 @@
             <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
             <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
             <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+
+            
         </div>
     </div>
 
@@ -70,7 +72,38 @@
                         <div class="master-volume">
                             Master Volume
                         </div>
-                        <div class="b">
+                        <div class="range">
+                            <div class="slider-value">
+                                <span>100</span>
+                            </div>
+                            <div class="field">
+                                <div class="value left">0</div>
+                                <input type="range" min="0" max="200" value="100" steps="1">
+                                <div class="value right">200</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="music-volume-option">
+                            <div class="music-volume">
+                                Music Volume
+                            </div>
+                            <div class="range">
+                                <div class="slider-value">
+                                    <span>100</span>
+                                </div>
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                    <input type="range" min="0" max="200" value="100" steps="1">
+                                    <div class="value right">200</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sfx-volume-option">
+                            <div class="sfx-volume">
+                                SFX Volume
+                            </div>
                             <div class="range">
                                 <div class="slider-value">
                                     <span>100</span>
@@ -83,8 +116,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="music-volume"></div>
-                </div>
 
                 <!-- BOTTOM PORTION OF SETTINGS -->
                 <div class="bottom-content"></div>

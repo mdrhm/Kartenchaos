@@ -23,16 +23,21 @@ btnElList.forEach(btnEl => {
 });
 
 
-const slideValue = document.querySelector("span");
-const inputSlider = document.querySelector("input");
-inputSlider.oninput = (() => {
-  let value = inputSlider.value;
-  slideValue.textContent = value;
-  slideValue.style.left = (value / 2) + "%";
-  slideValue.classList.add("show")
-});
-inputSlider.onblur = (() => {
-  slideValue.classList.remove("show");
-}); 
 
+// VOLUME SLIDERS
+const sliders = document.querySelectorAll("input");
+const slideValues = document.querySelectorAll(".slider-value span");
+
+sliders.forEach((slider, index) => {
+  slider.oninput = () => {
+    let value = slider.value;
+    slideValues[index].textContent = value;
+    slideValues[index].style.left = (value / 2) + "%";
+    slideValues[index].classList.add("show");
+  };
+
+  slider.onblur = () => {
+    slideValues[index].classList.remove("show");
+  };
+});
 

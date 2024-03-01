@@ -27,20 +27,21 @@
   align-items: center;
   border: solid white;
   border-radius: 20px;
-  background-color: #235923;
+  background-color: #696c6954;
 }
 
 .content-holder { 
-  border: solid white;
+  /* border: solid white; */
   width: 80%;
   height: 90%;
 }
 
 .top-content {
   display: flex;
+  /* border: solid rebeccapurple; */
   flex: 1;
   width: 100%;
-  height: 100px;
+  height: 150px;
 }
 
 .general, .audio {
@@ -53,7 +54,7 @@
   border-radius: 20px;
   width: 90%;
   height: 80%;
-  font-size: 50px;
+  font-size: 60px;
   font-family: my-first-font;
   
   text-align: center;
@@ -72,42 +73,43 @@
 }
 
 .middle-content {
-  border: solid blue; 
+  /* border: solid rgb(114, 25, 4); */
+  grid-template-columns: 100px;
   height: 360px;
+  margin-top: 25px;
 }
 
-.master-volume-option {
-  border: solid pink;
-  display: flex;
+.master-volume-option, .music-volume-option, .sfx-volume-option {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   height: 120px;
   width: 100%;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   text-align: center;
 }
 
-.master-volume, .slider-cont {
-  padding-right: 200px;
+.master-volume, .music-volume, .sfx-volume {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
-.b{
-  display: grid;
-  height: 100%;
-  text-align: center;
-  place-items: center;
-}
 
+/* VOLUME-SLIDER-CSS */
 .range{
   height: 80px;
   width: 380px;
-  background: #fff;
+  background: #ffffff11;
   border-radius: 10px;
   padding: 0 65px 0 45px;
   box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
 }
 .slider-value{
+  border: solid transparent;
   position: relative;
-  width: 100%;
+  margin-left: 5.5px;
+  width: 359px;
 }
 .slider-value span{
   position: absolute;
@@ -116,6 +118,7 @@
   transform: translateX(-70%) scale(0);
   font-weight: 500;
   top: -40px;
+  margin-left: 10px;
   line-height: 55px;
   z-index: 2;
   color: #fff;
@@ -130,8 +133,8 @@
   content: '';
   height: 100%;
   width: 100%;
-  background: #664AFF;
-  border: 3px solid #fff;
+  background: rgb(2, 70, 2);
+  border: 3px solid rgb(0, 0, 0);
   z-index: -1;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
@@ -150,7 +153,7 @@
 .field .value{
   position: absolute;
   font-size: 18px;
-  color: #664AFF;
+  color: black;
   font-weight: 600;
 }
 .field .value.left{
@@ -175,8 +178,8 @@
   height: 20px;
   background: red;
   border-radius: 50%;
-  background: #664AFF;
-  border: 1px solid #664AFF;
+  background: rgb(0, 0, 0);
+  border: 0.5px solid #664AFF;
   cursor: pointer;
 }
 .range input::-moz-range-thumb{
