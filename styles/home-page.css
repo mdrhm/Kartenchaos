@@ -111,6 +111,8 @@ body {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    /*z-index: -1;*/
 }
 
 #title-of-game {
@@ -284,4 +286,8 @@ html {
     position: relative;
     right: 31.37%;
     top: -1%;
+}
+
+.hidden{
+    display: none !important;
 }

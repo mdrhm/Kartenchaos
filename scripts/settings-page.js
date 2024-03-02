@@ -106,3 +106,13 @@ for(let i = 0; i < bgOptions.length; i++){
         backgroundDiv.classList.add("bg-" + i)
     })
 }
+
+const settingsButton = document.querySelector("#settings");
+const settingsDiv = document.querySelector("#settings-page");
+const settingsExit = document.querySelector(".settings-exit")
+settingsButton.addEventListener("click", () => {
+    settingsDiv.classList.remove("hidden")
+})
+settingsExit.addEventListener("click", () => {
+    settingsDiv.classList.add("hidden")
+})
