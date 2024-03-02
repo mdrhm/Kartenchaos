@@ -4,6 +4,29 @@
 //   audio.volume = 0.025;
 // });
 
+
+
+//GENERAL/AUDIO BUTTONS ON CLICK
+const btnElList = document.querySelectorAll('.main-btn'); 
+
+btnElList.forEach(btnEl => {
+  btnEl.addEventListener('click', () => {
+    // Check if any button element has class 'clicked'
+    const clickedBtns = document.querySelectorAll('.clicked');
+      // Remove 'clicked' class from all elements with class 'clicked'
+      clickedBtns.forEach(clickedBtn => {
+        clickedBtn.classList.remove('clicked');
+        clickedBtn.classList.add('hover-enabled');
+      });
+    // Add 'clicked' class to the currently clicked button
+    btnEl.classList.remove('hover-enabled');
+    btnEl.classList.add('clicked');
+  });
+});
+
+
+
+//LOADS UP CLICKED SECTION
 const audioEl = document.querySelector('#Audio-Setting-Option');
 
 const generalEl = document.querySelector('#General-Setting-Option');
@@ -20,24 +43,6 @@ audioBtn.addEventListener('click', () => {
 generalBtn.addEventListener('click', () => {
   generalEl.classList.remove('display-disabled');
   audioEl.classList.add('display-disabled');
-});
-
-
-const btnElList = document.querySelectorAll('.main-btn'); 
-
-btnElList.forEach(btnEl => {
-  btnEl.addEventListener('click', () => {
-    // Check if any button element has class 'clicked'
-    const clickedBtns = document.querySelectorAll('.clicked');
-      // Remove 'clicked' class from all elements with class 'clicked'
-      clickedBtns.forEach(clickedBtn => {
-        clickedBtn.classList.remove('clicked');
-        clickedBtn.classList.add('hover-enabled');
-      });
-    // Add 'clicked' class to the currently clicked button
-    btnEl.classList.remove('hover-enabled');
-    btnEl.classList.add('clicked');
-  });
 });
 
 
@@ -58,6 +63,8 @@ sliders.forEach((slider, index) => {
     slideValues[index].classList.remove("show");
   };
 });
+
+
 
 
 //MUSIC CHOOSER
