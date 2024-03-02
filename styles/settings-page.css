@@ -41,12 +41,10 @@
   position: relative;
   height: 0px;
   width: 0px;
-  font-family: 'my-first-font';
   font-size: 40px;
   cursor: pointer;
   top: -575px;
-  right: -457px;
-  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  right: -450px;
 }
 .content-holder { 
   /* border: solid white; */
