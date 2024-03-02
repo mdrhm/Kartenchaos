@@ -22,27 +22,6 @@ generalBtn.addEventListener('click', () => {
   audioEl.classList.add('display-disabled');
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const generalButton = document.querySelector('.general button');
-//   const audioButton = document.querySelector('.audio button');
-//   const generalSettings = document.getElementById('General-Setting-Option');
-//   const audioSettings = document.getElementById('Audio-Setting-Option');
-
-//   generalButton.addEventListener('click', () => {
-//       generalSettings.classList.remove('display-disabled');
-//       audioSettings.classList.add('display-disabled');
-//       generalButton.classList.add('clicked');
-//       audioButton.classList.remove('clicked');
-//   });
-
-//   audioButton.addEventListener('click', () => {
-//       audioSettings.classList.remove('display-disabled');
-//       generalSettings.classList.add('display-disabled');
-//       audioButton.classList.add('clicked');
-//       generalButton.classList.remove('clicked');
-//   });
-// });
-
 
 const btnElList = document.querySelectorAll('.main-btn'); 
 
