@@ -1,6 +1,8 @@
 @import url("home-page.css");
 
-
+.display-disabled {
+  display: none;
+}
 
 #settings-page {
   /* display: none; */
