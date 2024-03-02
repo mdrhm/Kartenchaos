@@ -18,7 +18,7 @@
 
 <body>
     <!-- JAVASCRIPT-SCRIPT-LINKS -->
-    <script src="settings-page.js" defer></script>
+    <script src="scripts\settings-page.js" defer></script>
 
 
     <!-- BACKGROUND-MUSIC -->
@@ -45,6 +45,8 @@
             <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
             <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
             <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+
+            
         </div>
     </div>
 
@@ -52,25 +54,24 @@
     <div id="settings-page">
         <div class="setting-background">
             <div class="content-holder">
-
-                <!-- TOP PORTION OF SETTINGS -->
-                <div class="top-content">
+                 <!-- TOP PORTION OF AUDIO SETTINGS -->
+                 <div class="top-content">
                     <div class="general">
-                        <button class="main-btn hover-enabled">General</button>
+                        <button class="main-btn hover-enabled clicked">General</button>
                     </div>
                     <div class="audio">
                         <button class="main-btn hover-enabled">Audio</button>
                     </div>
-
                 </div>
 
-                <!-- MIDDLE PORTION OF SETTINGS -->
-                <div class="middle-content">
-                    <div class="master-volume-option">
-                        <div class="master-volume">
-                            Master Volume
-                        </div>
-                        <div class="b">
+                <!-- GENERAL SETTINGS -->
+                <div id="General-Setting-Option">
+                    <!-- MIDDLE PORTION OF General SETTINGS -->
+                    <div class="middle-content">
+                        <div class="change-bg-option">
+                            <div class="change-bg">
+                                Background
+                            </div>
                             <div class="range">
                                 <div class="slider-value">
                                     <span>100</span>
@@ -82,12 +83,143 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card-style-option">
+                                <div class="card-style">
+                                    Card Style
+                                </div>
+                                <div class="range">
+                                    <div class="slider-value">
+                                        <span>100</span>
+                                    </div>
+                                    <div class="field">
+                                        <div class="value left">0</div>
+                                        <input type="range" min="0" max="200" value="100" steps="1">
+                                        <div class="value right">200</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sfx-volume-option">
+                                <div class="sfx-volume">
+                                    SFX Volume
+                                </div>
+                                <div class="range">
+                                    <div class="slider-value">
+                                        <span>100</span>
+                                    </div>
+                                    <div class="field">
+                                        <div class="value left">0</div>
+                                        <input type="range" min="0" max="200" value="100" steps="1">
+                                        <div class="value right">200</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                    <div class="bottom-content">
+                
+                        <!-- Right-Side -->
+                        <div class="bottom-right-side">
+                            <div>
+                                <button class="reset-btn">RESET</button>
+                            </div>
+                            <div>
+                                <button class="save-btn">SAVE</button>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="music-volume"></div>
                 </div>
 
-                <!-- BOTTOM PORTION OF SETTINGS -->
-                <div class="bottom-content"></div>
+
+                <!-- AUDIO SETTINGS -->
+                <div id="Audio-Setting-Option" class="display-disabled">
+                    <!-- MIDDLE PORTION OF AUDIO SETTINGS -->
+                    <div class="middle-content">
+                        <div class="master-volume-option">
+                            <div class="master-volume">
+                                Master Volume
+                            </div>
+                            <div class="range">
+                                <div class="slider-value">
+                                    <span>100</span>
+                                </div>
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                    <input type="range" min="0" max="200" value="100" steps="1">
+                                    <div class="value right">200</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="music-volume-option">
+                                <div class="music-volume">
+                                    Music Volume
+                                </div>
+                                <div class="range">
+                                    <div class="slider-value">
+                                        <span>100</span>
+                                    </div>
+                                    <div class="field">
+                                        <div class="value left">0</div>
+                                        <input type="range" min="0" max="200" value="100" steps="1">
+                                        <div class="value right">200</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sfx-volume-option">
+                                <div class="sfx-volume">
+                                    SFX Volume
+                                </div>
+                                <div class="range">
+                                    <div class="slider-value">
+                                        <span>100</span>
+                                    </div>
+                                    <div class="field">
+                                        <div class="value left">0</div>
+                                        <input type="range" min="0" max="200" value="100" steps="1">
+                                        <div class="value right">200</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                    <div class="bottom-content">
+                        <!-- Left-Side -->
+                        <div class="bottom-left-side">
+                            <div class="change-music-option">Current Music
+                            </div>
+                            <div class="dropdown">
+                                <div class="select">
+                                    <span class="selected">Default</span>
+                                    <div class="caret"></div>
+                                </div>
+                                <ul class="menu">
+                                    <li>Option 1</li>
+                                    <li class="active">Default</li>
+                                    <li>Option 3</li>
+                                    <li>Option 3</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Right-Side -->
+                        <div class="bottom-right-side">
+                            <div>
+                                <button class="reset-btn">RESET</button>
+                            </div>
+                            <div>
+                                <button class="save-btn">SAVE</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>   
         </div>
 
