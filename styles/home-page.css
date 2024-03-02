@@ -1,24 +1,20 @@
-/* MD's background */
-/* :root {
-    --background: #49745e;
-    --buttonbackground: linear-gradient(
-            102.7deg,
-            rgb(253, 218, 255) 8.2%,
-            rgb(223, 173, 252) 19.6%,
-            rgb(173, 205, 252) 36.8%,
-            rgb(173, 252, 244) 73.2%,
-            rgb(202, 248, 208) 90.9%
-    );
-    --buttonhover: rgba(170, 170, 170, 0.26);
-}
-
 body {
     height: 100%;
     width: 100%;
     overflow: hidden;
     user-select: none;
+    margin: 0px;
 }
-.bg{
+.bg-0{
+    background-color: #245324;
+    background-image: url("../images/classy-fabric.png");
+    background-repeat: repeat;
+    height: 1000vh;
+    width: 1000vw;
+    z-index: -1000;
+    position: fixed;
+}
+.bg-1{
     background-color: #49745E;
     opacity: 0.8;
     background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
@@ -33,11 +29,8 @@ body {
     background-repeat: repeat;
     z-index: -1000;
     position: fixed;
-} */
+}
 :root {
-    background-color: #245324;
-    min-height: 100vh;
-    background-image: url("../images/classy-fabric.png");
     --buttonbackground: linear-gradient(
             102.7deg,
             rgb(253, 218, 255) 8.2%,
@@ -81,15 +74,6 @@ body {
     100% {
         transform: perspective(600px) rotateY(-360deg);
     }
-}
-
-
-body {
-
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    user-select: none;
 }
 
 @font-face {
