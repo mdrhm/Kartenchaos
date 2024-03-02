@@ -89,7 +89,7 @@
   margin-top: -20px;
 }
 
-.master-volume-option, .music-volume-option, .sfx-volume-option {
+.master-volume-option, .music-volume-option, .sfx-volume-option, .change-bg-option, .card-style-option {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 120px;
@@ -99,7 +99,7 @@
   text-align: center;
 }
 
-.master-volume, .music-volume, .sfx-volume {
+.master-volume, .music-volume, .sfx-volume, .change-bg, .card-style {
   font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
