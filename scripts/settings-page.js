@@ -109,10 +109,12 @@ for(let i = 0; i < bgOptions.length; i++){
 
 const settingsButton = document.querySelector("#settings");
 const settingsDiv = document.querySelector("#settings-page");
-const settingsExit = document.querySelector(".settings-exit")
+const saveButtons = document.querySelectorAll(".save-btn")
 settingsButton.addEventListener("click", () => {
     settingsDiv.classList.remove("hidden")
 })
-settingsExit.addEventListener("click", () => {
-    settingsDiv.classList.add("hidden")
+
+for(saveButton of saveButtons)
+    saveButton.addEventListener("click", () => {
+        settingsDiv.classList.add("hidden")
 })
