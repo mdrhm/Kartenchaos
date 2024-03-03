@@ -3,37 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <!-- PAGE-TITLE -->
     <title>Kartenchaos</title>
-    <link href="data:," rel="icon">
-    <!-- CSS-STYLES-LINKS -->
-    <link href="styles\backgrounds.css" rel="stylesheet">
-    <link href="styles\home-page.css" rel="stylesheet">
-    <link href="styles\settings-page.css" rel="stylesheet">
-    <link href="styles\rules-page.css" rel="stylesheet">
-</head>
-<body>
 
+    <link rel="icon" href="data:,">
+
+    <!-- CSS-STYLES-LINKS -->
+    <link rel="stylesheet" href="styles\backgrounds.css">
+    <link rel="stylesheet" href="styles\home-page.css">
+    <link rel="stylesheet" href="styles\settings-page.css">
+</head>
+
+<body>
 <!-- JAVASCRIPT-SCRIPT-LINKS -->
-<script defer src="scripts\settings-page.js"></script>
-<script defer src="scripts\rules-page.js"></script>
+<script src="scripts\settings-page.js" defer></script>
+<script src="scripts\rules-page.js" defer></script>
+
+
 <!-- BACKGROUND-MUSIC -->
-<audio autoplay controls hidden="" id="music">
+<!-- <audio id="music" controls autoplay hidden>
     <source src="music.mp3" type="audio/mp3">
-</audio>
+</audio> -->
 
 <!-- BACKGROUND-IMAGE -->
-<div class="bg-0" id="bg"></div>
+<div class="bg-0" id = "bg"></div>
 
 <!-- HOME-PAGE -->
 <div class="home-ui">
     <div class="header">
         <div class="home-pictures left">
-            <img alt="" class="card1" src="cards/KD.svg">
+            <img src="cards/KD.svg" alt="" class="card1">
         </div>
         <h1 id="title-of-game">KARTENCHAOS</h1>
         <div class="home-pictures right">
-            <img alt="" class="card2" src="cards/QC.svg">
+            <img src="cards/QC.svg" alt="" class="card2">
         </div>
         <div class="logo"></div>
     </div>
@@ -41,37 +45,13 @@
         <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
         <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
         <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
-    </div>
-</div>
 
-<!-- Rules Popup -->
-<div class="rules-popup" id="rules-popup">
-    <div class="rules-content">
-        <span class="close">&times;</span>
-        <!-- Rules content goes here -->
-        <h2>Rules</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Alias aut doloremque eaque exercitationem numquam odio quas quisquam suscipit.
-            Aspernatur distinctio doloribus eius iure, nesciunt obcaecati perferendis repellendus tempora! Quas,
-            reprehenderit!
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Alias aut doloremque eaque exercitationem numquam odio quas quisquam suscipit.
-            Aspernatur distinctio doloribus eius iure, nesciunt obcaecati perferendis repellendus tempora! Quas,
-            reprehenderit!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Alias aut doloremque eaque exercitationem numquam odio quas quisquam suscipit.
-            Aspernatur distinctio doloribus eius iure, nesciunt obcaecati perferendis repellendus tempora! Quas,
-            reprehenderit!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Alias aut doloremque eaque exercitationem numquam odio quas quisquam suscipit.
-            Aspernatur distinctio doloribus eius iure, nesciunt obcaecati perferendis repellendus tempora! Quas,
-            reprehenderit!</p>
+
     </div>
 </div>
 
 <!-- SETTINGS-PAGE -->
-<div class="hidden" id="settings-page">
+<div id="settings-page" class = "hidden">
     <div class="setting-background">
         <div class="content-holder">
             <!-- TOP PORTION OF AUDIO SETTINGS -->
@@ -99,12 +79,11 @@
 
                 <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
                 <div class="bottom-content">
-                    `
-                    <div></div>
+`                   <div></div>
                     <!-- Right-Side -->
                     <div class="bottom-right-side">
-                        <button class="reset-btn">RESET</button>
-                        <button class="save-btn">SAVE</button>
+                            <button class="reset-btn">RESET</button>
+                            <button class="save-btn">SAVE</button>
                         <div>
                         </div>
                     </div>
@@ -112,29 +91,30 @@
                 </div>
             </div>
 
+
             <!-- AUDIO SETTINGS -->
-            <div class="display-disabled" id="Audio-Setting-Option">
+            <div id="Audio-Setting-Option" class="display-disabled">
                 <!-- MIDDLE PORTION OF AUDIO SETTINGS -->
                 <div class="middle-content">
                     <div class="master-volume-option">
                         <div class="master-volume">
                             Master Volume
                         </div>
-                        <input class="range-style" type="range">
+                        <input type="range" class="range-style">
                     </div>
 
                     <div class="music-volume-option">
                         <div class="music-volume">
                             Music Volume
                         </div>
-                        <input class="range-style" type="range">
+                        <input type="range" class="range-style">
                     </div>
 
                     <div class="sfx-volume-option">
                         <div class="sfx-volume">
                             SFX Volume
                         </div>
-                        <input class="range-style" type="range">
+                        <input type="range" class="range-style">
                     </div>
                 </div>
 
@@ -160,8 +140,8 @@
 
                     <!-- Right-Side -->
                     <div class="bottom-right-side">
-                        <button class="reset-btn">RESET</button>
-                        <button class="save-btn">SAVE</button>
+                            <button class="reset-btn">RESET</button>
+                            <button class="save-btn">SAVE</button>
                         <div>
                         </div>
                     </div>
@@ -170,6 +150,15 @@
             </div>
         </div>
     </div>
+
+</div>
+<div id="rules-page" class = "hidden">
+    <div class="rules-background">
+        <div class = "rules-header">Rules</div>
+        <p class = "rules"></p>
+        <div id = "rules-page-exit">Ok</div>
+    </div>
+
 </div>
 
 </body>

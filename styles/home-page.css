@@ -110,7 +110,6 @@ body {
     justify-content: center;
     position: relative;
     align-items: center;
-    padding-left: 56px;
 }
 
 html {
@@ -132,7 +131,6 @@ html {
     cursor: pointer;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-    padding-left: 57px;
 }
 
 .home-screen-buttons button:hover {
