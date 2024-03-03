@@ -1,9 +1,21 @@
+// Adjusting Background Music Slider
+const backgroundAudio = document.getElementById("music");
+const masterSlider = document.querySelector('.master-slider');
+const masterInput = document.querySelector('.master-input');
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   var audio = document.getElementById("music");
-//   audio.volume = 0.025;
-// });
+backgroundAudio.volume = masterSlider.value / 100;
 
+// Update the volume of the background audio when the master volume slider is changed
+masterSlider.addEventListener('input', () => {
+    backgroundAudio.volume = masterSlider.value / 100;
+    masterInput.value = masterSlider.value;
+});
+
+// Update the value of the master volume slider when the master volume input field is changed
+masterInput.addEventListener('input', () => {
+    masterSlider.value = masterInput.value;
+    backgroundAudio.volume = masterInput.value / 100;
+});
 
 
 //GENERAL/AUDIO BUTTONS ON CLICK
@@ -63,8 +75,6 @@ generalBtn.addEventListener('click', () => {
 //         slideValues[index].classList.remove("show");
 //     };
 // });
-
-
 
 //MUSIC CHOOSER
 const dropdowns = document.querySelectorAll('.dropdown');

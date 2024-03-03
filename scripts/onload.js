@@ -19,4 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rulesBg.classList = "bg-" + selectedBackground;
         settingsBg.classList = "bg-" + selectedBackground;
     }
+
+    // Add ifSavedBackgroundMusic Volume
+
 });
