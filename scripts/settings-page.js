@@ -125,10 +125,16 @@ for(let i = 0; i < 3; i++) {
         if(sliderInputs[i].value > 100){
             sliderInputs[i].value = 100;
         }
-        if(sliderInputs[i].value <= 0){
+        if(sliderInputs[i].value < 0){
             sliderInputs[i].value = 0;
         }
+        sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
         sliders[i].value = sliderInputs[i].value;
+    })
+    sliderInputs[i].addEventListener("change", ()=>{
+        if(sliderInputs[i].value === "") {
+            sliderInputs[i].value = 0;
+        }
     })
     sliders[i].addEventListener("input", () => {
         sliderInputs[i].value = sliders[i].value;
