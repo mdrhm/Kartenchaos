@@ -24,7 +24,7 @@
   src: url('../Font.ttf');
 }
 
-.setting-background {
+#setting-background {
   display: flex;
   flex-direction: column;
   width: 1000px;
@@ -33,8 +33,8 @@
   align-items: center;
   border: solid white;
   border-radius: 20px;
-  background-color: #245324;
-  background-image: url(../images/classy-fabric.png);
+  animation: none;
+  opacity: 1;
 }
 
 .content-holder {
