@@ -1,43 +1,12 @@
-/* MD's background */
-/* :root {
-    --background: #49745e;
-    --buttonbackground: linear-gradient(
-            102.7deg,
-            rgb(253, 218, 255) 8.2%,
-            rgb(223, 173, 252) 19.6%,
-            rgb(173, 205, 252) 36.8%,
-            rgb(173, 252, 244) 73.2%,
-            rgb(202, 248, 208) 90.9%
-    );
-    --buttonhover: rgba(170, 170, 170, 0.26);
-}
-
 body {
     height: 100%;
     width: 100%;
     overflow: hidden;
     user-select: none;
+    margin: 0px;
 }
-.bg{
-    background-color: #49745E;
-    opacity: 0.8;
-    background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
-    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
-    animation-name: bg-animate;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    height: 1000vh;
-    width: 1000vw;
-    background-repeat: repeat;
-    z-index: -1000;
-    position: fixed;
-} */
+
 :root {
-    background-color: #245324;
-    min-height: 100vh;
-    background-image: url("Images/classy-fabric.png");
     --buttonbackground: linear-gradient(
             102.7deg,
             rgb(253, 218, 255) 8.2%,
@@ -59,12 +28,15 @@ body {
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(0deg);
+        background-image: url("../cards/AS.svg");
     }
     50% {
         transform: perspective(600px) rotateY(180deg);
+        background-image: url("../cards/2B.svg");
     }
     100% {
         transform: perspective(600px) rotateY(360deg);
+        background-image: url("../cards/AS.svg");
     }
 }
 
@@ -80,18 +52,9 @@ body {
     }
 }
 
-
-body {
-
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    user-select: none;
-}
-
 @font-face {
     font-family: myFirstFont;
-    src: url('Font.ttf');
+    src: url("../Font.ttf");
 }
 
 .home-pictures {
@@ -124,6 +87,8 @@ body {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    /*z-index: -1;*/
 }
 
 #title-of-game {
@@ -145,6 +110,7 @@ body {
     justify-content: center;
     position: relative;
     align-items: center;
+    padding-left: 56px;
 }
 
 html {
@@ -258,19 +224,19 @@ html {
 
 @keyframes logo-animation {
     0%, 24.99%, 100% {
-        background-image: url("images/clubs.svg");
+        background-image: url("../Images/clubs.svg");
 
     }
     25%, 49.99% {
-        background-image: url("images/spades.svg");
+        background-image: url("../Images/spades.svg");
 
     }
     50%, 74.99% {
-        background-image: url("images/diamonds.svg");
+        background-image: url("../Images/diamonds.svg");
 
     }
     75%, 99.99% {
-        background-image: url("images/hearts.svg");
+        background-image: url("../Images/hearts.svg");
 
     }
 }
@@ -298,46 +264,6 @@ html {
     top: -1%;
 }
 
-/* CSS for Rules */
-.rules-popup {
-    display: none; /* Hide popup by default */
-    position: fixed;
-    z-index: 9999; /* Ensure popup appears on top of everything */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-}
-
-.rules-content {
-    background-color: #fefefe;
-    margin: 10% auto; /* Center the popup vertically and horizontally */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Adjust popup width as needed */
-    max-width: 600px; /* Max width for better readability */
-}
-
-.rules-content h2 {
-    text-align: center;
-}
-
-.rules-content p {
-    text-align: justify;
-}
-
-.rules-content .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.rules-content .close:hover,
-.rules-content .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.hidden{
+    display: none !important;
 }

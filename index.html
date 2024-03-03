@@ -3,30 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- PAGE-TITLE -->
     <title>Kartenchaos</title>
-    <link href="styles.css" rel="stylesheet">
-    <script defer src="hp-components/rules.js"></script> <!-- Add defer attribute to load script after DOMContentLoaded -->
+
+    <link rel="icon" href="data:,">
+
+    <!-- CSS-STYLES-LINKS -->
+    <link rel="stylesheet" href="styles\backgrounds.css">
+    <link rel="stylesheet" href="styles\home-page.css">
+    <link rel="stylesheet" href="styles\settings-page.css">
 </head>
+
 <body>
-<!-- Background music -->
-<audio autoplay controls hidden="" id="music">
+<!-- JAVASCRIPT-SCRIPT-LINKS -->
+<script src="scripts\settings-page.js" defer></script>
+
+
+<!-- BACKGROUND-MUSIC -->
+<!-- <audio id="music" controls autoplay hidden>
     <source src="music.mp3" type="audio/mp3">
-</audio>
-<script>
-    var audio = document.getElementById("music");
-    music.volume = 0.025;
-</script>
+</audio> -->
 
-<div class="bg"></div>
+<!-- BACKGROUND-IMAGE -->
+<div class="bg-0" id = "bg"></div>
 
+<!-- HOME-PAGE -->
 <div class="home-ui">
     <div class="header">
         <div class="home-pictures left">
-            <img alt="" class="card1" src="cards/KD.svg">
+            <img src="cards/KD.svg" alt="" class="card1">
         </div>
         <h1 id="title-of-game">KARTENCHAOS</h1>
         <div class="home-pictures right">
-            <img alt="" class="card2" src="cards/QC.svg">
+            <img src="cards/QC.svg" alt="" class="card2">
         </div>
         <div class="logo"></div>
     </div>
@@ -34,21 +44,112 @@
         <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
         <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
         <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+
+
     </div>
 </div>
 
-<!-- Rules Popup -->
-<div class="rules-popup" id="rules-popup">
-    <div class="rules-content">
-        <span class="close">&times;</span>
-        <!-- Rules content goes here -->
-        <h2>Rules</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Alias aut doloremque eaque exercitationem numquam odio quas quisquam suscipit.
-            Aspernatur distinctio doloribus eius iure, nesciunt obcaecati perferendis repellendus tempora! Quas,
-            reprehenderit!
-        </p>
+<!-- SETTINGS-PAGE -->
+<div id="settings-page" class = "hidden">
+    <div class="setting-background">
+        <div class="content-holder">
+            <!-- TOP PORTION OF AUDIO SETTINGS -->
+            <div class="top-content">
+                <div class="general">
+                    <button class="main-btn hover-enabled clicked">General</button>
+                </div>
+                <div class="audio">
+                    <button class="main-btn hover-enabled">Audio</button>
+                </div>
+            </div>
+
+            <!-- GENERAL SETTINGS -->
+            <div id="General-Setting-Option">
+                <!-- MIDDLE PORTION OF General SETTINGS -->
+                <div class="middle-content">
+                    <div class="bg-settings">
+                        <div class="change-bg">Background</div>
+                        <div class="bg-options">
+                            <div class="bg-option bg-0"></div>
+                            <div class="bg-option bg-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                <div class="bottom-content">
+`                   <div></div>
+                    <!-- Right-Side -->
+                    <div class="bottom-right-side">
+                            <button class="reset-btn">RESET</button>
+                            <button class="save-btn">SAVE</button>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- AUDIO SETTINGS -->
+            <div id="Audio-Setting-Option" class="display-disabled">
+                <!-- MIDDLE PORTION OF AUDIO SETTINGS -->
+                <div class="middle-content">
+                    <div class="master-volume-option">
+                        <div class="master-volume">
+                            Master Volume
+                        </div>
+                        <input type="range" class="range-style">
+                    </div>
+
+                    <div class="music-volume-option">
+                        <div class="music-volume">
+                            Music Volume
+                        </div>
+                        <input type="range" class="range-style">
+                    </div>
+
+                    <div class="sfx-volume-option">
+                        <div class="sfx-volume">
+                            SFX Volume
+                        </div>
+                        <input type="range" class="range-style">
+                    </div>
+                </div>
+
+                <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                <div class="bottom-content">
+                    <!-- Left-Side -->
+                    <div class="bottom-left-side">
+                        <div class="change-music-option">Current Music
+                        </div>
+                        <div class="dropdown">
+                            <div class="select">
+                                <span class="selected">Default</span>
+                                <div class="caret"></div>
+                            </div>
+                            <ul class="menu">
+                                <li>Option 1</li>
+                                <li class="active">Default</li>
+                                <li>Option 3</li>
+                                <li>Option 3</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right-Side -->
+                    <div class="bottom-right-side">
+                            <button class="reset-btn">RESET</button>
+                            <button class="save-btn">SAVE</button>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
 
 </body>
