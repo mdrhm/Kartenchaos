@@ -1,43 +1,12 @@
-/* MD's background */
-/* :root {
-    --background: #49745e;
-    --buttonbackground: linear-gradient(
-            102.7deg,
-            rgb(253, 218, 255) 8.2%,
-            rgb(223, 173, 252) 19.6%,
-            rgb(173, 205, 252) 36.8%,
-            rgb(173, 252, 244) 73.2%,
-            rgb(202, 248, 208) 90.9%
-    );
-    --buttonhover: rgba(170, 170, 170, 0.26);
-}
-
 body {
     height: 100%;
     width: 100%;
     overflow: hidden;
     user-select: none;
+    margin: 0px;
 }
-.bg{
-    background-color: #49745E;
-    opacity: 0.8;
-    background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
-    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
-    animation-name: bg-animate;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    height: 1000vh;
-    width: 1000vw;
-    background-repeat: repeat;
-    z-index: -1000;
-    position: fixed;
-} */
+
 :root {
-    background-color: #245324;
-    min-height: 100vh;
-    background-image: url("Images/classy-fabric.png");
     --buttonbackground: linear-gradient(
             102.7deg,
             rgb(253, 218, 255) 8.2%,
@@ -59,12 +28,15 @@ body {
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(0deg);
+        background-image: url("../cards/AS.svg");
     }
     50% {
         transform: perspective(600px) rotateY(180deg);
+        background-image: url("../cards/2B.svg");
     }
     100% {
         transform: perspective(600px) rotateY(360deg);
+        background-image: url("../cards/AS.svg");
     }
 }
 
@@ -80,19 +52,11 @@ body {
     }
 }
 
-
-body {
-
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    user-select: none;
-}
-
 @font-face {
     font-family: myFirstFont;
-    src: url('Font.ttf');
+    src: url(".client/Font.ttf");
 }
+
 
 .home-pictures {
     display: flex;
@@ -124,6 +88,8 @@ body {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    /*z-index: -1;*/
 }
 
 #title-of-game {
@@ -167,6 +133,7 @@ html {
     cursor: pointer;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    padding-left: 57px;
 
 }
 
@@ -263,19 +230,19 @@ html {
 
 @keyframes logo-animation {
     0%, 24.99%, 100% {
-        background-image: url("images/clubs.svg");
+        background-image: url("../Images/clubs.svg");
 
     }
     25%, 49.99% {
-        background-image: url("images/spades.svg");
+        background-image: url("../Images/spades.svg");
 
     }
     50%, 74.99% {
-        background-image: url("images/diamonds.svg");
+        background-image: url("../Images/diamonds.svg");
 
     }
     75%, 99.99% {
-        background-image: url("images/hearts.svg");
+        background-image: url("../Images/hearts.svg");
 
     }
 }
@@ -302,6 +269,7 @@ html {
     right: 31.37%;
     top: -1%;
 }
+
 
 .Main-phase{
     height: 100%;
@@ -380,3 +348,9 @@ html {
     margin-top: -5%; 
     
 }
+
+
+.hidden{
+    display: none !important;
+}
+
