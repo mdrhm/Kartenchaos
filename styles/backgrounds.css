@@ -6,6 +6,11 @@
     width: 1000vw;
     z-index: -1000;
     position: fixed;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
 }
 .bg-1{
     background-color: #49745E;
