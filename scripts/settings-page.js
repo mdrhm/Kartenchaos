@@ -1,8 +1,8 @@
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   var audio = document.getElementById("music");
-//   audio.volume = 0.025;
-// });
+document.addEventListener('DOMContentLoaded', function() {
+  var audio = document.getElementById("music");
+  audio.volume = 0.025;
+});
 
 
 
