@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartenchaos</title>
+    <link rel="stylesheet" href="./client/styles.css">
+</head>
+<body>
+
+<div class="home-ui">
+    <div class="header">
+        <div class="home-pictures left">
+            <img src="cards/2B.svg" alt="" class="card1">
+        </div>
+        <h1 id="title-of-game">KARTENCHAOS</h1>
+        <div class="home-pictures right">
+            <img src="cards/10S.svg" alt="" class="card2">
+        </div>
+        <div class="logo"></div>
+    </div>
+    <div class="home-screen-buttons">
+        <button onclick="makeGame()" id="play-game" class="home-button">
+            Play Game <img src="client/Images/ace-of-spades.png" alt="selection-icon">
+        </button>
+        <button id="rules" class="home-button">Rules <img src="client/Images/ace-of-spades.png" alt="selection-icon"></button>
+        <button id="settings" class="home-button">Settings <img src="client/Images/ace-of-spades.png" alt="selection-icon"></button>
+    </div>
+</div>
+  
+<div class="Main-phase" style="display: none;">
+   
+    <div class="dropport" id="drop_port">
+
+    </div>
+    
+    <div class="p1handcontainer">
+        <div class="card" style="--i:-2" draggable="true">
+            <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S">
+        </div>
+        <div class="card" style="--i:-1" draggable="true">
+            <img class="card-inner" src="client/cards/3H.svg" alt='' id="3H">
+        </div>
+        <div class="card" style="--i:0" draggable="true">
+            <img class="card-inner" src="client/cards/7D.svg" alt='' id="7D">
+        </div>
+        <div class="card" style="--i:1" draggable="true">
+            <img class="card-inner" src="client/cards/6D.svg" alt='' id="6D">
+        </div>
+        <div class="card" style="--i:2" draggable="true">
+            <img class="card-inner" src="client/cards/5D.svg" alt='' id="5D">
+        </div>
+    </div>
+</div>
+
+<script src="socket.io/socket.io.js"></script>
+    <script src="./client/client.js"></script>
+    <script src='./client/Main-phase-script.js'></script>
+</body>
+</html>

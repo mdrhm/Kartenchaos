@@ -46,7 +46,7 @@ for(let i = 0; i < 5; i++){
 
 
 for(let i = 0; i < y.length; i++){
-    cardsInner[i].src = "/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
+    cardsInner[i].src = "./cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
 }
 
 

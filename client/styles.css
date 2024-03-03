@@ -365,8 +365,11 @@ html {
 
 
 .dropport{
+  
     height: 30%;
-   
+    margin: auto;
+    position: relative;
+    top:45%;
     background-color: white;
     width: 30%;
     border-style:double;
