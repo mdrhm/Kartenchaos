@@ -98,11 +98,14 @@ dropdowns.forEach(dropdown => {
 });
 
 const bgOptions = document.querySelectorAll(".bg-option")
+const rulesBg = document.querySelector("#rules-background")
+const settingsBg = document.querySelector("#setting-background")
 const backgroundDiv = document.querySelector("#bg")
 for(let i = 0; i < bgOptions.length; i++){
     bgOptions[i].addEventListener("click", () => {
-        backgroundDiv.classList = "";
-        backgroundDiv.classList.add("bg-" + i)
+        backgroundDiv.classList = "bg-" + i;
+        rulesBg.classList = "bg-" + i;
+        settingsBg.classList = "bg-" + i;
     })
 }
 
