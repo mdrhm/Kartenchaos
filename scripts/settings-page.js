@@ -121,7 +121,7 @@ for(saveButton of saveButtons)
 const sliderInputs = document.querySelectorAll(".slider-input");
 const sliders = document.querySelectorAll(".range-style");
 for(let i = 0; i < 3; i++) {
-    sliderInputs[i].addEventListener("change", ()=>{
+    sliderInputs[i].addEventListener("input", ()=>{
         if(sliderInputs[i].value > 100){
             sliderInputs[i].value = 100;
         }
