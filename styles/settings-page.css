@@ -87,7 +87,7 @@
   margin-top: -20px;
 }
 
-.master-volume-option, .music-volume-option, .sfx-volume-option, .change-bg-option, .card-style-option{
+.master-volume-option, .music-volume-option, .sfx-volume-option{
   display: flex;
   flex-direction: row;
   height: 120px;
@@ -345,7 +345,7 @@
   color: #333;
 }
 
-.bg-options {
+.bg-options, .card-bg-settings {
   display: flex;
   flex-direction: row;
   width: 100%;
