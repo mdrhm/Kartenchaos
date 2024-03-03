@@ -2,12 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartenchaos</title>
-    <link rel="stylesheet" href="./client/styles.css">
-</head>
-<body>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+    <!-- PAGE-TITLE -->
+    <title>Kartenchaos</title>
+
+    <link rel="icon" href="data:,">
+
+    <!-- CSS-STYLES-LINKS -->
+    <link rel="stylesheet" href="styles\backgrounds.css">
+    <link rel="stylesheet" href="styles\home-page.css">
+    <link rel="stylesheet" href="styles\settings-page.css">
+</head>
+
+<body>
+<!-- JAVASCRIPT-SCRIPT-LINKS -->
+<script src="scripts\settings-page.js" defer></script>
+
+
+<!-- BACKGROUND-MUSIC -->
+<!-- <audio id="music" controls autoplay hidden>
+    <source src="music.mp3" type="audio/mp3">
+</audio> -->
+
+<!-- BACKGROUND-IMAGE -->
+<div class="bg-0" id = "bg"></div>
+
+<!-- HOME-PAGE -->
 <div class="home-ui">
     <div class="header">
         <div class="home-pictures left">
@@ -20,41 +41,116 @@
         <div class="logo"></div>
     </div>
     <div class="home-screen-buttons">
-        <button onclick="makeGame()" id="play-game" class="home-button">
-            Play Game <img src="client/Images/ace-of-spades.png" alt="selection-icon">
-        </button>
-        <button id="rules" class="home-button">Rules <img src="client/Images/ace-of-spades.png" alt="selection-icon"></button>
-        <button id="settings" class="home-button">Settings <img src="client/Images/ace-of-spades.png" alt="selection-icon"></button>
-    </div>
-</div>
-  
-<div class="Main-phase" style="display: none;">
-   
-    <div class="dropport" id="drop_port">
+        <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+        <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
+        <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
 
-    </div>
-    
-    <div class="p1handcontainer">
-        <div class="card" style="--i:-2" draggable="true">
-            <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S">
-        </div>
-        <div class="card" style="--i:-1" draggable="true">
-            <img class="card-inner" src="client/cards/3H.svg" alt='' id="3H">
-        </div>
-        <div class="card" style="--i:0" draggable="true">
-            <img class="card-inner" src="client/cards/7D.svg" alt='' id="7D">
-        </div>
-        <div class="card" style="--i:1" draggable="true">
-            <img class="card-inner" src="client/cards/6D.svg" alt='' id="6D">
-        </div>
-        <div class="card" style="--i:2" draggable="true">
-            <img class="card-inner" src="client/cards/5D.svg" alt='' id="5D">
-        </div>
+
     </div>
 </div>
 
-<script src="socket.io/socket.io.js"></script>
-    <script src="./client/client.js"></script>
-    <script src='./client/Main-phase-script.js'></script>
+<!-- SETTINGS-PAGE -->
+<div id="settings-page" class = "hidden">
+    <div class="setting-background">
+        <div class="content-holder">
+            <!-- TOP PORTION OF AUDIO SETTINGS -->
+            <div class="top-content">
+                <div class="general">
+                    <button class="main-btn hover-enabled clicked">General</button>
+                </div>
+                <div class="audio">
+                    <button class="main-btn hover-enabled">Audio</button>
+                </div>
+            </div>
+
+            <!-- GENERAL SETTINGS -->
+            <div id="General-Setting-Option">
+                <!-- MIDDLE PORTION OF General SETTINGS -->
+                <div class="middle-content">
+                    <div class="bg-settings">
+                        <div class="change-bg">Background</div>
+                        <div class="bg-options">
+                            <div class="bg-option bg-0"></div>
+                            <div class="bg-option bg-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                <div class="bottom-content">
+`                   <div></div>
+                    <!-- Right-Side -->
+                    <div class="bottom-right-side">
+                            <button class="reset-btn">RESET</button>
+                            <button class="save-btn">SAVE</button>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- AUDIO SETTINGS -->
+            <div id="Audio-Setting-Option" class="display-disabled">
+                <!-- MIDDLE PORTION OF AUDIO SETTINGS -->
+                <div class="middle-content">
+                    <div class="master-volume-option">
+                        <div class="master-volume">
+                            Master Volume
+                        </div>
+                        <input type="range" class="range-style">
+                    </div>
+
+                    <div class="music-volume-option">
+                        <div class="music-volume">
+                            Music Volume
+                        </div>
+                        <input type="range" class="range-style">
+                    </div>
+
+                    <div class="sfx-volume-option">
+                        <div class="sfx-volume">
+                            SFX Volume
+                        </div>
+                        <input type="range" class="range-style">
+                    </div>
+                </div>
+
+                <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                <div class="bottom-content">
+                    <!-- Left-Side -->
+                    <div class="bottom-left-side">
+                        <div class="change-music-option">Current Music
+                        </div>
+                        <div class="dropdown">
+                            <div class="select">
+                                <span class="selected">Default</span>
+                                <div class="caret"></div>
+                            </div>
+                            <ul class="menu">
+                                <li>Option 1</li>
+                                <li class="active">Default</li>
+                                <li>Option 3</li>
+                                <li>Option 3</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right-Side -->
+                    <div class="bottom-right-side">
+                            <button class="reset-btn">RESET</button>
+                            <button class="save-btn">SAVE</button>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
