@@ -405,7 +405,7 @@ input[type='range']::-moz-range-thumb {
   box-shadow: inset -2px -2px 8px white, inset 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.range-style .thumb-style {
+.range-style .thumb-style { 
   position: relative;
   top: -50%;
   width: 40px;
