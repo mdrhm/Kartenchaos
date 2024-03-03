@@ -268,3 +268,7 @@ html {
 .hidden{
     display: none !important;
 }
+
+button:focus{
+    outline: none;
+}
