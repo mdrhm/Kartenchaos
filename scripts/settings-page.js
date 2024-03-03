@@ -48,21 +48,21 @@ generalBtn.addEventListener('click', () => {
 
 
 // VOLUME SLIDERS
-const sliders = document.querySelectorAll("input");
-const slideValues = document.querySelectorAll(".slider-value span");
+// const sliders = document.querySelectorAll("input");
+// const slideValues = document.querySelectorAll(".slider-value span");
 
-sliders.forEach((slider, index) => {
-    slider.oninput = () => {
-        let value = slider.value;
-        slideValues[index].textContent = value;
-        slideValues[index].style.left = (value / 2) + "%";
-        slideValues[index].classList.add("show");
-    };
-
-    slider.onblur = () => {
-        slideValues[index].classList.remove("show");
-    };
-});
+// sliders.forEach((slider, index) => {
+//     slider.oninput = () => {
+//         let value = slider.value;
+//         slideValues[index].textContent = value;
+//         slideValues[index].style.left = (value / 2) + "%";
+//         slideValues[index].classList.add("show");
+//     };
+//
+//     slider.onblur = () => {
+//         slideValues[index].classList.remove("show");
+//     };
+// });
 
 
 
@@ -117,3 +117,20 @@ for(saveButton of saveButtons)
     saveButton.addEventListener("click", () => {
         settingsDiv.classList.add("hidden")
 })
+
+const sliderInputs = document.querySelectorAll(".slider-input");
+const sliders = document.querySelectorAll(".range-style");
+for(let i = 0; i < 3; i++) {
+    sliderInputs[i].addEventListener("change", ()=>{
+        if(sliderInputs[i].value > 100){
+            sliderInputs[i].value = 100;
+        }
+        if(sliderInputs[i].value <= 0){
+            sliderInputs[i].value = 0;
+        }
+        sliders[i].value = sliderInputs[i].value;
+    })
+    sliders[i].addEventListener("input", () => {
+        sliderInputs[i].value = sliders[i].value;
+    })
+}
