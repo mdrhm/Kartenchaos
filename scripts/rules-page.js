@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var rulesButton = document.getElementById("rules");
     var rulesPopup = document.getElementById("rules-popup");
     var closeButton = document.querySelector(".close");
-// rules
+
     // Function to show rules popup
     function showRulesPopup() {
         rulesPopup.style.display = "block";
