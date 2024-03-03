@@ -127,7 +127,7 @@ for (saveButton of saveButtons) // Loop through each save button
 // HANDLES SLIDERS
 const sliderInputs = document.querySelectorAll(".slider-input"); // Select all elements with the class ".slider-input"
 const sliders = document.querySelectorAll(".range-style"); // Select all elements with the class ".range-style"
-for (let i = 0; i < 3; i++) { // Loop through the first three elements (presumably sliders)
+for (let i = 0; i < 3; i++) { // Loop through the first three elements (sliders)
     sliderInputs[i].addEventListener("change", () => { // Add change event listener to each slider input
         if (sliderInputs[i].value > 100) { // Ensure slider input value is between 0 and 100
             sliderInputs[i].value = 100;
@@ -141,3 +141,28 @@ for (let i = 0; i < 3; i++) { // Loop through the first three elements (presumab
         sliderInputs[i].value = sliders[i].value; // Update corresponding slider input value
     });
 }
+
+
+//RESET OPTION
+
+const audioResetBtn = document.querySelector('.audio-reset-btn');
+const generalResetBtn = document.querySelector('.general-reset-btn');
+
+// Audio-Reset
+audioResetBtn.addEventListener('click', () => {
+    var i = 0;
+    sliderInputs.forEach(sliderInput => {
+        sliderInput.value = 50;
+        sliders[i].value = sliderInputs[i].value;
+        i++;
+    });
+
+    document.querySelector('.selected').innerHTML = 'Default';
+});
+
+// General-Reset
+generalResetBtn.addEventListener('click', () =>{
+    backgroundDiv.classList = "";
+    backgroundDiv.classList.add("bg-0");
+
+})
