@@ -106,6 +106,7 @@ for(let i = 0; i < bgOptions.length; i++){
         backgroundDiv.classList = "bg-" + i;
         rulesBg.classList = "bg-" + i;
         settingsBg.classList = "bg-" + i;
+        localStorage.setItem("background", i);
     })
 }
 

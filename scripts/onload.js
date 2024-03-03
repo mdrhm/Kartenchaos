@@ -11,3 +11,12 @@ var interval = setInterval(function() {
             clearInterval(interval);
         }
     }, 3000);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const selectedBackground = localStorage.getItem("background");
+    if (selectedBackground) {
+        backgroundDiv.classList = "bg-" + selectedBackground;
+        rulesBg.classList = "bg-" + selectedBackground;
+        settingsBg.classList = "bg-" + selectedBackground;
+    }
+});
