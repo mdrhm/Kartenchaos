@@ -8,7 +8,7 @@
   display: none;
 }
 
-#settings-page, #rules-page {
+#settings-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@
   src: url('../Font.ttf');
 }
 
-.setting-background, .rules-background {
+.setting-background {
   display: flex;
   flex-direction: column;
   width: 1000px;
@@ -324,7 +324,7 @@
   width: 25%;
 }
 
-.reset-btn, .save-btn, #rules-page-exit {
+.reset-btn, .save-btn {
   display: block;
   font-family: 'myFirstFont';
   font-size: 60px;
@@ -451,26 +451,4 @@ input[type='range']::-moz-range-thumb {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.8), transparent);
   border-radius: 50%;
   box-shadow: -1px -1px 2px white, 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.rules-header{
-  border-radius: 20px;
-  font-size: 80px;
-  font-family: my-first-font;
-  text-align: center;
-  margin-top: 10px;
-  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-}
-
-.rules {
-  font-size: 20px;
-  color: white;
-  padding-left: 70px;
-  padding-right: 70px;
-}
-
-.rules-background{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 }
