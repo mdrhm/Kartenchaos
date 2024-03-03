@@ -32,6 +32,7 @@
     background: none;
     transition: 0.4s;
     border: none;
+    margin-top: 50px;
     text-transform: uppercase;
     max-width: fit-content;
     cursor: pointer;
@@ -44,12 +45,12 @@
     font-size: 80px;
     font-family: my-first-font;
     text-align: center;
-    margin-top: 10px;
+    margin-bottom: 50px;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .rules {
-    font-size: 20px;
+    font-size:25px;
     color: white;
     padding-left: 70px;
     padding-right: 70px;
@@ -59,4 +60,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
