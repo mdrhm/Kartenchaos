@@ -66,7 +66,6 @@ sliders.forEach((slider, index) => {
 
 
 
-
 //MUSIC CHOOSER
 const dropdowns = document.querySelectorAll('.dropdown');
 
