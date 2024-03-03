@@ -23,3 +23,13 @@
     z-index: -1000;
     position: fixed;
 }
+
+.bg-2 {
+    background-color:#0a0800;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    background-repeat: repeat;
+    height: 1000vh;
+    width: 1000vw;
+    z-index: -1000;
+    position: fixed;
+}
