@@ -133,8 +133,10 @@ for(let i = 0; i < 3; i++) {
     })
     sliderInputs[i].addEventListener("change", ()=>{
         if(sliderInputs[i].value === "") {
-            sliderInputs[i].value = 0;
+            sliderInputs[i].value = sliderInputs[i].placeholder;
+            sliders[i].value = sliderInputs[i].value;
         }
+        sliderInputs[i].placeholder = sliderInputs[i].value
     })
     sliders[i].addEventListener("input", () => {
         sliderInputs[i].value = sliders[i].value;
