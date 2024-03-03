@@ -121,14 +121,22 @@ for(saveButton of saveButtons)
 const sliderInputs = document.querySelectorAll(".slider-input");
 const sliders = document.querySelectorAll(".range-style");
 for(let i = 0; i < 3; i++) {
-    sliderInputs[i].addEventListener("change", ()=>{
+    sliderInputs[i].addEventListener("input", ()=>{
         if(sliderInputs[i].value > 100){
             sliderInputs[i].value = 100;
         }
-        if(sliderInputs[i].value <= 0){
+        if(sliderInputs[i].value < 0){
             sliderInputs[i].value = 0;
         }
+        sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
         sliders[i].value = sliderInputs[i].value;
+    })
+    sliderInputs[i].addEventListener("change", ()=>{
+        if(sliderInputs[i].value === "") {
+            sliderInputs[i].value = sliderInputs[i].placeholder;
+            sliders[i].value = sliderInputs[i].value;
+        }
+        sliderInputs[i].placeholder = sliderInputs[i].value
     })
     sliders[i].addEventListener("input", () => {
         sliderInputs[i].value = sliders[i].value;
