@@ -37,7 +37,7 @@
   background-image: url(../images/classy-fabric.png);
 }
 
-.content-holder { 
+.content-holder {
   /* border: solid white; */
   width: 80%;
   height: 90%;
@@ -52,9 +52,9 @@
 }
 
 .general, .audio {
-  flex: 1; 
-  text-align: center; 
-  
+  flex: 1;
+  text-align: center;
+
 }
 
 .main-btn {
@@ -63,7 +63,7 @@
   height: 70%;
   font-size: 60px;
   font-family: my-first-font;
-  
+
   text-align: center;
   background-color: rgba(136, 136, 136, 0.26);
   box-shadow: inset 1px 1px 15px black;
@@ -73,7 +73,7 @@
 .hover-enabled:hover {
   cursor: pointer;
   background-color: var(--buttonhover);
- 
+
 }
 
 .clicked {
