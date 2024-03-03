@@ -6,12 +6,18 @@ const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server);
 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve static files from the 'client' directory
 app.use(express.static(path.join(__dirname, 'client')));
 
+// Health check endpoint
 app.get('/healthcheck', (req, res) => {
-    res.send('<h1>RPS App running...<h1>');
+    res.send('<h1>RPS App running...</h1>');
 });
 
+// Main route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/index.html'));
 });
@@ -40,7 +46,7 @@ io.on('connection', (socket) => {
         const roomID = makeid(6);
         rooms[roomID] = {};
         socket.join(roomID);
-        socket.emit('newGame', { roomID: roomID });
+        socket.emit('newGame', { roomID });
     });
 
     socket.on('joinGame', (data) => {
@@ -63,6 +69,8 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log('listening on *:3000');
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
 });

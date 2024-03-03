@@ -1,3 +1,5 @@
+
+
 /* MD's background */
 /* :root {
     --background: #49745e;
@@ -50,11 +52,11 @@ body {
 }
 
 .card1 {
-    animation: flip 3s infinite;
+    animation: flip 2s infinite;
 }
 
 .card2 {
-    animation: flip-opposite 3s infinite;
+    animation: flip-opposite 2s infinite;
 }
 @keyframes flip {
     0% {
@@ -145,6 +147,7 @@ body {
     justify-content: center;
     position: relative;
     align-items: center;
+    padding-left: 56px;
 }
 
 html {
@@ -166,7 +169,7 @@ html {
     cursor: pointer;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-    padding-left: 57px;
+
 }
 
 .home-screen-buttons button:hover {
@@ -179,6 +182,7 @@ html {
     visibility: hidden;
     width: 40px;
     transform: rotate(-0.25turn);
+    width: 40px;
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -374,4 +378,10 @@ html {
     background-color: #8e8b8b;
     margin-top: -5%; 
     
+}
+
+#link {
+    height: 800px;
+    width: 800px;
+    background-color: antiquewhite;
 }

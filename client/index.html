@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartenchaos</title>
     <link rel="stylesheet" href="styles.css">
-    <script src ="/socket.io/socket.io.js"></script>
-    <script src = "./client.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./client/client.js"></script>
+    
     
     
     
@@ -42,6 +44,8 @@
         </div>
         <div class="logo"></div>
 
+
+
     </div>
     <div class = "home-screen-buttons">
       <button onclick = "makeGame()" id="play-game" class = "home-button">Play Game <img src="Images\ace-of-spades.png" alt="selection-icon"></button>
@@ -52,7 +56,7 @@
   
     
   <div class = Main-phase style="display: none;">
-  
+  <button id = "link" onclick="getRoomLink()">Get Room Link</button>
   <div class = "dropport" id = drop_port></div>
   <div class="p1handcontainer">
 
@@ -62,7 +66,10 @@
       <div class="card " style="--i:1" draggable="true"><img class = "card-inner" src="cards/6D.svg" alt='' id = "6D"></div>
       <div class="card " style="--i:2" draggable="true"><img class = "card-inner"src="cards/5D.svg" alt='' id = "5D"></div>
   </div>
+  
 </div>
+<script src ="/socket.io/socket.io.js"></script>
+<script src = "./client.js"></script>
 
 
 
