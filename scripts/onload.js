@@ -15,11 +15,17 @@ var interval = setInterval(function() {
 document.addEventListener('DOMContentLoaded', () => {
     const selectedBackground = localStorage.getItem("background");
     if (selectedBackground) {
-        backgroundDiv.classList = "bg-" + selectedBackground;
-        rulesBg.classList = "bg-" + selectedBackground;
-        settingsBg.classList = "bg-" + selectedBackground;
+        backgroundDiv.classList = selectedBackground;
+        rulesBg.classList = selectedBackground;
+        settingsBg.classList = selectedBackground;
     }
 
     // Add ifSavedBackgroundMusic Volume
 
 });
+
+var style = document.createElement('style');
+style.type = 'text/css';
+document.getElementsByTagName('head')[0].appendChild(style);
+loadCustomBgs()
+

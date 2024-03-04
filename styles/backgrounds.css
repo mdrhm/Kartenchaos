@@ -1,3 +1,12 @@
+:root{
+    --custombackground: url("");
+}
+
+#bg{
+    position: fixed;
+    z-index: -1000;
+}
+
 .bg-0{
     background-color: #245324;
     background-image: url("../images/classy-fabric.png");

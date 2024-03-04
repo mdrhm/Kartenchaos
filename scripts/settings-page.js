@@ -107,16 +107,21 @@ dropdowns.forEach(dropdown => {
     });
 });
 
-const bgOptions = document.querySelectorAll(".bg-option")
+function changeBg(bg){
+
+}
+
+const bgStockOptions = document.querySelectorAll(".bg-stock")
+let bgCustomOptions = document.querySelectorAll(".bg-custom")
 const rulesBg = document.querySelector("#rules-background")
 const settingsBg = document.querySelector("#setting-background")
 const backgroundDiv = document.querySelector("#bg")
-for(let i = 0; i < bgOptions.length; i++){
-    bgOptions[i].addEventListener("click", () => {
+for(let i = 0; i < bgStockOptions.length; i++) {
+    bgStockOptions[i].addEventListener("click", ()=>{
         backgroundDiv.classList = "bg-" + i;
         rulesBg.classList = "bg-" + i;
         settingsBg.classList = "bg-" + i;
-        localStorage.setItem("background", i);
+        localStorage.setItem("background", "" + "bg-" + i);
     })
 }
 
@@ -155,4 +160,41 @@ for(let i = 0; i < 3; i++) {
     sliders[i].addEventListener("input", () => {
         sliderInputs[i].value = sliders[i].value;
     })
+}
+function bgUpload(event) {
+    var selectedFile = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        let custombgs = localStorage.getItem("custombgs")
+        custombgs += event.target.result + "\n";
+        localStorage.setItem("custombgs", custombgs.replaceAll("null",""))
+        loadCustomBgs();
+    };
+    reader.readAsDataURL(selectedFile);
+}
+
+const customBgContainer = document.querySelector(".bg-custom-container")
+function loadCustomBgs(){
+    customBgContainer.innerHTML = "";
+    let custombgs = localStorage.getItem("custombgs").split("\n")
+    for(let i = 0; i < custombgs.length-1; i++){
+        style.innerHTML += '.custombg-' + i + '{ ' +
+            'background-image: url("' + custombgs[i] + '");' +
+            'background-repeat: no-repeat;' +
+            'background-size: cover;' +
+            'height: 100%;' +
+            'width: 100%;' +
+            '}';
+        customBgContainer.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '"></div>'
+        console.log("hello")
+    }
+    bgCustomOptions = document.querySelectorAll(".bg-custom")
+    for(let i = 0; i < bgCustomOptions.length; i++) {
+        bgCustomOptions[i].addEventListener("click", ()=>{
+            backgroundDiv.classList = "custombg-" + i;
+            rulesBg.classList = "custombg-" + i;
+            settingsBg.classList = "custombg-" + i;
+            localStorage.setItem("background", "" + "custombg-" + i);
+        })
+    }
 }
