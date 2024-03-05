@@ -5,6 +5,9 @@ const path = require('path');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server);
+// Store the rooms and their details
+const rooms = {};
+
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname)));
@@ -22,10 +25,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/index.html'));
 });
 
-// Store the rooms and their details
-const rooms = {};
+
 
 function makeid(length) {
+    console.log("making id");
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
@@ -43,25 +46,27 @@ io.on('connection', (socket) => {
     });
 
     socket.on('makeGame', () => {
+        console.log("making game");
         const roomID = makeid(6);
         rooms[roomID] = {};
-        socket.join(roomID);
+        socket.join(roomID);  // Emit the event immediately
         socket.emit('newGame', { roomID });
     });
+    
+    
 
     socket.on('joinGame', (data) => {
-        const roomId = data.roomID;
-        if (rooms[roomId] !== undefined) {
-            socket.join(roomId);
-            io.to(roomId).emit('2playersareconnected', {});
-            socket.emit('2playersconnected');
-        } else {
-            socket.emit('roomNotFound');
+        if(rooms[data.roomID] != null) {
+            console.log("joininggame");
+            socket.join(data.roomID);
+            socket.to(data.roomID).emit("2playersConnected", {});
+            socket.emit("2playersConnected");
         }
     });
 
     socket.on('getRoomLink', () => {
         // Send the room ID back to the client
+        console.log("gettingroomlink");
         const roomID = Object.keys(rooms).find((roomId) => rooms[roomId] && Object.keys(rooms[roomId]).length < 2);
         if (roomID) {
             socket.emit('roomLink', { roomID });
@@ -69,8 +74,6 @@ io.on('connection', (socket) => {
     });
 });
 
-const PORT = process.env.PORT || 3000;
-
-server.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
-});
+server.listen(3000, () => {
+    console.log('listening on *:3000');
+})

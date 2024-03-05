@@ -354,3 +354,53 @@ html {
     display: none !important;
 }
 
+#link {
+    width: 25vh;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    background-color: brown;
+    color: white;
+}
+
+.wait {
+    margin: auto;
+    height: 50vh;
+    width: 50vh;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 5vh;
+    
+
+}
+#joker {
+    margin: auto;
+    height: 40vh;
+    width: 50vh;
+}
+.heightcheck img{
+   
+    height: 30vh;
+    
+}
+
+#room-ID{
+    width: 20vh;
+    height: 20vh;
+}
+.showcode{
+    background-color: greenyellow;
+    height: 20vh;
+    width: 40vh;
+    color: white;
+    font-size: larger;
+}
+.wait-phase{
+    height: 100vh;
+}
+
+.form-control {
+    display: flex;
+    bottom: 20%;
+}
