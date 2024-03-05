@@ -204,7 +204,7 @@ function loadCustomBgs(){
         })
         bgDelete[i].addEventListener("click", ()=>{
             console.log(custombgs)
-            custombgs.splice(i,i+1);
+            custombgs.splice(i,1);
             console.log(custombgs)
             localStorage.setItem("custombgs", custombgs.join("\n"))
             loadCustomBgs()
