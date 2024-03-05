@@ -113,6 +113,7 @@ function changeBg(bg){
 
 const bgStockOptions = document.querySelectorAll(".bg-stock")
 let bgCustomOptions = document.querySelectorAll(".bg-custom")
+let bgDelete = document.querySelectorAll(".delete-bg")
 const rulesBg = document.querySelector("#rules-background")
 const settingsBg = document.querySelector("#setting-background")
 const backgroundDiv = document.querySelector("#bg")
@@ -185,16 +186,28 @@ function loadCustomBgs(){
             'height: 100%;' +
             'width: 100%;' +
             '}';
-        customBgContainer.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '"></div>'
+        customBgContainer.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
+            '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
+            '</div>'
         console.log("hello")
     }
     bgCustomOptions = document.querySelectorAll(".bg-custom")
+    bgDelete = document.querySelectorAll(".delete-bg")
     for(let i = 0; i < bgCustomOptions.length; i++) {
-        bgCustomOptions[i].addEventListener("click", ()=>{
-            backgroundDiv.classList = "custombg-" + i;
-            rulesBg.classList = "custombg-" + i;
-            settingsBg.classList = "custombg-" + i;
-            localStorage.setItem("background", "" + "custombg-" + i);
+        bgCustomOptions[i].addEventListener("click", (e)=>{
+            if(!bgDelete[i].contains(e.target)) {
+                backgroundDiv.classList = "custombg-" + i;
+                rulesBg.classList = "custombg-" + i;
+                settingsBg.classList = "custombg-" + i;
+                localStorage.setItem("background", "" + "custombg-" + i);
+            }
+        })
+        bgDelete[i].addEventListener("click", ()=>{
+            console.log(custombgs)
+            custombgs.splice(i,i+1);
+            console.log(custombgs)
+            localStorage.setItem("custombgs", custombgs.join("\n"))
+            loadCustomBgs()
         })
     }
 }

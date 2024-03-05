@@ -374,15 +374,17 @@
 }
 
 .bg-option {
-  height: 100px;
-  min-width: 100px;
-  max-width:100px;
+  max-width: 90px;
+  max-height: 90px;
+  min-width: 90px;
+  max-width: 90px;
   z-index: 2;
   animation: none;
   position: inherit;
   border: 2px solid white;
   border-radius: 10px;
   cursor: pointer;
+  padding: 5px;
 }
 
 input[type='range'] {
@@ -514,3 +516,22 @@ input[type=number]::-webkit-outer-spin-button {
   gap: 10px;
 }
 
+.bg-custom {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.delete-bg{
+  height: 20px;
+  cursor: pointer;
+}
+
+.bg-custom:hover img{
+  display:block !important;
+}
+
+/*.delete-bg:hover {*/
+/*  background: rgb(0, 0, 0, 0.1);*/
+/*  border-radius: 10px;*/
+/*}*/
