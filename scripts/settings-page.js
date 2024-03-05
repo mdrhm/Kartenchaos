@@ -176,10 +176,6 @@ const customBgContainer = document.querySelector(".bg-custom-container")
 function loadCustomBgs(){
     customBgContainer.innerHTML = "";
     customBgStyle.innerHTML = "";
-    customBgContainer.classList.remove("hidden")
-    if(localStorage.getItem("custombgs") === ""){
-        customBgContainer.classList.add("hidden")
-    }
     let custombgs = localStorage.getItem("custombgs").split("\n")
     for(let i = 0; i < custombgs.length-1; i++){
         customBgStyle.innerHTML += '.custombg-' + i + '{ ' +

@@ -25,6 +25,7 @@
 }
 
 #setting-background {
+  background-color: white;
   display: flex;
   flex-direction: column;
   width: 1000px;
@@ -350,9 +351,10 @@
 .bg-options {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   position: initial;
-  height: fit-content;
+  height: 290px;
   gap: 10px;
   margin: 20px;
   overflow-y: auto;
@@ -532,3 +534,6 @@ input[type=number]::-webkit-outer-spin-button {
 /*  background: rgb(0, 0, 0, 0.1);*/
 /*  border-radius: 10px;*/
 /*}*/
+.bg-custom-container*>{
+  flex: 1 1 150px;
+}

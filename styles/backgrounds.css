@@ -8,7 +8,7 @@
 }
 
 .bg-0{
-    background-color: #245324;
+    background-color: #245324 !important;
     background-image: url("../images/classy-fabric.png");
     background-repeat: repeat;
     height: 1000vh;
@@ -22,7 +22,7 @@
     animation-play-state: running;
 }
 .bg-1{
-    background-color: #49745E;
+    background-color: #49745E !important;
     opacity: 0.8;
     background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
     background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
