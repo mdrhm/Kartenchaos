@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles\home-page.css">
     <link rel="stylesheet" href="styles\settings-page.css">
     <link rel="stylesheet" href="styles\rules-page.css">
+    <style class = "custom-bg-style" type="text/css"></style>
 </head>
 
 <body>
@@ -97,16 +98,15 @@
                     <div class="bg-settings">
                         <div class="change-bg">Background</div>
                         <div class="bg-options">
+                        </div>
+                        <div class="bg-stock-container hidden">
                             <div class="bg-option bg-stock bg-0"></div>
                             <div class="bg-option bg-stock bg-1"></div>
                             <div class="bg-option bg-stock bg-2"></div>
-                            <div class="bg-custom-container">
-                            </div>
-                            <div class="bg-option bg-custom-upload-container">
-                                <h1 class = "upload">+</h1>
-                                <input type="file" accept="image/png, image/jpeg" onchange="bgUpload(event)" class="bg-option bg-custom-select" style="opacity: 0">
-                            </div>
-
+                        </div>
+                        <div class="bg-option bg-custom-upload-container hidden">
+                            <h1 class = "upload">+</h1>
+                            <input type="file" accept="image/png, image/jpeg" onchange="bgUpload(event)" class="bg-option bg-custom-select" style="opacity: 0; height:100%;width: 100%">
                         </div>
                     </div>
                 </div>

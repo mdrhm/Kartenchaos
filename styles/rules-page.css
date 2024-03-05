@@ -10,6 +10,7 @@
 }
 
 #rules-background {
+    background-color: white;
     display: flex;
     flex-direction: column;
     width: 1000px;

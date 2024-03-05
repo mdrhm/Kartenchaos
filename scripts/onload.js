@@ -24,8 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-var style = document.createElement('style');
-style.type = 'text/css';
-document.getElementsByTagName('head')[0].appendChild(style);
+var customBgStyle = document.querySelector('.custom-bg-style');
 loadCustomBgs()
 

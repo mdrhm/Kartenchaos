@@ -111,20 +111,12 @@ function changeBg(bg){
 
 }
 
-const bgStockOptions = document.querySelectorAll(".bg-stock")
-let bgCustomOptions = document.querySelectorAll(".bg-custom")
+// const bgStockOptions = document.querySelectorAll(".bg-stock")
+// let bgCustomOptions = document.querySelectorAll(".bg-custom")
 let bgDelete = document.querySelectorAll(".delete-bg")
 const rulesBg = document.querySelector("#rules-background")
 const settingsBg = document.querySelector("#setting-background")
 const backgroundDiv = document.querySelector("#bg")
-for(let i = 0; i < bgStockOptions.length; i++) {
-    bgStockOptions[i].addEventListener("click", ()=>{
-        backgroundDiv.classList = "bg-" + i;
-        rulesBg.classList = "bg-" + i;
-        settingsBg.classList = "bg-" + i;
-        localStorage.setItem("background", "" + "bg-" + i);
-    })
-}
 
 const settingsButton = document.querySelector("#settings");
 const settingsDiv = document.querySelector("#settings-page");
@@ -170,36 +162,45 @@ function bgUpload(event) {
         custombgs += event.target.result + "\n";
         localStorage.setItem("custombgs", custombgs.replaceAll("null",""))
         loadCustomBgs();
+        updateBg("custombg-" + ((custombgs.split("\n").length)-2))
     };
     reader.readAsDataURL(selectedFile);
 }
 
+const bgOptions = document.querySelector(".bg-options")
 const customBgContainer = document.querySelector(".bg-custom-container")
+const stockBgContainer = document.querySelector(".bg-stock-container")
 function loadCustomBgs(){
-    customBgContainer.innerHTML = "";
+    bgOptions.innerHTML = stockBgContainer.innerHTML;
+    customBgStyle.innerHTML = "";
     let custombgs = localStorage.getItem("custombgs").split("\n")
     for(let i = 0; i < custombgs.length-1; i++){
-        style.innerHTML += '.custombg-' + i + '{ ' +
+        customBgStyle.innerHTML += '.custombg-' + i + '{ ' +
             'background-image: url("' + custombgs[i] + '");' +
             'background-repeat: no-repeat;' +
             'background-size: cover;' +
             'height: 100%;' +
             'width: 100%;' +
             '}';
-        customBgContainer.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
+        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
             '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
             '</div>'
-        console.log("hello")
     }
-    bgCustomOptions = document.querySelectorAll(".bg-custom")
+    const uploadDiv = document.querySelector(".bg-custom-upload-container")
+    bgOptions.innerHTML += uploadDiv.outerHTML
+    bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
+    let bgCustomOptions = document.querySelectorAll(".bg-custom")
+    let bgStockOptions = document.querySelectorAll(".bg-options .bg-stock")
     bgDelete = document.querySelectorAll(".delete-bg")
+    for(let i = 0; i < bgStockOptions.length; i++) {
+        bgStockOptions[i].addEventListener("click", ()=>{
+            updateBg("bg-" + i)
+        })
+    }
     for(let i = 0; i < bgCustomOptions.length; i++) {
         bgCustomOptions[i].addEventListener("click", (e)=>{
             if(!bgDelete[i].contains(e.target)) {
-                backgroundDiv.classList = "custombg-" + i;
-                rulesBg.classList = "custombg-" + i;
-                settingsBg.classList = "custombg-" + i;
-                localStorage.setItem("background", "" + "custombg-" + i);
+                updateBg("custombg-" + i);
             }
         })
         bgDelete[i].addEventListener("click", ()=>{
@@ -207,7 +208,17 @@ function loadCustomBgs(){
             custombgs.splice(i,1);
             console.log(custombgs)
             localStorage.setItem("custombgs", custombgs.join("\n"))
+            if(localStorage.getItem("background") === "custombg-" + i){
+                updateBg("bg-0")
+            }
             loadCustomBgs()
         })
     }
+}
+
+function updateBg(bg){
+    backgroundDiv.classList = bg;
+    rulesBg.classList = bg;
+    settingsBg.classList = bg;
+    localStorage.setItem("background", bg);
 }
