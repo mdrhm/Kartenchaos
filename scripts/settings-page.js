@@ -170,11 +170,12 @@ function bgUpload(event) {
 const bgOptions = document.querySelector(".bg-options")
 const customBgContainer = document.querySelector(".bg-custom-container")
 const stockBgContainer = document.querySelector(".bg-stock-container")
-function loadCustomBgs(){
+function loadCustomBgs() {
     bgOptions.innerHTML = stockBgContainer.innerHTML;
     customBgStyle.innerHTML = "";
+    if (localStorage.getItem("custombgs") !== null) {
     let custombgs = localStorage.getItem("custombgs").split("\n")
-    for(let i = 0; i < custombgs.length-1; i++){
+    for (let i = 0; i < custombgs.length - 1; i++) {
         customBgStyle.innerHTML += '.custombg-' + i + '{ ' +
             'background-image: url("' + custombgs[i] + '");' +
             'background-repeat: no-repeat;' +
@@ -186,6 +187,7 @@ function loadCustomBgs(){
             '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
             '</div>'
     }
+}
     const uploadDiv = document.querySelector(".bg-custom-upload-container")
     bgOptions.innerHTML += uploadDiv.outerHTML
     bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
