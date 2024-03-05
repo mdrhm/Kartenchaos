@@ -207,6 +207,9 @@ function loadCustomBgs(){
             custombgs.splice(i,i+1);
             console.log(custombgs)
             localStorage.setItem("custombgs", custombgs.join("\n"))
+            if(localStorage.getItem("background") === "custombg-" + i){
+                localStorage.setItem("background", "bg-0")
+            }
             loadCustomBgs()
         })
     }
