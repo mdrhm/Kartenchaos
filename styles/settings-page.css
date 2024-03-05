@@ -348,10 +348,16 @@
 
 .bg-options {
   display: flex;
-  flex-direction: column;
-  margin: 20px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 10px;
+  height: 290px;
+  overflow: auto;
+  padding: 10px;
 }
+
 .bg-stock-container {
   display: flex;
   justify-content: flex-start;
@@ -381,10 +387,10 @@
 }
 
 .bg-option {
-  max-width: 90px;
+  max-width: 90px ;
   max-height: 90px;
   min-width: 90px;
-  max-width: 90px;
+  min-height: 90px;
   z-index: 2;
   animation: none;
   position: inherit;

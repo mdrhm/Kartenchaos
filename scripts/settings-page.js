@@ -111,17 +111,12 @@ function changeBg(bg){
 
 }
 
-const bgStockOptions = document.querySelectorAll(".bg-stock")
-let bgCustomOptions = document.querySelectorAll(".bg-custom")
+// const bgStockOptions = document.querySelectorAll(".bg-stock")
+// let bgCustomOptions = document.querySelectorAll(".bg-custom")
 let bgDelete = document.querySelectorAll(".delete-bg")
 const rulesBg = document.querySelector("#rules-background")
 const settingsBg = document.querySelector("#setting-background")
 const backgroundDiv = document.querySelector("#bg")
-for(let i = 0; i < bgStockOptions.length; i++) {
-    bgStockOptions[i].addEventListener("click", ()=>{
-        updateBg("bg-" + i)
-    })
-}
 
 const settingsButton = document.querySelector("#settings");
 const settingsDiv = document.querySelector("#settings-page");
@@ -172,14 +167,12 @@ function bgUpload(event) {
     reader.readAsDataURL(selectedFile);
 }
 
+const bgOptions = document.querySelector(".bg-options")
 const customBgContainer = document.querySelector(".bg-custom-container")
+const stockBgContainer = document.querySelector(".bg-stock-container")
 function loadCustomBgs(){
-    customBgContainer.innerHTML = "";
+    bgOptions.innerHTML = stockBgContainer.innerHTML;
     customBgStyle.innerHTML = "";
-    customBgContainer.classList.remove("hidden")
-    if(localStorage.getItem("custombgs") === ""){
-        customBgContainer.classList.add("hidden")
-    }
     let custombgs = localStorage.getItem("custombgs").split("\n")
     for(let i = 0; i < custombgs.length-1; i++){
         customBgStyle.innerHTML += '.custombg-' + i + '{ ' +
@@ -189,13 +182,21 @@ function loadCustomBgs(){
             'height: 100%;' +
             'width: 100%;' +
             '}';
-        customBgContainer.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
+        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
             '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
             '</div>'
-        console.log("hello")
     }
-    bgCustomOptions = document.querySelectorAll(".bg-custom")
+    const uploadDiv = document.querySelector(".bg-custom-upload-container")
+    bgOptions.innerHTML += uploadDiv.outerHTML
+    bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
+    let bgCustomOptions = document.querySelectorAll(".bg-custom")
+    let bgStockOptions = document.querySelectorAll(".bg-options .bg-stock")
     bgDelete = document.querySelectorAll(".delete-bg")
+    for(let i = 0; i < bgStockOptions.length; i++) {
+        bgStockOptions[i].addEventListener("click", ()=>{
+            updateBg("bg-" + i)
+        })
+    }
     for(let i = 0; i < bgCustomOptions.length; i++) {
         bgCustomOptions[i].addEventListener("click", (e)=>{
             if(!bgDelete[i].contains(e.target)) {
