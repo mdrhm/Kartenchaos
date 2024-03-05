@@ -119,10 +119,7 @@ const settingsBg = document.querySelector("#setting-background")
 const backgroundDiv = document.querySelector("#bg")
 for(let i = 0; i < bgStockOptions.length; i++) {
     bgStockOptions[i].addEventListener("click", ()=>{
-        backgroundDiv.classList = "bg-" + i;
-        rulesBg.classList = "bg-" + i;
-        settingsBg.classList = "bg-" + i;
-        localStorage.setItem("background", "" + "bg-" + i);
+        updateBg("bg-" + i)
     })
 }
 
@@ -170,6 +167,7 @@ function bgUpload(event) {
         custombgs += event.target.result + "\n";
         localStorage.setItem("custombgs", custombgs.replaceAll("null",""))
         loadCustomBgs();
+        updateBg("custombg-" + ((custombgs.split("\n").length)-2))
     };
     reader.readAsDataURL(selectedFile);
 }
@@ -177,9 +175,14 @@ function bgUpload(event) {
 const customBgContainer = document.querySelector(".bg-custom-container")
 function loadCustomBgs(){
     customBgContainer.innerHTML = "";
+    customBgStyle.innerHTML = "";
+    customBgContainer.classList.remove("hidden")
+    if(localStorage.getItem("custombgs") === ""){
+        customBgContainer.classList.add("hidden")
+    }
     let custombgs = localStorage.getItem("custombgs").split("\n")
     for(let i = 0; i < custombgs.length-1; i++){
-        style.innerHTML += '.custombg-' + i + '{ ' +
+        customBgStyle.innerHTML += '.custombg-' + i + '{ ' +
             'background-image: url("' + custombgs[i] + '");' +
             'background-repeat: no-repeat;' +
             'background-size: cover;' +
@@ -196,10 +199,7 @@ function loadCustomBgs(){
     for(let i = 0; i < bgCustomOptions.length; i++) {
         bgCustomOptions[i].addEventListener("click", (e)=>{
             if(!bgDelete[i].contains(e.target)) {
-                backgroundDiv.classList = "custombg-" + i;
-                rulesBg.classList = "custombg-" + i;
-                settingsBg.classList = "custombg-" + i;
-                localStorage.setItem("background", "" + "custombg-" + i);
+                updateBg("custombg-" + i);
             }
         })
         bgDelete[i].addEventListener("click", ()=>{
@@ -208,9 +208,16 @@ function loadCustomBgs(){
             console.log(custombgs)
             localStorage.setItem("custombgs", custombgs.join("\n"))
             if(localStorage.getItem("background") === "custombg-" + i){
-                localStorage.setItem("background", "bg-0")
+                updateBg("bg-0")
             }
             loadCustomBgs()
         })
     }
+}
+
+function updateBg(bg){
+    backgroundDiv.classList = bg;
+    rulesBg.classList = bg;
+    settingsBg.classList = bg;
+    localStorage.setItem("background", bg);
 }
