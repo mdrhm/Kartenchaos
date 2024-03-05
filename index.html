@@ -104,10 +104,10 @@
                             <div class="bg-option bg-stock bg-1"></div>
                             <div class="bg-option bg-stock bg-2"></div>
                         </div>
-                        <div class="bg-option bg-custom-upload-container hidden">
+                        <div class="bg-option bg-custom-upload-container hidden" onclick="document.querySelector('.bg-custom-select').click()">
                             <h1 class = "upload">+</h1>
-                            <input type="file" accept="image/png, image/jpeg" onchange="bgUpload(event)" class="bg-option bg-custom-select" style="opacity: 0; height:100%;width: 100%">
                         </div>
+                        <input type="file" accept="image/png, image/jpeg" onchange="bgUpload(event)" class="bg-option bg-custom-select hidden" style="opacity: 0; height:100%;width: 100%;">
                     </div>
                 </div>
 
