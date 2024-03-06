@@ -143,7 +143,7 @@ for(let i = 0; i < 3; i++) {
         }
         sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
         sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
-    });
+    }});
     sliders[i].addEventListener("input", () => { // Add input event listener to each slider
         sliderInputs[i].value = sliders[i].value; // Update corresponding slider input value
     });
@@ -157,22 +157,28 @@ const generalResetBtn = document.querySelector('.general-reset-btn');
 
 // Audio-Reset
 audioResetBtn.addEventListener('click', () => {
+    document.querySelector('.menu').innerHTML = "Default";
     var i = 0;
     sliderInputs.forEach(sliderInput => {
         sliderInput.value = 50;
         sliders[i].value = sliderInputs[i].value;
+        i++;
     })
-    sliderInputs[i].addEventListener("change", ()=>{
-        if(sliderInputs[i].value === "") {
-            sliderInputs[i].value = sliderInputs[i].placeholder;
-            sliders[i].value = sliderInputs[i].value;
-        }
-        sliderInputs[i].placeholder = sliderInputs[i].value
-    })
-    sliders[i].addEventListener("input", () => {
-        sliderInputs[i].value = sliders[i].value;
-    })
-}
+
+    // sliderInputs[i].addEventListener("change", ()=>{
+    //     if(sliderInputs[i].value === "") {
+    //         sliderInputs[i].value = sliderInputs[i].placeholder;
+    //         sliders[i].value = sliderInputs[i].value;
+    //     }
+    //     sliderInputs[i].placeholder = sliderInputs[i].value
+    // });
+    // sliders[i].addEventListener("input", () => {
+    //     sliderInputs[i].value = sliders[i].value;
+    // });
+});
+
+
+
 function bgUpload(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
