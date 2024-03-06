@@ -170,11 +170,17 @@ function bgUpload(event) {
 const bgOptions = document.querySelector(".bg-options")
 const customBgContainer = document.querySelector(".bg-custom-container")
 const stockBgContainer = document.querySelector(".bg-stock-container")
-function loadCustomBgs(){
+function loadCustomBgs() {
     bgOptions.innerHTML = stockBgContainer.innerHTML;
     customBgStyle.innerHTML = "";
+    if (localStorage.getItem("custombgs") === null) {
+        const uploadDiv = document.querySelector(".bg-custom-upload-container")
+        bgOptions.innerHTML += uploadDiv.outerHTML
+        bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
+        return;
+    }
     let custombgs = localStorage.getItem("custombgs").split("\n")
-    for(let i = 0; i < custombgs.length-1; i++){
+    for (let i = 0; i < custombgs.length - 1; i++) {
         customBgStyle.innerHTML += '.custombg-' + i + '{ ' +
             'background-image: url("' + custombgs[i] + '");' +
             'background-repeat: no-repeat;' +
@@ -198,24 +204,23 @@ function loadCustomBgs(){
         })
     }
     for(let i = 0; i < bgCustomOptions.length; i++) {
-        bgCustomOptions[i].addEventListener("click", (e)=>{
-            if(!bgDelete[i].contains(e.target)) {
+        bgCustomOptions[i].addEventListener("click", (e) => {
+            if (!bgDelete[i].contains(e.target)) {
                 updateBg("custombg-" + i);
             }
         })
-        bgDelete[i].addEventListener("click", ()=>{
+        bgDelete[i].addEventListener("click", () => {
             console.log(custombgs)
-            custombgs.splice(i,1);
+            custombgs.splice(i, 1);
             console.log(custombgs)
             localStorage.setItem("custombgs", custombgs.join("\n"))
-            if(localStorage.getItem("background") === "custombg-" + i){
+            if (localStorage.getItem("background") === "custombg-" + i) {
                 updateBg("bg-0")
             }
             loadCustomBgs()
         })
     }
 }
-
 function updateBg(bg){
     backgroundDiv.classList = bg;
     rulesBg.classList = bg;
