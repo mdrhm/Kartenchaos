@@ -27,28 +27,31 @@ body {
 }
 @keyframes flip {
     0% {
-        transform: perspective(600px) rotateY(0deg);
-        background-image: url("../cards/AS.svg");
+        transform: perspective(600px) rotateY(-180deg);
+        content: url("/cards/1B.svg");
     }
     50% {
-        transform: perspective(600px) rotateY(180deg);
-        background-image: url("../cards/2B.svg");
+        transform: perspective(600px) rotateY(0deg);
+        content: initial;
     }
     100% {
-        transform: perspective(600px) rotateY(360deg);
-        background-image: url("../cards/AS.svg");
+        transform: perspective(600px) rotateY(180deg);
+        content: url("/cards/1B.svg");
     }
 }
 
 @keyframes flip-opposite {
     0% {
-        transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(180deg);
+        content: url("/cards/1B.svg");
     }
     50% {
-        transform: perspective(600px) rotateY(-180deg);
+        transform: perspective(600px) rotateY(0deg);
+        content: initial;
     }
     100% {
-        transform: perspective(600px) rotateY(-360deg);
+        transform: perspective(600px) rotateY(-180deg);
+        content: url("/cards/1B.svg");
     }
 }
 
@@ -226,11 +229,11 @@ html {
 
     }
     25%, 49.99% {
-        background-image: url("../Images/spades.svg");
+        background-image: url("../Images/diamonds.svg");
 
     }
     50%, 74.99% {
-        background-image: url("../Images/diamonds.svg");
+        background-image: url("../Images/spades.svg");
 
     }
     75%, 99.99% {
@@ -264,4 +267,8 @@ html {
 
 .hidden{
     display: none !important;
+}
+
+button:focus{
+    outline: none;
 }

@@ -1,9 +1,21 @@
+// Adjusting Background Music Slider
+const backgroundAudio = document.getElementById("music");
+const masterSlider = document.querySelector('.master-slider');
+const masterInput = document.querySelector('.master-input');
 
-document.addEventListener('DOMContentLoaded', function() {
-  var audio = document.getElementById("music");
-  audio.volume = 0.025;
+backgroundAudio.volume = masterSlider.value / 100;
+
+// Update the volume of the background audio when the master volume slider is changed
+masterSlider.addEventListener('input', () => {
+    backgroundAudio.volume = masterSlider.value / 100;
+    masterInput.value = masterSlider.value;
 });
 
+// Update the value of the master volume slider when the master volume input field is changed
+masterInput.addEventListener('input', () => {
+    masterSlider.value = masterInput.value;
+    backgroundAudio.volume = masterInput.value / 100;
+});
 
 
 //GENERAL/AUDIO BUTTONS ON CLICK
@@ -64,8 +76,6 @@ generalBtn.addEventListener('click', () => {
 //     };
 // });
 
-
-
 //MUSIC CHOOSER
 const dropdowns = document.querySelectorAll('.dropdown');
 
@@ -97,44 +107,41 @@ dropdowns.forEach(dropdown => {
     });
 });
 
+function changeBg(bg){
 
-
-// HANDLING BACKGROUND OPTIONS
-const bgOptions = document.querySelectorAll(".bg-option"); // Select all elements with the class ".bg-option"
-const backgroundDiv = document.querySelector("#bg"); // Select the element with the id "#bg"
-for (let i = 0; i < bgOptions.length; i++) { // Loop through each background option
-    bgOptions[i].addEventListener("click", () => { // Add click event listener to each background option
-        backgroundDiv.classList = ""; // Remove all existing classes from backgroundDiv
-        backgroundDiv.classList.add("bg-" + i); // Add a new class based on the index of the clicked element
-    });
 }
 
+// const bgStockOptions = document.querySelectorAll(".bg-stock")
+// let bgCustomOptions = document.querySelectorAll(".bg-custom")
+let bgDelete = document.querySelectorAll(".delete-bg")
+const rulesBg = document.querySelector("#rules-background")
+const settingsBg = document.querySelector("#setting-background")
+const backgroundDiv = document.querySelector("#bg")
 
+const settingsButton = document.querySelector("#settings");
+const settingsDiv = document.querySelector("#settings-page");
+const saveButtons = document.querySelectorAll(".save-btn")
+settingsButton.addEventListener("click", () => {
+    settingsDiv.classList.remove("hidden")
+})
 
+for(saveButton of saveButtons)
+    saveButton.addEventListener("click", () => {
+        settingsDiv.classList.add("hidden")
+})
 
-// HANDLING SETTINGS DISPLAY
-const settingsButton = document.querySelector("#settings"); // Select the element with the id "#settings"
-const settingsDiv = document.querySelector("#settings-page"); // Select the element with the id "#settings-page"
-const saveButtons = document.querySelectorAll(".save-btn"); // Select all elements with the class ".save-btn"
-settingsButton.addEventListener("click", () => { // Add click event listener to settingsButton
-    settingsDiv.classList.remove("hidden"); // Remove the class "hidden" from settingsDiv
-});
-for (saveButton of saveButtons) // Loop through each save button
-    saveButton.addEventListener("click", () => { // Add click event listener to each save button
-        settingsDiv.classList.add("hidden"); // Add the class "hidden" to settingsDiv
-    });
-
-// HANDLES SLIDERS
-const sliderInputs = document.querySelectorAll(".slider-input"); // Select all elements with the class ".slider-input"
-const sliders = document.querySelectorAll(".range-style"); // Select all elements with the class ".range-style"
-for (let i = 0; i < 3; i++) { // Loop through the first three elements (sliders)
-    sliderInputs[i].addEventListener("change", () => { // Add change event listener to each slider input
-        if (sliderInputs[i].value > 100) { // Ensure slider input value is between 0 and 100
+const sliderInputs = document.querySelectorAll(".slider-input");
+const sliders = document.querySelectorAll(".range-style");
+for(let i = 0; i < 3; i++) {
+    sliderInputs[i].addEventListener("input", ()=>{
+        if(sliderInputs[i].value > 100){
             sliderInputs[i].value = 100;
         }
+        if(sliderInputs[i].value < 0){
         if (sliderInputs[i].value <= 0) {
             sliderInputs[i].value = 0;
         }
+        sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
         sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
     });
     sliders[i].addEventListener("input", () => { // Add input event listener to each slider
@@ -154,15 +161,88 @@ audioResetBtn.addEventListener('click', () => {
     sliderInputs.forEach(sliderInput => {
         sliderInput.value = 50;
         sliders[i].value = sliderInputs[i].value;
-        i++;
-    });
+    })
+    sliderInputs[i].addEventListener("change", ()=>{
+        if(sliderInputs[i].value === "") {
+            sliderInputs[i].value = sliderInputs[i].placeholder;
+            sliders[i].value = sliderInputs[i].value;
+        }
+        sliderInputs[i].placeholder = sliderInputs[i].value
+    })
+    sliders[i].addEventListener("input", () => {
+        sliderInputs[i].value = sliders[i].value;
+    })
+}
+function bgUpload(event) {
+    var selectedFile = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        let custombgs = localStorage.getItem("custombgs")
+        custombgs += event.target.result + "\n";
+        localStorage.setItem("custombgs", custombgs.replaceAll("null",""))
+        loadCustomBgs();
+        updateBg("custombg-" + ((custombgs.split("\n").length)-2))
+    };
+    reader.readAsDataURL(selectedFile);
+}
 
-    document.querySelector('.selected').innerHTML = 'Default';
-});
-
-// General-Reset
-generalResetBtn.addEventListener('click', () =>{
-    backgroundDiv.classList = "";
-    backgroundDiv.classList.add("bg-0");
-
-})
+const bgOptions = document.querySelector(".bg-options")
+const customBgContainer = document.querySelector(".bg-custom-container")
+const stockBgContainer = document.querySelector(".bg-stock-container")
+function loadCustomBgs() {
+    bgOptions.innerHTML = stockBgContainer.innerHTML;
+    customBgStyle.innerHTML = "";
+    if (localStorage.getItem("custombgs") === null) {
+        const uploadDiv = document.querySelector(".bg-custom-upload-container")
+        bgOptions.innerHTML += uploadDiv.outerHTML
+        bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
+        return;
+    }
+    let custombgs = localStorage.getItem("custombgs").split("\n")
+    for (let i = 0; i < custombgs.length - 1; i++) {
+        customBgStyle.innerHTML += '.custombg-' + i + '{ ' +
+            'background-image: url("' + custombgs[i] + '");' +
+            'background-repeat: no-repeat;' +
+            'background-size: cover;' +
+            'height: 100%;' +
+            'width: 100%;' +
+            '}';
+        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
+            '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
+            '</div>'
+    }
+    const uploadDiv = document.querySelector(".bg-custom-upload-container")
+    bgOptions.innerHTML += uploadDiv.outerHTML
+    bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
+    let bgCustomOptions = document.querySelectorAll(".bg-custom")
+    let bgStockOptions = document.querySelectorAll(".bg-options .bg-stock")
+    bgDelete = document.querySelectorAll(".delete-bg")
+    for(let i = 0; i < bgStockOptions.length; i++) {
+        bgStockOptions[i].addEventListener("click", ()=>{
+            updateBg("bg-" + i)
+        })
+    }
+    for(let i = 0; i < bgCustomOptions.length; i++) {
+        bgCustomOptions[i].addEventListener("click", (e) => {
+            if (!bgDelete[i].contains(e.target)) {
+                updateBg("custombg-" + i);
+            }
+        })
+        bgDelete[i].addEventListener("click", () => {
+            console.log(custombgs)
+            custombgs.splice(i, 1);
+            console.log(custombgs)
+            localStorage.setItem("custombgs", custombgs.join("\n"))
+            if (localStorage.getItem("background") === "custombg-" + i) {
+                updateBg("bg-0")
+            }
+            loadCustomBgs()
+        })
+    }
+}
+function updateBg(bg){
+    backgroundDiv.classList = bg;
+    rulesBg.classList = bg;
+    settingsBg.classList = bg;
+    localStorage.setItem("background", bg);
+}

@@ -1,14 +1,28 @@
+:root{
+    --custombackground: url("");
+}
+
+#bg{
+    position: fixed;
+    z-index: -1000;
+}
+
 .bg-0{
-    background-color: #245324;
+    background-color: #245324 !important;
     background-image: url("../images/classy-fabric.png");
     background-repeat: repeat;
     height: 1000vh;
     width: 1000vw;
     z-index: -1000;
     position: fixed;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
 }
 .bg-1{
-    background-color: #49745E;
+    background-color: #49745E !important;
     opacity: 0.8;
     background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
     background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
@@ -22,4 +36,21 @@
     background-repeat: repeat;
     z-index: -1000;
     position: fixed;
+}
+
+.bg-2 {
+    background-color:#0a0800 !important;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    background-repeat: repeat;
+    height: 1000vh;
+    width: 1000vw;
+    z-index: -1000;
+    position: fixed;
+}
+
+.bg-3{
+    background: radial-gradient(circle at bottom left,transparent 25%,#1da2d8 25.5%, #1da2d8 36%, transparent 37%, transparent 100%),radial-gradient(circle at top right,transparent 34%,#1da2d8 34.5%, #1da2d8 45.5%, transparent 46%, transparent 100%);
+    background-size: 2em 2em;
+    background-color: #006993;
+    opacity: 1
 }

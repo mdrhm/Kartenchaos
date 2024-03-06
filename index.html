@@ -14,18 +14,24 @@
     <link rel="stylesheet" href="styles\home-page.css">
     <link rel="stylesheet" href="styles\settings-page.css">
     <link rel="stylesheet" href="styles\rules-page.css">
+    <style class = "custom-bg-style" type="text/css"></style>
 </head>
 
 <body>
 <!-- JAVASCRIPT-SCRIPT-LINKS -->
 <script src="scripts\settings-page.js" defer></script>
 <script src="scripts\rules-page.js" defer></script>
+<script src="scripts\onload.js" defer></script>
 
 
 <!-- BACKGROUND-MUSIC -->
 <audio id="music" controls autoplay hidden>
     <source src="music.mp3" type="audio/mp3">
 </audio>
+<script>
+    var audio = document.getElementById("music");
+    music.volume = 0.015;
+</script>
 
 <!-- BACKGROUND-IMAGE -->
 <div class="bg-0" id = "bg"></div>
@@ -34,11 +40,11 @@
 <div class="home-ui">
     <div class="header">
         <div class="home-pictures left">
-            <img src="cards/KD.svg" alt="" class="card1">
+            <img src="cards/13D.svg" alt="" class="card1">
         </div>
         <h1 id="title-of-game">KARTENCHAOS</h1>
         <div class="home-pictures right">
-            <img src="cards/QC.svg" alt="" class="card2">
+            <img src="cards/12C.svg" alt="" class="card2">
         </div>
         <div class="logo"></div>
     </div>
@@ -53,12 +59,18 @@
 
 <!-- RULES-PAGE -->
 <div id="rules-page" class = "hidden">
-    <div class="rules-background">
+    <div id="rules-background" class = "bg-0">
         <h1 class = "rules-header">Rules</h1>
         <p class = "rules">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum ex in ratione rem. Deserunt dolorum ex exercitationem explicabo modi, molestias natus omnis quod quos ratione tempore, vitae? Illo, numquam perspiciatis.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam atque consequuntur cum doloremque ducimus est facilis harum illum impedit laboriosam nesciunt non obcaecati, odio pariatur ratione reiciendis repellat voluptas?
-
+            Objective: Reduce your opponent's hp to zero while keeping your own hp above zero.
+            <br><br>
+            Setup: Start with 50 hp and a hand of cards totaling 30 points.
+            <br><br>
+            Gameplay: Play cards in rounds, with the higher-value card winning the round and dealing damage to the opponent based on the average of the two cards played.
+            <br><br>
+            Winning: The game ends when one player's hp reaches zero or below, with the other player declared the winner.
+            <br><br>
+            Strategy: Manage your hand wisely, conserve higher-value cards, and strategize to minimize hp loss while dealing damage to your opponent.
         </p>
         <button id = "rules-page-exit">Ok</button>
     </div>
@@ -67,7 +79,7 @@
 
 <!-- SETTINGS-PAGE -->
 <div id="settings-page" class = "hidden">
-    <div class="setting-background">
+    <div id="setting-background" class = "bg-0">
         <div class="content-holder">
             <!-- TOP PORTION OF AUDIO SETTINGS -->
             <div class="top-content">
@@ -86,9 +98,16 @@
                     <div class="bg-settings">
                         <div class="change-bg">Background</div>
                         <div class="bg-options">
-                            <div class="bg-option bg-0"></div>
-                            <div class="bg-option bg-1"></div>
                         </div>
+                        <div class="bg-stock-container hidden">
+                            <div class="bg-option bg-stock bg-0"></div>
+                            <div class="bg-option bg-stock bg-1"></div>
+                            <div class="bg-option bg-stock bg-2"></div>
+                        </div>
+                        <div class="bg-option bg-custom-upload-container hidden" onclick="document.querySelector('.bg-custom-select').click()">
+                            <h1 class = "upload">+</h1>
+                        </div>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" onchange="bgUpload(event)" class="bg-option bg-custom-select hidden" style="opacity: 0; height:100%;width: 100%;">
                     </div>
 
                     <div class ="card-bg-settings">
@@ -125,7 +144,7 @@
                             Master Volume
                         </div>
                         <input type="range" class="master-slider range-style">
-                        <input type="number" class ="master-input slider-input" value="50"></input>
+                        <input type="number" class ="master-input slider-input" value="50" placeholder="50"></input>
 
                     </div>
 
@@ -134,7 +153,7 @@
                             Music Volume
                         </div>
                         <input type="range" class="music-slider range-style">
-                        <input type="number" class ="sfx-input slider-input" value="50"></input>
+                        <input type="number" class ="sfx-input slider-input" value="50" placeholder="50"></input>
 
                     </div>
 
@@ -143,7 +162,7 @@
                             SFX Volume
                         </div>
                         <input type="range" class="sfx-slider range-style">
-                        <input type="number" class ="sfx-input slider-input" value="50"></input>
+                        <input type="number" class ="sfx-input slider-input" value="50" placeholder="50"></input>
 
                     </div>
                 </div>
@@ -160,8 +179,8 @@
                                 <div class="caret"></div>
                             </div>
                             <ul class="menu">
-                                <li>Option 1</li>
                                 <li class="active">Default</li>
+                                <li>Option 1</li>
                                 <li>Option 3</li>
                                 <li>Option 3</li>
                             </ul>
