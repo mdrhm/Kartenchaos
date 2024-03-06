@@ -29,10 +29,10 @@
 
 
 <!-- BACKGROUND-MUSIC -->
-<audio id="music" controls autoplay hidden>
+<!-- <audio id="music" controls autoplay hidden>
     <source src="music.mp3" type="audio/mp3">
 </audio>
-<!-- <script>
+<script>
     var audio = document.getElementById("music");
     music.volume = 0.015;
 </script> -->
@@ -227,8 +227,8 @@
             <button class="p2-attack" onclick="attackEnemy()">ATTACK</button>
         </div>
         <!-- health-bars -->
-        <progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress>
-        <progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress>
+        <div class="bar1"><progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress></div>
+        <div class="bar2"><progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress></div>
     </div>
 
 
