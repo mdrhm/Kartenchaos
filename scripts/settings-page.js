@@ -188,7 +188,7 @@ function loadCustomBgs() {
             'height: 100%;' +
             'width: 100%;' +
             '}';
-        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
+        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '" onclick="updateBg(custombg-'+ i + ')">' +
             '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
             '</div>'
     }
@@ -196,19 +196,8 @@ function loadCustomBgs() {
     bgOptions.innerHTML += uploadDiv.outerHTML
     bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
     let bgCustomOptions = document.querySelectorAll(".bg-custom")
-    let bgStockOptions = document.querySelectorAll(".bg-options .bg-stock")
     bgDelete = document.querySelectorAll(".delete-bg")
-    for(let i = 0; i < bgStockOptions.length; i++) {
-        bgStockOptions[i].addEventListener("click", ()=>{
-            updateBg("bg-" + i)
-        })
-    }
     for(let i = 0; i < bgCustomOptions.length; i++) {
-        bgCustomOptions[i].addEventListener("click", (e) => {
-            if (!bgDelete[i].contains(e.target)) {
-                updateBg("custombg-" + i);
-            }
-        })
         bgDelete[i].addEventListener("click", () => {
             console.log(custombgs)
             custombgs.splice(i, 1);
