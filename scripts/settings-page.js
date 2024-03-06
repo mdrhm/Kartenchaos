@@ -182,17 +182,20 @@ function loadCustomBgs() {
     }
     let custombgs = localStorage.getItem("custombgs").split("\n")
     for (let i = 0; i < custombgs.length - 1; i++) {
-        customBgStyle.innerHTML += '.custombg-' + i + '{ ' +
-            'background-image: url("' + custombgs[i] + '");' +
-            'background-repeat: no-repeat;' +
-            'background-size: cover;' +
-            'height: 100%;' +
-            'width: 100%;' +
-            '}';
-        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '" onclick="updateCustomBg(\'custombg\','+ i + ', this)">' +
-            '<img src="/Images/delete.svg" class = "hidden delete-bg"' + '" onclick="deleteBg('+ i + ')">'
-            '</div>'
+        customBgStyle.innerHTML += `.custombg-${i} {
+            background-image: url("${custombgs[i]}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+        }`;
+        
+        bgOptions.innerHTML += `<div class="bg-option bg-custom custombg-${i}" onclick="updateCustomBg('custombg', ${i}, this)">
+            <img src="/Images/delete.svg" class="hidden delete-bg" onclick="deleteBg(${i})">
+        </div>`;
     }
+
+    
     const uploadDiv = document.querySelector(".bg-custom-upload-container")
     bgOptions.innerHTML += uploadDiv.outerHTML
     bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
