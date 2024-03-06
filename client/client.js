@@ -2,8 +2,20 @@ console.log("client.js works so far");
 const socket = io();
 
 let roomID = null;
+let player1 = false;
+let cardi = document.createElement('img');
+cardi.src = './cards/2B.svg';
+
+let cardi2 = document.createElement('img');
+
+cardi2.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
+cardi2.style.borderRadius = '10px';
+cardi2.style.width = "32.5%";
+cardi2.style.height = "30vh";
+cardi2.style.marginLeft = "30px";
 
 function makeGame() {
+    player1= true;
     socket.emit('makeGame');
 }
 
@@ -22,9 +34,6 @@ window.onload = function () {
     if (extractedRoomID) {
         // Call joinGame with the extracted room ID
         joinGame(extractedRoomID);
-    } else {
-        // No room ID found, go directly to the main phase
-        goToMainPhase();
     }
 };
 
@@ -64,8 +73,31 @@ socket.on('newGame', (data) => {
     const roomUrl = window.location.origin + '/?roomID=' + roomID;
     history.pushState({ roomID: roomID }, 'Room Created', roomUrl);
 });
-
+ 
 socket.on("2playersConnected", () => {
     console.log('2 players connected!');
     goToMainPhase();
 });
+
+//Note that cardChosen is not the card element but its ID
+function sendCardChoice(cardChosen){
+    const choiceEvent = player1 ? "player1Choice" : "player2Choice";
+    socket.emit(choiceEvent, {
+        cardChosen: cardChosen,
+        roomID: roomID
+    });
+
+}
+
+socket.on("updatep2withp1card", (data) => {
+    console.log("player1placedcard");
+    dropport.appendChild(cardi);
+});
+
+socket.on("updatep1withp2card", (data) => {
+    console.log("player2placedcard");
+    dropport.appendChild(cardi);
+});
+
+
+

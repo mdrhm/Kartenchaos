@@ -333,7 +333,7 @@ html {
 
 
 .dropport{
-  
+    display: flex;
     height: 30%;
     margin: auto;
     position: relative;

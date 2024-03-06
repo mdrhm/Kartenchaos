@@ -79,6 +79,7 @@ for (let card of cards) {
                 // Set draggable attribute to false
                 e.target.draggable = false;
             } else {
+                sendCardChoice(card);
                 dropport.appendChild(e.target);
                 count = 1;
 

@@ -72,6 +72,31 @@ io.on('connection', (socket) => {
             socket.emit('roomLink', { roomID });
         }
     });
+
+
+
+    socket.on("player1Choice", (data) => {
+        let cardChosen = data.cardChosen;
+        // Check if rooms[data.roomID] exists
+        if (rooms[data.roomID]) {
+            rooms[data.roomID].player1Choice = cardChosen;
+            io.to(data.roomID).emit('updatep2withp1card');
+        } else {
+            console.error(`Room ${data.roomID} does not exist.`);
+        }
+});
+
+    socket.on("player2Choice", (data) => {
+        let cardChosen = data.cardChosen;
+    
+        // Check if rooms[data.roomID] exists
+        if (rooms[data.roomID]) {
+            rooms[data.roomID].player2Choice = cardChosen;
+            io.to(data.roomID).emit('updatep2withp1card');
+        } else {
+            console.error(`Room ${data.roomID} does not exist.`);
+        }
+});
 });
 
 server.listen(3000, () => {
