@@ -88,7 +88,7 @@
   margin-top: -20px;
 }
 
-.master-volume-option, .music-volume-option, .sfx-volume-option, .change-bg-option, .card-style-option{
+.master-volume-option, .music-volume-option, .sfx-volume-option{
   display: flex;
   flex-direction: row;
   height: 120px;
@@ -353,7 +353,7 @@
   color: #333;
 }
 
-.bg-options {
+.bg-options, .card-bg-settings {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -438,7 +438,7 @@ input[type='range']::-moz-range-thumb {
   box-shadow: inset -2px -2px 8px white, inset 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.range-style .thumb-style {
+.range-style .thumb-style { 
   position: relative;
   top: -50%;
   width: 40px;
