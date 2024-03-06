@@ -25,6 +25,7 @@
 <script src="scripts\settings-page.js" defer></script>
 <script src="scripts\rules-page.js" defer></script>
 <script src="scripts\onload.js" defer></script>
+<script src="scripts\clash.js" defer></script>
 
 
 <!-- BACKGROUND-MUSIC -->
@@ -219,8 +220,12 @@
     <!-- (p1 card + health-bar) && (p2 card + health-bar) -->
     <div class="battle">
         <!-- cards -->
-        <div class="p1-card">Player 1 Card</div>
-        <div class="p2-card">Player 2 Card</div>
+        <div class="p1-card">Player 1
+            <button class="p1-attack" onclick="attackEnemy()">ATTACK</button>
+        </div>
+        <div class="p2-card">Player 2
+            <button class="p2-attack" onclick="attackEnemy()">ATTACK</button>
+        </div>
         <!-- health-bars -->
         <progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress>
         <progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress>

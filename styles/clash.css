@@ -10,20 +10,6 @@
   margin: 80px 0px 0px 80px;
 }
 
-.p1-pfp img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  transform: scaleX(-1);
-}
-
-.p2-pfp img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
 
 .p2-pfp {
   display: inline-block;
@@ -37,8 +23,19 @@
   margin: 80px 80px 0px 0px;
 }
 
+.p1-pfp img, .p2-pfp img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.p1-pfp img {
+  transform: scaleX(-1);
+}
+
 .battle {
-  border: solid brown;
+  /* border: solid brown; */
   display: flex;
   position: relative;
   height: 100px;
@@ -48,6 +45,7 @@
 }
 
 .p1-card, .p2-card {
+  display: flex;
   border: solid red;
   height: 427px;
   width: 300px;
@@ -57,6 +55,8 @@
   color: white;
   font-weight: bold;
   font-size: 50px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .p1-card {
@@ -69,9 +69,21 @@
   right: calc(50% - 400px); /* Adjust the value based on card width and desired gap */
 }
 
-.p1-health-bar, .p2-health-bar {
-  border: solid black;
-  width: 200px; /* Adjust as needed */
+.p1-attack, .p2-attack {
+  width: 100px;
+  height: 50px;
+  background-color: rgba(1, 4, 104, 0.733);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: var(--progress-color);
+  transition: background-color 0.5s ease;
 }
 
 #p1-health-bar, #p2-health-bar {
@@ -79,5 +91,9 @@
   height: 50%;
   border: solid black;
   border-radius: 5px;
+  transition: width 7.5s linear;
+}
 
+#p2-health-bar {
+  transform: scaleX(-1);
 }
