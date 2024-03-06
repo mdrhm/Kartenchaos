@@ -107,6 +107,9 @@ dropdowns.forEach(dropdown => {
     });
 });
 
+function changeBg(bg){
+
+}
 
 // const bgStockOptions = document.querySelectorAll(".bg-stock")
 // let bgCustomOptions = document.querySelectorAll(".bg-custom")
@@ -125,7 +128,7 @@ settingsButton.addEventListener("click", () => {
 for(saveButton of saveButtons)
     saveButton.addEventListener("click", () => {
         settingsDiv.classList.add("hidden")
-})
+    })
 
 const sliderInputs = document.querySelectorAll(".slider-input");
 const sliders = document.querySelectorAll(".range-style");
@@ -135,12 +138,12 @@ for(let i = 0; i < 3; i++) {
             sliderInputs[i].value = 100;
         }
         if(sliderInputs[i].value < 0){
-        if (sliderInputs[i].value <= 0) {
-            sliderInputs[i].value = 0;
-        }
-        sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
-        sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
-    }});
+            if (sliderInputs[i].value <= 0) {
+                sliderInputs[i].value = 0;
+            }
+            sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
+            sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
+        }});
     sliders[i].addEventListener("input", () => { // Add input event listener to each slider
         sliderInputs[i].value = sliders[i].value; // Update corresponding slider input value
     });
@@ -183,16 +186,12 @@ function bgUpload(event) {
     var reader = new FileReader();
     reader.onload = function(event) {
         let custombgs = localStorage.getItem("custombgs")
-        if(custombgs.includes(event.target.result)){
-            return;
-        }
         custombgs += event.target.result + "\n";
         localStorage.setItem("custombgs", custombgs.replaceAll("null",""))
         loadCustomBgs();
         updateBg("custombg-" + ((custombgs.split("\n").length)-2))
     };
     reader.readAsDataURL(selectedFile);
-    document.querySelector(".bg-custom-select").value = "";
 }
 
 const bgOptions = document.querySelector(".bg-options")
@@ -216,54 +215,40 @@ function loadCustomBgs() {
             'height: 100%;' +
             'width: 100%;' +
             '}';
-        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '" onclick="updateCustomBg(\'custombg-'+ i + '\', event)">' +
-            '<img src="/Images/delete.svg" class = "hidden delete-bg"' + '" onclick="deleteBg('+ i + ')">'
+        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '">' +
+            '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
             '</div>'
     }
     const uploadDiv = document.querySelector(".bg-custom-upload-container")
     bgOptions.innerHTML += uploadDiv.outerHTML
     bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
-    // let bgCustomOptions = document.querySelectorAll(".bg-custom")
-    // bgDelete = document.querySelectorAll(".delete-bg")
-    // for(let i = 0; i < bgCustomOptions.length; i++) {
-    //     bgDelete[i].addEventListener("click", () => {
-    //         console.log(custombgs)
-    //         custombgs.splice(i, 1);
-    //         console.log(custombgs)
-    //         localStorage.setItem("custombgs", custombgs.join("\n"))
-    //         if (localStorage.getItem("background") === "custombg-" + i) {
-    //             updateBg("bg-1")
-    //         }
-    //         loadCustomBgs()
-    //     })
-    // }
-}
-
-function deleteBg(i) {
-    let custombgs = localStorage.getItem("custombgs").split("\n")
-    console.log(custombgs)
-    custombgs.splice(i, 1);
-    console.log(custombgs)
-    localStorage.setItem("custombgs", custombgs.join("\n"))
-    if (localStorage.getItem("background") === "custombg-" + i) {
-        updateBg("bg-0")
+    let bgCustomOptions = document.querySelectorAll(".bg-custom")
+    let bgStockOptions = document.querySelectorAll(".bg-options .bg-stock")
+    bgDelete = document.querySelectorAll(".delete-bg")
+    for(let i = 0; i < bgStockOptions.length; i++) {
+        bgStockOptions[i].addEventListener("click", ()=>{
+            updateBg("bg-" + i)
+        })
     }
-    loadCustomBgs()
+    for(let i = 0; i < bgCustomOptions.length; i++) {
+        bgCustomOptions[i].addEventListener("click", (e) => {
+            if (!bgDelete[i].contains(e.target)) {
+                updateBg("custombg-" + i);
+            }
+        })
+        bgDelete[i].addEventListener("click", () => {
+            console.log(custombgs)
+            custombgs.splice(i, 1);
+            console.log(custombgs)
+            localStorage.setItem("custombgs", custombgs.join("\n"))
+            if (localStorage.getItem("background") === "custombg-" + i) {
+                updateBg("bg-0")
+            }
+            loadCustomBgs()
+        })
+    }
 }
-
 function updateBg(bg){
-    // console.log("herro")
-    backgroundDiv.classList = bg;
-    rulesBg.classList = bg;
-    settingsBg.classList = bg;
-    localStorage.setItem("background", bg);
-}
-
-function updateCustomBg(bg, event){
-    if(document.querySelectorAll(".delete-bg").contains(event)){
-        return;
-    }
-    // console.log("herro")
     backgroundDiv.classList = bg;
     rulesBg.classList = bg;
     settingsBg.classList = bg;
