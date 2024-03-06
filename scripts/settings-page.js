@@ -188,7 +188,7 @@ function loadCustomBgs() {
             'height: 100%;' +
             'width: 100%;' +
             '}';
-        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '" onclick="updateBg(custombg-'+ i + ')">' +
+        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '" onclick="updateBg(\'custombg-'+ i + '\')">' +
             '<img src="/Images/delete.svg" class = "hidden delete-bg"' +
             '</div>'
     }
