@@ -5,8 +5,8 @@ let p1Hp = document.getElementById('p1-health-bar');
 let p2Hp = document.getElementById('p2-health-bar');
 const dmg = 5;
 
-p1Hp.style.setProperty('--progress-color', 'rgba(14,50,6,1)');
-p2Hp.style.setProperty('--progress-color', 'rgba(14,50,6,1)');
+p1Hp.style.setProperty('--progress-color', 'rgba(30,100,10,1)');
+p2Hp.style.setProperty('--progress-color', 'rgba(30,100,10,1)');
 p1Attack.addEventListener('click', () => {
   p2Hp.value = attackEnemy(p2Hp.value, dmg);
   if(p2Hp.value <= 0){
@@ -38,7 +38,7 @@ function attackEnemy(hp, dmg){
 function updateBackgroundColor(hp){
   
   if (hp.value >= 85) {
-    hp.style.setProperty('--progress-color', 'rgba(14,50,6,1)');
+    hp.style.setProperty('--progress-color', 'rgba(30,100,10,1)');
   } else if (hp.value >= 70) {
     hp.style.setProperty('--progress-color', 'rgba(36,147,21,1)');
   }
