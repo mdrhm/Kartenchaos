@@ -154,7 +154,9 @@ const generalResetBtn = document.querySelector('.general-reset-btn');
 
 // Audio-Reset
 audioResetBtn.addEventListener('click', () => {
-    document.querySelector('.menu').innerHTML = "Default";
+    document.querySelector('.selected').innerHTML = "Default";
+    document.querySelector('.active').classList.remove('active');
+    document.querySelector('.menu li').classList.add('active');
     var i = 0;
     sliderInputs.forEach(sliderInput => {
         sliderInput.value = 50;
