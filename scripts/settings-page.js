@@ -107,9 +107,6 @@ dropdowns.forEach(dropdown => {
     });
 });
 
-function changeBg(bg){
-
-}
 
 // const bgStockOptions = document.querySelectorAll(".bg-stock")
 // let bgCustomOptions = document.querySelectorAll(".bg-custom")
@@ -159,6 +156,9 @@ function bgUpload(event) {
     var reader = new FileReader();
     reader.onload = function(event) {
         let custombgs = localStorage.getItem("custombgs")
+        if(custombgs.includes(event.target.result)){
+            return;
+        }
         custombgs += event.target.result + "\n";
         localStorage.setItem("custombgs", custombgs.replaceAll("null",""))
         loadCustomBgs();
