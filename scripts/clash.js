@@ -4,6 +4,7 @@ const p2Attack = document.querySelector('.p2-attack');
 let p1Hp = document.getElementById('p1-health-bar');
 let p2Hp = document.getElementById('p2-health-bar');
 const dmg = 5;
+
 p1Hp.style.setProperty('--progress-color', 'rgba(14,50,6,1)');
 p2Hp.style.setProperty('--progress-color', 'rgba(14,50,6,1)');
 p1Attack.addEventListener('click', () => {
