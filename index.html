@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="styles\home-page.css">
     <link rel="stylesheet" href="styles\settings-page.css">
     <link rel="stylesheet" href="styles\rules-page.css">
+    <link rel="stylesheet" href="styles\clash.css">
+
     <style class = "custom-bg-style" type="text/css"></style>
+
 </head>
 
 <body>
@@ -28,16 +31,16 @@
 <audio id="music" controls autoplay hidden>
     <source src="music.mp3" type="audio/mp3">
 </audio>
-<script>
+<!-- <script>
     var audio = document.getElementById("music");
     music.volume = 0.015;
-</script>
+</script> -->
 
 <!-- BACKGROUND-IMAGE -->
 <div class="bg-0" id = "bg"></div>
 
 <!-- HOME-PAGE -->
-<div class="home-ui">
+<div class="home-ui hidden">
     <div class="header">
         <div class="home-pictures left">
             <img src="cards/13D.svg" alt="" class="card1">
@@ -199,6 +202,30 @@
             </div>
         </div>
     </div>
+
+</div>
+
+<!-- CLASH 1v1 PAGE -->
+<div id="clash-page">
+
+    <!-- p1 and p2 pfp -->
+    <div class="p1-pfp">
+        <img src="Images\TheAttacker.PNG" alt="">
+    </div>
+    <div class="p2-pfp">
+        <img src="Images\TheAttacker.PNG" alt="">
+    </div>
+
+    <!-- (p1 card + health-bar) && (p2 card + health-bar) -->
+    <div class="battle">
+        <!-- cards -->
+        <div class="p1-card">Player 1 Card</div>
+        <div class="p2-card">Player 2 Card</div>
+        <!-- health-bars -->
+        <progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress>
+        <progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress>
+    </div>
+
 
 </div>
 
