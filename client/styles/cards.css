@@ -1,0 +1,11 @@
+.dark{
+    rect{
+        fill:black;
+    }
+    symbol:nth-child(1) path{
+        fill: white;
+    }
+    symbol:nth-child(2) path{
+        stroke:white;
+    }
+}
