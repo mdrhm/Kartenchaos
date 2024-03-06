@@ -189,7 +189,7 @@ function loadCustomBgs() {
             'height: 100%;' +
             'width: 100%;' +
             '}';
-        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '" onclick="updateCustomBg(\'custombg-'+ i + '\', event)">' +
+        bgOptions.innerHTML += '<div class = "bg-option bg-custom custombg-' + i + '" onclick="updateCustomBg(\'custombg\','+ i + ', this)">' +
             '<img src="/Images/delete.svg" class = "hidden delete-bg"' + '" onclick="deleteBg('+ i + ')">'
             '</div>'
     }
@@ -232,13 +232,13 @@ function updateBg(bg){
     localStorage.setItem("background", bg);
 }
 
-function updateCustomBg(bg, event){
-    if(document.querySelectorAll(".delete-bg").contains(event)){
+function updateCustomBg(bg, index, event){
+    if(document.querySelectorAll(".delete-bg")[index].contains(event.target)){
         return;
     }
     // console.log("herro")
-    backgroundDiv.classList = bg;
-    rulesBg.classList = bg;
-    settingsBg.classList = bg;
-    localStorage.setItem("background", bg);
+    backgroundDiv.classList = bg + "-" + index;
+    rulesBg.classList = bg + "-" + index;
+    settingsBg.classList = bg + "-" + index;
+    localStorage.setItem("background", bg + "-"+ index);
 }
