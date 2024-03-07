@@ -245,3 +245,8 @@ function updateCustomBg(bg, index, event){
     settingsBg.classList = bg + "-" + index;
     localStorage.setItem("background", bg + "-"+ index);
 }
+
+function updateCardStyle(style) {
+    document.querySelector("#Main-phase").classList = style
+    
+}

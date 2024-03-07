@@ -5,7 +5,7 @@ let dropport = document.getElementById("drop_port");
 let count = 0;
 let min = 25;
 let max = 35;
-const cardsInner = document.querySelectorAll(".card");
+const cardsInner = document.querySelectorAll(".play-card");
 const suits = ["D","H","S","C"]
 
 function generateHand(sum) {

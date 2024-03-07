@@ -19,7 +19,7 @@
     <style class = "custom-bg-style" type="text/css"></style>
 </head>
 
-<body class = "dark">
+<body>
 <!-- JAVASCRIPT-SCRIPT-LINKS -->
 <!--      <script src="socket.io/socket.io.js"></script>-->
 <!--      <script src="./client/client.js"></script>-->
@@ -111,6 +111,16 @@
                         </div>
                         <input type="file" accept="image/png, image/jpeg, image/gif" onchange="bgUpload(event)" class="bg-option bg-custom-select hidden" style="opacity: 0; height:100%;width: 100%;">
                     </div>
+                    <div class="card-style-settings">
+                        <div class="change-card-style">Card Style</div>
+                        <div class="change-card-options">
+                            <div class="card-style-option default" onclick = "updateCardStyle('')">
+                            </div>
+                            <div class="card-style-option dark" onclick = "updateCardStyle('dark')">
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
@@ -195,15 +205,15 @@
 
 </div>
 
-    <div class="Main-phase" style="display: none;">
+    <div id="Main-phase" style="display: none;">
         
         <div class="dropport" id=drop_port></div>
         <div class="p1handcontainer">
-            <div class="card" style="--i:-2" draggable="true"></div>
-            <div class="card" style="--i:-1" draggable="true"></div>
-            <div class="card" style="--i:0" draggable="true"></div>
-            <div class="card" style="--i:1" draggable="true"></div>
-            <div class="card" style="--i:2" draggable="true"></div>
+            <div class="play-card" style="--i:-2" draggable="true"></div>
+            <div class="play-card" style="--i:-1" draggable="true"></div>
+            <div class="play-card" style="--i:0" draggable="true"></div>
+            <div class="play-card" style="--i:1" draggable="true"></div>
+            <div class="play-card" style="--i:2" draggable="true"></div>
         </div>
         
     </div>
