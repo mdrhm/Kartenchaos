@@ -9,6 +9,7 @@ const io = new Server(server);
 const rooms = {};
 
 
+
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname)));
 
@@ -80,7 +81,7 @@ io.on('connection', (socket) => {
         // Check if rooms[data.roomID] exists
         if (rooms[data.roomID]) {
             rooms[data.roomID].player1Choice = cardChosen;
-            io.to(data.roomID).emit('updatep2withp1card');
+            io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
@@ -92,7 +93,7 @@ io.on('connection', (socket) => {
         // Check if rooms[data.roomID] exists
         if (rooms[data.roomID]) {
             rooms[data.roomID].player2Choice = cardChosen;
-            io.to(data.roomID).emit('updatep2withp1card');
+            io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }

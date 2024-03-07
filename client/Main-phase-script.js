@@ -2,6 +2,8 @@
 
 let cards = document.getElementsByClassName("card");
 let dropport = document.getElementById("drop_port");
+let dropport2 = document.getElementById("drop_port2");
+
 let count = 0;
 let min = 25;
 let max = 35;
@@ -79,7 +81,7 @@ for (let card of cards) {
                 // Set draggable attribute to false
                 e.target.draggable = false;
             } else {
-                sendCardChoice(card);
+                sendCardChoice(card,"player1");
                 dropport.appendChild(e.target);
                 count = 1;
 
@@ -99,6 +101,31 @@ for (let card of cards) {
     }
 }
 
+for (let card of cards) {
+    if (dropport2.children.length === 0) {
+        card.addEventListener("dblclick", function (e) {
+            if (count > 0 || dropport2.children.length > 0) {
+                // Set draggable attribute to false
+                e.target.draggable = false;
+            } else {
+                sendCardChoice(card,"player2");
+                dropport2.appendChild(e.target);
+                count = 1;
 
+                e.target.src = "./cards/2B.svg";
+                e.target.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
+                e.target.style.borderRadius = '10px';
+                e.target.style.width = "32.5%";
+                e.target.style.height = "30vh";
+                e.target.style.marginLeft = "30px";
+
+                // Remove the dblclick event listener after the first double-click
+                e.target.removeEventListener("dblclick", arguments.callee);
+            }
+        });
+    } else {
+        console.log("You already put a card down dipstick");
+    }
+}
 
 

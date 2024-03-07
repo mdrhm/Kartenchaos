@@ -8,11 +8,10 @@ cardi.src = './cards/2B.svg';
 
 let cardi2 = document.createElement('img');
 
-cardi2.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
-cardi2.style.borderRadius = '10px';
-cardi2.style.width = "32.5%";
-cardi2.style.height = "30vh";
-cardi2.style.marginLeft = "30px";
+
+
+const cardContainer = document.createElement('div');
+cardContainer.appendChild(cardi);
 
 function makeGame() {
     player1= true;
@@ -79,25 +78,47 @@ socket.on("2playersConnected", () => {
     goToMainPhase();
 });
 
-//Note that cardChosen is not the card element but its ID
-function sendCardChoice(cardChosen){
-    const choiceEvent = player1 ? "player1Choice" : "player2Choice";
+// Note that cardChosen is not the card element but its ID
+function sendCardChoice(cardChosen, player) {
+    let choiceEvent;
+
+    if (player === "player1") {
+        choiceEvent = "player1placedcard";
+    } else {
+        choiceEvent = "player2placedcard";
+    }
+
     socket.emit(choiceEvent, {
         cardChosen: cardChosen,
         roomID: roomID
     });
-
 }
 
-socket.on("updatep2withp1card", (data) => {
+socket.on("updatep2withp1card", () => {
     console.log("player1placedcard");
-    dropport.appendChild(cardi);
+    
+    // Check if the current client is player 2
+    if (!player1) {
+        
+        document.getElementById("drop_port").style.display = "none";
+        document.getElementById("drop_port2").style.display = "block";
+        dropport.appendChild(cardi);
+        
+    }
+    player1 = true;
 });
 
-socket.on("updatep1withp2card", (data) => {
+
+socket.on("updatep1withp2card", () => {
     console.log("player2placedcard");
-    dropport.appendChild(cardi);
+    
+    // Check if the current client is player 1
+    if (player1) {
+        document.getElementById("drop_port2").style.display = "none";
+        document.getElementById("drop_port").style.display = "block";
+        dropport2.appendChild(cardi);
+    }
+    player1 = false;
 });
-
 
 
