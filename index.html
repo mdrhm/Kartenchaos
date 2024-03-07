@@ -13,8 +13,8 @@
     <!-- CSS-STYLES-LINKS -->
     <link rel="stylesheet" href="/client/styles/backgrounds.css">
     <link rel="stylesheet" href="/client/styles/home-page.css">
-    <link rel="stylesheet" href="client/styles\settings-page.css">
-    <link rel="stylesheet" href="/client/styles\rules-page.css">
+    <link rel="stylesheet" href="client/styles/settings-page.css">
+    <link rel="stylesheet" href="/client/styles/rules-page.css">
     <link rel="stylesheet" href="./client/styles/cards.css">
     <style class = "custom-bg-style" type="text/css"></style>
 </head>
@@ -29,7 +29,7 @@
 <script src="/client/scripts/onload.js" defer></script>
 <!-- BACKGROUND-MUSIC -->
 <audio id="music" controls autoplay hidden>
-    <source src="music.mp3" type="audio/mp3">
+    <source src="/client/music.mp3" type="audio/mp3">
 </audio>
 
 <script>
@@ -111,14 +111,6 @@
                         </div>
                         <input type="file" accept="image/png, image/jpeg, image/gif" onchange="bgUpload(event)" class="bg-option bg-custom-select hidden" style="opacity: 0; height:100%;width: 100%;">
                     </div>
-<<<<<<< HEAD
-
-                    <div class ="card-bg-settings">
-                        <div class="card-style">
-                            Card Style
-                        </div>
-                        <div class="card-style-options">
-=======
                     <div class="card-style-settings">
                         <div class="change-card-style">Card Style</div>
                         <div class="change-card-options">
@@ -132,24 +124,18 @@
                             </div>
                             <div class="card-style-option black-and-gold" onclick = "updateCardStyle('black-and-gold')">
                             </div>
->>>>>>> 94b6f2f6d7ca8e2d2f06dd4d49bc30f28edb4601
 
                         </div>
                     </div>
                 </div>
 
-                <!-- BOTTOM PORTION OF GENERAL SETTINGS -->
+                <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
                 <div class="bottom-content">
                     `                   <div></div>
                     <!-- Right-Side -->
                     <div class="bottom-right-side">
-<<<<<<< HEAD
-                            <button class="reset-btn general-reset-btn">RESET</button>
-                            <button class="save-btn">SAVE</button>
-=======
                         <button class="reset-btn">RESET</button>
                         <button class="save-btn">SAVE</button>
->>>>>>> 94b6f2f6d7ca8e2d2f06dd4d49bc30f28edb4601
                         <div>
                         </div>
                     </div>
@@ -204,7 +190,7 @@
                             <ul class="menu">
                                 <li class="active">Default</li>
                                 <li>Option 1</li>
-                                <li>Option 2</li>
+                                <li>Option 3</li>
                                 <li>Option 3</li>
                             </ul>
                         </div>
@@ -212,13 +198,8 @@
 
                     <!-- Right-Side -->
                     <div class="bottom-right-side">
-<<<<<<< HEAD
-                            <button class="reset-btn audio-reset-btn">RESET</button>
-                            <button class="save-btn">SAVE</button>
-=======
                         <button class="reset-btn">RESET</button>
                         <button class="save-btn">SAVE</button>
->>>>>>> 94b6f2f6d7ca8e2d2f06dd4d49bc30f28edb4601
                         <div>
                         </div>
                     </div>
@@ -230,37 +211,37 @@
 
 </div>
 
-    <div id="Main-phase" style="display: none;">
-        
-        <div class="dropport" id=drop_port></div>
-        <div class="p1handcontainer">
-            <div class="play-card" style="--i:-2" draggable="true"></div>
-            <div class="play-card" style="--i:-1" draggable="true"></div>
-            <div class="play-card" style="--i:0" draggable="true"></div>
-            <div class="play-card" style="--i:1" draggable="true"></div>
-            <div class="play-card" style="--i:2" draggable="true"></div>
-        </div>
-        
+<div id="Main-phase" style="display: none;">
+
+    <div class="dropport" id=drop_port></div>
+    <div class="p1handcontainer">
+        <div class="play-card" style="--i:-2" draggable="true"></div>
+        <div class="play-card" style="--i:-1" draggable="true"></div>
+        <div class="play-card" style="--i:0" draggable="true"></div>
+        <div class="play-card" style="--i:1" draggable="true"></div>
+        <div class="play-card" style="--i:2" draggable="true"></div>
     </div>
-    <div class="wait-phase" style="display: none;">
-        <button id = "link" onclick = "getRoomLink()">Click to get code</button>
-        <input class="form-control my-2" placeholder="Enter Code" type="text" name="" id="roomID" />
-        <button class="form-control btn btn-secondary" onclick="joinGame()">Join Game</button>
-        <div class="wait">waiting for player
-            
-            <img src = "client/Images/joker.png" id = "joker">
-        </div>
-        
-        <div class="p1handcontainer">
-            <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
-            <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
-            <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
-            <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
-            <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
-        </div>
+
+</div>
+<div class="wait-phase" style="display: none;">
+    <button id = "link" onclick = "getRoomLink()">Click to get code</button>
+    <input class="form-control my-2" placeholder="Enter Code" type="text" name="" id="roomID" />
+    <button class="form-control btn btn-secondary" onclick="joinGame()">Join Game</button>
+    <div class="wait">waiting for player
+
+        <img src = "client/Images/joker.png" id = "joker">
     </div>
-    
-      <!-- JAVASCRIPT-SCRIPT-LINKS -->
+
+    <div class="p1handcontainer">
+        <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
+        <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
+        <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
+        <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
+        <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT-SCRIPT-LINKS -->
 
 
 </body>

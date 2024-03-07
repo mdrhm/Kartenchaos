@@ -149,7 +149,7 @@ for(let i = 0; i < 3; i++) {
 
 //RESET OPTION
 
-const audioResetBtn = document.querySelector('.audio-reset-btn');
+const audioResetBtn = document.querySelector('.reset-btn');
 const generalResetBtn = document.querySelector('.general-reset-btn');
 
 // Audio-Reset
@@ -194,7 +194,6 @@ function bgUpload(event) {
 }
 
 const bgOptions = document.querySelector(".bg-options")
-const customBgContainer = document.querySelector(".bg-custom-container")
 const stockBgContainer = document.querySelector(".bg-stock-container")
 function loadCustomBgs() {
     bgOptions.innerHTML = stockBgContainer.innerHTML;
