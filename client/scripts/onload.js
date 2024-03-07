@@ -31,6 +31,5 @@ const cardStyleOptions = document.querySelectorAll(".card-style-option")
 for(cardStyleOption of cardStyleOptions){
     request.open("GET", "/client/cards/1" + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
     request.send(null);
-    var data = request.responseText;
-    cardStyleOption.innerHTML = data;
+    cardStyleOption.innerHTML = request.responseText;
 }
