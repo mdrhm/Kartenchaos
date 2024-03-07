@@ -349,11 +349,7 @@
   color: #333;
 }
 
-<<<<<<< HEAD:styles/settings-page.css
-.bg-options, .card-bg-settings {
-=======
 .bg-options, .change-card-options {
->>>>>>> 94b6f2f6d7ca8e2d2f06dd4d49bc30f28edb4601:client/styles/settings-page.css
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -568,6 +564,7 @@ input[type="file"] {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .card-style-option > svg {
