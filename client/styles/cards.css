@@ -1,11 +1,47 @@
 .dark{
     rect{
-        fill:black;
+        fill:black !important;
     }
     symbol:nth-child(1) path{
-        fill: white;
+        fill: white !important;
     }
     symbol:nth-child(2) path{
-        stroke:white;
+        stroke:white !important;
+    }
+}
+
+.black-and-gold{
+    rect{
+        fill:black !important;
+    }
+    symbol:nth-child(1) path{
+        fill: goldenrod !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: goldenrod !important;
+    }
+}
+
+.blue-and-pink{
+    rect{
+        fill: #ADD8E6 !important;
+    }
+    symbol:nth-child(1) path{
+        fill: #F8C8DC !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #F8C8DC !important;
+    }
+}
+
+.blue-and-yellow{
+    rect{
+        fill: #2A4759 !important;
+    }
+    symbol:nth-child(1) path{
+        fill: #F5B06E !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #F5B06E !important;
     }
 }
