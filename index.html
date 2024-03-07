@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -10,27 +11,30 @@
     <link rel="icon" href="data:,">
 
     <!-- CSS-STYLES-LINKS -->
-    <link rel="stylesheet" href="styles\backgrounds.css">
-    <link rel="stylesheet" href="styles\home-page.css">
-    <link rel="stylesheet" href="styles\settings-page.css">
-    <link rel="stylesheet" href="styles\rules-page.css">
+    <link rel="stylesheet" href="/client/styles/backgrounds.css">
+    <link rel="stylesheet" href="/client/styles/home-page.css">
+    <link rel="stylesheet" href="client/styles\settings-page.css">
+    <link rel="stylesheet" href="/client/styles\rules-page.css">
+    <link rel="stylesheet" href="./client/styles/cards.css">
     <style class = "custom-bg-style" type="text/css"></style>
 </head>
 
 <body>
 <!-- JAVASCRIPT-SCRIPT-LINKS -->
-<script src="scripts\settings-page.js" defer></script>
-<script src="scripts\rules-page.js" defer></script>
-<script src="scripts\onload.js" defer></script>
-
-
+<!--      <script src="socket.io/socket.io.js"></script>-->
+<!--      <script src="./client/client.js"></script>-->
+<script src="./client/Main-phase-script.js" defer></script>
+<script src="/client/scripts/settings-page.js" defer></script>
+<script src="/client/scripts/rules-page.js" defer></script>
+<script src="/client/scripts/onload.js" defer></script>
 <!-- BACKGROUND-MUSIC -->
 <audio id="music" controls autoplay hidden>
     <source src="music.mp3" type="audio/mp3">
 </audio>
+
 <script>
     var audio = document.getElementById("music");
-    music.volume = 0.015;
+    music.volume = 0.0015;
 </script>
 
 <!-- BACKGROUND-IMAGE -->
@@ -40,20 +44,18 @@
 <div class="home-ui">
     <div class="header">
         <div class="home-pictures left">
-            <img src="cards/13D.svg" alt="" class="card1">
+            <img src="/client/cards/13D.svg" alt="" class="card1">
         </div>
         <h1 id="title-of-game">KARTENCHAOS</h1>
         <div class="home-pictures right">
-            <img src="cards/12C.svg" alt="" class="card2">
+            <img src="/client/cards/12C.svg" alt="" class="card2">
         </div>
         <div class="logo"></div>
     </div>
     <div class="home-screen-buttons">
-        <button id="play-game">Play Game <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
-        <button id="rules">Rules <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
-        <button id="settings">Settings <img alt="selection-icon" src="Images\ace-of-spades.png"></button>
-
-
+        <button onclick="makeGame()" id="play-game">Play Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="rules">Rules <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="settings">Settings <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
     </div>
 </div>
 
@@ -100,21 +102,37 @@
                         <div class="bg-options">
                         </div>
                         <div class="bg-stock-container hidden">
-                            <div class="bg-option bg-stock bg-0"></div>
-                            <div class="bg-option bg-stock bg-1"></div>
-                            <div class="bg-option bg-stock bg-2"></div>
+                            <div class="bg-option bg-stock bg-0" onclick = "updateBg('bg-0')"></div>
+                            <div class="bg-option bg-stock bg-1" onclick = "updateBg('bg-1')"></div>
+                            <div class="bg-option bg-stock bg-2" onclick = "updateBg('bg-2')"></div>
                         </div>
                         <div class="bg-option bg-custom-upload-container hidden" onclick="document.querySelector('.bg-custom-select').click()">
                             <h1 class = "upload">+</h1>
                         </div>
                         <input type="file" accept="image/png, image/jpeg, image/gif" onchange="bgUpload(event)" class="bg-option bg-custom-select hidden" style="opacity: 0; height:100%;width: 100%;">
                     </div>
+<<<<<<< HEAD
 
                     <div class ="card-bg-settings">
                         <div class="card-style">
                             Card Style
                         </div>
                         <div class="card-style-options">
+=======
+                    <div class="card-style-settings">
+                        <div class="change-card-style">Card Style</div>
+                        <div class="change-card-options">
+                            <div class="card-style-option default" onclick = "updateCardStyle('')">
+                            </div>
+                            <div class="card-style-option dark" onclick = "updateCardStyle('dark')">
+                            </div>
+                            <div class="card-style-option blue-and-pink" onclick = "updateCardStyle('blue-and-pink')">
+                            </div>
+                            <div class="card-style-option blue-and-yellow" onclick = "updateCardStyle('blue-and-yellow')">
+                            </div>
+                            <div class="card-style-option black-and-gold" onclick = "updateCardStyle('black-and-gold')">
+                            </div>
+>>>>>>> 94b6f2f6d7ca8e2d2f06dd4d49bc30f28edb4601
 
                         </div>
                     </div>
@@ -122,11 +140,16 @@
 
                 <!-- BOTTOM PORTION OF GENERAL SETTINGS -->
                 <div class="bottom-content">
-`                   <div></div>
+                    `                   <div></div>
                     <!-- Right-Side -->
                     <div class="bottom-right-side">
+<<<<<<< HEAD
                             <button class="reset-btn general-reset-btn">RESET</button>
                             <button class="save-btn">SAVE</button>
+=======
+                        <button class="reset-btn">RESET</button>
+                        <button class="save-btn">SAVE</button>
+>>>>>>> 94b6f2f6d7ca8e2d2f06dd4d49bc30f28edb4601
                         <div>
                         </div>
                     </div>
@@ -189,8 +212,13 @@
 
                     <!-- Right-Side -->
                     <div class="bottom-right-side">
+<<<<<<< HEAD
                             <button class="reset-btn audio-reset-btn">RESET</button>
                             <button class="save-btn">SAVE</button>
+=======
+                        <button class="reset-btn">RESET</button>
+                        <button class="save-btn">SAVE</button>
+>>>>>>> 94b6f2f6d7ca8e2d2f06dd4d49bc30f28edb4601
                         <div>
                         </div>
                     </div>
@@ -202,5 +230,39 @@
 
 </div>
 
+    <div id="Main-phase" style="display: none;">
+        
+        <div class="dropport" id=drop_port></div>
+        <div class="p1handcontainer">
+            <div class="play-card" style="--i:-2" draggable="true"></div>
+            <div class="play-card" style="--i:-1" draggable="true"></div>
+            <div class="play-card" style="--i:0" draggable="true"></div>
+            <div class="play-card" style="--i:1" draggable="true"></div>
+            <div class="play-card" style="--i:2" draggable="true"></div>
+        </div>
+        
+    </div>
+    <div class="wait-phase" style="display: none;">
+        <button id = "link" onclick = "getRoomLink()">Click to get code</button>
+        <input class="form-control my-2" placeholder="Enter Code" type="text" name="" id="roomID" />
+        <button class="form-control btn btn-secondary" onclick="joinGame()">Join Game</button>
+        <div class="wait">waiting for player
+            
+            <img src = "client/Images/joker.png" id = "joker">
+        </div>
+        
+        <div class="p1handcontainer">
+            <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
+            <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
+            <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
+            <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
+            <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
+        </div>
+    </div>
+    
+      <!-- JAVASCRIPT-SCRIPT-LINKS -->
+
+
 </body>
+
 </html>
