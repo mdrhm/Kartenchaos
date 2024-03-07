@@ -12,17 +12,15 @@ var interval = setInterval(function() {
         }
     }, 3000);
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const selectedBackground = localStorage.getItem("background");
-//     if (selectedBackground) {
-//         backgroundDiv.classList = selectedBackground;
-//         rulesBg.classList = selectedBackground;
-//         settingsBg.classList = selectedBackground;
-//     }
-//
-//     // Add ifSavedBackgroundMusic Volume
-//
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    const selectedBackground = localStorage.getItem("background");
+    if (selectedBackground) {
+        updateBg(selectedBackground)
+    }
+
+    // Add ifSavedBackgroundMusic Volume
+
+});
 
 var customBgStyle = document.querySelector('.custom-bg-style');
 loadCustomBgs()
