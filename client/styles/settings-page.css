@@ -355,7 +355,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 7px;
   height: fit-content;
   padding: 10px;
 }

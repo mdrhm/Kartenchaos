@@ -1,6 +1,7 @@
 .dark{
     rect{
         fill:black !important;
+        stroke:white !important;
     }
     symbol:nth-child(1) path{
         fill: white !important;
@@ -13,6 +14,7 @@
 .black-and-gold{
     rect{
         fill:black !important;
+        stroke: goldenrod !important;
     }
     symbol:nth-child(1) path{
         fill: goldenrod !important;
@@ -25,23 +27,64 @@
 .blue-and-pink{
     rect{
         fill: #ADD8E6 !important;
+        stroke: #FC819E !important;
     }
     symbol:nth-child(1) path{
-        fill: #F8C8DC !important;
+        fill: #FC819E !important;
     }
     symbol:nth-child(2) path{
-        stroke: #F8C8DC !important;
+        stroke: #FC819E !important;
     }
 }
 
 .blue-and-yellow{
     rect{
         fill: #2A4759 !important;
+        stroke: #F5B06E !important;
     }
     symbol:nth-child(1) path{
         fill: #F5B06E !important;
     }
     symbol:nth-child(2) path{
         stroke: #F5B06E !important;
+    }
+}
+
+.purple{
+    rect{
+        fill: #7469B6 !important;
+        stroke: #E1AFD1 !important;
+    }
+    symbol:nth-child(1) path{
+        fill: #E1AFD1 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #E1AFD1 !important;
+    }
+}
+
+.joker{
+    rect{
+        fill: #331B3F !important;
+        stroke: #09ff00 !important;
+    }
+    symbol:nth-child(1) path{
+        fill: #09ff00 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #09ff00 !important;
+    }
+}
+
+.flash{
+    rect{
+        fill: #a51818 !important;
+        stroke: #ffe659 !important;
+    }
+    symbol:nth-child(1) path{
+        fill: #ffe659 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #ffe659 !important;
     }
 }

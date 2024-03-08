@@ -29,5 +29,5 @@ const cardStyleOptions = document.querySelectorAll(".card-style-option")
 for(let i = 0; i < cardStyleOptions.length; i++){
     request.open("GET", "/client/cards/1" + suits[i%4] + ".svg", false);
     request.send(null);
-    cardStyleOptions[i].innerHTML = request.responseText;
+    cardStyleOptions[i].innerHTML = request.responseText.replaceAll("S" + suits[i%4] + "A", "S" + suits[i%4] + "A-" + i).replaceAll("V" + suits[i%4] + "A", "V" + suits[i%4] + "A-" + i);
 }

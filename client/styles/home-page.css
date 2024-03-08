@@ -296,7 +296,7 @@ html {
     align-items: center;
 }
 
-.p1handcontainer .card{
+.p1handcontainer .card {
     position: absolute;
     width: fit-content;
     height: fit-content;
@@ -305,13 +305,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(0, 0, 0);
+    border: none;
     cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
     border-radius: 13px;
-    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
-
+    transform: rotate(calc(var(--i)* 15deg)) translate(calc((var(--i))* 70px), -40px);
 }
 
 .p1handcontainer .card img {
