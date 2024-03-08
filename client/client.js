@@ -5,13 +5,12 @@ let roomID = null;
 let player1 = false;
 let cardi = document.createElement('img');
 cardi.src = './cards/2B.svg';
+cardi.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
+cardi.style.borderRadius = '10px';
+cardi.style.width = "70%";
+cardi.style.height = "30vh";
+cardi.style.marginLeft = "10px";
 
-let cardi2 = document.createElement('img');
-
-
-
-const cardContainer = document.createElement('div');
-cardContainer.appendChild(cardi);
 
 function makeGame() {
     player1= true;
@@ -19,7 +18,9 @@ function makeGame() {
 }
 
 function joinGame() {
+    
     roomID = document.getElementById('roomID').value;
+    console.log(roomID);
     socket.emit('joinGame', { roomID: roomID });
 }
 
@@ -75,50 +76,55 @@ socket.on('newGame', (data) => {
  
 socket.on("2playersConnected", () => {
     console.log('2 players connected!');
+    console.log(roomID);
     goToMainPhase();
 });
 
 // Note that cardChosen is not the card element but its ID
-function sendCardChoice(cardChosen, player) {
+function sendCardChoice(cardChosen) {
     let choiceEvent;
-
-    if (player === "player1") {
-        choiceEvent = "player1placedcard";
-    } else {
-        choiceEvent = "player2placedcard";
+    console.log("beginning choiceevent");
+    if (player1){
+        choiceEvent = "player1Choice";
+        console.log("its player1 choice");
     }
-
+    else {
+        choiceEvent = "player2Choice";
+        console.log("its player2 choice");
+    }
+    console.log("send card choice no romm id" + roomID);
     socket.emit(choiceEvent, {
         cardChosen: cardChosen,
         roomID: roomID
     });
 }
 
-socket.on("updatep2withp1card", () => {
+socket.on("updatep2withp1card", (data) => {
+    if(!player1){
     console.log("player1placedcard");
-    
-    // Check if the current client is player 2
-    if (!player1) {
-        
-        document.getElementById("drop_port").style.display = "none";
-        document.getElementById("drop_port2").style.display = "block";
-        dropport.appendChild(cardi);
-        
+    let card = data.cardChosen;
+    if (dropright) {
+        dropright.appendChild(cardi);
+    } else {
+        console.log("Element with id 'dropright' not found.");
     }
-    player1 = true;
+
+}
 });
 
 
-socket.on("updatep1withp2card", () => {
-    console.log("player2placedcard");
-    
-    // Check if the current client is player 1
-    if (player1) {
-        document.getElementById("drop_port2").style.display = "none";
-        document.getElementById("drop_port").style.display = "block";
-        dropport2.appendChild(cardi);
+socket.on("updatep1withp2card", (data) => {
+    console.log(player1);
+    console.log("player2placedcard before check");
+    if(player1){
+        console.log("player2placedcard");
+        let card = data.cardChosen;
+        if (dropright) {
+            dropright.appendChild(cardi);
+        } else {
+            console.log("Element with id 'dropright' not found.");
+        }
     }
-    player1 = false;
 });
 
 
