@@ -13,13 +13,12 @@ var interval = setInterval(function() {
     }, 3000);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const selectedBackground = localStorage.getItem("background");
-    if (selectedBackground) {
-        updateBg(selectedBackground)
+    if (localStorage.getItem("background")) {
+        updateBg(localStorage.getItem("background"))
     }
-
-    // Add ifSavedBackgroundMusic Volume
-
+    if (localStorage.getItem("cardstyle")) {
+        updateCardStyle(localStorage.getItem("cardstyle"))
+    }
 });
 
 var customBgStyle = document.querySelector('.custom-bg-style');

@@ -272,5 +272,5 @@ function updateCustomBg(bg, index, event){
 
 function updateCardStyle(style) {
     document.querySelector("#Main-phase").classList = style
-    
+    localStorage.setItem("cardstyle", style);
 }

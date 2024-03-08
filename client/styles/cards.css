@@ -2,6 +2,7 @@
     rect{
         stroke-width: 2;
     }
+    border: 2px solid black !important;
 }
 
 .dark{
@@ -16,6 +17,7 @@
     symbol:nth-child(2) path{
         stroke:white !important;
     }
+    border: 2px solid white !important;
 }
 
 .black-and-gold{
@@ -30,6 +32,7 @@
     symbol:nth-child(2) path{
         stroke: goldenrod !important;
     }
+    border: 2px solid goldenrod !important;
 }
 
 .blue-and-pink{
@@ -44,6 +47,7 @@
     symbol:nth-child(2) path{
         stroke: #FC819E !important;
     }
+    border: 2px solid #FC819E !important;
 }
 
 .blue-and-yellow{
@@ -58,6 +62,7 @@
     symbol:nth-child(2) path{
         stroke: #F5B06E !important;
     }
+    border: 2px solid #F5B06E !important;
 }
 
 .purple{
@@ -72,6 +77,7 @@
     symbol:nth-child(2) path{
         stroke: #E1AFD1 !important;
     }
+    border: 2px solid #E1AFD1 !important;
 }
 
 .joker{
@@ -86,6 +92,7 @@
     symbol:nth-child(2) path{
         stroke: #09ff00 !important;
     }
+    border: 2px solid #09ff00 !important;
 }
 
 .flash{
@@ -100,6 +107,7 @@
     symbol:nth-child(2) path{
         stroke: #ffe659 !important;
     }
+    border: 2px solid #ffe659 !important;
 }
 
 .coffee{
@@ -114,4 +122,5 @@
     symbol:nth-child(2) path{
         stroke: #F2EDD7 !important;
     }
+    border: 2px solid #F2EDD7;
 }
