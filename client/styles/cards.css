@@ -1,7 +1,14 @@
+.default{
+    rect{
+        stroke-width: 2;
+    }
+}
+
 .dark{
     rect{
         fill:black !important;
         stroke:white !important;
+        stroke-width: 2;
     }
     symbol:nth-child(1) path{
         fill: white !important;
@@ -15,6 +22,7 @@
     rect{
         fill:black !important;
         stroke: goldenrod !important;
+        stroke-width: 2;
     }
     symbol:nth-child(1) path{
         fill: goldenrod !important;
@@ -28,6 +36,7 @@
     rect{
         fill: #ADD8E6 !important;
         stroke: #FC819E !important;
+        stroke-width: 2;
     }
     symbol:nth-child(1) path{
         fill: #FC819E !important;
@@ -41,6 +50,7 @@
     rect{
         fill: #2A4759 !important;
         stroke: #F5B06E !important;
+        stroke-width: 2;
     }
     symbol:nth-child(1) path{
         fill: #F5B06E !important;
@@ -54,6 +64,7 @@
     rect{
         fill: #7469B6 !important;
         stroke: #E1AFD1 !important;
+        stroke-width: 2;
     }
     symbol:nth-child(1) path{
         fill: #E1AFD1 !important;
@@ -67,6 +78,7 @@
     rect{
         fill: #331B3F !important;
         stroke: #09ff00 !important;
+        stroke-width: 2;
     }
     symbol:nth-child(1) path{
         fill: #09ff00 !important;
@@ -80,11 +92,26 @@
     rect{
         fill: #a51818 !important;
         stroke: #ffe659 !important;
+        stroke-width: 2;
     }
     symbol:nth-child(1) path{
         fill: #ffe659 !important;
     }
     symbol:nth-child(2) path{
         stroke: #ffe659 !important;
+    }
+}
+
+.coffee{
+    rect{
+        fill: #755139 !important;
+        stroke: #F2EDD7 !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #F2EDD7 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #F2EDD7 !important;
     }
 }
