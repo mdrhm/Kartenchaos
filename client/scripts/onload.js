@@ -26,8 +26,8 @@ var customBgStyle = document.querySelector('.custom-bg-style');
 loadCustomBgs()
 
 const cardStyleOptions = document.querySelectorAll(".card-style-option")
-for(cardStyleOption of cardStyleOptions){
-    request.open("GET", "/client/cards/1" + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
+for(let i = 0; i < cardStyleOptions.length; i++){
+    request.open("GET", "/client/cards/1" + suits[i%4] + ".svg", false);
     request.send(null);
-    cardStyleOption.innerHTML = request.responseText;
+    cardStyleOptions[i].innerHTML = request.responseText;
 }
