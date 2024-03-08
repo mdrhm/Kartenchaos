@@ -10,7 +10,7 @@ var interval = setInterval(function() {
         else {
             clearInterval(interval);
         }
-    }, 3000);
+    }, 2000);
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("background")) {
