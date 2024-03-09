@@ -17,12 +17,7 @@ function makeGame() {
     socket.emit('makeGame');
 }
 
-function joinGame() {
-    
-    roomID = document.getElementById('roomID').value;
-    console.log(roomID);
-    socket.emit('joinGame', { roomID: roomID });
-}
+
 
 function getRoomLink() {
     socket.emit('getRoomLink');
@@ -43,6 +38,7 @@ function getRoomIDFromURL() {
 }
 
 function joinGame(roomID) {
+    console.log("joingame room id" + roomID);
     socket.emit('joinGame', { roomID: roomID });
 }
 
@@ -63,7 +59,7 @@ socket.on('roomLink', (data) => {
 socket.on('newGame', (data) => {
     console.log("making game");
     roomID = data.roomID;
-
+    console.log(roomID);
     // Hide the home screen
     document.getElementsByClassName("home-ui")[0].style.display = "none";
     
@@ -84,6 +80,7 @@ socket.on("2playersConnected", () => {
 function sendCardChoice(cardChosen) {
     let choiceEvent;
     console.log("beginning choiceevent");
+    console.log(roomID);
     if (player1){
         choiceEvent = "player1Choice";
         console.log("its player1 choice");
@@ -94,7 +91,7 @@ function sendCardChoice(cardChosen) {
     }
     console.log("send card choice no romm id" + roomID);
     socket.emit(choiceEvent, {
-        cardChosen: cardChosen,
+    cardChosen: cardChosen,
         roomID: roomID
     });
 }

@@ -64,6 +64,7 @@ io.on('connection', (socket) => {
             console.log("joingame" + data.roomID)
             
             socket.join(data.roomID);
+            console.log(data.roomID);
             socket.to(data.roomID).emit("2playersConnected", {});
             socket.emit("2playersConnected");
         }
@@ -94,6 +95,8 @@ io.on('connection', (socket) => {
 
     socket.on("player2Choice", (data) => {
         let cardChosen = data.cardChosen;
+        let roomID = data.roomID;
+        console.log(roomID);
         console.log("player2choicecalled");
         console.log("Received data:", data);
         console.log(rooms[data.roomID]);
