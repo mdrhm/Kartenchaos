@@ -25,12 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedMusicOption) {
         const audioElement = document.getElementById("music");
         audioElement.loop = true;
-        if (savedMusicOption === "Option 1") {
-            audioElement.src = "Alone.mp3";
+        if(option.innerText === "Default") {
+            audioElement.src = "Audio/music.mp3";
+        }
+        else if(savedMusicOption === "Option 1") {
+            audioElement.src = "Audio/Alone.mp3";
         } else if (savedMusicOption === "Option 2") {
-            audioElement.src = "path/to/option2.mp3";
+            audioElement.src = "Audio/TDFW.mp3";
         } else if (savedMusicOption === "Option 3") {
-            audioElement.src = "path/to/option3.mp3";
+            audioElement.src = "Audio/gangnam.mp3";
         }
         audioElement.load();
         audioElement.play();
