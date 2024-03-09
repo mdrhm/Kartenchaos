@@ -84,16 +84,7 @@ dropdowns.forEach(dropdown => {
 
             // Audio Source
             const audioElement = document.getElementById("music");
-            if(option.innerText === "Default") {
-                audioElement.src = "Audio/music.mp3";
-            }
-            else if (option.innerText === "Option 1") {
-                audioElement.src = "Audio/Alone.mp3";
-            } else if (option.innerText === "Option 2") {
-                audioElement.src = "Audio/TDFW.mp3";
-            } else if (option.innerText === "Option 3") {
-                audioElement.src = "Audio/gangnam.mp3";
-            }
+            audioElement.src = "Audio/" + option.innerText + ".mp3";
             audioElement.load();
             audioElement.play();
 

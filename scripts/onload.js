@@ -24,19 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedMusicOption = localStorage.getItem("musicOption");
     if (savedMusicOption) {
         const audioElement = document.getElementById("music");
-        audioElement.loop = true;
-        if(option.innerText === "Default") {
-            audioElement.src = "Audio/music.mp3";
-        }
-        else if(savedMusicOption === "Option 1") {
-            audioElement.src = "Audio/Alone.mp3";
-        } else if (savedMusicOption === "Option 2") {
-            audioElement.src = "Audio/TDFW.mp3";
-        } else if (savedMusicOption === "Option 3") {
-            audioElement.src = "Audio/gangnam.mp3";
-        }
+        audioElement.src = "Audio/" + savedMusicOption + ".mp3";
         audioElement.load();
         audioElement.play();
+        document.querySelector(".selected").innerHTML = savedMusicOption
     }
 });
 
