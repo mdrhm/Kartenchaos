@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedMusicOption = localStorage.getItem("musicOption");
     if (savedMusicOption) {
         const audioElement = document.getElementById("music");
+        audioElement.loop = true;
         if (savedMusicOption === "Option 1") {
             audioElement.src = "Alone.mp3";
         } else if (savedMusicOption === "Option 2") {
