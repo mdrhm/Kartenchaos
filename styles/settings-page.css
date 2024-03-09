@@ -289,7 +289,7 @@
   border-radius: 0.5em;
   color: #9fa5b5;
   position: absolute;
-  top: 3em;
+  bottom: 3em;
   left: 50%;
   width: 100%;
   transform: translateX(-50%);
