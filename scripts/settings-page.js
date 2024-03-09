@@ -4,7 +4,7 @@ const masterSlider = document.querySelector('.master-slider');
 const masterInput = document.querySelector('.master-input');
 
 // On load Volume is Lower
-backgroundAudio.volume = 0.020;
+backgroundAudio.volume = 0.010;
 masterSlider.value = 10;
 masterInput.value = 10;
 
@@ -60,9 +60,8 @@ generalBtn.addEventListener('click', () => {
     audioEl.classList.add('display-disabled');
 });
 
-//MUSIC CHOOSER
+// Select between options for bg music
 const dropdowns = document.querySelectorAll('.dropdown');
-
 dropdowns.forEach(dropdown => {
     const select = dropdown.querySelector('.select');
     const caret = dropdown.querySelector('.caret');
@@ -79,14 +78,27 @@ dropdowns.forEach(dropdown => {
     options.forEach(option => {
         option.addEventListener('click', () => {
             selected.innerText = option.innerText;
-            select.classList.remove('-selected-clicked');
+            select.classList.remove('selected-clicked');
             caret.classList.remove('caret-rotate');
             menu.classList.remove('menu-open');
 
-            options.forEach(option => {
-                option.classList.remove('active');
-            });
-            option.classList.add('active');
+            // Audio Source
+            const audioElement = document.getElementById("music");
+            if(option.innerText === "Default") {
+                audioElement.src = "Audio/music.mp3";
+            }
+            else if (option.innerText === "Option 1") {
+                audioElement.src = "Audio/Alone.mp3";
+            } else if (option.innerText === "Option 2") {
+                audioElement.src = "Audio/TDFW.mp3";
+            } else if (option.innerText === "Option 3") {
+                audioElement.src = "Audio/gangnam.mp3";
+            }
+            audioElement.load();
+            audioElement.play();
+
+            // Save music option to local storage
+            localStorage.setItem("musicOption", option.innerText);
         });
     });
 });

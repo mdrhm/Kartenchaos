@@ -12,6 +12,7 @@ var interval = setInterval(function() {
         }
     }, 3000);
 
+// Save Music Option
 document.addEventListener('DOMContentLoaded', () => {
     const selectedBackground = localStorage.getItem("background");
     if (selectedBackground) {
@@ -20,9 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
         settingsBg.classList = selectedBackground;
     }
 
-    // Add ifSavedBackgroundMusic Volume
-
+    const savedMusicOption = localStorage.getItem("musicOption");
+    if (savedMusicOption) {
+        const audioElement = document.getElementById("music");
+        if (savedMusicOption === "Option 1") {
+            audioElement.src = "Alone.mp3";
+        } else if (savedMusicOption === "Option 2") {
+            audioElement.src = "path/to/option2.mp3";
+        } else if (savedMusicOption === "Option 3") {
+            audioElement.src = "path/to/option3.mp3";
+        }
+        audioElement.load();
+        audioElement.play();
+    }
 });
+
+
 
 var customBgStyle = document.querySelector('.custom-bg-style');
 loadCustomBgs()
