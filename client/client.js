@@ -18,11 +18,6 @@ function makeGame() {
 }
 
 
-
-function getRoomLink() {
-    socket.emit('getRoomLink');
-}
-
 window.onload = function () {
     const extractedRoomID = getRoomIDFromURL();
 
@@ -37,10 +32,13 @@ function getRoomIDFromURL() {
     return urlParams.get('roomID');
 }
 
-function joinGame(roomID) {
+function joinGame() {
     console.log("joingame room id" + roomID);
     socket.emit('joinGame', { roomID: roomID });
+    roomID = getRoomIDFromURL();
+    socket.emit('joinGame', {roomID: roomID});
 }
+
 
 function goToMainPhase() {
     // Go to the main phase logic here
@@ -49,12 +47,6 @@ function goToMainPhase() {
     document.getElementsByClassName("Main-phase")[0].style.display = "block";
 }
 
-socket.on('roomLink', (data) => {
-    const roomCode = window.location.search.substring(1); // Get the URL parameters excluding the '?' character
-    document.getElementById("link").innerHTML = roomCode;
-
-    // Now you can share the room link with another player
-});
 
 socket.on('newGame', (data) => {
     console.log("making game");
@@ -98,15 +90,16 @@ function sendCardChoice(cardChosen) {
 
 socket.on("updatep2withp1card", (data) => {
     if(!player1){
-    console.log("player1placedcard");
-    let card = data.cardChosen;
-    if (dropright) {
-        dropright.appendChild(cardi);
-    } else {
-        console.log("Element with id 'dropright' not found.");
-    }
+        console.log("player1placedcard");
+        let card = data.cardChosen;
+         if (dropright) {
+            dropright.appendChild(cardi);
+        } 
+        else {
+            console.log("Element with id 'dropright' not found.");
+        }
 
-}
+    }
 });
 
 
