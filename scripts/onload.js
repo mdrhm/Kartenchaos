@@ -21,13 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         settingsBg.classList = selectedBackground;
     }
 
-    const savedMusicOption = localStorage.getItem("musicOption");
+    const savedMusicOption = parseInt(localStorage.getItem("musicOption"));
+    const options = document.querySelectorAll('.menu li');
     if (savedMusicOption) {
         const audioElement = document.getElementById("music");
-        audioElement.src = "Audio/" + savedMusicOption + ".mp3";
+        audioElement.src = "Audio/" + options[savedMusicOption].innerHTML + ".mp3";
         audioElement.load();
         audioElement.play();
-        document.querySelector(".selected").innerHTML = savedMusicOption
+        document.querySelector(".selected").innerHTML = options[savedMusicOption].innerHTML
+        options[savedMusicOption].classList.add("hidden")
     }
 });
 

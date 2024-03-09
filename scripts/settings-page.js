@@ -75,23 +75,30 @@ dropdowns.forEach(dropdown => {
         menu.classList.toggle('menu-open');
     });
 
-    options.forEach(option => {
+    for(let i = 0; i < options.length; i++){
+        let option = options[i]
         option.addEventListener('click', () => {
+            options.forEach(optionTemp => {
+                optionTemp.classList.remove("hidden");
+            })
+            option.classList.add("hidden")
             selected.innerText = option.innerText;
-            select.classList.remove('selected-clicked');
-            caret.classList.remove('caret-rotate');
-            menu.classList.remove('menu-open');
-
-            // Audio Source
             const audioElement = document.getElementById("music");
             audioElement.src = "Audio/" + option.innerText + ".mp3";
             audioElement.load();
             audioElement.play();
 
             // Save music option to local storage
-            localStorage.setItem("musicOption", option.innerText);
+            localStorage.setItem("musicOption", i);
         });
-    });
+    }
+    document.addEventListener("click", (event) => {
+        if(!select.contains(event.target)){
+            menu.classList.remove('menu-open');
+            caret.classList.remove('caret-rotate');
+            select.classList.remove('selected-clicked');
+        }
+    })
 });
 
 
