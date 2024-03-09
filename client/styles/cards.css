@@ -112,15 +112,30 @@
 
 .coffee{
     rect{
-        fill: #755139 !important;
-        stroke: #F2EDD7 !important;
+        fill: #F2EDD7 !important;
+        stroke: #755139 !important;
         stroke-width: 2;
     }
     symbol:nth-child(1) path{
-        fill: #F2EDD7 !important;
+        fill: #755139 !important;
     }
     symbol:nth-child(2) path{
-        stroke: #F2EDD7 !important;
+        stroke: #755139 !important;
     }
-    border: 2px solid #F2EDD7 !important;
+    border: 2px solid #755139 !important;
+}
+
+.green{
+    rect{
+        fill: #283618 !important;
+        stroke: #B7B7A4 !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #B7B7A4 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #B7B7A4 !important;
+    }
+    border: 2px solid #B7B7A4 !important;
 }
