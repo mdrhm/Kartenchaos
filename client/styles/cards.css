@@ -122,5 +122,5 @@
     symbol:nth-child(2) path{
         stroke: #F2EDD7 !important;
     }
-    border: 2px solid #F2EDD7;
+    border: 2px solid #F2EDD7 !important;
 }
