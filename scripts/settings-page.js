@@ -3,7 +3,10 @@ const backgroundAudio = document.getElementById("music");
 const masterSlider = document.querySelector('.master-slider');
 const masterInput = document.querySelector('.master-input');
 
-backgroundAudio.volume = masterSlider.value / 100;
+// On load Volume is Lower
+backgroundAudio.volume = 0.020;
+masterSlider.value = 10;
+masterInput.value = 10;
 
 // Update the volume of the background audio when the master volume slider is changed
 masterSlider.addEventListener('input', () => {
@@ -56,25 +59,6 @@ generalBtn.addEventListener('click', () => {
     generalEl.classList.remove('display-disabled');
     audioEl.classList.add('display-disabled');
 });
-
-
-
-// VOLUME SLIDERS
-// const sliders = document.querySelectorAll("input");
-// const slideValues = document.querySelectorAll(".slider-value span");
-
-// sliders.forEach((slider, index) => {
-//     slider.oninput = () => {
-//         let value = slider.value;
-//         slideValues[index].textContent = value;
-//         slideValues[index].style.left = (value / 2) + "%";
-//         slideValues[index].classList.add("show");
-//     };
-//
-//     slider.onblur = () => {
-//         slideValues[index].classList.remove("show");
-//     };
-// });
 
 //MUSIC CHOOSER
 const dropdowns = document.querySelectorAll('.dropdown');
