@@ -20,6 +20,8 @@
 </head>
 
 <body>
+
+
 <!-- JAVASCRIPT-SCRIPT-LINKS -->
 <script src="socket.io/socket.io.js"></script>
 <script src="./client/client.js"></script>
@@ -29,7 +31,7 @@
 <script src="/client/scripts/onload.js" defer></script>
 
 <!-- BACKGROUND-MUSIC -->
-<audio id="music" controls autoplay hidden>
+<audio id="music" controls autoplay hidden loop>
     <source src="/client/music.mp3" type="audio/mp3">
 </audio>
 
@@ -183,10 +185,12 @@
                                 <div class="caret"></div>
                             </div>
                             <ul class="menu">
-                                <li class="active">Default</li>
-                                <li>Option 1</li>
-                                <li>Option 3</li>
-                                <li>Option 3</li>
+                                <li>None</li>
+                                <li>Default</li>
+                                <li>Alone</li>
+                                <li>Turn Down for What</li>
+                                <li>Gangnam Style</li>
+                                <li>Down for Real</li>
                             </ul>
                         </div>
                     </div>
@@ -223,7 +227,6 @@
     <input class="form-control my-2" placeholder="Enter Code" type="text" name="" id="roomID" />
     <button class="form-control btn btn-secondary" onclick="joinGame()">Join Game</button>
     <div class="wait">waiting for player
-
         <img src = "client/Images/joker.png" id = "joker">
     </div>
 

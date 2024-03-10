@@ -10,7 +10,7 @@ var interval = setInterval(function() {
         else {
             clearInterval(interval);
         }
-    }, 2000);
+    }, 3000);
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("background")) {
@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (localStorage.getItem("cardstyle")) {
         updateCardStyle(localStorage.getItem("cardstyle"))
+    }
+    const savedMusicOption = parseInt(localStorage.getItem("musicOption"));
+    const options = document.querySelectorAll('.menu li');
+    if (savedMusicOption) {
+        const audioElement = document.getElementById("music");
+        audioElement.src = "Audio/" + options[savedMusicOption].innerHTML + ".mp3";
+        audioElement.load();
+        audioElement.play();
+        document.querySelector(".selected").innerHTML = options[savedMusicOption].innerHTML
+        options[savedMusicOption].classList.add("hidden")
     }
 });
 
