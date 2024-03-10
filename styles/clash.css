@@ -49,10 +49,11 @@
 
 .barcontainer{
   display: flex;
-  justify-content: space-between;
   height: 10vh;
   align-items: center;
   border-width: 10px;
+  justify-content: center;
+  gap: 50%;
   
 }
 
@@ -78,8 +79,16 @@
 } */
 
 progress[value]::-webkit-progress-value {
-  background-color: var(--progress-color);
+  /* background: var(--progress-color); */
+  background: linear-gradient(90deg, #e20808 0px, rgb(205, 17, 3) 10px, rgb(192, 124, 14) 80px, rgb(208, 170, 22) 125px, rgb(182, 194, 24) 200px, rgb(89, 170, 7) 250px, rgb(59, 147, 9) 275px, rgb(47, 136, 5) 300px, rgb(23, 98, 6) 350px, rgb(6, 82, 24) 400px);
   transition: background-color 1s ease;
+  border-radius: 20px;
+}
+
+progress::-webkit-progress-bar {
+  background: transparent;
+  border: solid black;
+  border-radius: 20px;
 }
 
 #p1-health-bar, #p2-health-bar {
@@ -90,14 +99,13 @@ progress[value]::-webkit-progress-value {
   
 }
 
-#p2-health-bar, .bar2 {
+#p2-health-bar {
   transform: scaleX(-1);
 }
 
 .bar1, .bar2 {
   width: 400px;
   height: 50%;
-  border: solid black;
   border-radius: 5px;
 }
 
@@ -107,7 +115,6 @@ progress[value]::-webkit-progress-value {
   justify-content: space-between;
   align-items: center;
   height: 80vh; /* Optional: Set a height for the container */
- 
   margin-top: 5%;
   
 
