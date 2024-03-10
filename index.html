@@ -11,6 +11,7 @@
     <link rel="icon" href="data:,">
 
     <!-- CSS-STYLES-LINKS -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="./client/styles/backgrounds.css">
     <link rel="stylesheet" href="./client/styles/home-page.css">
     <link rel="stylesheet" href="./client/styles/settings-page.css">
@@ -52,19 +53,184 @@
                     </div>
                     <div class="audio">
                         <button class="main-btn hover-enabled">Audio</button>
+=======
+    <link rel="stylesheet" href="./client/styles/cards.css">
+    <link rel="stylesheet" href="/client/styles/backgrounds.css">
+    <link rel="stylesheet" href="/client/styles/home-page.css">
+    <link rel="stylesheet" href="client/styles/settings-page.css">
+    <link rel="stylesheet" href="/client/styles/rules-page.css">
+    <style class = "custom-bg-style" type="text/css"></style>
+</head>
+
+<body>
+<!-- JAVASCRIPT-SCRIPT-LINKS -->
+<!--      <script src="socket.io/socket.io.js"></script>-->
+<!--      <script src="./client/client.js"></script>-->
+<script src="./client/Main-phase-script.js" defer></script>
+<script src="/client/scripts/settings-page.js" defer></script>
+<script src="/client/scripts/rules-page.js" defer></script>
+<script src="/client/scripts/onload.js" defer></script>
+<!-- BACKGROUND-MUSIC -->
+<audio id="music" controls autoplay hidden>
+    <source src="/client/music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+    var audio = document.getElementById("music");
+    music.volume = 0.0015;
+</script>
+
+<!-- BACKGROUND-IMAGE -->
+<div class="bg-0" id = "bg"></div>
+
+<!-- HOME-PAGE -->
+<div class="home-ui">
+    <div class="header">
+        <div class="home-pictures left">
+            <img src="/client/cards/13D.svg" alt="" class="card1">
+        </div>
+        <h1 id="title-of-game">KARTENCHAOS</h1>
+        <div class="home-pictures right">
+            <img src="/client/cards/12C.svg" alt="" class="card2">
+        </div>
+        <div class="logo"></div>
+    </div>
+    <div class="home-screen-buttons">
+        <button onclick="makeGame()" id="play-game">Play Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="rules">Rules <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="settings">Settings <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+    </div>
+</div>
+
+<!-- RULES-PAGE -->
+<div id="rules-page" class = "hidden">
+    <div id="rules-background" class = "bg-0">
+        <h1 class = "rules-header">Rules</h1>
+        <p class = "rules">
+            Objective: Reduce your opponent's hp to zero while keeping your own hp above zero.
+            <br><br>
+            Setup: Start with 50 hp and a hand of cards totaling 30 points.
+            <br><br>
+            Gameplay: Play cards in rounds, with the higher-value card winning the round and dealing damage to the opponent based on the average of the two cards played.
+            <br><br>
+            Winning: The game ends when one player's hp reaches zero or below, with the other player declared the winner.
+            <br><br>
+            Strategy: Manage your hand wisely, conserve higher-value cards, and strategize to minimize hp loss while dealing damage to your opponent.
+        </p>
+        <button id = "rules-page-exit">Ok</button>
+    </div>
+</div>
+
+
+<!-- SETTINGS-PAGE -->
+<div id="settings-page" class = "hidden">
+    <div id="setting-background" class = "bg-0">
+        <div class="content-holder">
+            <!-- TOP PORTION OF AUDIO SETTINGS -->
+            <div class="top-content">
+                <div class="general">
+                    <button class="main-btn hover-enabled clicked">General</button>
+                </div>
+                <div class="audio">
+                    <button class="main-btn hover-enabled">Audio</button>
+                </div>
+            </div>
+
+            <!-- GENERAL SETTINGS -->
+            <div id="General-Setting-Option">
+                <!-- MIDDLE PORTION OF General SETTINGS -->
+                <div class="middle-content">
+                    <div class="bg-settings">
+                        <div class="change-bg">Background</div>
+                        <div class="bg-options">
+                        </div>
+                        <div class="bg-stock-container hidden">
+                            <div class="bg-option bg-stock bg-0" onclick = "updateBg('bg-0')"></div>
+                            <div class="bg-option bg-stock bg-1" onclick = "updateBg('bg-1')"></div>
+                            <div class="bg-option bg-stock bg-2" onclick = "updateBg('bg-2')"></div>
+                        </div>
+                        <div class="bg-option bg-custom-upload-container hidden" onclick="document.querySelector('.bg-custom-select').click()">
+                            <h1 class = "upload">+</h1>
+                        </div>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" onchange="bgUpload(event)" class="bg-option bg-custom-select hidden" style="opacity: 0; height:100%;width: 100%;">
+                    </div>
+                    <div class="card-style-settings">
+                        <div class="change-card-style">Card Style</div>
+                        <div class="change-card-options">
+                            <div class="card-style-option default" onclick = "updateCardStyle('default')"></div>
+                            <div class="card-style-option dark" onclick = "updateCardStyle('dark')"></div>
+                            <div class="card-style-option blue-and-pink" onclick = "updateCardStyle('blue-and-pink')"></div>
+                            <div class="card-style-option blue-and-yellow" onclick = "updateCardStyle('blue-and-yellow')"></div>
+                            <div class="card-style-option purple" onclick = "updateCardStyle('purple')"></div>
+                            <div class="card-style-option joker" onclick = "updateCardStyle('joker')"></div>
+                            <div class="card-style-option flash" onclick = "updateCardStyle('flash')"></div>
+                            <div class="card-style-option black-and-gold" onclick = "updateCardStyle('black-and-gold')"></div>
+                            <div class="card-style-option coffee" onclick = "updateCardStyle('coffee')"></div>
+                            <div class="card-style-option green" onclick = "updateCardStyle('green')"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- GENERAL SETTINGS -->
-                <div id="General-Setting-Option">
-                    <!-- MIDDLE PORTION OF General SETTINGS -->
-                    <div class="middle-content">
-                        <div class="bg-settings">
-                            <div class="change-bg">Background</div>
-                            <div class="bg-options">
-                                <div class="bg-option bg-0"></div>
-                                <div class="bg-option bg-1"></div>
+                <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                <div class="bottom-content">
+                    `                   <div></div>
+                    <!-- Right-Side -->
+                    <div class="bottom-right-side">
+                        <button class="reset-btn">RESET</button>
+                        <button class="save-btn">SAVE</button>
+                        <div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- AUDIO SETTINGS -->
+            <div id="Audio-Setting-Option" class="display-disabled">
+                <!-- MIDDLE PORTION OF AUDIO SETTINGS -->
+                <div class="middle-content">
+                    <div class="master-volume-option">
+                        <div class="master-volume">
+                            Master Volume
+                        </div>
+                        <input type="range" class="master-slider range-style">
+                        <input type="number" class ="master-input slider-input" value="50" placeholder="50"></input>
+
+                    </div>
+
+                    <div class="music-volume-option">
+                        <div class="music-volume">
+                            Music Volume
+                        </div>
+                        <input type="range" class="music-slider range-style">
+                        <input type="number" class ="sfx-input slider-input" value="50" placeholder="50"></input>
+
+                    </div>
+
+                    <div class="sfx-volume-option">
+                        <div class="sfx-volume">
+                            SFX Volume
+                        </div>
+                        <input type="range" class="sfx-slider range-style">
+                        <input type="number" class ="sfx-input slider-input" value="50" placeholder="50"></input>
+
+>>>>>>> test
+                    </div>
+                </div>
+
+                <!-- BOTTOM PORTION OF AUDIO SETTINGS -->
+                <div class="bottom-content">
+                    <!-- Left-Side -->
+                    <div class="bottom-left-side">
+                        <div class="change-music-option">Current Music
+                        </div>
+                        <div class="dropdown">
+                            <div class="select">
+                                <span class="selected">Default</span>
+                                <div class="caret"></div>
                             </div>
+<<<<<<< HEAD
                         </div>
                     </div>
 
@@ -136,10 +302,30 @@
                         </div>
 
                     </div>
+=======
+                            <ul class="menu">
+                                <li class="active">Default</li>
+                                <li>Option 1</li>
+                                <li>Option 3</li>
+                                <li>Option 3</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right-Side -->
+                    <div class="bottom-right-side">
+                        <button class="reset-btn">RESET</button>
+                        <button class="save-btn">SAVE</button>
+                        <div>
+                        </div>
+                    </div>
+
+>>>>>>> test
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="Main-phase" style="display: none;">
         
         <div class="dropport" id=drop_port>
@@ -154,30 +340,44 @@
             <div class="card" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
         </div>
         
+=======
+
+</div>
+
+<div id="Main-phase" style="display: none;" class = "default">
+
+    <div class="dropport" id=drop_port></div>
+    <div class="p1handcontainer">
+        <div class="play-card" style="--i:-2" draggable="true"></div>
+        <div class="play-card" style="--i:-1" draggable="true"></div>
+        <div class="play-card" style="--i:0" draggable="true"></div>
+        <div class="play-card" style="--i:1" draggable="true"></div>
+        <div class="play-card" style="--i:2" draggable="true"></div>
+>>>>>>> test
     </div>
-    <div class="wait-phase" style="display: none;">
-        <button id = "link" onclick = "getRoomLink()">Click to get code</button>
-        <input class="form-control my-2" placeholder="Enter Code" type="text" name="" id="roomID" />
-        <button class="form-control btn btn-secondary" onclick="joinGame()">Join Game</button>
-        <div class="wait">waiting for player
-            
-            <img src = "client/Images/joker.png" id = "joker">
-        </div>
-        
-        <div class="p1handcontainer">
-            <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
-            <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
-            <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
-            <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
-            <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
-        </div>
+
+</div>
+<div class="wait-phase" style="display: none;">
+    <button id = "link" onclick = "getRoomLink()">Click to get code</button>
+    <input class="form-control my-2" placeholder="Enter Code" type="text" name="" id="roomID" />
+    <button class="form-control btn btn-secondary" onclick="joinGame()">Join Game</button>
+    <div class="wait">waiting for player
+
+        <img src = "client/Images/joker.png" id = "joker">
     </div>
-    
-      <!-- JAVASCRIPT-SCRIPT-LINKS -->
-      <script src="socket.io/socket.io.js"></script>
-      <script src="./client/client.js"></script>
-      <script src="./client/Main-phase-script.js"></script>
-      <script src="./client/scripts/settings-page.js"></script>
+
+    <div class="p1handcontainer">
+        <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
+        <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
+        <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
+        <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
+        <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT-SCRIPT-LINKS -->
+
+
 </body>
 
 </html>

@@ -1,0 +1,141 @@
+.default{
+    rect{
+        stroke-width: 2;
+    }
+    border: 2px solid black !important;
+}
+
+.dark{
+    rect{
+        fill:black !important;
+        stroke:white !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: white !important;
+    }
+    symbol:nth-child(2) path{
+        stroke:white !important;
+    }
+    border: 2px solid white !important;
+}
+
+.black-and-gold{
+    rect{
+        fill:black !important;
+        stroke: goldenrod !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: goldenrod !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: goldenrod !important;
+    }
+    border: 2px solid goldenrod !important;
+}
+
+.blue-and-pink{
+    rect{
+        fill: #87cefa  !important;
+        stroke: #FC819E !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #FC819E !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #FC819E !important;
+    }
+    border: 2px solid #FC819E !important;
+}
+
+.blue-and-yellow{
+    rect{
+        fill: #2A4759 !important;
+        stroke: #F5B06E !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #F5B06E !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #F5B06E !important;
+    }
+    border: 2px solid #F5B06E !important;
+}
+
+.purple{
+    rect{
+        fill: #7469B6 !important;
+        stroke: #E1AFD1 !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #E1AFD1 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #E1AFD1 !important;
+    }
+    border: 2px solid #E1AFD1 !important;
+}
+
+.joker{
+    rect{
+        fill: #331B3F !important;
+        stroke: #09ff00 !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #09ff00 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #09ff00 !important;
+    }
+    border: 2px solid #09ff00 !important;
+}
+
+.flash{
+    rect{
+        fill: #a51818 !important;
+        stroke: #ffe659 !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #ffe659 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #ffe659 !important;
+    }
+    border: 2px solid #ffe659 !important;
+}
+
+.coffee{
+    rect{
+        fill: #F2EDD7 !important;
+        stroke: #755139 !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #755139 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #755139 !important;
+    }
+    border: 2px solid #755139 !important;
+}
+
+.green{
+    rect{
+        fill: #283618 !important;
+        stroke: #B7B7A4 !important;
+        stroke-width: 2;
+    }
+    symbol:nth-child(1) path{
+        fill: #B7B7A4 !important;
+    }
+    symbol:nth-child(2) path{
+        stroke: #B7B7A4 !important;
+    }
+    border: 2px solid #B7B7A4 !important;
+}

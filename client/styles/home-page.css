@@ -1,3 +1,5 @@
+@import url("backgrounds.css");
+
 body {
     height: 100%;
     width: 100%;
@@ -27,34 +29,54 @@ body {
 }
 @keyframes flip {
     0% {
+<<<<<<< HEAD
         transform: perspective(600px) rotateY(0deg);
         background-image: url("../cards/AS.svg");
+=======
+        transform: perspective(600px) rotateY(-180deg);
+        content: url("/client/cards/1B.svg");
+>>>>>>> test
     }
     50% {
         transform: perspective(600px) rotateY(180deg);
         background-image: url("../cards/2B.svg");
     }
     100% {
+<<<<<<< HEAD
         transform: perspective(600px) rotateY(360deg);
         background-image: url("../cards/AS.svg");
+=======
+        transform: perspective(600px) rotateY(180deg);
+        content: url("/client/cards/1B.svg");
+>>>>>>> test
     }
 }
 
 @keyframes flip-opposite {
     0% {
+<<<<<<< HEAD
         transform: perspective(600px) rotateY(0deg);
+=======
+        transform: perspective(600px) rotateY(180deg);
+        content: url("/client/cards/1B.svg");
+>>>>>>> test
     }
     50% {
         transform: perspective(600px) rotateY(-180deg);
     }
     100% {
+<<<<<<< HEAD
         transform: perspective(600px) rotateY(-360deg);
+=======
+        transform: perspective(600px) rotateY(-180deg);
+        content: url("/client/cards/1B.svg");
+>>>>>>> test
     }
 }
 
 @font-face {
     font-family: myFirstFont;
-    src: url(".client/Font.ttf");
+    src: url("../Font.ttf");
 }
 
 
@@ -134,7 +156,10 @@ html {
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
     padding-left: 57px;
+<<<<<<< HEAD
 
+=======
+>>>>>>> test
 }
 
 .home-screen-buttons button:hover {
@@ -271,31 +296,26 @@ html {
 }
 
 
-.Main-phase{
+#Main-phase{
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none !important;
 }
+
 .p1handcontainer{
-
     position: absolute;
-
     bottom: -15%;
-
     margin-bottom: 12.5%;
-
     width: 100%;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
-.p1handcontainer .card{
+.p1handcontainer .card {
     position: absolute;
     width: fit-content;
     height: fit-content;
@@ -304,13 +324,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(0, 0, 0);
+    border: none;
     cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
     border-radius: 13px;
-    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
-
+    transform: rotate(calc(var(--i)* 15deg)) translate(calc((var(--i))* 70px), -40px);
 }
 
 .p1handcontainer .card img {
@@ -414,3 +433,10 @@ html {
     display: flex;
     bottom: 20%;
 }
+<<<<<<< HEAD
+=======
+
+button:focus{
+    outline: none;
+}
+>>>>>>> test
