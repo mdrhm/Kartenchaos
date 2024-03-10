@@ -34,7 +34,8 @@ body {
         content: url("/client/cards/1B.svg");
     }
     50% {
-        transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(0deg);
+        content: initial;
     }
     100% {
         transform: perspective(600px) rotateY(180deg);
@@ -48,10 +49,10 @@ body {
         content: url("/client/cards/1B.svg");
     }
     50% {
-        transform: perspective(600px) rotateY(-180deg);
+        transform: perspective(600px) rotateY(0deg);
+        content: initial;
     }
     100% {
-
         transform: perspective(600px) rotateY(-180deg);
         content: url("/client/cards/1B.svg");
     }
