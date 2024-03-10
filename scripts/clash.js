@@ -32,8 +32,11 @@ p2Attack.addEventListener('click', () => {
 
 function attackEnemy(hp, dmg){
   hp -= dmg;
+  
   return hp;
 }
+
+
 
 function updateBackgroundColor(hp){
   
@@ -59,6 +62,6 @@ function updateBackgroundColor(hp){
 
 function updateWidth(hp) {
   hp.style.width = `${hp.value}%`;
-  hp.style.transition = 'width 1s ease';
+  hp.style.transition = 'width .5s ease';
 }
 

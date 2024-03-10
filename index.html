@@ -208,37 +208,42 @@
 
 <!-- CLASH 1v1 PAGE -->
 <div id="clash-page">
-
+    <div class = cardcontainer>
+        <div class = card1container >
+            <img src = "cards/2B.svg" class = "card2clash" id = "player1card">
+        </div>
+        <p class = "vs">VS</p>
+        <div class = card2container>
+            <img src = "cards/2B.svg"  class = "card2clash" id = "player2card">
+        </div>
+    </div>
     <!-- p1 && p2 pfp + Vs icon -->
-    <div class="p1-pfp">
-        <img src="Images\TheAttacker.PNG" alt="">
-    </div>
+   
 
-    <div class="vs-img-container">
-        <img class="vs-img" src="Images\—Pngtree—vs or versus text logo_5995929.png" alt="">
-    </div>
+    
 
-    <div class="p2-pfp">
-        <img src="Images\TheAttacker.PNG" alt="">
-    </div>
+    
 
-    <!-- (p1 card + health-bar) && (p2 card + health-bar) -->
-    <div class="battle">
-        <!-- cards -->
-        <div class="p1-card">Player 1
-            <button class="p1-attack">ATTACK</button>
-        </div>
-        <div class="p2-card">Player 2
-            <button class="p2-attack">ATTACK</button>
-        </div>
+   
         <!-- health-bars -->
-        <div class="bar1"><progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress></div>
+      
+    <div class="barcontainer">
+            
+        <div class = "p1barcontainer">
+            <div id = p1-health-bar>Player 1 Health</div>
+        </div>
+            
         
-        <div class="bar2"><progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress></div>
+        
+            
+            <div class = "p2barcontainer">
+            <div id="p2-health-bar">Player 2 Health</div>
+            </div>
     </div>
-
+   
 
 </div>
+ 
 
 </body>
 </html>
