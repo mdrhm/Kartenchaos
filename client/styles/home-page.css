@@ -29,48 +29,30 @@ body {
 }
 @keyframes flip {
     0% {
-<<<<<<< HEAD
-        transform: perspective(600px) rotateY(0deg);
-        background-image: url("../cards/AS.svg");
-=======
         transform: perspective(600px) rotateY(-180deg);
         content: url("/client/cards/1B.svg");
->>>>>>> test
     }
     50% {
         transform: perspective(600px) rotateY(180deg);
-        background-image: url("../cards/2B.svg");
     }
     100% {
-<<<<<<< HEAD
-        transform: perspective(600px) rotateY(360deg);
-        background-image: url("../cards/AS.svg");
-=======
         transform: perspective(600px) rotateY(180deg);
         content: url("/client/cards/1B.svg");
->>>>>>> test
     }
 }
 
 @keyframes flip-opposite {
     0% {
-<<<<<<< HEAD
-        transform: perspective(600px) rotateY(0deg);
-=======
         transform: perspective(600px) rotateY(180deg);
         content: url("/client/cards/1B.svg");
->>>>>>> test
     }
     50% {
         transform: perspective(600px) rotateY(-180deg);
     }
     100% {
-<<<<<<< HEAD
-        transform: perspective(600px) rotateY(-360deg);
-=======
+
         transform: perspective(600px) rotateY(-180deg);
         content: url("/client/cards/1B.svg");
->>>>>>> test
     }
 }
 
@@ -122,7 +104,7 @@ body {
     text-decoration: solid;
     text-align: center;
     font-family: myFirstFont;
-    src: url("Poker.ttf");
+    src: url("../Font.ttf");
     color: black;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
@@ -156,10 +138,6 @@ html {
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
     padding-left: 57px;
-<<<<<<< HEAD
-
-=======
->>>>>>> test
 }
 
 .home-screen-buttons button:hover {
@@ -205,10 +183,6 @@ html {
     }
 
 }
-
-
-
-
 
 /* Home screen button select, NO ANIMATED BUTTON + ANIMATED ICON */
 
@@ -338,8 +312,6 @@ html {
 }
 
 
-
-
 .p1handcontainer:hover .card:nth-child(3) {
     transform: rotate(2deg) translate(calc((var(--i)) * 50px), -40px);
 }
@@ -433,10 +405,7 @@ html {
     display: flex;
     bottom: 20%;
 }
-<<<<<<< HEAD
-=======
 
 button:focus{
     outline: none;
 }
->>>>>>> test

@@ -1,9 +1,5 @@
-
-
 let cards = document.getElementsByClassName("card");
-const dropleft = document.getElementById("dropl");
-const dropright = document.getElementById("dropr");
-
+let dropport = document.getElementById("drop_port");
 let count = 0;
 let min = 25;
 let max = 35;
@@ -13,24 +9,24 @@ const suits = ["D","H","S","C"]
 function generateHand(sum) {
 // Initialize an array with 5 cells
 // Initialize an array with 5 cells
-let cells = [0, 0, 0, 0, 0];
+    let cells = [0, 0, 0, 0, 0];
 
 // Distribute the sum among the cells
-for (let i = 0; i < 4; i++) {
-    // Generate a random number between 1 and the remaining sum or 10, whichever is smaller
-    let randomValue = Math.min(Math.floor(Math.random() * (sum - (4 - i))) + 1, 10);
+    for (let i = 0; i < 4; i++) {
+        // Generate a random number between 1 and the remaining sum or 10, whichever is smaller
+        let randomValue = Math.min(Math.floor(Math.random() * (sum - (4 - i))) + 1, 10);
 
-    // Assign the random value to the current cell
-    cells[i] = randomValue;
+        // Assign the random value to the current cell
+        cells[i] = randomValue;
 
-    // Deduct the assigned value from the remaining sum
-    sum -= randomValue;
-}
+        // Deduct the assigned value from the remaining sum
+        sum -= randomValue;
+    }
 
 // Assign the remaining sum to the last cell, ensuring it doesn't exceed 10
-cells[4] = Math.min(sum, 10);
+    cells[4] = Math.min(sum, 10);
 
-return cells;
+    return cells;
 }
 
 function getRandominRange(min, max) {
@@ -80,24 +76,22 @@ let selected = null;
 
 
 for (let card of cards) {
-    if (dropleft.children.length === 0) {
+    if (dropport.children.length === 0) {
         card.addEventListener("dblclick", function (e) {
-            if (count > 0 || dropleft.children.length > 0) {
+            if (count > 0 || dropport.children.length > 0) {
                 // Set draggable attribute to false
                 e.target.draggable = false;
             } else {
                 sendCardChoice(card);
-                dropleft.appendChild(e.target);
-                console.log(e.target);
+                dropport.appendChild(e.target);
                 count = 1;
 
                 e.target.src = "./cards/2B.svg";
                 e.target.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
                 e.target.style.borderRadius = '10px';
-                e.target.style.width = "70%";
+                e.target.style.width = "32.5%";
                 e.target.style.height = "30vh";
-                e.target.style.marginLeft = "10px";
-                
+                e.target.style.marginLeft = "30px";
 
                 // Remove the dblclick event listener after the first double-click
                 e.target.removeEventListener("dblclick", arguments.callee);
@@ -107,6 +101,3 @@ for (let card of cards) {
         console.log("You already put a card down dipstick");
     }
 }
-
-
-
