@@ -27,6 +27,7 @@ body {
 .card2 {
     animation: flip-opposite 2s infinite;
 }
+
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(-180deg);
@@ -115,7 +116,6 @@ body {
     justify-content: center;
     position: relative;
     align-items: center;
-    padding-left: 56px;
 }
 
 html {
