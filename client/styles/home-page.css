@@ -1,3 +1,5 @@
+@import url("backgrounds.css");
+
 body {
     height: 100%;
     width: 100%;
@@ -57,7 +59,7 @@ body {
 
 @font-face {
     font-family: myFirstFont;
-    src: url("/kartenchaos/client/Font.ttf");
+    src: url("../Font.ttf");
 }
 
 
@@ -272,31 +274,26 @@ html {
 }
 
 
-.Main-phase{
+#Main-phase{
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none !important;
 }
+
 .p1handcontainer{
-
     position: absolute;
-
     bottom: -15%;
-
     margin-bottom: 12.5%;
-
     width: 100%;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
-.p1handcontainer .card{
+.p1handcontainer .card {
     position: absolute;
     width: fit-content;
     height: fit-content;
@@ -305,13 +302,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(0, 0, 0);
+    border: none;
     cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
     border-radius: 13px;
-    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
-
+    transform: rotate(calc(var(--i)* 15deg)) translate(calc((var(--i))* 70px), -40px);
 }
 
 .p1handcontainer .card img {

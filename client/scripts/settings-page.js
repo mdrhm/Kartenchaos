@@ -135,22 +135,47 @@ for(let i = 0; i < 3; i++) {
             sliderInputs[i].value = 100;
         }
         if(sliderInputs[i].value < 0){
+        if (sliderInputs[i].value <= 0) {
             sliderInputs[i].value = 0;
         }
         sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
-        sliders[i].value = sliderInputs[i].value;
-    })
-    sliderInputs[i].addEventListener("change", ()=>{
-        if(sliderInputs[i].value === "") {
-            sliderInputs[i].value = sliderInputs[i].placeholder;
-            sliders[i].value = sliderInputs[i].value;
-        }
-        sliderInputs[i].placeholder = sliderInputs[i].value
-    })
-    sliders[i].addEventListener("input", () => {
-        sliderInputs[i].value = sliders[i].value;
-    })
+        sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
+    }});
+    sliders[i].addEventListener("input", () => { // Add input event listener to each slider
+        sliderInputs[i].value = sliders[i].value; // Update corresponding slider input value
+    });
 }
+
+
+//RESET OPTION
+
+const audioResetBtn = document.querySelector('.reset-btn');
+const generalResetBtn = document.querySelector('.general-reset-btn');
+
+// Audio-Reset
+audioResetBtn.addEventListener('click', () => {
+    document.querySelector('.menu').innerHTML = "Default";
+    var i = 0;
+    sliderInputs.forEach(sliderInput => {
+        sliderInput.value = 50;
+        sliders[i].value = sliderInputs[i].value;
+        i++;
+    })
+
+    // sliderInputs[i].addEventListener("change", ()=>{
+    //     if(sliderInputs[i].value === "") {
+    //         sliderInputs[i].value = sliderInputs[i].placeholder;
+    //         sliders[i].value = sliderInputs[i].value;
+    //     }
+    //     sliderInputs[i].placeholder = sliderInputs[i].value
+    // });
+    // sliders[i].addEventListener("input", () => {
+    //     sliderInputs[i].value = sliders[i].value;
+    // });
+});
+
+
+
 function bgUpload(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
@@ -169,7 +194,6 @@ function bgUpload(event) {
 }
 
 const bgOptions = document.querySelector(".bg-options")
-const customBgContainer = document.querySelector(".bg-custom-container")
 const stockBgContainer = document.querySelector(".bg-stock-container")
 function loadCustomBgs() {
     bgOptions.innerHTML = stockBgContainer.innerHTML;
@@ -248,5 +272,5 @@ function updateCustomBg(bg, index, event){
 
 function updateCardStyle(style) {
     document.querySelector("#Main-phase").classList = style
-    
+    localStorage.setItem("cardstyle", style);
 }

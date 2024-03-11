@@ -10,24 +10,23 @@ var interval = setInterval(function() {
         else {
             clearInterval(interval);
         }
-    }, 3000);
+    }, 2000);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const selectedBackground = localStorage.getItem("background");
-    if (selectedBackground) {
-        updateBg(selectedBackground)
+    if (localStorage.getItem("background")) {
+        updateBg(localStorage.getItem("background"))
     }
-
-    // Add ifSavedBackgroundMusic Volume
-
+    if (localStorage.getItem("cardstyle")) {
+        updateCardStyle(localStorage.getItem("cardstyle"))
+    }
 });
 
 var customBgStyle = document.querySelector('.custom-bg-style');
 loadCustomBgs()
 
 const cardStyleOptions = document.querySelectorAll(".card-style-option")
-for(cardStyleOption of cardStyleOptions){
-    request.open("GET", "/client/cards/1" + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
+for(let i = 0; i < cardStyleOptions.length; i++){
+    request.open("GET", "/client/cards/1" + suits[i%4] + ".svg", false);
     request.send(null);
-    cardStyleOption.innerHTML = request.responseText;
+    cardStyleOptions[i].innerHTML = request.responseText.replaceAll("S" + suits[i%4] + "A", "S" + suits[i%4] + "A-" + i).replaceAll("V" + suits[i%4] + "A", "V" + suits[i%4] + "A-" + i);
 }
