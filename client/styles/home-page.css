@@ -283,7 +283,7 @@ html {
 .p1handcontainer{
     position: absolute;
     bottom: -15%;
-    margin-bottom: 12.5%;
+    margin-bottom: 15.5%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -296,6 +296,7 @@ html {
     height: fit-content;
     border-radius: 10px;
     background: white;
+    margin-bottom: 250px;
     display: flex;
     justify-content: center;
     align-items: center;

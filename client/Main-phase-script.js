@@ -6,26 +6,17 @@ let max = 35;
 const cardsInner = document.querySelectorAll(".play-card");
 const suits = ["D","H","S","C"]
 
-function generateHand(sum) {
-// Initialize an array with 5 cells
-// Initialize an array with 5 cells
-    let cells = [0, 0, 0, 0, 0];
+function generateHand() {
+    let sum = 30;
+    let cells = [];
 
-// Distribute the sum among the cells
     for (let i = 0; i < 4; i++) {
-        // Generate a random number between 1 and the remaining sum or 10, whichever is smaller
         let randomValue = Math.min(Math.floor(Math.random() * (sum - (4 - i))) + 1, 10);
-
-        // Assign the random value to the current cell
-        cells[i] = randomValue;
-
-        // Deduct the assigned value from the remaining sum
+        cells.push(randomValue);
         sum -= randomValue;
     }
 
-// Assign the remaining sum to the last cell, ensuring it doesn't exceed 10
-    cells[4] = Math.min(sum, 10);
-
+    cells.push(Math.min(sum, 10));
     return cells;
 }
 
@@ -43,34 +34,13 @@ for(let i = 0; i < 5; i++){
 }
 
 var request = new XMLHttpRequest();
-for(let i = 0; i < y.length; i++){
-    request.open("GET", "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
+for (let i = 0; i < y.length; i++) {
+    let cardValue = y[i] + suits[Math.floor(Math.random() * suits.length)];
+    request.open("GET", `/client/cards/${cardValue}.svg`, false);
     request.send(null);
-    var data = request.responseText;
-    // console.log(data)
+    let data = request.responseText;
     cardsInner[i].innerHTML += data;
-    // cardsInner[i].src = "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
-
 }
-
-
-
-function loadCards(){
-
-}
-/*
-
-
-
-
-
-Goes through cards and checks which card has been clicked and is being dragged.
-
-Then it addes that card to the dropport where it is formatted to fit in the space.
-
-*/
-
-
 
 let selected = null;
 
