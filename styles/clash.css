@@ -248,7 +248,7 @@ progress::-webkit-progress-bar {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(0deg); /* Center the element and set initial rotation */
-  animation: spin 0.5s 5;
+  animation: spin 0.1s 10;
   transition: top 10s ease, left 10s ease; 
 }
 
