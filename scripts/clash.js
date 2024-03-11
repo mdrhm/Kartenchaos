@@ -9,10 +9,6 @@ const dmg = 5;
 // p2Hp.style.setProperty('--progress-color', 'rgba(30,100,10,1)');
 p1Attack.addEventListener('click', () => {
   p2Hp.value = attackEnemy(p2Hp.value, dmg);
-  if(p2Hp.value <= 0){
-    p2Hp.max = 100;
-    p2Hp.value = 100;
-  }
   p2Hp.max = p2Hp.value;
   updateWidth(p2Hp);
   updateBackgroundColor(p2Hp);
