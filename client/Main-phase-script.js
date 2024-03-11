@@ -59,7 +59,7 @@ for (let card of cards) {
                 e.target.src = "./cards/2B.svg";
                 e.target.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
                 e.target.style.borderRadius = '10px';
-                e.target.style.width = "32.5%";
+                e.target.style.width = "5%";
                 e.target.style.height = "30vh";
                 e.target.style.marginLeft = "30px";
 

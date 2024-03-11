@@ -1,7 +1,13 @@
 const socket = io();
 let roomID = null;
 let player1 = false;
-let cardElements = []; // Array to store card elements
+let cardi = document.createElement('img');
+cardi.src = './cards/2B.svg';
+cardi.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
+cardi.style.borderRadius = '10px';
+cardi.style.width = "70%";
+cardi.style.height = "30vh";
+cardi.style.marginLeft = "10px";
 
 function makeGame() {
     player1 = true;
@@ -13,7 +19,6 @@ window.onload = function () {
     if (extractedRoomID) {
         joinGame(extractedRoomID);
     }
-    createCardElements(); // Create card elements initially
 };
 
 function getRoomIDFromURL() {
@@ -23,6 +28,7 @@ function getRoomIDFromURL() {
 
 function joinGame() {
     console.log("joining game room id " + roomID);
+    socket.emit('joinGame', { roomID: roomID });
     roomID = getRoomIDFromURL();
     socket.emit('joinGame', { roomID: roomID });
 }
@@ -42,37 +48,13 @@ socket.on('newGame', (data) => {
     history.pushState({ roomID: roomID }, 'Room Created', roomUrl);
 });
 
-socket.on("2playersConnected", (data) => {
+socket.on("2playersConnected", () => {
     console.log('2 players connected!');
     console.log(roomID);
     goToMainPhase();
-    // Update card elements with card images
-    updateCardElements(data.player1Cards);
 });
 
-function createCardElements() {
-    const handContainer = document.querySelector(".p1handcontainer");
-    for (let i = 0; i < 5; i++) {
-        const cardElement = document.createElement("div");
-        cardElement.classList.add("play-card");
-        cardElement.style.setProperty("--i", i - 2);
-        const cardImage = document.createElement("img");
-        cardImage.classList.add("card-inner");
-        cardElement.appendChild(cardImage);
-        handContainer.appendChild(cardElement);
-        cardElements.push(cardElement);
-    }
-}
-
-function updateCardElements(cards) {
-    for (let i = 0; i < cardElements.length; i++) {
-        const cardElement = cardElements[i];
-        const cardImage = cardElement.querySelector(".card-inner");
-        cardImage.src = `/cards/${cards[i]}.svg`;
-    }
-}
-
-function sendCardChoice(card) {
+function sendCardChoice(cardChosen) {
     let choiceEvent;
     console.log("beginning choiceevent");
     console.log(roomID);
@@ -84,7 +66,7 @@ function sendCardChoice(card) {
         console.log("its player2 choice");
     }
     console.log("send card choice no room id" + roomID);
-    socket.emit(choiceEvent, { cardChosen: card, roomID: roomID });
+    socket.emit(choiceEvent, { cardChosen: cardChosen, roomID: roomID });
 }
 
 socket.on("updatep2withp1card", (data) => {
