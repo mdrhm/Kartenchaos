@@ -1,36 +1,36 @@
 
-const p1Attack = document.querySelector('.p1-attack');
-const p2Attack = document.querySelector('.p2-attack');
-let p1Hp = document.getElementById('p1-health-bar');
-let p2Hp = document.getElementById('p2-health-bar');
-const dmg = 5;
+// const p1Attack = document.querySelector('.p1-attack');
+// const p2Attack = document.querySelector('.p2-attack');
+// let p1Hp = document.getElementById('p1-health-bar');
+// let p2Hp = document.getElementById('p2-health-bar');
+// const dmg = 5;
 
 // p1Hp.style.setProperty('--progress-color', 'rgba(30,100,10,1)');
 // p2Hp.style.setProperty('--progress-color', 'rgba(30,100,10,1)');
-p1Attack.addEventListener('click', () => {
-  p2Hp.value = attackEnemy(p2Hp.value, dmg);
-  p2Hp.max = p2Hp.value;
-  updateWidth(p2Hp);
-  updateBackgroundColor(p2Hp);
-});
+// p1Attack.addEventListener('click', () => {
+//   p2Hp.value = attackEnemy(p2Hp.value, dmg);
+//   p2Hp.max = p2Hp.value;
+//   updateWidth(p2Hp);
+//   updateBackgroundColor(p2Hp);
+// });
 
-p2Attack.addEventListener('click', () => {
-  p1Hp.value = attackEnemy(p1Hp.value, dmg);
-  if(p1Hp.value <= 0){
-    p1Hp.max = 100;
-    p1Hp.value = 100;
-  }
-  p1Hp.max = p1Hp.value;
-  updateWidth(p1Hp);
-  updateBackgroundColor(p1Hp);
-});
+// p2Attack.addEventListener('click', () => {
+//   p1Hp.value = attackEnemy(p1Hp.value, dmg);
+//   if(p1Hp.value <= 0){
+//     p1Hp.max = 100;
+//     p1Hp.value = 100;
+//   }
+//   p1Hp.max = p1Hp.value;
+//   updateWidth(p1Hp);
+//   updateBackgroundColor(p1Hp);
+// });
 
 
-function attackEnemy(hp, dmg){
-  hp -= dmg;
+// function attackEnemy(hp, dmg){
+//   hp -= dmg;
   
-  return hp;
-}
+//   return hp;
+// }
 
 
 
@@ -61,3 +61,21 @@ function attackEnemy(hp, dmg){
 //   hp.style.transition = 'width .5s ease';
 // }
 
+
+// Wait for the animation to finish, then add class to position "V" element
+document.addEventListener('DOMContentLoaded', function() {
+  var vElement = document.querySelector('.v');
+
+  // Function to be executed after animation finishes
+  function afterAnimation() {
+    setTimeout(function() {
+      vElement.classList.add('new-position');
+    }, 1500); // Adjust the delay time (in milliseconds) as needed
+  }
+
+  // Detect animation end for various browsers
+  vElement.addEventListener('animationend', afterAnimation);
+  vElement.addEventListener('webkitAnimationEnd', afterAnimation);
+  vElement.addEventListener('oanimationend', afterAnimation);
+  vElement.addEventListener('MSAnimationEnd', afterAnimation);
+});
