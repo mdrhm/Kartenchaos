@@ -116,7 +116,6 @@ progress::-webkit-progress-bar {
   align-items: center;
   height: 80vh; /* Optional: Set a height for the container */
   margin-top: 5%;
-  position: relative;
 }
 
 .card1container{
@@ -124,7 +123,7 @@ progress::-webkit-progress-bar {
   width: 22.5vw;;
   /* background-color: #ddc1c1; */
   background-color: #56820372;
-  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  background-image: url('../Images/wood-pattern.png');
   align-items: center;
   margin-left: 15%;
   display: flex;
@@ -142,6 +141,7 @@ progress::-webkit-progress-bar {
   inset #050505 0 0 0 18px; */
   border-radius: 15px;
   animation: shake 1.8s;
+  position: relative;
 }
 
 .card2container{
@@ -149,7 +149,7 @@ progress::-webkit-progress-bar {
   width: 22.5vw;
   /* background-color: #daf4fa; */
   background-color: #56820372;
-  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  background-image: url('../Images/wood-pattern.png');
   margin-right: 15%;
   display: flex;
   justify-content: center;
@@ -166,7 +166,27 @@ progress::-webkit-progress-bar {
   inset #80d8ee 0 0 0 18px; */
   border-radius: 15px;
   animation: shake 1.8s;
+  position: relative;
 }
+
+/* LAYER ON TOP OF ALL COMPONENETS (GIVES A SCREEN EFFECT) */
+.card1container::before, .card2container::before {
+  content: ''; /* Create a pseudo-element */
+  position: absolute; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: solid 7px black;
+  border-radius: 5px;
+  z-index: 9999;
+  background: linear-gradient(to bottom, #00000033 10%, rgba(255, 255, 255, 0.36) 50%, #00000036 90%);
+}
+
+.cardcontainer::before {
+  content: none; /* Prevent ::before pseudo-element from being generated for .cardcontainer */
+}
+
 
 /* CONTAINER THAT HOLDS THE VS ELEMENTS */
 .vs-container {
@@ -210,7 +230,7 @@ progress::-webkit-progress-bar {
   border: solid 7px black;
   border-radius: 15px;
   z-index: 9999; /* Set z-index value highest */
-  background: linear-gradient(to bottom, #00000033 10%, rgba(255, 255, 255, 0.33) 50%, #00000036 90%);
+  background: linear-gradient(to bottom, #00000033 10%, rgba(255, 255, 255, 0.36) 50%, #00000036 90%);
 }
 
 
