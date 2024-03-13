@@ -15,7 +15,7 @@
 <body>
 
 <audio id="music" controls autoplay hidden loop>
-    <source src="/client/Default.mp3" type="audio/mp3">
+    <source src="/Audio/Default.mp3" type="audio/mp3">
 </audio>
 <div class="bg-0" id="bg"></div>
 <div class="home-ui">
@@ -77,16 +77,18 @@
                     <div class="card-style-settings">
                         <div class="change-card-style">Card Style</div>
                         <div class="change-card-options">
-                            <div class="card-style-option default" onclick="updateCardStyle('default')"></div>
-                            <div class="card-style-option dark" onclick="updateCardStyle('dark')"></div>
-                            <div class="card-style-option blue-and-pink" onclick="updateCardStyle('blue-and-pink')"></div>
-                            <div class="card-style-option blue-and-yellow" onclick="updateCardStyle('blue-and-yellow')"></div>
-                            <div class="card-style-option purple" onclick="updateCardStyle('purple')"></div>
-                            <div class="card-style-option joker" onclick="updateCardStyle('joker')"></div>
-                            <div class="card-style-option flash" onclick="updateCardStyle('flash')"></div>
-                            <div class="card-style-option black-and-gold" onclick="updateCardStyle('black-and-gold')"></div>
-                            <div class="card-style-option coffee" onclick="updateCardStyle('coffee')"></div>
-                            <div class="card-style-option green" onclick="updateCardStyle('green')"></div>
+                            <div class="card-style-option default" onclick = "updateCardStyle('default')"></div>
+                            <div class="card-style-option dark" onclick = "updateCardStyle('dark')"></div>
+                            <div class="card-style-option blue-and-pink" onclick = "updateCardStyle('blue-and-pink')"></div>
+                            <div class="card-style-option blue-and-yellow" onclick = "updateCardStyle('blue-and-yellow')"></div>
+                            <div class="card-style-option purple" onclick = "updateCardStyle('purple')"></div>
+                            <div class="card-style-option black-and-gold" onclick = "updateCardStyle('black-and-gold')"></div>
+                            <div class="card-style-option coffee" onclick = "updateCardStyle('coffee')"></div>
+                            <div class="card-style-option green" onclick = "updateCardStyle('green')"></div>
+                            <div class="card-style-option joker" onclick = "updateCardStyle('joker')"></div>
+                            <div class="card-style-option flash" onclick = "updateCardStyle('flash')"></div>
+                            <div class="card-style-option batman" onclick = "updateCardStyle('batman')"></div>
+                            <div class="card-style-option superman" onclick = "updateCardStyle('superman')"></div>
                         </div>
                     </div>
                 </div>
@@ -145,7 +147,6 @@
     </div>
 </div>
 <div class="Main-phase" style="display: none;">
-
     <div class="dropport" id=drop_port>
         <div class="dropleft" id="dropl"></div>
         <div class="dropright" id="dropr"></div>
@@ -167,7 +168,6 @@
 
         <img src = "client/Images/joker.png" id = "joker">
     </div>
-
     <div class="p1handcontainer">
         <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
         <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
@@ -184,7 +184,6 @@
 <script src="/client/scripts/settings-page.js" defer></script>
 <script src="/client/scripts/rules-page.js" defer></script>
 <script src="/client/scripts/onload.js" defer></script>
-</body>
 
 </body>
 </html>
