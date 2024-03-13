@@ -271,19 +271,18 @@ html {
 }
 
 
-#Main-phase{
+.Main-phase{
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none !important;
 }
 
-.p1handcontainer{
+.p1handcontainer {
     position: absolute;
     bottom: -15%;
-    margin-bottom: 15.5%;
+    margin-bottom: 12.5%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -296,16 +295,16 @@ html {
     height: fit-content;
     border-radius: 10px;
     background: white;
-    margin-bottom: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
+    border: 2px solid rgb(0, 0, 0);
     cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
     border-radius: 13px;
-    transform: rotate(calc(var(--i)* 15deg)) translate(calc((var(--i))* 70px), -40px);
+    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
+
 }
 
 .p1handcontainer .card img {
@@ -319,27 +318,26 @@ html {
 }
 
 .p1handcontainer .card:hover {
-    translate: calc(var(--i)*20px)-50px;
+    translate: calc(var(--i) * 20px) -50px;
     margin-bottom: 0%;
 }
 
 
-
-.dropport{
+.dropport {
     display: flex;
     height: 30%;
     margin: auto;
     position: relative;
-    top:45%;
+    top: 45%;
     background-color: white;
     width: 30%;
-    border-style:double;
+    border-style: double;
     border-color: #767676;
     border-radius: 8px;
     border-left-width: 20px;
     background-color: #8e8b8b;
-    margin-top: -5%; 
-    
+    margin-top: -5%;
+
 }
 
 .dropleft {
@@ -353,7 +351,7 @@ html {
 }
 
 
-.hidden{
+.hidden {
     display: none !important;
 }
 
@@ -374,32 +372,34 @@ html {
     color: rgb(255, 255, 255);
     text-align: center;
     font-size: 5vh;
-    
+
 
 }
+
 #joker {
     margin: auto;
     height: 40vh;
     width: 50vh;
 }
-.heightcheck img{
-   
+
+.heightcheck img {
     height: 30vh;
-    
 }
 
-#room-ID{
+#room-ID {
     width: 20vh;
     height: 20vh;
 }
-.showcode{
+
+.showcode {
     background-color: greenyellow;
     height: 20vh;
     width: 40vh;
     color: white;
     font-size: larger;
 }
-.wait-phase{
+
+.wait-phase {
     height: 100vh;
 }
 
@@ -408,6 +408,6 @@ html {
     bottom: 20%;
 }
 
-button:focus{
+button:focus {
     outline: none;
 }

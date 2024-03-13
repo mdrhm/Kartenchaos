@@ -1,4 +1,6 @@
+console.log("client.js works so far");
 const socket = io();
+
 let roomID = null;
 let player1 = false;
 let cardi = document.createElement('img');
@@ -9,14 +11,18 @@ cardi.style.width = "70%";
 cardi.style.height = "30vh";
 cardi.style.marginLeft = "10px";
 
+
 function makeGame() {
-    player1 = true;
+    player1= true;
     socket.emit('makeGame');
 }
 
+
 window.onload = function () {
     const extractedRoomID = getRoomIDFromURL();
+
     if (extractedRoomID) {
+        // Call joinGame with the extracted room ID
         joinGame(extractedRoomID);
     }
 };
@@ -27,23 +33,31 @@ function getRoomIDFromURL() {
 }
 
 function joinGame() {
-    console.log("joining game room id " + roomID);
+    console.log("joingame room id" + roomID);
     socket.emit('joinGame', { roomID: roomID });
     roomID = getRoomIDFromURL();
-    socket.emit('joinGame', { roomID: roomID });
+    socket.emit('joinGame', {roomID: roomID});
 }
+
 
 function goToMainPhase() {
+    // Go to the main phase logic here
     document.getElementsByClassName("home-ui")[0].style.display = "none";
     document.getElementsByClassName("wait-phase")[0].style.display = "none";
-    document.querySelector("#Main-phase").style.display = "block";
+    document.getElementsByClassName("Main-phase")[0].style.display = "block";
 }
 
+
 socket.on('newGame', (data) => {
+    console.log("making game");
     roomID = data.roomID;
     console.log(roomID);
+    // Hide the home screen
     document.getElementsByClassName("home-ui")[0].style.display = "none";
+
     document.getElementsByClassName("wait-phase")[0].style.display = "block";
+
+    // Update the URL without a full page reload
     const roomUrl = window.location.origin + '/?roomID=' + roomID;
     history.pushState({ roomID: roomID }, 'Room Created', roomUrl);
 });
@@ -54,41 +68,47 @@ socket.on("2playersConnected", () => {
     goToMainPhase();
 });
 
+// Note that cardChosen is not the card element but its ID
 function sendCardChoice(cardChosen) {
     let choiceEvent;
     console.log("beginning choiceevent");
     console.log(roomID);
-    if (player1) {
+    if (player1){
         choiceEvent = "player1Choice";
         console.log("its player1 choice");
-    } else {
+    }
+    else {
         choiceEvent = "player2Choice";
         console.log("its player2 choice");
     }
-    console.log("send card choice no room id" + roomID);
-    socket.emit(choiceEvent, { cardChosen: cardChosen, roomID: roomID });
+    console.log("send card choice no romm id" + roomID);
+    socket.emit(choiceEvent, {
+        cardChosen: cardChosen,
+        roomID: roomID
+    });
 }
 
 socket.on("updatep2withp1card", (data) => {
-    if (!player1) {
+    if(!player1){
         console.log("player1placedcard");
         let card = data.cardChosen;
-        let dropright = document.getElementById("drop_port");
         if (dropright) {
             dropright.appendChild(cardi);
-        } else {
+        }
+        else {
             console.log("Element with id 'dropright' not found.");
         }
+
     }
 });
+
 
 socket.on("updatep1withp2card", (data) => {
     console.log(player1);
     console.log("player2placedcard before check");
-    if (player1) {
+    if(player1){
         console.log("player2placedcard");
         let card = data.cardChosen;
-        let dropright = document.getElementById("drop_port");
         if (dropright) {
             dropright.appendChild(cardi);
         } else {

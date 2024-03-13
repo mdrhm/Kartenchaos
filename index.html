@@ -13,12 +13,7 @@
     <style class="custom-bg-style" type="text/css"></style>
 </head>
 <body>
-<script src="socket.io/socket.io.js"></script>
-<script src="./client/client.js"></script>
-<script src="./client/Main-phase-script.js" defer></script>
-<script src="/client/scripts/settings-page.js" defer></script>
-<script src="/client/scripts/rules-page.js" defer></script>
-<script src="/client/scripts/onload.js" defer></script>
+
 <audio id="music" controls autoplay hidden loop>
     <source src="/client/Default.mp3" type="audio/mp3">
 </audio>
@@ -149,23 +144,30 @@
         </div>
     </div>
 </div>
-<div id="Main-phase" style="display: none;" class="default">
-    <div class="dropport" id="drop_port"></div>
-    <div class="p1handcontainer">
-        <div class="play-card" style="--i:-2" draggable="true"></div>
-        <div class="play-card" style="--i:-1" draggable="true"></div>
-        <div class="play-card" style="--i:0" draggable="true"></div>
-        <div class="play-card" style="--i:1" draggable="true"></div>
-        <div class="play-card" style="--i:2" draggable="true"></div>
+<div class="Main-phase" style="display: none;">
+
+    <div class="dropport" id=drop_port>
+        <div class="dropleft" id="dropl"></div>
+        <div class="dropright" id="dropr"></div>
     </div>
+    <div class="p1handcontainer">
+        <div class="card" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
+        <div class="card" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
+        <div class="card" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
+        <div class="card" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
+        <div class="card" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
+    </div>
+
 </div>
 <div class="wait-phase" style="display: none;">
-    <button id="link" onclick="getRoomLink()">Click to get code</button>
+    <button id = "link" onclick = "getRoomLink()">Click to get code</button>
     <input class="form-control my-2" placeholder="Enter Code" type="text" name="" id="roomID" />
     <button class="form-control btn btn-secondary" onclick="joinGame()">Join Game</button>
-    <div class="wait">
-        waiting for player <img src="client/Images/joker.png" id="joker">
+    <div class="wait">waiting for player
+
+        <img src = "client/Images/joker.png" id = "joker">
     </div>
+
     <div class="p1handcontainer">
         <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
         <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
@@ -174,6 +176,15 @@
         <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
     </div>
 </div>
+
+<!-- JAVASCRIPT-SCRIPT-LINKS -->
+<script src="socket.io/socket.io.js"></script>
+<script src="./client/client.js"></script>
+<script src="./client/Main-phase-script.js" defer></script>
+<script src="/client/scripts/settings-page.js" defer></script>
+<script src="/client/scripts/rules-page.js" defer></script>
+<script src="/client/scripts/onload.js" defer></script>
+</body>
 
 </body>
 </html>
