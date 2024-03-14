@@ -34,12 +34,22 @@ function getRoomIDFromURL() {
 
 // Copy Link to Clipboard from button
 function copyLinkToClipboard() {
-    var link = window.location.href; // <-- Get the current URL
+    var link = window.location.href;
     navigator.clipboard.writeText(link).then(function() {
         console.log('Link copied to clipboard!');
+        showNotification('Link copied to clipboard!');
     }, function(err) {
         console.error('Failed to copy link: ', err);
     });
+}
+
+function showNotification(message) {
+    var notification = document.getElementById('clipboard-notification');
+    notification.innerText = message;
+    notification.style.display = 'block';
+    setTimeout(function() {
+        notification.style.display = 'none';
+    }, 3000); // Hide notification after 3 seconds
 }
 
 function joinGame() {
