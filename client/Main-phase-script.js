@@ -44,7 +44,7 @@ for(let i = 0; i < 5; i++){
 
 
 for(let i = 0; i < y.length; i++){
-    cards[i].innerHTML += getCard(y[i])
+    cards[i].innerHTML += getCard(y[i], "curr")
 }
 
 let selected = null;
@@ -75,9 +75,10 @@ for (let i = 0; i < cards.length; i++) {
     }
 }
 
-function getCard(card){
+function getCard(card, tag){
+    let suit = card.at(-1)
     var request = new XMLHttpRequest();
     request.open("GET", "/client/cards/" + card + ".svg", false);
     request.send(null);
-    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
+    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","").replaceAll("V" + suit, tag + "-V" + suit).replaceAll("S" + suit, tag + "-S" + suit);
 }

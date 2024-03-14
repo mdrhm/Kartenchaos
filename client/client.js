@@ -155,6 +155,6 @@ socket.on('revealOpponentCard', (data) => {
     else{
         displayCard = data.player1Choice
     }
-    document.querySelector("#dropr").innerHTML = getCard(displayCard)
+    cardi.innerHTML = getCard(displayCard, "opp")
     console.log("both players played")
 })
