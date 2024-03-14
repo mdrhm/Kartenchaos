@@ -27,6 +27,7 @@ body {
 .card2 {
     animation: flip-opposite 2s infinite;
 }
+
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(-180deg);
@@ -105,7 +106,7 @@ body {
     text-decoration: solid;
     text-align: center;
     font-family: myFirstFont;
-    src: url("Poker.ttf");
+    src: url("../Font.ttf");
     color: black;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
@@ -184,10 +185,6 @@ html {
 
 }
 
-
-
-
-
 /* Home screen button select, NO ANIMATED BUTTON + ANIMATED ICON */
 
 /* .home-screen-buttons img {
@@ -237,11 +234,11 @@ html {
 
     }
     25%, 49.99% {
-        background-image: url("../Images/diamonds.svg");
+        background-image: url("../Images/spades.svg");
 
     }
     50%, 74.99% {
-        background-image: url("../Images/spades.svg");
+        background-image: url("../Images/diamonds.svg");
 
     }
     75%, 99.99% {
@@ -281,20 +278,21 @@ html {
     justify-content: center;
     align-items: center;
     border: none !important;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.p1handcontainer{
-    position: absolute;
+.p1handcontainer, .p2handcontainer {
     bottom: -15%;
-    margin-bottom: 12.5%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
-.p1handcontainer .card {
-    position: absolute;
+.p1handcontainer .card{
+    /*position: absolute;*/
     width: fit-content;
     height: fit-content;
     border-radius: 10px;
@@ -302,12 +300,33 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
     cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
     border-radius: 13px;
-    transform: rotate(calc(var(--i)* 15deg)) translate(calc((var(--i))* 70px), -40px);
+    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
+    border-radius: 10px;
+    width: 150px;
+    /*margin-left: 10px;*/
+}
+
+.p2handcontainer .card {
+    /*position: absolute;*/
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    transform-origin: 50% 100%;
+    border-radius: 13px;
+    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
+    border-radius: 10px;
+    width: 150px;
+    /*margin-left: 10px;*/
 }
 
 .p1handcontainer .card img {
@@ -316,49 +335,61 @@ html {
 }
 
 
-
-
 .p1handcontainer:hover .card:nth-child(3) {
     transform: rotate(2deg) translate(calc((var(--i)) * 50px), -40px);
 }
 
 .p1handcontainer .card:hover {
-    translate: calc(var(--i)*20px)-50px;
+    translate: calc(var(--i) * 20px) -50px;
     margin-bottom: 0%;
 }
 
+.notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: rgba(0, 255, 0, 0.8);
+    color: #fff;
+    border-radius: 5px;
+    z-index: 9999;
+}
 
 
-.dropport{
+.dropport {
     display: flex;
     height: 30%;
-    margin: auto;
-    position: relative;
-    top:45%;
+    /*margin: auto;*/
+    /*position: relative;*/
+    top: 45%;
     background-color: white;
     width: 30%;
-    border-style:double;
+    border-style: double;
     border-color: #767676;
     border-radius: 8px;
     border-left-width: 20px;
     background-color: #8e8b8b;
-    margin-top: -5%; 
-    
+    /*margin-top: -5%;*/
+
+}
+
+.dropleft {
+    width: 50%;
+    height: 100%;
+}
+
+.dropright {
+    width: 50%;
+    height: 100%;
 }
 
 
-.hidden{
+.hidden {
     display: none !important;
 }
 
-#link {
-    width: 25vh;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    background-color: brown;
-    color: white;
-}
 
 .wait {
     margin: auto;
@@ -368,40 +399,99 @@ html {
     color: rgb(255, 255, 255);
     text-align: center;
     font-size: 5vh;
-    
+
 
 }
-#joker {
-    margin: auto;
-    height: 40vh;
-    width: 50vh;
+
+.joker-img {
+    max-width: 200px;
+    max-height: 200px;
 }
-.heightcheck img{
-   
+
+.heightcheck img {
     height: 30vh;
-    
 }
 
-#room-ID{
+#room-ID {
     width: 20vh;
     height: 20vh;
 }
-.showcode{
+
+.showcode {
     background-color: greenyellow;
     height: 20vh;
     width: 40vh;
     color: white;
     font-size: larger;
 }
-.wait-phase{
+
+
+.button-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.wait-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.wait-phase button {
+    display: block;
+    font-family: 'myFirstFont';
+    font-size: 5em;
+    color: black;
+    font-weight: 800;
+    text-decoration: none;
+    background: none;
+    transition: 0.4s;
+    border: none;
+    text-transform: uppercase;
+    max-width: fit-content;
+    cursor: pointer;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    padding-left: 57px;
+}
+
+.wait-phase button:hover {
+    color: #333;
+}
+
+.wait-phase button img {
+    visibility: hidden;
+    width: 40px;
+    transform: rotate(-0.25turn);
+    width: 40px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    border: solid black;
+    background-color: white;
+    border-radius: 10%;
+}
+
+.wait-phase button:hover img {
+    visibility: visible;
+    animation-name: slideleft;
+    animation-duration: 1.1s;
+    animation-iteration-count: infinite;
+}
+
+.wait-phase {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 
-.form-control {
-    display: flex;
-    bottom: 20%;
+.wait-phase .wait {
+    margin-bottom: 2rem;
 }
 
-button:focus{
-    outline: none;
+.wait-phase .p1handcontainer {
+    margin-top: 2rem;
 }

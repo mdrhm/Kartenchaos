@@ -10,7 +10,7 @@ var interval = setInterval(function() {
         else {
             clearInterval(interval);
         }
-    }, 2000);
+    }, 3000);
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("background")) {
@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (localStorage.getItem("cardstyle")) {
         updateCardStyle(localStorage.getItem("cardstyle"))
+    }
+    const savedMusicOption = parseInt(localStorage.getItem("musicOption"));
+    const options = document.querySelectorAll('.menu li');
+    if (savedMusicOption) {
+        const audioElement = document.getElementById("music");
+        audioElement.src = "Audio/" + options[savedMusicOption].innerHTML + ".mp3";
+        audioElement.load();
+        audioElement.play();
+        document.querySelector(".selected").innerHTML = options[savedMusicOption].innerHTML
+        options[savedMusicOption].classList.add("hidden")
     }
 });
 
@@ -29,4 +39,12 @@ for(let i = 0; i < cardStyleOptions.length; i++){
     request.open("GET", "/client/cards/1" + suits[i%4] + ".svg", false);
     request.send(null);
     cardStyleOptions[i].innerHTML = request.responseText.replaceAll("S" + suits[i%4] + "A", "S" + suits[i%4] + "A-" + i).replaceAll("V" + suits[i%4] + "A", "V" + suits[i%4] + "A-" + i);
+}
+
+for(let i = 0; i < 5; i++){
+    request.open("GET", "/client/cards/2B.svg", false);
+    request.send(null);
+    var data = request.responseText;
+    // console.log(data)
+    document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
 }

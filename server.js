@@ -9,6 +9,7 @@ const io = new Server(server);
 const rooms = {};
 
 
+
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname)));
 
@@ -48,19 +49,24 @@ io.on('connection', (socket) => {
     socket.on('makeGame', () => {
         console.log("making game");
         const roomID = makeid(6);
-        rooms[roomID] = {};
-        socket.join(roomID);  // Emit the event immediately
-        socket.emit('newGame', { roomID });
+        rooms[roomID] = { player1: socket.id };
+        console.log(roomID);
+        socket.join(roomID);
+        socket.emit('newGame', { roomID: roomID });
     });
-    
-    
+
+
+
 
     socket.on('joinGame', (data) => {
-        if(rooms[data.roomID] != null) {
+        if (rooms[data.roomID] != null) {
             console.log("joininggame");
+            console.log(data);
+            console.log("joingame" + data.roomID);
+
             socket.join(data.roomID);
-            socket.to(data.roomID).emit("2playersConnected", {});
-            socket.emit("2playersConnected");
+            io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
+            io.to(socket.id).emit("2playersConnected", { roomID: data.roomID });
         }
     });
 
@@ -77,26 +83,30 @@ io.on('connection', (socket) => {
 
     socket.on("player1Choice", (data) => {
         let cardChosen = data.cardChosen;
-        // Check if rooms[data.roomID] exists
+        console.log("player1choicecalled");
+        console.log(rooms);
         if (rooms[data.roomID]) {
             rooms[data.roomID].player1Choice = cardChosen;
-            io.to(data.roomID).emit('updatep2withp1card');
+            io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
-});
+    });
 
     socket.on("player2Choice", (data) => {
         let cardChosen = data.cardChosen;
-    
-        // Check if rooms[data.roomID] exists
+        let roomID = data.roomID;
+        console.log("p2 room id check " + roomID);
+        console.log("player2choicecalled");
+        console.log("Received data:", data);
+        console.log("rooms data" + rooms[data]);
         if (rooms[data.roomID]) {
             rooms[data.roomID].player2Choice = cardChosen;
-            io.to(data.roomID).emit('updatep2withp1card');
+            io.to(data.roomID).emit("updatep1withp2card", {cardChosen : data.cardChosen});
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
-});
+    });
 });
 
 server.listen(3000, () => {

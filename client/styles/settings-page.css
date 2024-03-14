@@ -285,7 +285,7 @@
   border-radius: 0.5em;
   color: #9fa5b5;
   position: absolute;
-  top: 3em;
+  bottom: 3em;
   left: 50%;
   width: 100%;
   transform: translateX(-50%);
@@ -313,7 +313,8 @@
 
 /* Open-Styles */
 .menu-open {
-  display: block;
+  display: flex;
+  flex-direction: column-reverse;
   opacity: 1;
 }
 
@@ -433,7 +434,7 @@ input[type='range']::-moz-range-thumb {
   box-shadow: inset -2px -2px 8px white, inset 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.range-style .thumb-style { 
+.range-style .thumb-style {
   position: relative;
   top: -50%;
   width: 40px;
