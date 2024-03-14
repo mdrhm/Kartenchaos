@@ -354,17 +354,13 @@ html {
 }
 
 .dropleft {
-    display: flex;
     width: 50%;
     height: 100%;
-    justify-content: center;
 }
 
 .dropright {
-    display: flex;
     width: 50%;
     height: 100%;
-    justify-content: center;
 }
 
 
