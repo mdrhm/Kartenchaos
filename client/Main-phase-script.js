@@ -1,4 +1,4 @@
-let cards = document.querySelectorAll(".card");
+let cards = document.querySelectorAll(".p1handcontainer .card");
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
 
