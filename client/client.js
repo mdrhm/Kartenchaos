@@ -64,7 +64,7 @@ function goToMainPhase() {
     // Go to the main phase logic here
     document.getElementsByClassName("home-ui")[0].style.display = "none";
     document.getElementsByClassName("wait-phase")[0].style.display = "none";
-    document.getElementsByClassName("#Main-phase")[0].style.display = "block";
+    document.querySelector("#Main-phase").style.display = "block";
 }
 
 

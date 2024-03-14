@@ -58,14 +58,14 @@ for(let i = 0; i < y.length; i++){
 let selected = null;
 for (let card of cards) {
     if (dropleft.children.length === 0) {
-        card.addEventListener("dblclick", function (e) {
+        card.addEventListener("dblclick", () => {
             if (count > 0 || dropleft.children.length > 0) {
                 // Set draggable attribute to false
                 e.target.draggable = false;
             } else {
                 sendCardChoice(card);
-                dropleft.appendChild(e.target);
-                console.log(e.target);
+                dropleft.appendChild(card);
+                console.log(card);
                 count = 1;
 
                 e.target.src = "./cards/2B.svg";
