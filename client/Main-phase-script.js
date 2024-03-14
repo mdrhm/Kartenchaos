@@ -1,6 +1,6 @@
 let cards = document.querySelectorAll(".card");
-const dropleft = document.getElementById("dropl");
-const dropright = document.getElementById("dropr");
+const dropleft = document.querySelector("#dropl");
+const dropright = document.querySelector("#dropr");
 
 let count = 0;
 let min = 25;
