@@ -80,6 +80,22 @@ document.addEventListener('DOMContentLoaded', function() {
   vElement.addEventListener('MSAnimationEnd', afterAnimation);
 });
 
+var p1_hp_total = 100;
+var p2_hp_total = 100;
+var incrementDelay = 20; // Delay between increments in milliseconds
 
+for (let i = 0; i <= 100; i++) {
+  if(i <= p1_hp_total){ 
+  setTimeout(function() {
+        p1Hp.value = i;
+    }, i * incrementDelay);
+  }
+
+  if(i <= p2_hp_total){ 
+    setTimeout(function() {
+          p2Hp.value = i;
+      }, i * incrementDelay);
+    }
+}
 
 
