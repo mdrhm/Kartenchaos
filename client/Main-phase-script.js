@@ -49,9 +49,9 @@ for(let i = 0; i < y.length; i++){
 
 let selected = null;
 for (let i = 0; i < cards.length; i++) {
-    if (dropleft.children.length === 0) {
-        cards[i].addEventListener("dblclick", () => {
-            if (count > 0 || dropleft.children.length > 0) {
+    cards[i].addEventListener("dblclick", () => {
+        if (dropleft.children.length === 0) {
+            if (dropleft.children.length > 0) {
                 // Set draggable attribute to false
                 cards[i].draggable = false;
             } else {
@@ -67,12 +67,12 @@ for (let i = 0; i < cards.length; i++) {
 
 
                 // Remove the dblclick event listener after the first double-click
-                e.target.removeEventListener("dblclick", arguments.callee);
+                cards[i].removeEventListener("dblclick", arguments.callee);
             }
-        });
-    } else {
-        console.log("You already put a card down dipstick");
-    }
+        } else {
+            console.log("You already put a card down dipstick");
+        }
+    })
 }
 
 function getCard(card, tag){

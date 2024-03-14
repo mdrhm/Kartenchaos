@@ -280,6 +280,7 @@ html {
     border: none !important;
     flex-direction: column;
     gap: 20px;
+    position: absolute;
 }
 
 #p1handcontainer, #p2handcontainer {
@@ -290,6 +291,7 @@ html {
     align-items: center;
     gap: 15px;
     border: none !important;
+    height: 210px;
 }
 
 #p1handcontainer .card{
@@ -489,6 +491,7 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: absolute;
 }
 
 .wait-phase .wait {

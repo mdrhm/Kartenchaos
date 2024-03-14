@@ -67,7 +67,7 @@ io.on('connection', (socket) => {
             if (rooms[data.roomID]) {
                 rooms[data.roomID].player2 = socket.id;
                 rooms[data.roomID].p2cardstyle = data.cardstyle
-                io.to(data.roomID).emit('loadCardStyles', {style1: rooms[data.roomID].p1cardstyle, style2: rooms[data.roomID].p2cardstyle});
+                io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
             }
             io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
             io.to(socket.id).emit("2playersConnected", { roomID: data.roomID });
@@ -93,14 +93,16 @@ io.on('connection', (socket) => {
         if (rooms[data.roomID]) {
             rooms[data.roomID].player1Choice = cardChosen;
             io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
+            player1Played = true;
             if(player2Played){
+                player1Played = false;
+                player2Played = false;
                 io.to(data.roomID).emit("revealOpponentCard", rooms[data.roomID]);
             }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
         console.log(rooms)
-        player1Played = true;
 
     });
 
@@ -116,6 +118,8 @@ io.on('connection', (socket) => {
             io.to(data.roomID).emit("updatep1withp2card", {cardChosen : data.cardChosen});
             player2Played = true;
             if(player1Played){
+                player1Played = false;
+                player2Played = false;
                 io.to(data.roomID).emit("revealOpponentCard", rooms[data.roomID]);
             }
         } else {
@@ -126,6 +130,8 @@ io.on('connection', (socket) => {
     });
 
 });
+
+
 
 server.listen(3000, () => {
     console.log('listening on *:3000');

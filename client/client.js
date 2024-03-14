@@ -4,14 +4,18 @@ const socket = io();
 let roomID = null;
 let player1 = false;
 let cardi = document.createElement('div');
-var request = new XMLHttpRequest();
-request.open("GET", "/client/cards/2B.svg", false);
-request.send(null);
-cardi.innerHTML = request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
-cardi.style.borderRadius = '10px';
-cardi.style.width = "70%";
-cardi.style.height = "30vh";
-cardi.style.marginLeft = "10px";
+resetCardI()
+
+function resetCardI(){
+    var request = new XMLHttpRequest();
+    request.open("GET", "/client/cards/2B.svg", false);
+    request.send(null);
+    cardi.innerHTML = request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
+    cardi.style.borderRadius = '10px';
+    cardi.style.width = "70%";
+    cardi.style.height = "30vh";
+    cardi.style.marginLeft = "10px";
+}
 
 function makeGame() {
     player1= true;
@@ -136,15 +140,15 @@ socket.on("updatep1withp2card", (data) => {
 });
 
 socket.on('loadCardStyles', (data) => {
-    if(localStorage.getItem("cardstyle") === data.style1){
-        document.querySelector("#p2handcontainer").classList = data.style2;
-        document.querySelector("#dropr").classList = data.style2;
+    let displayStyle
+    if(socket.id === data.player1){
+        displayStyle = data.p2cardstyle
     }
-    else{
-        document.querySelector("#p2handcontainer").classList = data.style1;
-        document.querySelector("#dropr").classList = data.style1;
-
+    else {
+        displayStyle = data.p1cardstyle
     }
+    document.querySelector("#p2handcontainer").classList = displayStyle;
+    document.querySelector("#dropr").classList = displayStyle;
 })
 
 socket.on('revealOpponentCard', (data) => {
@@ -156,5 +160,18 @@ socket.on('revealOpponentCard', (data) => {
         displayCard = data.player1Choice
     }
     cardi.innerHTML = getCard(displayCard, "opp")
-    console.log("both players played")
+    setTimeout(function() {
+        document.querySelector(".vs-container").classList.remove("hidden")
+    }, 3000);
 })
+
+function nextRound(){
+    document.querySelector(".vs-container").classList.add("hidden")
+    dropleft.innerHTML = ""
+    dropright.innerHTML = ""
+    resetCardI()
+}
+
+// socket.on('nextRound', (data) => {
+//
+// })

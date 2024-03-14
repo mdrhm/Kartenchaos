@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
 var customBgStyle = document.querySelector('.custom-bg-style');
 loadCustomBgs()
 
+var request = new XMLHttpRequest();
+
 const cardStyleOptions = document.querySelectorAll(".card-style-option")
 for(let i = 0; i < cardStyleOptions.length; i++){
     request.open("GET", "/client/cards/1" + suits[i%4] + ".svg", false);
