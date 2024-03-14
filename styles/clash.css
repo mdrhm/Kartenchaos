@@ -152,13 +152,58 @@
     transform: perspective(400px) rotateY(180deg);
   }
 }
-
+@keyframes breakAnimation {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
 
 
 .card1clash {
   animation: flip 3s;
+  transform-style: preserve-3d;
+  transition: transform 1s;
 }
 
 .card2clash {
   animation: flip 3s;
+}
+
+.card.break {
+  animation: breakAnimation 1s ease-in-out forwards;
+}
+
+body {
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+.TEST{
+  position: absolute;
+  width: 768px;
+  height: 485px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#hearts img{
+
+  position: absolute;
 }
