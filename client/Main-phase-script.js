@@ -5,7 +5,7 @@ const dropright = document.getElementById("dropr");
 let count = 0;
 let min = 25;
 let max = 35;
-const cardsInner = document.querySelectorAll(".play-card");
+
 const suits = ["D","H","S","C"]
 
 function generateHand(sum) {
@@ -51,7 +51,7 @@ for(let i = 0; i < y.length; i++){
     request.send(null);
     var data = request.responseText;
     // console.log(data)
-    cardsInner[i].innerHTML += data;
+    cards[i].innerHTML += data;
     // cardsInner[i].src = "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
 
 }
