@@ -42,7 +42,6 @@ for(let i = 0; i < 5; i++){
     z += y[i];
 }
 
-
 var request = new XMLHttpRequest();
 for(let i = 0; i < y.length; i++){
     request.open("GET", "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
@@ -56,7 +55,7 @@ for(let i = 0; i < y.length; i++){
 let selected = null;
 for (let i = 0; i < cards.length; i++) {
     if (dropleft.children.length === 0) {
-        cards[i].addEventListener("dblclick", () => {
+        cards[i].addEventListener("dblclick", (e) => {
             if (count > 0 || dropleft.children.length > 0) {
                 // Set draggable attribute to false
                 cards[i].draggable = false;
