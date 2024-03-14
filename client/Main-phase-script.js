@@ -26,7 +26,7 @@ function generateHand(sum) {
 
 // Assign the remaining sum to the last cell, ensuring it doesn't exceed 10
     cells[4] = Math.min(sum, 10) + suits[Math.floor(Math.random() * suits.length)];
-
+    currplayerhand = cells;
     return cells;
 }
 function getRandominRange(min, max) {
@@ -35,16 +35,14 @@ function getRandominRange(min, max) {
 
 
 // let x = getRandominRange(25,35);
-let x = 30;
-let y= generateHand(x);
-let z = 0
-for(let i = 0; i < 5; i++){
-    z += y[i];
-}
+// let x = 30;
+// let y= generateHand(x);
 
-
-for(let i = 0; i < y.length; i++){
-    cards[i].innerHTML += getCard(y[i], "curr")
+function loadCards(hand) {
+    for (let i = 0; i < hand.length; i++) {
+        cards[i].classList.remove("hidden")
+        cards[i].innerHTML = getCard(hand[i], "curr")
+    }
 }
 
 let selected = null;
@@ -55,19 +53,15 @@ for (let i = 0; i < cards.length; i++) {
                 // Set draggable attribute to false
                 cards[i].draggable = false;
             } else {
-                sendCardChoice(y[i]);
-                dropleft.appendChild(cards[i]);
-                console.log(cards[i]);
-                count = 1;
-
-                cards[i].style.borderRadius = '10px';
-                cards[i].style.width = "70%";
-                cards[i].style.height = "30vh";
-                cards[i].style.marginLeft = "10px";
-
+                sendCardChoice(currplayerhand[i]);
+                cards[i].children[0].style.borderRadius = '10px';
+                cards[i].children[0].style.width = "70%";
+                cards[i].children[0].style.height = "30vh";
+                cards[i].children[0].style.marginLeft = "10px";
+                dropleft.appendChild(cards[i].children[0]);
+                cards[i].classList.add("hidden");
 
                 // Remove the dblclick event listener after the first double-click
-                cards[i].removeEventListener("dblclick", arguments.callee);
             }
         } else {
             console.log("You already put a card down dipstick");

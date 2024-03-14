@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
     socket.on('makeGame', (data) => {
         console.log("making game");
         const roomID = makeid(6);
-        rooms[roomID] = {player1: socket.id, p1cardstyle: data.cardstyle };
+        rooms[roomID] = {roomID: roomID, player1: socket.id, p1cardstyle: data.cardstyle, p1hand: data.hand};
         console.log(roomID);
         socket.join(roomID);
         socket.emit('newGame', { roomID: roomID, p1cardstyle: data.cardstyle });
@@ -67,6 +67,7 @@ io.on('connection', (socket) => {
             if (rooms[data.roomID]) {
                 rooms[data.roomID].player2 = socket.id;
                 rooms[data.roomID].p2cardstyle = data.cardstyle
+                rooms[data.roomID].p2hand = data.hand
                 io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
             }
             io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
@@ -92,6 +93,9 @@ io.on('connection', (socket) => {
         console.log(rooms);
         if (rooms[data.roomID]) {
             rooms[data.roomID].player1Choice = cardChosen;
+            rooms[data.roomID].p1hand.splice(rooms[data.roomID].p1hand.indexOf(cardChosen), 1);
+            console.log(rooms)
+            console.log("Hand 1 Size: " + (rooms[data.roomID].p1hand.length === 0))
             io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
             player1Played = true;
             if(player2Played){
@@ -115,6 +119,9 @@ io.on('connection', (socket) => {
         console.log("rooms data" + rooms[data]);
         if (rooms[data.roomID]) {
             rooms[data.roomID].player2Choice = cardChosen;
+            rooms[data.roomID].p2hand.splice(rooms[data.roomID].p2hand.indexOf(cardChosen), 1);
+            console.log(rooms)
+            console.log("Hand 2 Size: " + (rooms[data.roomID].p2hand.length === 0))
             io.to(data.roomID).emit("updatep1withp2card", {cardChosen : data.cardChosen});
             player2Played = true;
             if(player1Played){
@@ -128,7 +135,9 @@ io.on('connection', (socket) => {
         console.log(rooms)
 
     });
-
+    socket.on("updateRoom", (data) => {
+        rooms[data.roomID] = data;
+    })
 });
 
 

@@ -5,7 +5,7 @@ let roomID = null;
 let player1 = false;
 let cardi = document.createElement('div');
 resetCardI()
-
+let currplayerhand;
 function resetCardI(){
     var request = new XMLHttpRequest();
     request.open("GET", "/client/cards/2B.svg", false);
@@ -19,7 +19,10 @@ function resetCardI(){
 
 function makeGame() {
     player1= true;
-    socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle")});
+    let hand = generateHand(30)
+    loadCards(hand)
+    loadOppCards()
+    socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle"), hand: hand});
 }
 
 
@@ -59,9 +62,12 @@ function showNotification(message) {
 
 function joinGame() {
     console.log("joingame room id" + roomID);
-    socket.emit('joinGame', { roomID: roomID, cardstyle: localStorage.getItem("cardstyle") });
+    let hand = generateHand(30)
+    loadCards(hand)
+    loadOppCards()
+    socket.emit('joinGame', { roomID: roomID, cardstyle: localStorage.getItem("cardstyle"), hand: hand});
     roomID = getRoomIDFromURL();
-    socket.emit('joinGame', {roomID: roomID, cardstyle: localStorage.getItem("cardstyle")});
+    socket.emit('joinGame', {roomID: roomID, cardstyle: localStorage.getItem("cardstyle"), hand: hand});
 }
 function goToMainPhase() {
     // Go to the main phase logic here
@@ -117,7 +123,7 @@ socket.on("updatep2withp1card", (data) => {
         let card = data.cardChosen;
         if (dropright) {
             dropright.appendChild(cardi);
-            document.querySelectorAll(".opp-card")[0].remove();
+            document.querySelectorAll(".opp-card:not(.hidden)")[0].classList.add("hidden")
         }
         else {
             console.log("Element with id 'dropright' not found.");
@@ -132,7 +138,8 @@ socket.on("updatep1withp2card", (data) => {
         let card = data.cardChosen;
         if (dropright) {
             dropright.appendChild(cardi);
-            document.querySelectorAll(".opp-card")[0].remove();
+            document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
+            document.querySelectorAll(".opp-card:not(.hidden)")[0].classList.add("hidden")
         } else {
             console.log("Element with id 'dropright' not found.");
         }
@@ -162,8 +169,25 @@ socket.on('revealOpponentCard', (data) => {
     cardi.innerHTML = getCard(displayCard, "opp")
     setTimeout(function() {
         document.querySelector(".vs-container").classList.remove("hidden")
+        if(data.p1hand.length === 0 && data.p2hand.length === 0){
+            if(socket.id === data.player1) {
+                data.p1hand = generateHand(30);
+                loadCards(data.p1hand)
+                loadOppCards()
+                socket.emit("updateRoom", data)
+            }
+            else {
+                data.p2hand = generateHand(30);
+                loadCards(data.p2hand)
+                loadOppCards()
+                socket.emit("updateRoom", data)
+            }
+            console.log("hands changed")
+            // socket.emit("newHand", data)
+        }
     }, 3000);
 })
+
 
 function nextRound(){
     document.querySelector(".vs-container").classList.add("hidden")
