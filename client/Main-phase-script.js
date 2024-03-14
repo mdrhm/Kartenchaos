@@ -45,9 +45,14 @@ for(let i = 0; i < 5; i++){
 }
 
 
+var request = new XMLHttpRequest();
 for(let i = 0; i < y.length; i++){
-    cardsInner[i].src = "./cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
-
+    request.open("GET", "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
+    request.send(null);
+    var data = request.responseText;
+    // console.log(data)
+    cardsInner[i].innerHTML += data;
+    // cardsInner[i].src = "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
 }
 
 let selected = null;
