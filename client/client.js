@@ -52,11 +52,9 @@ function showNotification(message) {
     }, 3000); // Hide notification after 3 seconds
 }
 
-function joinGame() {
-    console.log("joingame room id" + roomID);
+function joinGame(roomID) {
+    console.log("joining game with room id: " + roomID);
     socket.emit('joinGame', { roomID: roomID });
-    roomID = getRoomIDFromURL();
-    socket.emit('joinGame', {roomID: roomID});
 }
 
 
@@ -74,12 +72,13 @@ socket.on('newGame', (data) => {
     console.log(roomID);
     // Hide the home screen
     document.getElementsByClassName("home-ui")[0].style.display = "none";
-
     document.getElementsByClassName("wait-phase")[0].style.display = "block";
 
     // Update the URL without a full page reload
     const roomUrl = window.location.origin + '/?roomID=' + roomID;
     history.pushState({ roomID: roomID }, 'Room Created', roomUrl);
+
+    localStorage.setItem('roomID', roomID);
 });
 
 socket.on("2playersConnected", () => {
