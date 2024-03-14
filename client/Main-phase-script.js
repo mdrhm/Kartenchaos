@@ -1,3 +1,4 @@
+
 let cards = document.querySelectorAll(".card");
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
@@ -9,7 +10,6 @@ const cardsInner = document.querySelectorAll(".card-inner");
 const suits = ["D","H","S","C"]
 
 function generateHand(sum) {
-// Initialize an array with 5 cells
 // Initialize an array with 5 cells
     let cells = [0, 0, 0, 0, 0];
 
