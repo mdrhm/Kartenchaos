@@ -1,4 +1,4 @@
-let cards = document.getElementsByClassName("card");
+let cards = document.querySelectorAll(".card");
 const dropleft = document.getElementById("dropl");
 const dropright = document.getElementById("dropr");
 
