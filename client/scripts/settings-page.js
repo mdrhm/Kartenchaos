@@ -3,7 +3,10 @@ const backgroundAudio = document.getElementById("music");
 const masterSlider = document.querySelector('.master-slider');
 const masterInput = document.querySelector('.master-input');
 
-backgroundAudio.volume = masterSlider.value / 100;
+// On load Volume is Lower
+backgroundAudio.volume = 0.010;
+masterSlider.value = 10;
+masterInput.value = 10;
 
 // Update the volume of the background audio when the master volume slider is changed
 masterSlider.addEventListener('input', () => {
@@ -57,28 +60,8 @@ generalBtn.addEventListener('click', () => {
     audioEl.classList.add('display-disabled');
 });
 
-
-
-// VOLUME SLIDERS
-// const sliders = document.querySelectorAll("input");
-// const slideValues = document.querySelectorAll(".slider-value span");
-
-// sliders.forEach((slider, index) => {
-//     slider.oninput = () => {
-//         let value = slider.value;
-//         slideValues[index].textContent = value;
-//         slideValues[index].style.left = (value / 2) + "%";
-//         slideValues[index].classList.add("show");
-//     };
-//
-//     slider.onblur = () => {
-//         slideValues[index].classList.remove("show");
-//     };
-// });
-
-//MUSIC CHOOSER
+// Select between options for bg music
 const dropdowns = document.querySelectorAll('.dropdown');
-
 dropdowns.forEach(dropdown => {
     const select = dropdown.querySelector('.select');
     const caret = dropdown.querySelector('.caret');
@@ -92,19 +75,30 @@ dropdowns.forEach(dropdown => {
         menu.classList.toggle('menu-open');
     });
 
-    options.forEach(option => {
+    for(let i = 0; i < options.length; i++){
+        let option = options[i]
         option.addEventListener('click', () => {
+            options.forEach(optionTemp => {
+                optionTemp.classList.remove("hidden");
+            })
+            option.classList.add("hidden")
             selected.innerText = option.innerText;
-            select.classList.remove('-selected-clicked');
-            caret.classList.remove('caret-rotate');
-            menu.classList.remove('menu-open');
+            const audioElement = document.getElementById("music");
+            audioElement.src = "Audio/" + option.innerText + ".mp3";
+            audioElement.load();
+            audioElement.play();
 
-            options.forEach(option => {
-                option.classList.remove('active');
-            });
-            option.classList.add('active');
+            // Save music option to local storage
+            localStorage.setItem("musicOption", i);
         });
-    });
+    }
+    document.addEventListener("click", (event) => {
+        if(!select.contains(event.target)){
+            menu.classList.remove('menu-open');
+            caret.classList.remove('caret-rotate');
+            select.classList.remove('selected-clicked');
+        }
+    })
 });
 
 
@@ -135,12 +129,11 @@ for(let i = 0; i < 3; i++) {
             sliderInputs[i].value = 100;
         }
         if(sliderInputs[i].value < 0){
-        if (sliderInputs[i].value <= 0) {
             sliderInputs[i].value = 0;
         }
         sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
         sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
-    }});
+    });
     sliders[i].addEventListener("input", () => { // Add input event listener to each slider
         sliderInputs[i].value = sliders[i].value; // Update corresponding slider input value
     });
@@ -159,23 +152,18 @@ audioResetBtn.addEventListener('click', () => {
     sliderInputs.forEach(sliderInput => {
         sliderInput.value = 50;
         sliders[i].value = sliderInputs[i].value;
-        i++;
     })
-
-    // sliderInputs[i].addEventListener("change", ()=>{
-    //     if(sliderInputs[i].value === "") {
-    //         sliderInputs[i].value = sliderInputs[i].placeholder;
-    //         sliders[i].value = sliderInputs[i].value;
-    //     }
-    //     sliderInputs[i].placeholder = sliderInputs[i].value
-    // });
-    // sliders[i].addEventListener("input", () => {
-    //     sliderInputs[i].value = sliders[i].value;
-    // });
+    sliderInputs[i].addEventListener("change", ()=>{
+        if(sliderInputs[i].value === "") {
+            sliderInputs[i].value = sliderInputs[i].placeholder;
+            sliders[i].value = sliderInputs[i].value;
+        }
+        sliderInputs[i].placeholder = sliderInputs[i].value
+    })
+    sliders[i].addEventListener("input", () => {
+        sliderInputs[i].value = sliders[i].value;
+    })
 });
-
-
-
 function bgUpload(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
