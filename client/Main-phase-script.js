@@ -10,7 +10,7 @@ const cardsInner = document.querySelectorAll(".card-inner");
 const suits = ["D","H","S","C"]
 
 function generateHand(sum) {
-// Initialize an array with 5 cells
+// Initialize an array with five cells
     let cells = [0, 0, 0, 0, 0];
 
 // Distribute the sum among the cells
