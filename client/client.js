@@ -123,6 +123,7 @@ socket.on("updatep2withp1card", (data) => {
         let card = data.cardChosen;
         if (dropright) {
             dropright.appendChild(cardi);
+            document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
             document.querySelectorAll(".opp-card:not(.hidden)")[0].classList.add("hidden")
         }
         else {
@@ -171,16 +172,17 @@ socket.on('revealOpponentCard', (data) => {
         document.querySelector(".vs-container").classList.remove("hidden")
         if(data.p1hand.length === 0 && data.p2hand.length === 0){
             if(socket.id === data.player1) {
-                data.p1hand = generateHand(30);
+                let hand = generateHand(30);
+                data.p1hand = hand;
                 loadCards(data.p1hand)
                 loadOppCards()
-                socket.emit("updateRoom", data)
+                socket.emit("updatePlayer1Hand", data)
             }
             else {
                 data.p2hand = generateHand(30);
                 loadCards(data.p2hand)
                 loadOppCards()
-                socket.emit("updateRoom", data)
+                socket.emit("updatePlayer2Hand", data)
             }
             console.log("hands changed")
             // socket.emit("newHand", data)

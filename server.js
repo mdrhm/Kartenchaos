@@ -135,8 +135,11 @@ io.on('connection', (socket) => {
         console.log(rooms)
 
     });
-    socket.on("updateRoom", (data) => {
-        rooms[data.roomID] = data;
+    socket.on("updatePlayer1Hand", (data) => {
+        rooms[data.roomID].p1hand = data.p1hand;
+    })
+    socket.on("updatePlayer2Hand", (data) => {
+        rooms[data.roomID].p2hand = data.p2hand;
     })
 });
 
