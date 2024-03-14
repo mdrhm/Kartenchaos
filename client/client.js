@@ -32,6 +32,16 @@ function getRoomIDFromURL() {
     return urlParams.get('roomID');
 }
 
+// Copy Link to Clipboard from button
+function copyLinkToClipboard() {
+    var link = window.location.href; // <-- Get the current URL
+    navigator.clipboard.writeText(link).then(function() {
+        console.log('Link copied to clipboard!');
+    }, function(err) {
+        console.error('Failed to copy link: ', err);
+    });
+}
+
 function joinGame() {
     console.log("joingame room id" + roomID);
     socket.emit('joinGame', { roomID: roomID });
