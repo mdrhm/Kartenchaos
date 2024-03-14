@@ -49,29 +49,27 @@ for(let i = 0; i < y.length; i++){
     request.send(null);
     var data = request.responseText;
     // console.log(data)
-    cards[i].innerHTML += data;
+    cards[i].innerHTML += data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
     // cardsInner[i].src = "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
 }
 
 let selected = null;
-for (let card of cards) {
+for (let i = 0; i < cards.length; i++) {
     if (dropleft.children.length === 0) {
-        card.addEventListener("dblclick", () => {
+        cards[i].addEventListener("dblclick", () => {
             if (count > 0 || dropleft.children.length > 0) {
                 // Set draggable attribute to false
-                e.target.draggable = false;
+                cards[i].draggable = false;
             } else {
-                sendCardChoice(card);
-                dropleft.appendChild(card);
-                console.log(card);
+                sendCardChoice(y[i]);
+                dropleft.appendChild(cards[i]);
+                console.log(cards[i]);
                 count = 1;
 
-                e.target.src = "./cards/2B.svg";
-                e.target.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
-                e.target.style.borderRadius = '10px';
-                e.target.style.width = "70%";
-                e.target.style.height = "30vh";
-                e.target.style.marginLeft = "10px";
+                cards[i].style.borderRadius = '10px';
+                cards[i].style.width = "70%";
+                cards[i].style.height = "30vh";
+                cards[i].style.marginLeft = "10px";
 
 
                 // Remove the dblclick event listener after the first double-click
