@@ -18,14 +18,14 @@ function generateHand(sum) {
         let randomValue = Math.min(Math.floor(Math.random() * (sum - (4 - i))) + 1, 10);
 
         // Assign the random value to the current cell
-        cells[i] = randomValue;
+        cells[i] = randomValue + suits[Math.floor(Math.random() * suits.length)];
 
         // Deduct the assigned value from the remaining sum
         sum -= randomValue;
     }
 
 // Assign the remaining sum to the last cell, ensuring it doesn't exceed 10
-    cells[4] = Math.min(sum, 10);
+    cells[4] = Math.min(sum, 10) + suits[Math.floor(Math.random() * suits.length)];
 
     return cells;
 }
@@ -43,14 +43,8 @@ for(let i = 0; i < 5; i++){
 }
 
 
-var request = new XMLHttpRequest();
 for(let i = 0; i < y.length; i++){
-    request.open("GET", "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
-    request.send(null);
-    var data = request.responseText;
-    // console.log(data)
-    cards[i].innerHTML += data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
-    // cardsInner[i].src = "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
+    cards[i].innerHTML += getCard(y[i])
 }
 
 let selected = null;
@@ -79,4 +73,11 @@ for (let i = 0; i < cards.length; i++) {
     } else {
         console.log("You already put a card down dipstick");
     }
+}
+
+function getCard(card){
+    var request = new XMLHttpRequest();
+    request.open("GET", "/client/cards/" + card + ".svg", false);
+    request.send(null);
+    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
 }

@@ -7,7 +7,7 @@ const { Server } = require('socket.io');
 const io = new Server(server);
 // Store the rooms and their details
 const rooms = {};
-
+let player1Played = false, player2Played = false;
 
 
 // Serve static files from the 'public' directory
@@ -93,10 +93,15 @@ io.on('connection', (socket) => {
         if (rooms[data.roomID]) {
             rooms[data.roomID].player1Choice = cardChosen;
             io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
+            if(player2Played){
+                io.to(data.roomID).emit("revealOpponentCard", rooms[data.roomID]);
+            }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
         console.log(rooms)
+        player1Played = true;
+
     });
 
     socket.on("player2Choice", (data) => {
@@ -109,10 +114,15 @@ io.on('connection', (socket) => {
         if (rooms[data.roomID]) {
             rooms[data.roomID].player2Choice = cardChosen;
             io.to(data.roomID).emit("updatep1withp2card", {cardChosen : data.cardChosen});
+            player2Played = true;
+            if(player1Played){
+                io.to(data.roomID).emit("revealOpponentCard", rooms[data.roomID]);
+            }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
         console.log(rooms)
+
     });
 
 });

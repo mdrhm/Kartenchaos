@@ -13,7 +13,6 @@ cardi.style.width = "70%";
 cardi.style.height = "30vh";
 cardi.style.marginLeft = "10px";
 
-
 function makeGame() {
     player1= true;
     socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle")});
@@ -119,7 +118,6 @@ socket.on("updatep2withp1card", (data) => {
         else {
             console.log("Element with id 'dropright' not found.");
         }
-
     }
 });
 socket.on("updatep1withp2card", (data) => {
@@ -147,4 +145,16 @@ socket.on('loadCardStyles', (data) => {
         document.querySelector("#dropr").classList = data.style1;
 
     }
+})
+
+socket.on('revealOpponentCard', (data) => {
+    let displayCard
+    if(socket.id === data.player1){
+        displayCard = data.player2Choice
+    }
+    else{
+        displayCard = data.player1Choice
+    }
+    document.querySelector("#dropr").innerHTML = getCard(displayCard)
+    console.log("both players played")
 })
