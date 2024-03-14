@@ -1,8 +1,8 @@
 
 // const p1Attack = document.querySelector('.p1-attack');
 // const p2Attack = document.querySelector('.p2-attack');
-// let p1Hp = document.getElementById('p1-health-bar');
-// let p2Hp = document.getElementById('p2-health-bar');
+let p1Hp = document.getElementById('p1-health-bar');
+let p2Hp = document.getElementById('p2-health-bar');
 // const dmg = 5;
 
 // p1Hp.style.setProperty('--progress-color', 'rgba(30,100,10,1)');
@@ -79,3 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
   vElement.addEventListener('oanimationend', afterAnimation);
   vElement.addEventListener('MSAnimationEnd', afterAnimation);
 });
+
+
+
+
