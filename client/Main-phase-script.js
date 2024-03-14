@@ -51,7 +51,7 @@ for(let i = 0; i < y.length; i++){
     request.send(null);
     var data = request.responseText;
     // console.log(data)
-    cardsInner[i].innerHTML += data;
+    cards[i].innerHTML += data;
     // cardsInner[i].src = "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
 }
 
