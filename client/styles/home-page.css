@@ -282,16 +282,17 @@ html {
     gap: 20px;
 }
 
-.p1handcontainer, .p2handcontainer {
+#p1handcontainer, #p2handcontainer {
     bottom: -15%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
+    border: none !important;
 }
 
-.p1handcontainer .card{
+#p1handcontainer .card{
     /*position: absolute;*/
     width: fit-content;
     height: fit-content;
@@ -310,7 +311,7 @@ html {
     /*margin-left: 10px;*/
 }
 
-.p2handcontainer .card {
+#p2handcontainer .card {
     /*position: absolute;*/
     width: fit-content;
     height: fit-content;

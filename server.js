@@ -46,13 +46,13 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('makeGame', () => {
+    socket.on('makeGame', (data) => {
         console.log("making game");
         const roomID = makeid(6);
-        rooms[roomID] = { player1: socket.id };
+        rooms[roomID] = {player1: socket.id, p1cardstyle: data.cardstyle };
         console.log(roomID);
         socket.join(roomID);
-        socket.emit('newGame', { roomID: roomID });
+        socket.emit('newGame', { roomID: roomID, p1cardstyle: data.cardstyle });
     });
 
 
@@ -63,11 +63,16 @@ io.on('connection', (socket) => {
             console.log("joininggame");
             console.log(data);
             console.log("joingame" + data.roomID);
-
             socket.join(data.roomID);
+            if (rooms[data.roomID]) {
+                rooms[data.roomID].player2 = socket.id;
+                rooms[data.roomID].p2cardstyle = data.cardstyle
+                socket.emit('loadCardStyles', {style1: rooms[data.roomID].p1cardstyle, style2: rooms[data.roomID].p2cardstyle});
+            }
             io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
             io.to(socket.id).emit("2playersConnected", { roomID: data.roomID });
         }
+
     });
 
     socket.on('getRoomLink', () => {
@@ -91,6 +96,7 @@ io.on('connection', (socket) => {
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
+        console.log(rooms)
     });
 
     socket.on("player2Choice", (data) => {
@@ -106,7 +112,9 @@ io.on('connection', (socket) => {
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
+        console.log(rooms)
     });
+
 });
 
 server.listen(3000, () => {

@@ -16,7 +16,7 @@ cardi.style.marginLeft = "10px";
 
 function makeGame() {
     player1= true;
-    socket.emit('makeGame');
+    socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle")});
 }
 
 
@@ -56,9 +56,9 @@ function showNotification(message) {
 
 function joinGame() {
     console.log("joingame room id" + roomID);
-    socket.emit('joinGame', { roomID: roomID });
+    socket.emit('joinGame', { roomID: roomID, cardstyle: localStorage.getItem("cardstyle") });
     roomID = getRoomIDFromURL();
-    socket.emit('joinGame', {roomID: roomID});
+    socket.emit('joinGame', {roomID: roomID, cardstyle: localStorage.getItem("cardstyle")});
 }
 function goToMainPhase() {
     // Go to the main phase logic here
@@ -136,3 +136,13 @@ socket.on("updatep1withp2card", (data) => {
         }
     }
 });
+
+socket.on('loadCardStyles', (data) => {
+    if(localStorage.getItem("cardstyle") === data.style1){
+        document.querySelector("#p2handcontainer").classList = data.style2;
+    }
+    else{
+        document.querySelector("#p2handcontainer").classList = data.style1;
+
+    }
+})
