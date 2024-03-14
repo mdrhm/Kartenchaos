@@ -40,3 +40,11 @@ for(let i = 0; i < cardStyleOptions.length; i++){
     request.send(null);
     cardStyleOptions[i].innerHTML = request.responseText.replaceAll("S" + suits[i%4] + "A", "S" + suits[i%4] + "A-" + i).replaceAll("V" + suits[i%4] + "A", "V" + suits[i%4] + "A-" + i);
 }
+
+for(let i = 0; i < 5; i++){
+    request.open("GET", "/client/cards/2B.svg", false);
+    request.send(null);
+    var data = request.responseText;
+    // console.log(data)
+    document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
+}

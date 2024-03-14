@@ -278,20 +278,21 @@ html {
     justify-content: center;
     align-items: center;
     border: none !important;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.p1handcontainer {
-    position: absolute;
+.p1handcontainer, .p2handcontainer {
     bottom: -15%;
-    margin-bottom: 12.5%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
-.p1handcontainer .card {
-    position: absolute;
+.p1handcontainer .card{
+    /*position: absolute;*/
     width: fit-content;
     height: fit-content;
     border-radius: 10px;
@@ -304,7 +305,28 @@ html {
     transform-origin: 50% 100%;
     border-radius: 13px;
     transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
-    height: 250px;
+    border-radius: 10px;
+    width: 150px;
+    /*margin-left: 10px;*/
+}
+
+.p2handcontainer .card {
+    /*position: absolute;*/
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    transform-origin: 50% 100%;
+    border-radius: 13px;
+    transform: rotate(calc(var(--i) * 15deg)) translate(calc((var(--i)) * 70px), -40px);
+    border-radius: 10px;
+    width: 150px;
+    /*margin-left: 10px;*/
 }
 
 .p1handcontainer .card img {
@@ -339,8 +361,8 @@ html {
 .dropport {
     display: flex;
     height: 30%;
-    margin: auto;
-    position: relative;
+    /*margin: auto;*/
+    /*position: relative;*/
     top: 45%;
     background-color: white;
     width: 30%;
@@ -349,7 +371,7 @@ html {
     border-radius: 8px;
     border-left-width: 20px;
     background-color: #8e8b8b;
-    margin-top: -5%;
+    /*margin-top: -5%;*/
 
 }
 
