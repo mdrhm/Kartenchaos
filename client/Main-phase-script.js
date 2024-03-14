@@ -1,4 +1,4 @@
-let cards = document.querySelectorAll(".p1handcontainer .card");
+let cards = document.querySelectorAll("#p1handcontainer .card");
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
 
@@ -18,15 +18,15 @@ function generateHand(sum) {
         let randomValue = Math.min(Math.floor(Math.random() * (sum - (4 - i))) + 1, 10);
 
         // Assign the random value to the current cell
-        cells[i] = randomValue;
+        cells[i] = randomValue + suits[Math.floor(Math.random() * suits.length)];
 
         // Deduct the assigned value from the remaining sum
         sum -= randomValue;
     }
 
 // Assign the remaining sum to the last cell, ensuring it doesn't exceed 10
-    cells[4] = Math.min(sum, 10);
-
+    cells[4] = Math.min(sum, 10) + suits[Math.floor(Math.random() * suits.length)];
+    currplayerhand = cells;
     return cells;
 }
 function getRandominRange(min, max) {
@@ -35,47 +35,44 @@ function getRandominRange(min, max) {
 
 
 // let x = getRandominRange(25,35);
-let x = 30;
-let y= generateHand(x);
-let z = 0
-for(let i = 0; i < 5; i++){
-    z += y[i];
-}
+// let x = 30;
+// let y= generateHand(x);
 
-var request = new XMLHttpRequest();
-for(let i = 0; i < y.length; i++){
-    request.open("GET", "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg", false);
-    request.send(null);
-    var data = request.responseText;
-    // console.log(data)
-    cards[i].innerHTML += data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
-    // cardsInner[i].src = "/client/cards/" + y[i] + suits[Math.floor(Math.random() * suits.length)] + ".svg"
+function loadCards(hand) {
+    for (let i = 0; i < hand.length; i++) {
+        cards[i].classList.remove("hidden")
+        cards[i].innerHTML = getCard(hand[i], "curr")
+    }
 }
 
 let selected = null;
 for (let i = 0; i < cards.length; i++) {
-    if (dropleft.children.length === 0) {
-        cards[i].addEventListener("dblclick", (e) => {
-            if (count > 0 || dropleft.children.length > 0) {
+    cards[i].addEventListener("dblclick", () => {
+        if (dropleft.children.length === 0) {
+            if (dropleft.children.length > 0) {
                 // Set draggable attribute to false
                 cards[i].draggable = false;
             } else {
-                sendCardChoice(y[i]);
-                dropleft.appendChild(cards[i]);
-                console.log(cards[i]);
-                count = 1;
-
-                cards[i].style.borderRadius = '10px';
-                cards[i].style.width = "70%";
-                cards[i].style.height = "30vh";
-                cards[i].style.marginLeft = "10px";
-
+                sendCardChoice(currplayerhand[i]);
+                cards[i].children[0].style.borderRadius = '10px';
+                cards[i].children[0].style.width = "70%";
+                cards[i].children[0].style.height = "30vh";
+                cards[i].children[0].style.marginLeft = "10px";
+                dropleft.appendChild(cards[i].children[0]);
+                cards[i].classList.add("hidden");
 
                 // Remove the dblclick event listener after the first double-click
-                e.target.removeEventListener("dblclick", arguments.callee);
             }
-        });
-    } else {
-        console.log("You already put a card down dipstick");
-    }
+        } else {
+            console.log("You already put a card down dipstick");
+        }
+    })
+}
+
+function getCard(card, tag){
+    let suit = card.at(-1)
+    var request = new XMLHttpRequest();
+    request.open("GET", "/client/cards/" + card + ".svg", false);
+    request.send(null);
+    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","").replaceAll("V" + suit, tag + "-V" + suit).replaceAll("S" + suit, tag + "-S" + suit);
 }

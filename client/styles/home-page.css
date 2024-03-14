@@ -280,18 +280,21 @@ html {
     border: none !important;
     flex-direction: column;
     gap: 20px;
+    position: absolute;
 }
 
-.p1handcontainer, .p2handcontainer {
+#p1handcontainer, #p2handcontainer {
     bottom: -15%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
+    border: none !important;
+    height: 210px;
 }
 
-.p1handcontainer .card{
+#p1handcontainer .card{
     /*position: absolute;*/
     width: fit-content;
     height: fit-content;
@@ -310,7 +313,7 @@ html {
     /*margin-left: 10px;*/
 }
 
-.p2handcontainer .card {
+#p2handcontainer .card {
     /*position: absolute;*/
     width: fit-content;
     height: fit-content;
@@ -375,14 +378,16 @@ html {
 
 }
 
-.dropleft {
+#dropl {
     width: 50%;
     height: 100%;
+    border: none !important;
 }
 
-.dropright {
+#dropr {
     width: 50%;
     height: 100%;
+    border: none !important;
 }
 
 
@@ -486,6 +491,7 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: absolute;
 }
 
 .wait-phase .wait {
