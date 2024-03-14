@@ -260,5 +260,6 @@ function updateCustomBg(bg, index, event){
 
 function updateCardStyle(style) {
     document.querySelector("#p1handcontainer").classList = style
+    document.querySelector("#dropl").classList = style
     localStorage.setItem("cardstyle", style);
 }

@@ -67,7 +67,7 @@ io.on('connection', (socket) => {
             if (rooms[data.roomID]) {
                 rooms[data.roomID].player2 = socket.id;
                 rooms[data.roomID].p2cardstyle = data.cardstyle
-                socket.emit('loadCardStyles', {style1: rooms[data.roomID].p1cardstyle, style2: rooms[data.roomID].p2cardstyle});
+                io.to(data.roomID).emit('loadCardStyles', {style1: rooms[data.roomID].p1cardstyle, style2: rooms[data.roomID].p2cardstyle});
             }
             io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
             io.to(socket.id).emit("2playersConnected", { roomID: data.roomID });

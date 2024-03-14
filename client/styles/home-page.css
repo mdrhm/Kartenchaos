@@ -376,14 +376,16 @@ html {
 
 }
 
-.dropleft {
+#dropl {
     width: 50%;
     height: 100%;
+    border: none !important;
 }
 
-.dropright {
+#dropr {
     width: 50%;
     height: 100%;
+    border: none !important;
 }
 
 

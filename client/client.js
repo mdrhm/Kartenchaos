@@ -140,9 +140,11 @@ socket.on("updatep1withp2card", (data) => {
 socket.on('loadCardStyles', (data) => {
     if(localStorage.getItem("cardstyle") === data.style1){
         document.querySelector("#p2handcontainer").classList = data.style2;
+        document.querySelector("#dropr").classList = data.style2;
     }
     else{
         document.querySelector("#p2handcontainer").classList = data.style1;
+        document.querySelector("#dropr").classList = data.style1;
 
     }
 })
