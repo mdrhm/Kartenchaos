@@ -207,38 +207,45 @@
 </div>
 
 <!-- CLASH 1v1 PAGE -->
-<div id="clash-page">
-    <div class = cardcontainer>
-        <div class = card1container >
-            <img src = "cards/2B.svg" class = "card1clash breakable break" id = "player1card">
-        </div>
-        <p class = "vs">VS</p>
-        <div class = card2container>
-            <img src = "cards/2B.svg"  class = "card2clash break" id = "player2card">
-        </div>
-    </div>
-    <!-- p1 && p2 pfp + Vs icon -->
-   
+    <div id="clash-page">
 
-    
-
-    
-
-   
         <!-- health-bars -->
-      
-    <div class="barcontainer">
-            
-        <div class = "p1barcontainer">
-            <div id = p1-health-bar>Player 1 Health</div>
-        </div>
-            
         
-        
-            
-            <div class = "p2barcontainer">
-            <div id="p2-health-bar">Player 2 Health</div>
+        <div class="barcontainer">
+                
+            <div class="bar1">
+                <progress value="0" max="100" id="p1-health-bar">Player 1 Health</progress>
+                
+                <div class="p1-damage-indicator"></div>
+
             </div>
+            
+            <div class="bar2"><progress value="0" max="100" id="p2-health-bar">Player 2 Health</progress></div>
+        </div>
+
+        <div class = cardcontainer>
+            <div class = card1container >
+                <img src = "cards/2B.svg" class = "card2clash" id = "player1card">
+            </div>
+            <div class="vs-container">
+                <p class = "v">V</p>
+                <p class="s">S</p>
+            </div>
+            <div class = card2container>
+                <img src = "cards/2B.svg"  class = "card2clash" id = "player2card">
+            </div>
+        </div>
+        
+        <div class="p1-card">Player 1
+            <button class="p1-attack">ATTACK</button>
+        </div>
+        <div class="p2-card">Player 2
+            <button class="p2-attack">ATTACK</button>
+        </div>
+    
+
+    
+            
     </div>
    
 
