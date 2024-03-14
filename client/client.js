@@ -3,9 +3,11 @@ const socket = io();
 
 let roomID = null;
 let player1 = false;
-let cardi = document.createElement('img');
-cardi.src = './cards/2B.svg';
-cardi.style.boxShadow = '-2.5px -2.5px 2.5px #0F0F0F';
+let cardi = document.createElement('div');
+var request = new XMLHttpRequest();
+request.open("GET", "/client/cards/2B.svg", false);
+request.send(null);
+cardi.innerHTML = request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
 cardi.style.borderRadius = '10px';
 cardi.style.width = "70%";
 cardi.style.height = "30vh";
@@ -112,6 +114,7 @@ socket.on("updatep2withp1card", (data) => {
         let card = data.cardChosen;
         if (dropright) {
             dropright.appendChild(cardi);
+            document.querySelectorAll(".opp-card")[0].remove();
         }
         else {
             console.log("Element with id 'dropright' not found.");
@@ -127,6 +130,7 @@ socket.on("updatep1withp2card", (data) => {
         let card = data.cardChosen;
         if (dropright) {
             dropright.appendChild(cardi);
+            document.querySelectorAll(".opp-card")[0].remove();
         } else {
             console.log("Element with id 'dropright' not found.");
         }
