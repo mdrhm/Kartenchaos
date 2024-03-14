@@ -82,11 +82,12 @@ progress[value]::-webkit-progress-value {
   /* background: var(--progress-color); */
   background: linear-gradient(90deg, #8b0505 0px, rgb(246, 32, 16) 10px, rgb(202, 146, 56) 100px, rgb(208, 170, 22) 150px, rgb(182, 194, 24) 250px, rgb(89, 170, 7) 375px, rgb(59, 147, 9) 425px, rgb(47, 136, 5) 450px, rgb(32, 128, 11) 500px, rgb(6, 82, 24) 700px);
   transition: background-color 1s ease;
+  transition: 1s ease;
   border-radius: 10px;
 }
 
 progress::-webkit-progress-bar {
-  background: transparent;
+  background: rgba(128, 128, 128, 0.352);
   border: solid 5px black;
   border-radius: 15px;
 }
@@ -114,8 +115,11 @@ progress::-webkit-progress-bar {
 .p1-damage-indicator {
   position: absolute;
   border: solid pink;
-  width: 120%;
+  width: 20%;
   height: 100%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
