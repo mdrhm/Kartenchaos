@@ -52,12 +52,12 @@ function showNotification(message) {
     }, 3000); // Hide notification after 3 seconds
 }
 
-function joinGame(roomID) {
-    console.log("joining game with room id: " + roomID);
+function joinGame() {
+    console.log("joingame room id" + roomID);
     socket.emit('joinGame', { roomID: roomID });
+    roomID = getRoomIDFromURL();
+    socket.emit('joinGame', {roomID: roomID});
 }
-
-
 function goToMainPhase() {
     // Go to the main phase logic here
     document.getElementsByClassName("home-ui")[0].style.display = "none";
@@ -72,13 +72,12 @@ socket.on('newGame', (data) => {
     console.log(roomID);
     // Hide the home screen
     document.getElementsByClassName("home-ui")[0].style.display = "none";
+
     document.getElementsByClassName("wait-phase")[0].style.display = "block";
 
     // Update the URL without a full page reload
     const roomUrl = window.location.origin + '/?roomID=' + roomID;
     history.pushState({ roomID: roomID }, 'Room Created', roomUrl);
-
-    localStorage.setItem('roomID', roomID);
 });
 
 socket.on("2playersConnected", () => {
@@ -120,8 +119,6 @@ socket.on("updatep2withp1card", (data) => {
 
     }
 });
-
-
 socket.on("updatep1withp2card", (data) => {
     console.log(player1);
     console.log("player2placedcard before check");
