@@ -56,16 +56,16 @@ for(let i = 0; i < y.length; i++){
 }
 
 let selected = null;
-for (let card of cards) {
+for (let i = 0; i < cards.length; i++) {
     if (dropleft.children.length === 0) {
-        card.addEventListener("dblclick", () => {
+        cards[i].addEventListener("dblclick", () => {
             if (count > 0 || dropleft.children.length > 0) {
                 // Set draggable attribute to false
                 e.target.draggable = false;
             } else {
-                sendCardChoice(card);
-                dropleft.appendChild(card);
-                console.log(card);
+                sendCardChoice(y[i]);
+                dropleft.appendChild(cards[i]);
+                console.log(cards[i]);
                 count = 1;
 
                 e.target.src = "./cards/2B.svg";
