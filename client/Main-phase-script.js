@@ -1,4 +1,3 @@
-
 let cards = document.querySelectorAll(".card");
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
@@ -10,7 +9,7 @@ const cardsInner = document.querySelectorAll(".card-inner");
 const suits = ["D","H","S","C"]
 
 function generateHand(sum) {
-// Initialize an array with 5 cells
+// Initialize an array with five cells
     let cells = [0, 0, 0, 0, 0];
 
 // Distribute the sum among the cells
@@ -30,7 +29,6 @@ function generateHand(sum) {
 
     return cells;
 }
-
 function getRandominRange(min, max) {
     return parseInt(Math.random() * (max - min)) + min;
 }
@@ -56,16 +54,16 @@ for(let i = 0; i < y.length; i++){
 }
 
 let selected = null;
-for (let i = 0; i < cards.length; i++) {
+for (let card of cards) {
     if (dropleft.children.length === 0) {
-        cards[i].addEventListener("dblclick", () => {
+        card.addEventListener("dblclick", () => {
             if (count > 0 || dropleft.children.length > 0) {
                 // Set draggable attribute to false
                 e.target.draggable = false;
             } else {
-                sendCardChoice(y[i]);
-                dropleft.appendChild(cards[i]);
-                console.log(cards[i]);
+                sendCardChoice(card);
+                dropleft.appendChild(card);
+                console.log(card);
                 count = 1;
 
                 e.target.src = "./cards/2B.svg";

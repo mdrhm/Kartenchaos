@@ -58,8 +58,6 @@ function joinGame() {
     roomID = getRoomIDFromURL();
     socket.emit('joinGame', {roomID: roomID});
 }
-
-
 function goToMainPhase() {
     // Go to the main phase logic here
     document.getElementsByClassName("home-ui")[0].style.display = "none";
@@ -121,8 +119,6 @@ socket.on("updatep2withp1card", (data) => {
 
     }
 });
-
-
 socket.on("updatep1withp2card", (data) => {
     console.log(player1);
     console.log("player2placedcard before check");
