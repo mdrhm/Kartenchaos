@@ -57,26 +57,7 @@
   margin-top: 7vh;
 }
 
-/* .p1barcontainer{
-  margin-left: 15px;
-  width: 18vw;
-  height: 4vh;
-  border-radius: 20px;
-  border-style: solid;
-  border-color: rgb(0, 0, 0);
-  background-color: gainsboro;
-  background: linear-gradient(to left,rgba(30,100,10,1),rgba(36,147,21,1),rgba(163,218,3,1),rgba(210,185,41,1),rgba(190,39,6,1),rgba(134,37,16,100));
-}
 
-.p2barcontainer{
-  margin-right: 15px;
-  width: 18vw;
-  height: 4vh;
-  border-radius: 20px;
-  border-style: solid;
-  background: linear-gradient(to right,rgba(30,100,10,1),rgba(36,147,21,1),rgba(163,218,3,1),rgba(210,185,41,1),rgba(190,39,6,1),rgba(134,37,16,100));
-
-} */
 
 progress[value]::-webkit-progress-value {
   /* background: var(--progress-color); */
@@ -112,14 +93,66 @@ progress::-webkit-progress-bar {
 }
 
 
-.p1-damage-indicator {
+.p1-damage-indicator-container,
+.p2-damage-indicator-container {
+  display: flex;
   position: absolute;
-  border: solid pink;
-  width: 20%;
+  /* border: solid pink; */
+  width: auto;
   height: 100%;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 10px;
+  align-items: center;
+}
+
+.p1-damage-indicator-container {
+  left: 100%;
+}
+
+
+.p1-damage-taken, .p2-damage-taken {
+  margin: 0;
+  color: #ff3333;
+  font-weight: bold;
+  font-size: 70px;
+  animation: colorTransparenter 0.7s linear forwards;
+}
+
+
+
+@keyframes colorTransparenter {
+  0% {
+    color: #ff3333;
+    text-shadow: 
+      -1.5px -1.5px 0 #000,  
+      1.5px -1.5px 0 #000,
+      -1.5px 1.5px 0 #000,
+      1.5px 1.5px 0 #000;
+  }
+  60% {
+    color: #ff3333b4;
+    text-shadow: 
+    -1.5px -1.5px 5px rgba(0, 0, 0, 0.5),  
+    1.5px -1.5px 5px rgba(0, 0, 0, 0.5),
+    -1.5px 1.5px 5px rgba(0, 0, 0, 0.5),
+    1.5px 1.5px 5px rgba(0, 0, 0, 0.5); /* Semi-transparent shadow */
+  }
+  100% {
+    color: #ff333300;
+    text-shadow: 
+      -1.5px -1.5px 5px rgba(0, 0, 0, 0),  
+      1.5px -1.5px 5px rgba(0, 0, 0, 0),
+      -1.5px 1.5px 5px rgba(0, 0, 0, 0),
+      1.5px 1.5px 5px rgba(0, 0, 0, 0); /* Fully transparent shadow */
+  }
+}
+
+@keyframes fallingDown {
+  0% {
+    top: 0; 
+  }
+  100% {
+    top: 80%; 
+  }
 }
 
 
