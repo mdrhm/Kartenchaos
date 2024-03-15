@@ -101,7 +101,7 @@ io.on('connection', (socket) => {
             if(player2Played){
                 player1Played = false;
                 player2Played = false;
-                io.to(data.roomID).emit("revealOpponentCard", rooms[data.roomID]);
+                io.to(data.roomID).emit("gotoVSContainer", rooms[data.roomID]);
             }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
@@ -127,7 +127,7 @@ io.on('connection', (socket) => {
             if(player1Played){
                 player1Played = false;
                 player2Played = false;
-                io.to(data.roomID).emit("revealOpponentCard", rooms[data.roomID]);
+                io.to(data.roomID).emit("gotoVSContainer", rooms[data.roomID]);
             }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
