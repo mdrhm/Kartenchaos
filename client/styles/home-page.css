@@ -354,12 +354,11 @@ html {
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
-    background-color: rgba(0, 255, 0, 0.8);
+    background-color: rgba(10, 148, 10, 0.8);
     color: #fff;
     border-radius: 5px;
     z-index: 9999;
 }
-
 
 .dropport {
     display: flex;
@@ -395,42 +394,6 @@ html {
     display: none !important;
 }
 
-
-.wait {
-    margin: auto;
-    height: 50vh;
-    width: 50vh;
-    background-color: rgb(255, 0, 0);
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-size: 5vh;
-
-
-}
-
-.joker-img {
-    max-width: 200px;
-    max-height: 200px;
-}
-
-.heightcheck img {
-    height: 30vh;
-}
-
-#room-ID {
-    width: 20vh;
-    height: 20vh;
-}
-
-.showcode {
-    background-color: greenyellow;
-    height: 20vh;
-    width: 40vh;
-    color: white;
-    font-size: larger;
-}
-
-
 .button-container {
     display: flex;
     gap: 1rem;
@@ -442,6 +405,12 @@ html {
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
+}
+
+.wait-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .wait-phase button {
