@@ -159,15 +159,7 @@ socket.on('loadCardStyles', (data) => {
     document.querySelector("#dropr").classList = displayStyle;
 })
 
-socket.on('revealOpponentCard', (data) => {
-    let displayCard
-    if(socket.id === data.player1){
-        displayCard = data.player2Choice
-    }
-    else{
-        displayCard = data.player1Choice
-    }
-    cardi.innerHTML = getCard(displayCard, "opp")
+socket.on('gotoVSContainer', (data) => {
     setTimeout(function() {
         document.querySelector(".vs-container").classList.remove("hidden")
         if(data.p1hand.length === 0 && data.p2hand.length === 0){
@@ -187,7 +179,7 @@ socket.on('revealOpponentCard', (data) => {
             console.log("hands changed")
             // socket.emit("newHand", data)
         }
-    }, 3000);
+    }, 1500);
 })
 
 
@@ -201,3 +193,12 @@ function nextRound(){
 // socket.on('nextRound', (data) => {
 //
 // })
+
+// let displayCard
+// if(socket.id === data.player1){
+//     displayCard = data.player2Choice
+// }
+// else{
+//     displayCard = data.player1Choice
+// }
+// cardi.innerHTML = getCard(displayCard, "opp")
