@@ -28,6 +28,8 @@ body {
     animation: flip-opposite 2s infinite;
 }
 
+
+
 @keyframes flip {
     0% {
         transform: perspective(600px) rotateY(-180deg);

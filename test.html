@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./client/styles/cards.css">
+    <link rel="stylesheet" href="/client/styles/clash.css">
 </head>
 <style>
     body {
@@ -22,7 +22,7 @@
     }
 
     img {
-        position: absolute;
+       
         cursor: pointer;
     }
 
@@ -38,12 +38,60 @@
     }
 </style>
 <body style="background-color: brown;">
-    <div class="TEST" id="con">
-        <img src="client/cards/10S.svg">
+    
+
+    
+    <!-- CLASH 1v1 PAGE -->
+<div id="clash-page" >
+
+    <!-- health-bars -->
+    
+    <div class="barcontainer" >
+            
+        <div class="bar1">
+            <progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress>
+            
+            <div class="p1-damage-indicator-container"><h1 class="p1-damage-taken hidden">-10</h1></p></div>
+
+        </div>
+        
+        <div class="bar2">
+            <progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress>
+        
+            <div class="p2-damage-indicator-container"><h1 class="p2-damage-taken hidden">-10</h1></p></div>
+        </div>
     </div>
+    <div class = "cardcontainer">
+    <div class = "card1container" id = con1 >
+        <div class = "TEST" id = "con">
+        <img src = "client/cards/10C.svg" class = "card2clash" id = "player1card">
+    </div>
+    </div>
+    <div class="vs-container">
+        <p class = "v">V</p>
+        <p class="s">S</p>
+    </div>
+    <div class = "card2container">
+    <div class = "TEST" id = "con">
+        <img src = "client/cards/10C.svg"  class = "card2clash" id = "player2card">
+        <audio id = "breaksound" src = "Glass Break Sound.mp3"></audio>
+    </div>
+    </div>
+</div>
+<button id="shatterButton">Shatter</button>
+<div class="p1-card">Player 1
+    <button class="p1-attack">ATTACK</button>
+</div>
+<div class="p2-card">Player 2
+    <button class="p2-attack">ATTACK</button>
+</div>
 
-    <button id="shatterButton">Shatter</button>
 
+
+
+
+        
+</div>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/delaunay.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
     <script>
@@ -59,7 +107,11 @@
         var container = document.getElementById('con');
 
         document.getElementById('shatterButton').addEventListener('click', function () {
+            var shatterSound = document.getElementById('breaksound');
+            shatterSound.currentTime = .5;
             shatter();
+            shatterSound.play();
+            
         });
 
         function shatter() {
@@ -103,7 +155,7 @@
 
         function shatterAnimation(clickPosition) {
             var p0, p1, p2, fragment;
-            
+            var tl0 = new TimelineMax({ onComplete: shatterCompleteHandler });
 
             for (var i = 0; i < indices.length; i += 3) {
                 p0 = vertices[indices[i + 0]];
@@ -140,7 +192,19 @@
             
         }
 
-        
+        function shatterCompleteHandler() {
+            setTimeout(function () {
+                fragments.forEach(function (f) {
+                    container.removeChild(f.canvas);
+                });
+                fragments.length = 0;
+                vertices.length = 0;
+                indices.length = 0;
+
+                placeImage();
+            }, 10000);
+        }
+
         function randomRange(min, max) {
             return min + (max - min) * Math.random();
         }
@@ -185,15 +249,16 @@
                 this.centroid = [x, y];
             },
             createCanvas: function () {
-                this.canvas = document.createElement('canvas');
-                this.canvas.width = this.box.w;
-                this.canvas.height = this.box.h;
-                this.canvas.style.width = this.box.w + 'px';
-                this.canvas.style.height = this.box.h + 'px';
-                this.canvas.style.left = this.box.x + 'px';
-                this.canvas.style.top = this.box.y + 'px';
-                this.ctx = this.canvas.getContext('2d');
-            },
+    this.canvas = document.createElement('canvas');
+    this.canvas.width = this.box.w;
+    this.canvas.height = this.box.h;
+    this.canvas.style.width = this.box.w + 'px';
+    this.canvas.style.height = this.box.h + 'px';
+    this.canvas.style.left = this.box.x + 'px'; // Set left to the original x coordinate
+    this.canvas.style.top = this.box.y + 'px'; // Set top to the original y coordinate
+    this.ctx = this.canvas.getContext('2d');
+},
+
             clip: function () {
                 this.ctx.translate(-this.box.x, -this.box.y);
                 this.ctx.beginPath();

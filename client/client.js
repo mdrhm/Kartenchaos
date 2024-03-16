@@ -12,7 +12,10 @@ cardi.style.borderRadius = '10px';
 cardi.style.width = "70%";
 cardi.style.height = "30vh";
 cardi.style.marginLeft = "10px";
-
+let p1card;
+let p2card;
+let valsum;
+let greater;
 
 function makeGame() {
     player1= true;
@@ -90,7 +93,7 @@ socket.on("2playersConnected", () => {
 });
 
 // Note that cardChosen is not the card element but its ID
-function sendCardChoice(cardChosen) {
+function sendCardChoice(cardValChosen,cardChosen) {
     let choiceEvent;
     console.log("beginning choiceevent");
     console.log(roomID);
@@ -104,15 +107,18 @@ function sendCardChoice(cardChosen) {
     }
     console.log("send card choice no romm id" + roomID);
     socket.emit(choiceEvent, {
-        cardChosen: cardChosen,
-        roomID: roomID
+        cardValChosen: cardValChosen,
+        cardChosen:cardChosen,
+        roomID: roomID,
     });
 }
 
 socket.on("updatep2withp1card", (data) => {
     if(!player1){
         console.log("player1placedcard");
-        let card = data.cardChosen;
+
+        p1card = data.cardChosen;
+
         if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card")[0].remove();
@@ -128,7 +134,7 @@ socket.on("updatep1withp2card", (data) => {
     console.log("player2placedcard before check");
     if(player1){
         console.log("player2placedcard");
-        let card = data.cardChosen;
+        p2card = data.cardChosen;
         if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card")[0].remove();
@@ -149,3 +155,34 @@ socket.on('loadCardStyles', (data) => {
 
     }
 })
+
+
+
+function flipP1Card(p1cardid) {
+    var p1sidecard = document.getElementById('player1card');
+
+    // Rotate 180 degrees
+    p1sidecard.style.transform = "perspective(600px) rotateY(180deg)";
+    
+    // Change content URL
+    p1sidecard.style.backgroundImage = 'url("/client/cards/' + p1cardid + '.svg")';
+
+    // Optional: Add transition for smooth rotation
+    p1sidecard.style.transition = "transform 1s ease-in-out";
+}
+
+function flipP2Card(p2cardid) {
+    var p2sidecard = document.getElementById('.player2card');
+
+    // Rotate 180 degrees
+    p2sidecard.style.transform = "perspective(600px) rotateY(180deg)";
+    
+    // Change content URL
+    p2sidecard.style.content= 'url("/client/cards/' + p2cardid + '.svg")';
+
+    // Optional: Add transition for smooth rotation
+    p2sidecard.style.transition = "transform 1s ease-in-out";
+}
+
+
+   

@@ -86,7 +86,7 @@ progress::-webkit-progress-bar {
 }
 
 .bar1, .bar2 {
-  width: 700px;
+  width: 80%;
   height: 100%;
   border-radius: 10px;
   position: relative;
@@ -187,6 +187,7 @@ progress::-webkit-progress-bar {
   border-radius: 15px;
   animation: shake 1.8s;
   position: relative;
+  
 }
 
 .card2container{
@@ -383,26 +384,13 @@ progress::-webkit-progress-bar {
     transform: perspective(400px) rotateY(180deg);
   }
 }
-@keyframes breakAnimation {
-  0% {
-    transform: perspective(1000px) rotateY(0deg);
-  }
-  50% {
-    transform: perspective(1000px) rotateY(180deg);
-  }
-  100% {
-    transform: perspective(1000px) rotateY(360deg);
-  }
-}
+
 
 
 .card1clash {
   animation: flip 3s;
-  transform-style: preserve-3d;
-  transition: transform 1s;
 }
 
 .card2clash {
   animation: flip 3s;
 }
-

@@ -87,6 +87,3 @@ function displayDamageTaken(damageIndicatorContainer, damageTaken, hp, direction
     }, 800);
   }, 100);
 }
-
-
-

@@ -1,7 +1,8 @@
 let cards = document.querySelectorAll("#p1handcontainer .card");
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
-
+let player1Card;
+let player2Card;
 let count = 0;
 let min = 25;
 let max = 35;
@@ -61,7 +62,8 @@ for (let i = 0; i < cards.length; i++) {
                 // Set draggable attribute to false
                 cards[i].draggable = false;
             } else {
-                sendCardChoice(y[i]);
+                
+                sendCardChoice(y[i],cards[i]);           //Sends the card
                 dropleft.appendChild(cards[i]);
                 console.log(cards[i]);
                 count = 1;
@@ -87,7 +89,7 @@ let countdownInterval; // Variable to hold the interval
 // Function to start the countdown timer
 function startTimer() {
   // Synchronize the start time
-  const startTime = new Date().getTime() + 12000; // Start time after 5 seconds
+  const startTime = new Date().getTime() + 100; // Start time after 5 seconds
 
   // Start the countdown interval
   countdownInterval = setInterval(() => {
@@ -112,6 +114,9 @@ function goToClashPhase() {
     document.getElementsByClassName("wait-phase")[0].style.display = "none";
     document.querySelector("#Main-phase").style.display = "none";
     document.querySelector("#clash-page").style.display = "block";
+    flipP1Card('10S');
+    flipP1Card('10H');
+    
   }
 
 // Function to update the countdown element with the given time
