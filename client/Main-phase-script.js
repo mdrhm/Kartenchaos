@@ -2,6 +2,30 @@ let cards = document.querySelectorAll("#p1handcontainer .card");
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
 
+// const allBtn = document.querySelectorAll('.button');
+// const audioPlayer = document.getElementById('audioPlayer');
+// allBtn.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         audioPlayer.play();
+//     });
+// });
+
+// console.log("Script loaded");
+
+// const allBtn = document.querySelectorAll('.button');
+// const audioPlayer = document.getElementById('audioPlayer');
+
+// console.log("Buttons:", allBtn);
+// console.log("Audio Player:", audioPlayer);
+
+// allBtn.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         console.log("Button clicked");
+//         audioPlayer.play();
+//     });
+// });
+
+
 let count = 0;
 let min = 25;
 let max = 35;
