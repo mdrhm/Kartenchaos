@@ -1,0 +1,147 @@
+.wait-container {
+    font-family: "my-first-font";
+    font-weight: 800;
+    text-decoration: none;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    background: none;
+    font-size: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    transform: translate(20%, 0);
+}
+
+.button-container #join-button, #link-button{
+    display: block;
+    font-family: 'myFirstFont';
+    font-size: 5em;
+    color: black;
+    border: none;
+    font-weight: 800;
+    text-decoration: none;
+    background: none;
+    transition: 0.4s;
+    text-transform: uppercase;
+    max-width: fit-content;
+    cursor: pointer;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    padding: 60px;
+}
+
+#link-button { margin-left: 100px}
+
+.button-container button:hover {
+    color: #333;
+}
+
+.button-container img {
+    visibility: hidden;
+    width: 40px;
+    transform: rotate(-0.25turn);
+    width: 40px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    border: solid black;
+    background-color: white;
+    border-radius: 10%;
+}
+
+.wait-phase button:hover img {
+    visibility: visible;
+    animation-name: slideleft;
+    animation-duration: 1.1s;
+    animation-iteration-count: infinite;
+}
+
+.wait-phase {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: absolute;
+}
+
+.cards {
+    position: relative;
+    margin: 50px auto;
+    height: 75px;
+    margin-left: 60rem;
+    width: 50px;
+    font-size: 30px;
+    line-height: 38px;
+    font-weight: bold;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #fff;
+    border-radius: 7px;
+    padding-left: 5px;
+    box-shadow: -2px 2px 3px rgba(0,0,0,0.3);
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+
+p {
+    font-size: .5em;
+    position: absolute;
+    bottom: -45px;
+    left: -13px;
+    margin: 0;
+}
+
+.one {
+    animation-name: anim-one;
+}
+
+@keyframes anim-one {
+    from { transform: translate(0) rotate(0deg);}
+    50% {transform: translate(-30px, 5px) rotate(-45deg);}
+    to { transform: translate(0) rotate(0deg);}
+}
+
+.two {
+    animation-name: anim-two;
+}
+
+@keyframes anim-two {
+    from { transform: translate(0) rotate(0deg);}
+    50% {transform: translate(-15px) rotate(-25deg);}
+    to { transform: translate(0) rotate(0deg);}
+}
+
+.three {
+    animation-name: anim-three;
+}
+
+@keyframes anim-three {
+    from { transform: translate(0) rotate(0deg);}
+    50% {transform: rotate(-5deg);}
+    to { transform: translate(0) rotate(0deg);}
+}
+
+.four {
+    animation-name: anim-five;
+}
+
+@keyframes anim-five {
+    from { transform: translate(0) rotate(0deg);}
+    50% {transform: translate(15px, 5px) rotate(15deg);}
+    to { transform: translate(0) rotate(0deg);}
+}
+
+.five {
+    animation-name: anim-eight;
+}
+
+@keyframes anim-eight {
+    from { transform: translate(0) rotate(0deg);}
+    50% {transform: translate(28px, 14px) rotate(35deg);}
+    to { transform: translate(0) rotate(0deg);}
+}

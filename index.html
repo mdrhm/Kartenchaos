@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/client/styles/home-page.css">
     <link rel="stylesheet" href="client/styles/settings-page.css">
     <link rel="stylesheet" href="/client/styles/rules-page.css">
+    <link rel="stylesheet" href="/client/styles/waiting-page.css">
     <style class="custom-bg-style" type="text/css"></style>
 </head>
 <body>
@@ -171,15 +172,14 @@
 <!-- Waiting Page/Phase -->
 <div class="wait-phase" style="display: none;">
     <div class="wait-container">
-        <h2>Waiting For Player</h2>
-        <img src="client/Images/joker.png" alt="Joker" class="joker-img">
+        <h1>Waiting For Player</h1>
     </div>
-    <div id="p1handcontainer">
-        <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
-        <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
-        <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
-        <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
-        <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
+    <div class="cards">
+        <div class="card one">1</div>
+        <div class="card two">2</div>
+        <div class="card three">3</div>
+        <div class="card four">4</div>
+        <div class="card five">5</div>
     </div>
     <div class="button-container">
         <button id="link-button" onclick="copyLinkToClipboard()">Copy Link to Clipboard <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>

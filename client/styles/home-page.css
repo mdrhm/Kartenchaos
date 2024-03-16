@@ -404,90 +404,9 @@ html {
     height: 20vh;
 }
 
-
 .button-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.wait-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-
-.wait-phase button {
-    display: block;
-    font-family: 'myFirstFont';
-    font-size: 5em;
-    color: black;
-    font-weight: 800;
-    text-decoration: none;
-    background: none;
-    transition: 0.4s;
-    border: none;
-    text-transform: uppercase;
-    max-width: fit-content;
-    cursor: pointer;
-    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-    padding-left: 57px;
-    text-align: center;
-}
-
-.wait-phase button:hover {
-    color: #333;
-}
-
-.wait-phase button img {
-    visibility: hidden;
-    width: 40px;
-    transform: rotate(-0.25turn);
-    width: 40px;
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    border: solid black;
-    background-color: white;
-    border-radius: 10%;
-}
-
-.wait-phase button:hover img {
-    visibility: visible;
-    animation-name: slideleft;
-    animation-duration: 1.1s;
-    animation-iteration-count: infinite;
-}
-
-.wait-phase {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    position: absolute;
-}
-
-.wait-phase .wait {
-    margin-bottom: 2rem;
-}
-
-.wait-phase .p1handcontainer {
+    gap: 1rem;
     margin-top: 2rem;
 }
 
-.wait-phase h1 {
-    font-family: "my-first-font";
-    position: relative;
-    font-size: 5rem;
-    align-content: center;
-    left: 100%;
-    color: black;
-    font-weight: 800;
-    text-decoration: none;
-    background: none;
-    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-}
