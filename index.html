@@ -171,18 +171,16 @@
 <!-- Waiting Page/Phase -->
 <div class="wait-phase" style="display: none;">
     <div class="wait-container">
-        <h2>Waiting For Player</h2>
-        <img src="client/Images/joker.png" alt="Joker" class="joker-img">
-    </div>
-    <div id="p1handcontainer">
-        <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
-        <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
-        <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
-        <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
-        <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
+        <h1>Waiting For Player</h1>
     </div>
     <div class="button-container">
-        <button id="link-button" onclick="copyLinkToClipboard()">Copy Link to Clipboard <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <div class="copy-text">
+            <input type="text" class="text" value="htttps://localhost:3000">
+            <button>
+                <i class="fa fa-clone"></i>
+            </button>
+        </div>
+        <!--<button id="link-button" onclick="copyLinkToClipboard()">Copy Link to Clipboard <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>-->
         <button id="join-button" onclick="joinGame()">Join Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
     </div>
     <div id="clipboard-notification" class="notification">Link Copied to Clipboard!</div>

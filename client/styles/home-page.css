@@ -395,24 +395,6 @@ html {
     display: none !important;
 }
 
-
-.wait {
-    margin: auto;
-    height: 50vh;
-    width: 50vh;
-    background-color: rgb(255, 0, 0);
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-size: 5vh;
-
-
-}
-
-.joker-img {
-    max-width: 200px;
-    max-height: 200px;
-}
-
 .heightcheck img {
     height: 30vh;
 }
@@ -422,19 +404,12 @@ html {
     height: 20vh;
 }
 
-.showcode {
-    background-color: greenyellow;
-    height: 20vh;
-    width: 40vh;
-    color: white;
-    font-size: larger;
-}
-
 
 .button-container {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .wait-container {
@@ -443,6 +418,7 @@ html {
     align-items: center;
     margin-bottom: 2rem;
 }
+
 
 .wait-phase button {
     display: block;
@@ -459,6 +435,7 @@ html {
     cursor: pointer;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
     padding-left: 57px;
+    text-align: center;
 }
 
 .wait-phase button:hover {
@@ -500,4 +477,17 @@ html {
 
 .wait-phase .p1handcontainer {
     margin-top: 2rem;
+}
+
+.wait-phase h1 {
+    font-family: "my-first-font";
+    position: relative;
+    font-size: 5rem;
+    align-content: center;
+    left: 100%;
+    color: black;
+    font-weight: 800;
+    text-decoration: none;
+    background: none;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
