@@ -33,11 +33,6 @@ function getRandominRange(min, max) {
     return parseInt(Math.random() * (max - min)) + min;
 }
 
-
-
-
-
-
 function loadCards(hand) {
     for (let i = 0; i < hand.length; i++) {
         cards[i].classList.remove("hidden")
@@ -59,6 +54,7 @@ for (let i = 0; i < cards.length; i++) {
                 console.log(" checking for id " + currplayerhand[i].id)
                 cardDiv.style.borderRadius = '10px';
                 cardDiv.style.width = "150px";
+                cardDiv.style.height = "30vh";
                 dropleft.appendChild(cardDiv);
                 cards[i].classList.add("hidden");
 
@@ -83,30 +79,30 @@ let countdownInterval; // Variable to hold the interval
 
 // Function to start the countdown timer
 function startTimer() {
-    // Synchronize the start time
-    const startTime = new Date().getTime() + 12000; // Start time after 5 seconds
+  // Synchronize the start time
+  const startTime = new Date().getTime() + 12000; // Start time after 5 seconds
 
-    // Start the countdown interval
-    countdownInterval = setInterval(() => {
-        // Calculate the remaining time
-        const currentTime = new Date().getTime();
-        const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
+  // Start the countdown interval
+  countdownInterval = setInterval(() => {
+    // Calculate the remaining time
+    const currentTime = new Date().getTime();
+    const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
 
-        // Update the countdown element with the remaining time
-        updateCountdown(remainingTime);
+    // Update the countdown element with the remaining time
+    updateCountdown(remainingTime);
 
-        // If the countdown reaches 0, clear the interval
-        if (remainingTime === 0) {
-            clearInterval(countdownInterval);
-            document.getElementById('timer').textContent = "Time's up!";
-            goToClashPhase();
-        }
-    }, 1000);
+    // If the countdown reaches 0, clear the interval
+    if (remainingTime === 0) {
+      clearInterval(countdownInterval);
+      document.getElementById('timer').textContent = "Time's up!";
+      goToClashPhase();
+    }
+  }, 1000);
 }
 
 
 
 // Function to update the countdown element with the given time
 function updateCountdown(time) {
-    document.getElementById('timer').textContent = time;
+  document.getElementById('timer').textContent = time;
 }

@@ -54,22 +54,23 @@ body {
 
 @keyframes flip1 {
     0% {
-        transform: perspective(600px) rotateY(180deg);
+        transform: rotateY(180deg);
 
     }
     100% {
 
-        transform: perspective(600px) rotateY(0deg);
+        transform: rotateY(0deg);
     }
 }
 
 @keyframes flip2 {
     0% {
-        transform: perspective(600px) rotateY(-180deg);
+        transform: rotateY(-180deg);
 
     }
     100% {
-        transform: perspective(600px) rotateY(0deg);
+
+        transform: rotateY(0deg);
     }
 }
 
@@ -411,7 +412,6 @@ html {
     border: none !important;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 #timer {
