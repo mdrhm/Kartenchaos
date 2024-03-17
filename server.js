@@ -10,16 +10,14 @@ const rooms = {};
 let player1Played = false, player2Played = false;
 
 
+
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname)));
 
 // Serve static files from the 'client' directory
 app.use(express.static(path.join(__dirname, 'client')));
 
-// Health check endpoint
-app.get('/healthcheck', (req, res) => {
-    res.send('<h1>RPS App running...</h1>');
-});
+
 
 // Main route
 app.get('/', (req, res) => {
@@ -142,9 +140,6 @@ io.on('connection', (socket) => {
         rooms[data.roomID].p2hand = data.p2hand;
     })
 });
-
-
-
 server.listen(3000, () => {
     console.log('listening on *:3000');
 })

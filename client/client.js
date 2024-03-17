@@ -6,15 +6,21 @@ let player1 = false;
 let cardi = document.createElement('div');
 resetCardI()
 let currplayerhand;
+let p1card;
+let p2card;
+let p1cardID;
+let p2cardID;
+let valsum;
+let greater;
+
 function resetCardI(){
     var request = new XMLHttpRequest();
     request.open("GET", "/client/cards/2B.svg", false);
     request.send(null);
     cardi.innerHTML = request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
     cardi.style.borderRadius = '10px';
-    cardi.style.width = "70%";
+    cardi.style.width = "150px";
     cardi.style.height = "30vh";
-    cardi.style.marginLeft = "10px";
 }
 
 function makeGame() {
@@ -24,6 +30,7 @@ function makeGame() {
     loadOppCards()
     socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle"), hand: hand});
 }
+
 
 
 window.onload = function () {
@@ -78,7 +85,7 @@ function goToMainPhase() {
 
 
 socket.on('newGame', (data) => {
-    console.log("making game");
+    
     roomID = data.roomID;
     console.log(roomID);
     // Hide the home screen
@@ -92,35 +99,40 @@ socket.on('newGame', (data) => {
 });
 
 socket.on("2playersConnected", () => {
-    console.log('2 players connected!');
+    
     console.log(roomID);
     goToMainPhase();
+    startTimer();
 });
 
 // Note that cardChosen is not the card element but its ID
 function sendCardChoice(cardChosen) {
     let choiceEvent;
-    console.log("beginning choiceevent");
+    
     console.log(roomID);
     if (player1){
         choiceEvent = "player1Choice";
-        console.log("its player1 choice");
+        
     }
     else {
         choiceEvent = "player2Choice";
         console.log("its player2 choice");
     }
-    console.log("send card choice no romm id" + roomID);
+   
     socket.emit(choiceEvent, {
-        cardChosen: cardChosen,
-        roomID: roomID
+      
+        cardChosen:cardChosen,
+        
+        roomID: roomID,
     });
 }
 
 socket.on("updatep2withp1card", (data) => {
+    p1card = data.cardChosen;
+    console.log(p1card);
     if(!player1){
-        console.log("player1placedcard");
-        let card = data.cardChosen;
+        
+        console.log(p2card)
         if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
@@ -129,18 +141,19 @@ socket.on("updatep2withp1card", (data) => {
         else {
             console.log("Element with id 'dropright' not found.");
         }
+
     }
 });
 socket.on("updatep1withp2card", (data) => {
     console.log(player1);
-    console.log("player2placedcard before check");
+    p2card = data.cardChosen;
+    console.log(p2card);
     if(player1){
-        console.log("player2placedcard");
-        let card = data.cardChosen;
-        if (dropright) {
+        p2card = data.cardChosen;
+        console.log(p1card)
+      if (dropright) {
             dropright.appendChild(cardi);
-            document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
-            document.querySelectorAll(".opp-card:not(.hidden)")[0].classList.add("hidden")
+            document.querySelectorAll(".opp-card")[0].remove();
         } else {
             console.log("Element with id 'dropright' not found.");
         }
@@ -157,6 +170,7 @@ socket.on('loadCardStyles', (data) => {
     }
     document.querySelector("#p2handcontainer").classList = displayStyle;
     document.querySelector("#dropr").classList = displayStyle;
+    document.querySelector("#c2c").classList = displayStyle;
 })
 
 socket.on('gotoVSContainer', (data) => {
@@ -190,15 +204,35 @@ function nextRound(){
     resetCardI()
 }
 
-// socket.on('nextRound', (data) => {
-//
-// })
+function flipCards(p1cardid,p2cardid) {
+    var p1sidecard = document.querySelector('.TEST1'); // Corrected selector
+    var p2sidecard = document.querySelector('.TEST2');
+    p1sidecard.classList.add("card3");
+    p2sidecard.classList.add("card4");
+    
+    // Set the src attribute at 50% of the animation
+    setTimeout(function() {
+        let modifiedSvgp1 = getCard(p1cardid, 'curr');
+        p1sidecard.innerHTML =  modifiedSvgp1
+        let modifiedSvgp2 = getCard(p2cardid, 'opp');
+        p2sidecard.innerHTML =  modifiedSvgp2
+    }, 1000);
+   
+}
 
-// let displayCard
-// if(socket.id === data.player1){
-//     displayCard = data.player2Choice
-// }
-// else{
-//     displayCard = data.player1Choice
-// }
-// cardi.innerHTML = getCard(displayCard, "opp")
+function goToClashPhase() {
+    document.getElementsByClassName("home-ui")[0].style.display = "none";
+    document.getElementsByClassName("wait-phase")[0].style.display = "none";
+    document.querySelector("#Main-phase").style.display = "none";
+    document.querySelector("#clash-page").style.display = "block";
+    console.log("player1cards" + p1card, p2card)
+    if(player1) {
+        flipCards(p1card, p2card);
+    }
+    else{
+        flipCards(p2card, p1card);
+    }
+
+  }
+
+
