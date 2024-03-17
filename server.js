@@ -7,6 +7,7 @@ const { Server } = require('socket.io');
 const io = new Server(server);
 // Store the rooms and their details
 const rooms = {};
+let player1Played = false, player2Played = false;
 
 
 
@@ -16,10 +17,7 @@ app.use(express.static(path.join(__dirname)));
 // Serve static files from the 'client' directory
 app.use(express.static(path.join(__dirname, 'client')));
 
-// Health check endpoint
-app.get('/healthcheck', (req, res) => {
-    res.send('<h1>RPS App running...</h1>');
-});
+
 
 // Main route
 app.get('/', (req, res) => {
@@ -49,7 +47,7 @@ io.on('connection', (socket) => {
     socket.on('makeGame', (data) => {
         console.log("making game");
         const roomID = makeid(6);
-        rooms[roomID] = {player1: socket.id, p1cardstyle: data.cardstyle };
+        rooms[roomID] = {roomID: roomID, player1: socket.id, p1cardstyle: data.cardstyle, p1hand: data.hand};
         console.log(roomID);
         socket.join(roomID);
         socket.emit('newGame', { roomID: roomID, p1cardstyle: data.cardstyle });
@@ -67,7 +65,8 @@ io.on('connection', (socket) => {
             if (rooms[data.roomID]) {
                 rooms[data.roomID].player2 = socket.id;
                 rooms[data.roomID].p2cardstyle = data.cardstyle
-                io.to(data.roomID).emit('loadCardStyles', {style1: rooms[data.roomID].p1cardstyle, style2: rooms[data.roomID].p2cardstyle});
+                rooms[data.roomID].p2hand = data.hand
+                io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
             }
             io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
             io.to(socket.id).emit("2playersConnected", { roomID: data.roomID });
@@ -92,11 +91,21 @@ io.on('connection', (socket) => {
         console.log(rooms);
         if (rooms[data.roomID]) {
             rooms[data.roomID].player1Choice = cardChosen;
+            rooms[data.roomID].p1hand.splice(rooms[data.roomID].p1hand.indexOf(cardChosen), 1);
+            console.log(rooms)
+            console.log("Hand 1 Size: " + (rooms[data.roomID].p1hand.length === 0))
             io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
+            player1Played = true;
+            if(player2Played){
+                player1Played = false;
+                player2Played = false;
+                io.to(data.roomID).emit("gotoVSContainer", rooms[data.roomID]);
+            }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
         console.log(rooms)
+
     });
 
     socket.on("player2Choice", (data) => {
@@ -108,15 +117,29 @@ io.on('connection', (socket) => {
         console.log("rooms data" + rooms[data]);
         if (rooms[data.roomID]) {
             rooms[data.roomID].player2Choice = cardChosen;
+            rooms[data.roomID].p2hand.splice(rooms[data.roomID].p2hand.indexOf(cardChosen), 1);
+            console.log(rooms)
+            console.log("Hand 2 Size: " + (rooms[data.roomID].p2hand.length === 0))
             io.to(data.roomID).emit("updatep1withp2card", {cardChosen : data.cardChosen});
+            player2Played = true;
+            if(player1Played){
+                player1Played = false;
+                player2Played = false;
+                io.to(data.roomID).emit("gotoVSContainer", rooms[data.roomID]);
+            }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
         }
         console.log(rooms)
+
     });
-
+    socket.on("updatePlayer1Hand", (data) => {
+        rooms[data.roomID].p1hand = data.p1hand;
+    })
+    socket.on("updatePlayer2Hand", (data) => {
+        rooms[data.roomID].p2hand = data.p2hand;
+    })
 });
-
 server.listen(3000, () => {
     console.log('listening on *:3000');
 })
