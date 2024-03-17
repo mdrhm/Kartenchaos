@@ -14,6 +14,8 @@ cardi.style.height = "30vh";
 cardi.style.marginLeft = "10px";
 let p1card;
 let p2card;
+let p1cardID;
+let p2cardID;
 let valsum;
 let greater;
 
@@ -109,6 +111,7 @@ function sendCardChoice(cardValChosen,cardChosen) {
     socket.emit(choiceEvent, {
         cardValChosen: cardValChosen,
         cardChosen:cardChosen,
+        
         roomID: roomID,
     });
 }
@@ -118,7 +121,7 @@ socket.on("updatep2withp1card", (data) => {
         console.log("player1placedcard");
 
         p1card = data.cardChosen;
-
+        
         if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card")[0].remove();
@@ -133,8 +136,8 @@ socket.on("updatep1withp2card", (data) => {
     console.log(player1);
     console.log("player2placedcard before check");
     if(player1){
-        console.log("player2placedcard");
         p2card = data.cardChosen;
+      
         if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card")[0].remove();
@@ -157,32 +160,39 @@ socket.on('loadCardStyles', (data) => {
 })
 
 
-
 function flipP1Card(p1cardid) {
-    var p1sidecard = document.getElementById('player1card');
-
-    // Rotate 180 degrees
-    p1sidecard.style.transform = "perspective(600px) rotateY(180deg)";
+    console.log("started");
+    var p1sidecard = document.querySelector('.card1clash'); // Corrected selector
+    console.log(p1sidecard);
+    p1sidecard.classList.add("card3");
     
-    // Change content URL
-    p1sidecard.style.backgroundImage = 'url("/client/cards/' + p1cardid + '.svg")';
-
-    // Optional: Add transition for smooth rotation
-    p1sidecard.style.transition = "transform 1s ease-in-out";
+    // Set the src attribute at 50% of the animation
+    setTimeout(() => {
+        p1sidecard.setAttribute('src', '/client/cards/' + p1cardid + '.svg'); 
+    }, 500); // Adjust the delay as needed (in milliseconds)
 }
+
+
 
 function flipP2Card(p2cardid) {
-    var p2sidecard = document.getElementById('.player2card');
-
-    // Rotate 180 degrees
-    p2sidecard.style.transform = "perspective(600px) rotateY(180deg)";
+    console.log("started");
+    var p2sidecard = document.querySelector('.card2clash'); // Corrected selector
+    console.log(p2sidecard);
+    p2sidecard.classList.add("card4");
     
-    // Change content URL
-    p2sidecard.style.content= 'url("/client/cards/' + p2cardid + '.svg")';
-
-    // Optional: Add transition for smooth rotation
-    p2sidecard.style.transition = "transform 1s ease-in-out";
+    // Set the src attribute at 50% of the animation
+    setTimeout(() => {
+        p2sidecard.setAttribute('src', '/client/cards/' + p2cardid + '.svg'); 
+    }, 500); // Adjust the delay as needed (in milliseconds)
 }
 
+function goToClashPhase() {
+    document.getElementsByClassName("home-ui")[0].style.display = "none";
+    document.getElementsByClassName("wait-phase")[0].style.display = "none";
+    document.querySelector("#Main-phase").style.display = "none";
+    document.querySelector("#clash-page").style.display = "block";
+    flipP1Card("9S");
+    flipP2Card("5D");
+  }
 
-   
+

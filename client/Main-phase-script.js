@@ -63,7 +63,8 @@ for (let i = 0; i < cards.length; i++) {
                 cards[i].draggable = false;
             } else {
                 
-                sendCardChoice(y[i],cards[i]);           //Sends the card
+                sendCardChoice(y[i], cards[i]);
+           //Sends the card
                 dropleft.appendChild(cards[i]);
                 console.log(cards[i]);
                 count = 1;
@@ -89,7 +90,7 @@ let countdownInterval; // Variable to hold the interval
 // Function to start the countdown timer
 function startTimer() {
   // Synchronize the start time
-  const startTime = new Date().getTime() + 100; // Start time after 5 seconds
+  const startTime = new Date().getTime() + 12000; // Start time after 5 seconds
 
   // Start the countdown interval
   countdownInterval = setInterval(() => {
@@ -109,15 +110,7 @@ function startTimer() {
   }, 1000);
 }
 
-function goToClashPhase() {
-    document.getElementsByClassName("home-ui")[0].style.display = "none";
-    document.getElementsByClassName("wait-phase")[0].style.display = "none";
-    document.querySelector("#Main-phase").style.display = "none";
-    document.querySelector("#clash-page").style.display = "block";
-    flipP1Card('10S');
-    flipP1Card('10H');
-    
-  }
+
 
 // Function to update the countdown element with the given time
 function updateCountdown(time) {

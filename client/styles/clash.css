@@ -386,11 +386,21 @@ progress::-webkit-progress-bar {
 }
 
 
-
-.card1clash {
-  animation: flip 3s;
+canvas {
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
 }
 
-.card2clash {
-  animation: flip 3s;
+.TEST {
+  position: absolute;
+  width: 240px;
+  height: 366px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }

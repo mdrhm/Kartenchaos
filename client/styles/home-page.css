@@ -28,6 +28,13 @@ body {
     animation: flip-opposite 2s infinite;
 }
 
+.card3 {
+    animation: flip1 2.5s;
+}
+
+.card4 {
+    animation: flip2 2.5s;
+}
 
 
 @keyframes flip {
@@ -44,6 +51,35 @@ body {
         content: url("/client/cards/1B.svg");
     }
 }
+
+@keyframes flip1 {
+    0% {
+        transform:rotateY(360deg);
+    }
+    50% {
+        transform: rotateY(0deg);
+       
+    }
+    100% {
+        
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes flip2 {
+    0% {
+        transform:rotateY(-360deg);
+    }
+    50% {
+        transform: rotateY(0deg);
+       
+    }
+    100% {
+        
+        transform: rotateY(0deg);
+    }
+}
+
 
 @keyframes flip-opposite {
     0% {

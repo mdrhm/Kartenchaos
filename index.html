@@ -215,17 +215,23 @@
     </div>
     <div class = cardcontainer>
     <div class = card1container id = "c1c" >
-        <img src = "cards/2B.svg" class = "card2clash" id = "player1card" >
+        <div class = "TEST" id = "con1">
+        <img src = "cards/2B.svg" class = "card1clash" id = "player1card" >
+        <audio id = "breaksound" src = "Glass Break Sound.mp3"></audio>
+        </div>
     </div>
     <div class="vs-container">
         <p class = "v" id = "V">V</p>
         <p class="s">S</p>
     </div>
     <div class = card2container id = "c2c">
+        <div class = "TEST" id = "con2">
         <img src = "cards/2B.svg"  class = "card2clash" id = "player2card">
+        <audio id = "breaksound" src = "Glass Break Sound.mp3"></audio>
+    </div>
     </div>
 </div>
-
+<button id="shatterButton">Shatter</button>
 <div class="p1-card">Player 1
     <button class="p1-attack">ATTACK</button>
 </div>
@@ -251,6 +257,8 @@
 <script src="/client/scripts/settings-page.js" defer></script>
 <script src="/client/scripts/rules-page.js" defer></script>
 <script src="/client/scripts/onload.js" defer></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/delaunay.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
 
 </body>
 =
