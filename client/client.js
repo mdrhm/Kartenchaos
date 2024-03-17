@@ -170,6 +170,7 @@ socket.on('loadCardStyles', (data) => {
     }
     document.querySelector("#p2handcontainer").classList = displayStyle;
     document.querySelector("#dropr").classList = displayStyle;
+    document.querySelector("#c2c").classList = displayStyle;
 })
 
 socket.on('gotoVSContainer', (data) => {
