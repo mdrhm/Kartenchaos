@@ -19,9 +19,8 @@ function resetCardI(){
     request.send(null);
     cardi.innerHTML = request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
     cardi.style.borderRadius = '10px';
-    cardi.style.width = "70%";
+    cardi.style.width = "150px";
     cardi.style.height = "30vh";
-    cardi.style.marginLeft = "10px";
 }
 
 function makeGame() {
@@ -232,6 +231,7 @@ function goToClashPhase() {
     else{
         flipCards(p2card, p1card);
     }
+
   }
 
 
