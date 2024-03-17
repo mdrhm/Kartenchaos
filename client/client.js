@@ -204,7 +204,7 @@ function nextRound(){
     resetCardI()
 }
 
-function flipCards1(p1cardid,p2cardid) {
+function flipCards(p1cardid,p2cardid) {
     var p1sidecard = document.querySelector('.TEST1'); // Corrected selector
     var p2sidecard = document.querySelector('.TEST2');
     p1sidecard.classList.add("card3");
@@ -220,23 +220,6 @@ function flipCards1(p1cardid,p2cardid) {
    
 }
 
-
-
-function flipCards2(p2cardid,p1cardid) {
-    var p1sidecard = document.querySelector('.TEST1'); // Corrected selector
-    var p2sidecard = document.querySelector('.TEST2');
-    p1sidecard.classList.add("card3");
-    p2sidecard.classList.add("card4");
-    
-    setTimeout(function() {
-        let modifiedSvgp1 = getCard(p2cardid, 'curr');
-        p1sidecard.innerHTML =  modifiedSvgp1;
-        let modifiedSvgp2 = getCard(p1cardid, 'opp');
-        p2sidecard.innerHTML =  modifiedSvgp2;
-    }, 1000); // 0.5 seconds in milliseconds   
-   
-}
-
 function goToClashPhase() {
     document.getElementsByClassName("home-ui")[0].style.display = "none";
     document.getElementsByClassName("wait-phase")[0].style.display = "none";
@@ -244,11 +227,10 @@ function goToClashPhase() {
     document.querySelector("#clash-page").style.display = "block";
     console.log("player1cards" + p1card, p2card)
     if(player1) {
-        flipCards1(p1card, p2card);
+        flipCards(p1card, p2card);
     }
-    
-    else {
-        flipCards2(p2card, p1card);
+    else{
+        flipCards(p2card, p1card);
     }
   }
 
