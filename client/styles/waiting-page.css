@@ -75,18 +75,22 @@
 
 .waiting-cards {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
     margin-top: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
 }
 
 .waiting-cards .card {
     margin: 0 1rem;
+    width: 100px;
+    height: auto;
     transition: transform 0.5s ease-in-out;
 }
 
-.waiting-cards.spread .card {
-    transform: translateY(-50px);
+.waiting-cards.loading .card {
+    animation: rotate 2s infinite linear;
 }
 
 .vs-container {
@@ -119,5 +123,14 @@
     }
     100% {
         transform: translateX(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
