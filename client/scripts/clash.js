@@ -99,15 +99,15 @@ function displayDamageTaken(damageIndicatorContainer, damageTaken, hp, direction
         var fragments = [];
         var container = document.getElementById('con1');
         document.getElementById('shatterButton').addEventListener('click', function () {
-          let shatterSound = document.getElementById('breaksound');
-          if (shatterSound) {
-              shatterSound.currentTime = .5;
-              shatterSound.play();
-          } else {
-              console.error("Audio element with ID 'breaksound' not found.");
-          }
-          shatter();
-      });
+    let shatterSound = document.getElementById('breaksound');
+    if (shatterSound) {
+        shatterSound.currentTime = .5;
+        shatterSound.play();
+    } else {
+        console.error("Audio element with ID 'breaksound' not found.");
+    }
+    shatter();
+});
 
         function shatter() {
             var clickPosition = [randomRange(0, imageWidth), randomRange(0, imageHeight)];
