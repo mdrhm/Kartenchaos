@@ -91,7 +91,7 @@ function displayDamageTaken(damageIndicatorContainer, damageTaken, hp, direction
 const TWO_PI = Math.PI * 2.5;
         const imageWidth = 240; // Assuming image width
         const imageHeight = 366; // Assuming image height
-        const images = document.querySelectorAll('.TEST img');
+        const images = document.querySelectorAll('.TEST1 img');
 
         var imageIndex = 0;
         var vertices = [];

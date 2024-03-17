@@ -86,7 +86,7 @@ function goToMainPhase() {
 
 
 socket.on('newGame', (data) => {
-    console.log("making game");
+    
     roomID = data.roomID;
     console.log(roomID);
     // Hide the home screen
@@ -100,7 +100,7 @@ socket.on('newGame', (data) => {
 });
 
 socket.on("2playersConnected", () => {
-    console.log('2 players connected!');
+    
     console.log(roomID);
     goToMainPhase();
     startTimer();
@@ -109,17 +109,17 @@ socket.on("2playersConnected", () => {
 // Note that cardChosen is not the card element but its ID
 function sendCardChoice(cardChosen) {
     let choiceEvent;
-    console.log("beginning choiceevent");
+    
     console.log(roomID);
     if (player1){
         choiceEvent = "player1Choice";
-        console.log("its player1 choice");
+        
     }
     else {
         choiceEvent = "player2Choice";
         console.log("its player2 choice");
     }
-    console.log("send card choice no romm id" + roomID);
+   
     socket.emit(choiceEvent, {
       
         cardChosen:cardChosen,
@@ -129,11 +129,11 @@ function sendCardChoice(cardChosen) {
 }
 
 socket.on("updatep2withp1card", (data) => {
+    p1card = data.cardChosen;
+    console.log(p1card);
     if(!player1){
-        console.log("player1placedcard");
-
-        p1card = data.cardChosen;
         
+        console.log(p2card)
         if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
@@ -147,11 +147,12 @@ socket.on("updatep2withp1card", (data) => {
 });
 socket.on("updatep1withp2card", (data) => {
     console.log(player1);
-    console.log("player2placedcard before check");
+    p2card = data.cardChosen;
+    console.log(p2card);
     if(player1){
         p2card = data.cardChosen;
-      
-        if (dropright) {
+        console.log(p1card)
+      if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card")[0].remove();
         } else {
@@ -203,30 +204,37 @@ function nextRound(){
     resetCardI()
 }
 
-function flipP1Card(p1cardid) {
-    console.log("started");
-    var p1sidecard = document.querySelector('.card1clash'); // Corrected selector
-    console.log(p1sidecard);
+function flipCards1(p1cardid,p2cardid) {
+    var p1sidecard = document.querySelector('.TEST1'); // Corrected selector
+    var p2sidecard = document.querySelector('.TEST2');
     p1sidecard.classList.add("card3");
+    p2sidecard.classList.add("card4");
     
     // Set the src attribute at 50% of the animation
-    setTimeout(() => {
-        p1sidecard.setAttribute('src', '/client/cards/' + p1cardid + '.svg'); 
-    }, 500); // Adjust the delay as needed (in milliseconds)
+    setTimeout(function() {
+        let modifiedSvgp1 = getCard(p1cardid, 'curr');
+        p1sidecard.innerHTML =  modifiedSvgp1
+        let modifiedSvgp2 = getCard(p2cardid, 'opp');
+        p2sidecard.innerHTML =  modifiedSvgp2
+    }, 500);
+   
 }
 
 
 
-function flipP2Card(p2cardid) {
-    console.log("started");
-    var p2sidecard = document.querySelector('.card2clash'); // Corrected selector
-    console.log(p2sidecard);
+function flipCards2(p2cardid,p1cardid) {
+    var p1sidecard = document.querySelector('.TEST1'); // Corrected selector
+    var p2sidecard = document.querySelector('.TEST2');
+    p1sidecard.classList.add("card3");
     p2sidecard.classList.add("card4");
     
-    // Set the src attribute at 50% of the animation
-    setTimeout(() => {
-        p2sidecard.setAttribute('src', '/client/cards/' + p2cardid + '.svg'); 
-    }, 500); // Adjust the delay as needed (in milliseconds)
+    setTimeout(function() {
+        let modifiedSvgp1 = getCard(p2cardid, 'curr');
+        p1sidecard.innerHTML =  modifiedSvgp1;
+        let modifiedSvgp2 = getCard(p1cardid, 'opp');
+        p2sidecard.innerHTML =  modifiedSvgp2;
+    }, 1000); // 0.5 seconds in milliseconds   
+   
 }
 
 function goToClashPhase() {
@@ -234,8 +242,14 @@ function goToClashPhase() {
     document.getElementsByClassName("wait-phase")[0].style.display = "none";
     document.querySelector("#Main-phase").style.display = "none";
     document.querySelector("#clash-page").style.display = "block";
-    flipP1Card("6S");
-    flipP2Card("5D");
+    console.log("player1cards" + p1card, p2card)
+    if(player1) {
+        flipCards1(p1card, p2card);
+    }
+    
+    else {
+        flipCards2(p2card, p1card);
+    }
   }
 
 

@@ -54,6 +54,7 @@ for (let i = 0; i < cards.length; i++) {
                 cards[i].draggable = false;
             } else {
                 sendCardChoice(currplayerhand[i]);
+                console.log(" checking for id " + currplayerhand[i].id)
                 cards[i].children[0].style.borderRadius = '10px';
                 cards[i].children[0].style.width = "70%";
                 cards[i].children[0].style.height = "30vh";
