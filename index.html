@@ -19,6 +19,7 @@
 <audio id="music" controls autoplay hidden loop>
     <source src="/Audio/Default.mp3" type="audio/mp3">
 </audio>
+<audio class="voiceover" id="voiceover" src="/Audio/click.mp3"></audio>
 <div class="bg-0" id="bg"></div>
 <div class="home-ui">
     <div class="header">
@@ -32,14 +33,14 @@
         <div class="logo"></div>
     </div>
     <div class="home-screen-buttons">
-        <button onclick="makeGame()" id="play-game">Play Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
-        <button id="rules">Rules <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
-        <button id="settings">Settings <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button onclick="makeGame()" id="play-game" onmouseover="playHoverSound()">Play Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="rules" onmouseover="playHoverSound()">Rules <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="settings" onmouseover="playHoverSound()">Settings <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
     </div>
 </div>
 <div id="rules-page" class="hidden">
     <div id="rules-background" class="bg-0">
-        <h1 class="rules-header">Rules</h1>
+        <h1 class="rules-header" onmouseover="playHoverSound()">Rules</h1>
         <p class="rules">
             Objective: Reduce your opponent's hp to zero while keeping your own hp above zero. <br><br>
             Setup: Start with 50 hp and a hand of cards totaling 30 points. <br><br>
@@ -47,7 +48,7 @@
             Winning: The game ends when one player's hp reaches zero or below, with the other player declared the winner. <br><br>
             Strategy: Manage your hand wisely, conserve higher-value cards, and strategize to minimize hp loss while dealing damage to your opponent.
         </p>
-        <button id="rules-page-exit">Ok</button>
+        <button id="rules-page-exit" onmouseover="playHoverSound()">Ok</button>
     </div>
 </div>
 <div id="settings-page" class="hidden">
@@ -97,8 +98,8 @@
                 <div class="bottom-content">
                     <div></div>
                     <div class="bottom-right-side">
-                        <button class="reset-btn">RESET</button>
-                        <button class="save-btn">SAVE</button>
+                        <button class="reset-btn" onmouseover="playHoverSound()">RESET</button>
+                        <button class="save-btn" onmouseover="playHoverSound()">SAVE</button>
                     </div>
                 </div>
             </div>
@@ -140,8 +141,8 @@
                         </div>
                     </div>
                     <div class="bottom-right-side">
-                        <button class="reset-btn">RESET</button>
-                        <button class="save-btn">SAVE</button>
+                        <button class="reset-btn" onmouseover="playHoverSound()">RESET</button>
+                        <button class="save-btn" onmouseover="playHoverSound()">SAVE</button>
                     </div>
                 </div>
             </div>
@@ -235,7 +236,6 @@
     <button class="p2-attack">ATTACK</button>
 </div>
 </div>
-
 
 </div>
 
