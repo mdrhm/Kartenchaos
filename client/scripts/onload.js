@@ -53,3 +53,10 @@ function loadOppCards() {
         document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"", "");
     }
 }
+function playHoverSound() {
+    const voiceover = document.getElementById('voiceover');
+    if (voiceover) {
+        voiceover.currentTime = 0;
+        voiceover.play();
+    }
+}
