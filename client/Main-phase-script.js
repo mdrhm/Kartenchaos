@@ -56,9 +56,8 @@ for (let i = 0; i < cards.length; i++) {
                 sendCardChoice(currplayerhand[i]);
                 console.log(" checking for id " + currplayerhand[i].id)
                 cards[i].children[0].style.borderRadius = '10px';
-                cards[i].children[0].style.width = "70%";
+                cards[i].children[0].style.width = "150px";
                 cards[i].children[0].style.height = "30vh";
-                cards[i].children[0].style.marginLeft = "10px";
                 dropleft.appendChild(cards[i].children[0]);
                 cards[i].classList.add("hidden");
 
