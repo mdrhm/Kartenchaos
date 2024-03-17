@@ -54,5 +54,17 @@ function loadOppCards() {
     }
 }
 
+const buttons = document.querySelectorAll("button")
+for(button of buttons){
+    button.addEventListener("mouseover" , () => {
+        const voiceover = document.getElementById('voiceover');
+        if (voiceover) {
+            voiceover.volume = 0.2;
+            voiceover.currentTime = 0;
+            voiceover.play();
+        }
+    })
+}
+
 document.querySelector(".card1clash").innerHTML = getCard("2B", "currvs").replaceAll("B2", "B2-curr")
 document.querySelector(".card2clash").innerHTML = getCard("2B", "oppvs").replaceAll("B2", "B2-opp")
