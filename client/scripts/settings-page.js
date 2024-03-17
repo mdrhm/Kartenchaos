@@ -169,7 +169,7 @@ function bgUpload(event) {
     var reader = new FileReader();
     reader.onload = function(event) {
         let custombgs = localStorage.getItem("custombgs")
-        if(custombgs.includes(event.target.result)){
+        if(custombgs && custombgs.includes(event.target.result)){
             return;
         }
         custombgs += event.target.result + "\n";

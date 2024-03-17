@@ -20,7 +20,6 @@ function resetCardI(){
     cardi.innerHTML = request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
     cardi.style.borderRadius = '10px';
     cardi.style.width = "150px";
-    cardi.style.height = "30vh";
 }
 
 function makeGame() {
@@ -216,7 +215,7 @@ function flipCards(p1cardid,p2cardid) {
         p1sidecard.innerHTML =  modifiedSvgp1
         let modifiedSvgp2 = getCard(p2cardid, 'opp');
         p2sidecard.innerHTML =  modifiedSvgp2
-    }, 650);
+    }, 700);
 
 }
 
