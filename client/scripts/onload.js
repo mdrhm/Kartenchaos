@@ -4,13 +4,13 @@ const card2 = document.querySelector('.card2')
 var time = 1;
 var interval = setInterval(function() {
     if (time <= 3) {
-            card1.src = "/client//cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
-            card2.src = "/client/cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
-        }
-        else {
-            clearInterval(interval);
-        }
-    }, 3000);
+        card1.src = "/client//cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
+        card2.src = "/client/cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
+    }
+    else {
+        clearInterval(interval);
+    }
+}, 3000);
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("background")) {
@@ -53,3 +53,6 @@ function loadOppCards() {
         document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"", "");
     }
 }
+
+document.querySelector(".card1clash").innerHTML = getCard("2B", "currvs").replaceAll("B2", "B2-curr")
+document.querySelector(".card2clash").innerHTML = getCard("2B", "oppvs").replaceAll("B2", "B2-opp")
