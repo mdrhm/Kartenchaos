@@ -163,7 +163,7 @@ progress::-webkit-progress-bar {
   height: 80vh; /* Optional: Set a height for the container */
 }
 
-.card1container{
+#c1c{
   height: 60vh;
   width: 22.5vw;;
   /* background-color: #ddc1c1; */
@@ -174,7 +174,7 @@ progress::-webkit-progress-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 10px black;
+  border: solid 10px black !important;
   /* box-shadow:
   inset #000000 0 0 0 5px, 
   inset hsl(0, 8%, 3%) 0 0 0 1px, 
@@ -190,7 +190,7 @@ progress::-webkit-progress-bar {
   
 }
 
-.card2container{
+#c2c{
   height: 60vh;
   width: 22.5vw;
   /* background-color: #daf4fa; */
@@ -200,7 +200,7 @@ progress::-webkit-progress-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 10px black;
+  border: solid 10px black !important;
   /* box-shadow:
   inset #77c2ff 0 0 0 1px, 
   inset #009688 0 0 0 5px, 

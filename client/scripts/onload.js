@@ -53,3 +53,6 @@ function loadOppCards() {
         document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"", "");
     }
 }
+
+document.querySelector(".card1clash").innerHTML = getCard("2B", "curr")
+document.querySelector(".card2clash").innerHTML = getCard("2B", "curr")
