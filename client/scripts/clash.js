@@ -88,7 +88,7 @@ function displayDamageTaken(damageIndicatorContainer, damageTaken, hp, direction
   }, 100);
 }
 
-const TWO_PI = Math.PI * 2.5;
+        const TWO_PI = Math.PI * 2.5;
         const imageWidth = 240; // Assuming image width
         const imageHeight = 366; // Assuming image height
         const images = document.querySelectorAll('.TEST1 img');
@@ -98,15 +98,16 @@ const TWO_PI = Math.PI * 2.5;
         var indices = [];
         var fragments = [];
         var container = document.getElementById('con1');
-
         document.getElementById('shatterButton').addEventListener('click', function () {
-            var shatterSound = document.getElementById('breaksound');
-            shatterSound.currentTime = .5;
-            shatter();
-            shatterSound.play();
-            //
-            
-        });
+          let shatterSound = document.getElementById('breaksound');
+          if (shatterSound) {
+              shatterSound.currentTime = .5;
+              shatterSound.play();
+          } else {
+              console.error("Audio element with ID 'breaksound' not found.");
+          }
+          shatter();
+      });
 
         function shatter() {
             var clickPosition = [randomRange(0, imageWidth), randomRange(0, imageHeight)];

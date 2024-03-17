@@ -216,7 +216,7 @@ function flipCards1(p1cardid,p2cardid) {
         p1sidecard.innerHTML =  modifiedSvgp1
         let modifiedSvgp2 = getCard(p2cardid, 'opp');
         p2sidecard.innerHTML =  modifiedSvgp2
-    }, 500);
+    }, 1000);
    
 }
 
@@ -243,13 +243,8 @@ function goToClashPhase() {
     document.querySelector("#Main-phase").style.display = "none";
     document.querySelector("#clash-page").style.display = "block";
     console.log("player1cards" + p1card, p2card)
-    if(player1) {
-        flipCards1(p1card, p2card);
-    }
+    flipCards1(p1card, p2card);
     
-    else {
-        flipCards2(p2card, p1card);
-    }
   }
 
 
