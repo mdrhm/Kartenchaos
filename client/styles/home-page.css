@@ -54,10 +54,7 @@ body {
 
 @keyframes flip1 {
     0% {
-        transform:rotateY(360deg);
-    }
-    50% {
-        transform: rotateY(0deg);
+        transform: rotateY(180deg);
        
     }
     100% {
@@ -68,10 +65,7 @@ body {
 
 @keyframes flip2 {
     0% {
-        transform:rotateY(-360deg);
-    }
-    50% {
-        transform: rotateY(0deg);
+        transform: rotateY(-180deg);
        
     }
     100% {

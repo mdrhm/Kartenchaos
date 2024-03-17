@@ -209,15 +209,15 @@ function flipCards(p1cardid,p2cardid) {
     var p2sidecard = document.querySelector('.TEST2');
     p1sidecard.classList.add("card3");
     p2sidecard.classList.add("card4");
-    
+
     // Set the src attribute at 50% of the animation
     setTimeout(function() {
         let modifiedSvgp1 = getCard(p1cardid, 'curr');
         p1sidecard.innerHTML =  modifiedSvgp1
         let modifiedSvgp2 = getCard(p2cardid, 'opp');
         p2sidecard.innerHTML =  modifiedSvgp2
-    }, 1000);
-   
+    }, 650);
+
 }
 
 function goToClashPhase() {
