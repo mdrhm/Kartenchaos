@@ -174,14 +174,13 @@
 <!-- Waiting Page/Phase -->
 <div class="wait-phase" style="display: none;">
     <div class="wait-container">
-        <h1>Waiting For Player</h1>
+        <h1>Waiting For Player<span class="loading-dots">
+            <span class="loading-dot">.</span>
+            <span class="loading-dot">.</span>
+            <span class="loading-dot">.</span>
+        </span></h1>
     </div>
-    <div class="waiting-cards loading">
-        <div class="card" draggable="true"><img class="card-wait" src="client/cards/11H.svg" alt='' id="11H"></div>
-        <div class="card" draggable="true"><img class="card-wait" src="client/cards/12H.svg" alt='' id="12H"></div>
-        <div class="card" draggable="true"><img class="card-wait" src="client/cards/11H.svg" alt='' id="11H"></div>
-        <div class="card" draggable="true"><img class="card-wait" src="client/cards/12H.svg" alt='' id="12H"></div>
-        <div class="card" draggable="true"><img class="card-wait" src="client/cards/11H.svg" alt='' id="11H"></div>
+    <div class="gangham-loading">
     </div>
     <div class="button-container">
         <button id="link-button" onclick="copyLinkToClipboard()" onmouseover="playHoverSound()">Copy Link to Clipboard <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
