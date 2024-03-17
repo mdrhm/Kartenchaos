@@ -54,5 +54,5 @@ function loadOppCards() {
     }
 }
 
-document.querySelector(".card1clash").innerHTML = getCard("2B", "curr")
-document.querySelector(".card2clash").innerHTML = getCard("2B", "curr")
+document.querySelector(".card1clash").innerHTML = getCard("2B", "currvs").replaceAll("B2", "B2-curr")
+document.querySelector(".card2clash").innerHTML = getCard("2B", "oppvs").replaceAll("B2", "B2-opp")

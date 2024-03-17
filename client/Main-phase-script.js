@@ -33,11 +33,6 @@ function getRandominRange(min, max) {
     return parseInt(Math.random() * (max - min)) + min;
 }
 
-
-
-
-
-
 function loadCards(hand) {
     for (let i = 0; i < hand.length; i++) {
         cards[i].classList.remove("hidden")
@@ -54,11 +49,13 @@ for (let i = 0; i < cards.length; i++) {
                 cards[i].draggable = false;
             } else {
                 sendCardChoice(currplayerhand[i]);
+                let cardDiv = document.createElement('div');
+                cardDiv.appendChild(cards[i].children[0])
                 console.log(" checking for id " + currplayerhand[i].id)
-                cards[i].children[0].style.borderRadius = '10px';
-                cards[i].children[0].style.width = "150px";
-                cards[i].children[0].style.height = "30vh";
-                dropleft.appendChild(cards[i].children[0]);
+                cardDiv.style.borderRadius = '10px';
+                cardDiv.style.width = "150px";
+                cardDiv.style.height = "30vh";
+                dropleft.appendChild(cardDiv);
                 cards[i].classList.add("hidden");
 
                 // Remove the dblclick event listener after the first double-click
