@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="client/styles/settings-page.css">
     <link rel="stylesheet" href="/client/styles/rules-page.css">
     <link rel="stylesheet" href="/client/styles/clash.css">
+    <link rel="stylesheet" href="/client/styles/waiting-page.css">
     <style class="custom-bg-style" type="text/css"></style>
 </head>
 <body>
@@ -175,29 +176,32 @@
 <!-- Waiting Page/Phase -->
 <div class="wait-phase" style="display: none;">
     <div class="wait-container">
-        <h2>Waiting For Player</h2>
-        <img src="client/Images/joker.png" alt="Joker" class="joker-img">
+        <h1>Waiting For Player<span class="loading-dots">
+            <span class="loading-dot">.</span>
+            <span class="loading-dot">.</span>
+            <span class="loading-dot">.</span>
+        </span></h1>
     </div>
-    <div id="p1handcontainer">
-        <div class="card1 heightcheck" style="--i:-2" draggable="true"> <img class="card-inner" src="client/cards/6S.svg" alt='' id="6S"></div>
-        <div class="card2 heightcheck" style="--i:-1" draggable="true"><img class="card-inner" src="client/cards/3H.svg" alt='' id="3H"></div>
-        <div class="card1 heightcheck" style="--i:0" draggable="true"><img class="card-inner" src="client/cards/7D.svg" alt='' id="7D"></div>
-        <div class="card2 heightcheck" style="--i:1" draggable="true"><img class="card-inner" src="client/cards/6D.svg" alt='' id="6D"></div>
-        <div class="card1 heightcheck" style="--i:2" draggable="true"><img class="card-inner" src="client/cards/5D.svg" alt='' id="5D"></div>
+    <div class="gangham-loading">
     </div>
     <div class="button-container">
-        <button id="link-button" onclick="copyLinkToClipboard()">Copy Link to Clipboard <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
-        <button id="join-button" onclick="joinGame()">Join Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="link-button" onclick="copyLinkToClipboard()" onmouseover="playHoverSound()">Copy Link to Clipboard <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="join-button" onclick="joinGame()" onmouseover="playHoverSound()">Join Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
     </div>
     <div id="clipboard-notification" class="notification">Link Copied to Clipboard!</div>
 </div>
-
+<div class="vs-container hidden" style="
+    position: fixed;
+    height: 1000vh;
+    width: 1000vw;
+    background: black;
+">
+    <button onclick="nextRound()">Okay</button>
+</div>
 
 <!-- CLASH 1v1 PAGE -->
 <div id="clash-page" style="display: none;">
-
     <!-- health-bars -->
-    
     <div class="barcontainer" >
             
         <div class="bar1">
@@ -238,12 +242,6 @@
 <div class="p2-card">Player 2
     <button class="p2-attack">ATTACK</button>
 </div>
-
-
-
-
-
-        
 </div>
 
 
@@ -261,5 +259,4 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
 
 </body>
-=
 </html>
