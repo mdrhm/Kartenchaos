@@ -12,6 +12,11 @@
     transform: translate(20%, 0);
 }
 
+.wait-container h1 {
+    position: relative;
+    display: flex;
+}
+
 .button-container #join-button, #link-button{
     display: block;
     font-family: 'myFirstFont';
@@ -29,10 +34,25 @@
     padding: 60px;
 }
 
-#link-button { margin-left: 100px}
-
 .button-container button:hover {
     color: #333;
+}
+
+.button-container {
+    justify-content: center;
+    align-items: center;
+}
+
+#link-button {
+    justify-content: center;
+    align-items: center;
+    transform: translate(25%,150%);
+}
+
+#join-button {
+    justify-content: center;
+    align-items: center;
+    transform: translate(35%,150%);
 }
 
 .button-container img {
@@ -73,75 +93,4 @@
     font-size: 30px;
     line-height: 38px;
     font-weight: bold;
-}
-
-.card {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-    background-color: #fff;
-    border-radius: 7px;
-    padding-left: 5px;
-    box-shadow: -2px 2px 3px rgba(0,0,0,0.3);
-    animation-iteration-count: infinite;
-    animation-duration: 2s;
-}
-
-p {
-    font-size: .5em;
-    position: absolute;
-    bottom: -45px;
-    left: -13px;
-    margin: 0;
-}
-
-.one {
-    animation-name: anim-one;
-}
-
-@keyframes anim-one {
-    from { transform: translate(0) rotate(0deg);}
-    50% {transform: translate(-30px, 5px) rotate(-45deg);}
-    to { transform: translate(0) rotate(0deg);}
-}
-
-.two {
-    animation-name: anim-two;
-}
-
-@keyframes anim-two {
-    from { transform: translate(0) rotate(0deg);}
-    50% {transform: translate(-15px) rotate(-25deg);}
-    to { transform: translate(0) rotate(0deg);}
-}
-
-.three {
-    animation-name: anim-three;
-}
-
-@keyframes anim-three {
-    from { transform: translate(0) rotate(0deg);}
-    50% {transform: rotate(-5deg);}
-    to { transform: translate(0) rotate(0deg);}
-}
-
-.four {
-    animation-name: anim-five;
-}
-
-@keyframes anim-five {
-    from { transform: translate(0) rotate(0deg);}
-    50% {transform: translate(15px, 5px) rotate(15deg);}
-    to { transform: translate(0) rotate(0deg);}
-}
-
-.five {
-    animation-name: anim-eight;
-}
-
-@keyframes anim-eight {
-    from { transform: translate(0) rotate(0deg);}
-    50% {transform: translate(28px, 14px) rotate(35deg);}
-    to { transform: translate(0) rotate(0deg);}
 }
