@@ -13,11 +13,12 @@
 }
 
 .wait-container h1 {
+    transform: translate(-45%, 0);
     position: relative;
     display: flex;
 }
 
-.button-container #join-button, #link-button{
+.button-container button {
     display: block;
     font-family: 'myFirstFont';
     font-size: 5em;
@@ -39,20 +40,9 @@
 }
 
 .button-container {
+    display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#link-button {
-    justify-content: center;
-    align-items: center;
-    transform: translate(25%,150%);
-}
-
-#join-button {
-    justify-content: center;
-    align-items: center;
-    transform: translate(35%,150%);
 }
 
 .button-container img {
@@ -81,16 +71,53 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    position: absolute;
 }
 
-.cards {
-    position: relative;
-    margin: 50px auto;
-    height: 75px;
-    margin-left: 60rem;
-    width: 50px;
-    font-size: 30px;
-    line-height: 38px;
-    font-weight: bold;
+.waiting-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.waiting-cards .card {
+    margin: 0 1rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+.waiting-cards.spread .card {
+    transform: translateY(-50px);
+}
+
+.vs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.vs-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes slideleft {
+    0% {
+        transform: translateX(5);
+    }
+    50% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
