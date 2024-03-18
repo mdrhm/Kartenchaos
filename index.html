@@ -152,7 +152,7 @@
 </div>
 <div id ="Main-phase" style="display: none;">
     <div class="bar2">
-        <progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress>
+        <progress value="30" max="30" id="p2-health-bar">Player 2 Health</progress>
         <div class="p2-damage-indicator-container"><h1 class="p2-damage-taken hidden">-10</h1></p></div>
     </div>
     <div id="p2handcontainer" class="default">
@@ -175,7 +175,7 @@
         <div class="card" draggable="true"></div>
     </div>
     <div class="bar1">
-        <progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress>
+        <progress value="30" max="30" id="p1-health-bar">Player 1 Health</progress>
 
         <div class="p1-damage-indicator-container"><h1 class="p1-damage-taken hidden">-10</h1></p></div>
 
@@ -199,40 +199,6 @@
         <button id="join-button" onclick="joinGame()" onmouseover="playHoverSound()">Join Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
     </div>
     <div id="clipboard-notification" class="notification">Link Copied to Clipboard!</div>
-</div>
-
-<!-- CLASH 1v1 PAGE -->
-<div id="clash-page" style="display: none;">
-    <!-- health-bars -->
-    <div class="barcontainer" >
-
-
-    </div>
-    <div class = cardcontainer>
-    <div class = card1container id = "c1c" >
-        <div class = "TEST1" id = "con1">
-        <div class = "card1clash" id = "player1card" ></div>
-        <audio id = "breaksound" src = "Glass Break Sound.mp3"></audio>
-        </div>
-    </div>
-    <div class="vs-container">
-        <p class = "v" id = "V">V</p>
-        <p class="s">S</p>
-    </div>
-    <div class = card2container id = "c2c">
-        <div class = "TEST2" id = "con2">
-        <div class = "card2clash" id = "player2card"></div>
-        <audio id = "breaksound" src = "Glass Break Sound.mp3"></audio>
-    </div>
-    </div>
-</div>
-<button id="shatterButton">Shatter</button>
-<div class="p1-card">Player 1
-    <button class="p1-attack">ATTACK</button>
-</div>
-<div class="p2-card">Player 2
-    <button class="p2-attack">ATTACK</button>
-</div>
 </div>
 
 <!-- JAVASCRIPT-SCRIPT-LINKS -->
