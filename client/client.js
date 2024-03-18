@@ -208,7 +208,7 @@ function flipCards(cardid) {
 
     // Set the src attribute at 50% of the animation
     setTimeout(function() {
-        sideCard.innerHTML =  getCard(cardid, 'curr');
+        sideCard.innerHTML =  getCard(cardid, 'opp');
     }, 1000);
 
 }
