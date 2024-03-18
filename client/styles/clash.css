@@ -90,6 +90,7 @@ progress::-webkit-progress-bar {
   height: 30px;
   border-radius: 10px;
   position: fixed;
+  z-index: 1000;
 }
 
 .bar1{
