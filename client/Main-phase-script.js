@@ -54,7 +54,6 @@ for (let i = 0; i < cards.length; i++) {
                 console.log(" checking for id " + currplayerhand[i].id)
                 cardDiv.style.borderRadius = '10px';
                 cardDiv.style.width = "150px";
-                cardDiv.style.height = "30vh";
                 dropleft.appendChild(cardDiv);
                 cards[i].classList.add("hidden");
 
