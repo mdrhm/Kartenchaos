@@ -84,7 +84,7 @@ function goToMainPhase() {
 
 
 socket.on('newGame', (data) => {
-    
+
     roomID = data.roomID;
     console.log(roomID);
     // Hide the home screen
@@ -106,21 +106,21 @@ socket.on("2playersConnected", () => {
 // Note that cardChosen is not the card element but its ID
 function sendCardChoice(cardChosen) {
     let choiceEvent;
-    
+
     console.log(roomID);
     if (player1){
         choiceEvent = "player1Choice";
-        
+
     }
     else {
         choiceEvent = "player2Choice";
         console.log("its player2 choice");
     }
-   
+
     socket.emit(choiceEvent, {
-      
+
         cardChosen:cardChosen,
-        
+
         roomID: roomID,
     });
 }
@@ -129,7 +129,7 @@ socket.on("updatep2withp1card", (data) => {
     p1card = data.cardChosen;
     console.log(p1card);
     if(!player1){
-        
+
         console.log(p2card)
         if (dropright) {
             dropright.appendChild(cardi);
@@ -149,7 +149,7 @@ socket.on("updatep1withp2card", (data) => {
     if(player1){
         p2card = data.cardChosen;
         console.log(p1card)
-      if (dropright) {
+        if (dropright) {
             dropright.appendChild(cardi);
             document.querySelectorAll(".opp-card")[0].remove();
         } else {
@@ -229,6 +229,4 @@ function goToClashPhase() {
         flipCards(p1card);
     }
 
-  }
-
-
+}
