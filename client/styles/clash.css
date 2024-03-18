@@ -86,12 +86,22 @@ progress::-webkit-progress-bar {
 }
 
 .bar1, .bar2 {
-  width: 80%;
-  height: 100%;
+  width: 300px;
+  height: 30px;
   border-radius: 10px;
-  position: relative;
+  position: fixed;
+  z-index: 1000;
 }
 
+.bar1{
+  bottom: 1%;
+  left: 1%;
+}
+
+.bar2{
+  top:1%;
+  right: 1%;
+}
 
 .p1-damage-indicator-container,
 .p2-damage-indicator-container {
@@ -238,51 +248,41 @@ progress::-webkit-progress-bar {
 .vs-container {
   display: flex;
   position: relative;
-  border: solid 3px black;
-  height: 250px;
-  width: 250px;
+  height: 100px;
+  width: 100px;
   border-radius: 20px;
-  background-color: #56820372;
-  background-image: url('../Images/wood-pattern.png'); /* Wooden board texture */
   align-items: center;
   justify-content: center;
   gap: 15px;
-  overflow: visible; /* Allow content to overflow */
-  z-index: 1; /* Set z-index value lowest*/
-  animation: shake 1.8s;
+  overflow: visible;
+  z-index: 1;
 }
 
 /* STYLES THE V & S ELEMENTS */
 .v, .s {
-  font-size: 150px;
   margin: 0px;
   text-decoration: solid;
   text-align: center;
   font-family: myFirstFont;
-  src: url("Poker.ttf");
-  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
-    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-  z-index: 2; /* Set z-index value to second highest */
+  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  z-index: 2;
 }
 
 /* LAYER ON TOP OF ALL COMPONENETS (GIVES A SCREEN EFFECT) */
 .vs-container::before {
-  content: ''; /* Create a pseudo-element */
-  position: absolute; 
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  border: solid 7px black;
   border-radius: 15px;
-  z-index: 9999; /* Set z-index value highest */
-  background: linear-gradient(to bottom, #00000033 10%, rgba(255, 255, 255, 0.36) 50%, #00000036 90%);
+  z-index: 9999;
 }
 
 
 /* V ELEMENT ANIMATION*/
 .v {
-  animation: shake 1s 3 alternate;
   animation-fill-mode: forwards;
   position: relative;
     
@@ -301,7 +301,7 @@ progress::-webkit-progress-bar {
 
 /* S ELEMENT ANIMATION*/
 .s {
-  animation: shake 1s 3 alternate, fall-down-rotate 5s 0.5s;
+  animation: fall-down-rotate 5s 0.5s;
   
   animation-fill-mode: forwards; /* Makes sure the final state of the animation persists */
 }
@@ -414,4 +414,49 @@ canvas {
   top: 0;
   bottom: 0;
   margin: auto;
+}
+
+@keyframes go-to-clash-phase {
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(2);
+  }
+}
+
+@keyframes move-down {
+  0%{
+    transform:  scale(1) translateY(0px);
+  }
+  100%{
+    transform: scale(2) translateY(250px);
+  }
+}
+
+@keyframes move-up {
+  0%{
+    transform:  scale(1) translateY(0px);
+  }
+  100%{
+    transform: scale(2) translateY(-250px);
+  }
+}
+
+@keyframes bar1-transition {
+  0%{
+    transform: scale(1) translate(0%, 0%);
+  }
+  100%{
+    transform: scale(1.6) translate(20%, -30%);
+  }
+}
+
+@keyframes bar2-transition {
+  0%{
+    transform: scale(1) translate(0%, 0%);
+  }
+  100%{
+    transform: scale(1.6) translate(-20%, 30%);
+  }
 }

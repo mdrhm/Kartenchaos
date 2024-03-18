@@ -15,7 +15,7 @@
     <style class="custom-bg-style" type="text/css"></style>
 </head>
 <body>
-<audio id="audioPlayer" src="Audio\buttonClick.mp3"></audio>
+
 <audio id="music" controls autoplay hidden loop>
     <source src="/Audio/Default.mp3" type="audio/mp3">
 </audio>
@@ -71,7 +71,6 @@
                             <div class="bg-option bg-stock bg-0" onclick="updateBg('bg-0')"></div>
                             <div class="bg-option bg-stock bg-1" onclick="updateBg('bg-1')"></div>
                             <div class="bg-option bg-stock bg-2" onclick="updateBg('bg-2')"></div>
-                            <div class="bg-option bg-stock bg-3" onclick="updateBg('bg-3')"></div>
                             <div class="bg-option bg-stock bg-4" onclick="updateBg('bg-4')"></div>
                         </div>
                         <div class="bg-option bg-custom-upload-container hidden" onclick="document.querySelector('.bg-custom-select').click()">
@@ -115,7 +114,7 @@
                     <div class="music-volume-option">
                         <div class="music-volume">Music Volume</div>
                         <input type="range" class="music-slider range-style">
-                        <input type="number" class="music-input slider-input" value="50" placeholder="50">
+                        <input type="number" class="sfx-input slider-input" value="50" placeholder="50">
                     </div>
                     <div class="sfx-volume-option">
                         <div class="sfx-volume">SFX Volume</div>
@@ -152,6 +151,10 @@
     </div>
 </div>
 <div id ="Main-phase" style="display: none;">
+    <div class="bar2">
+        <progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress>
+        <div class="p2-damage-indicator-container"><h1 class="p2-damage-taken hidden">-10</h1></p></div>
+    </div>
     <div id="p2handcontainer" class="default">
         <div class="opp-card" draggable="true"></div>
         <div class="opp-card" draggable="true"></div>
@@ -170,7 +173,11 @@
         <div class="card" draggable="true"></div>
         <div class="card" draggable="true"></div>
         <div class="card" draggable="true"></div>
-        
+    </div>
+    <div class="bar1">
+        <progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress>
+
+        <div class="p1-damage-indicator-container"><h1 class="p1-damage-taken hidden">-10</h1></p></div>
 
     </div>
 
@@ -198,19 +205,8 @@
 <div id="clash-page" style="display: none;">
     <!-- health-bars -->
     <div class="barcontainer" >
-            
-        <div class="bar1">
-            <progress value="100" max="100" id="p1-health-bar">Player 1 Health</progress>
-            
-            <div class="p1-damage-indicator-container"><h1 class="p1-damage-taken hidden">-10</h1></p></div>
 
-        </div>
-        
-        <div class="bar2">
-            <progress value="100" max="100" id="p2-health-bar">Player 2 Health</progress>
-        
-            <div class="p2-damage-indicator-container"><h1 class="p2-damage-taken hidden">-10</h1></p></div>
-        </div>
+
     </div>
     <div class = cardcontainer>
     <div class = card1container id = "c1c" >
@@ -236,7 +232,6 @@
 </div>
 <div class="p2-card">Player 2
     <button class="p2-attack">ATTACK</button>
-</div>
 </div>
 </div>
 

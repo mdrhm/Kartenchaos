@@ -98,7 +98,6 @@ socket.on('newGame', (data) => {
 });
 
 socket.on("2playersConnected", () => {
-    
     console.log(roomID);
     goToMainPhase();
     startTimer();
@@ -203,33 +202,31 @@ function nextRound(){
     resetCardI()
 }
 
-function flipCards(p1cardid,p2cardid) {
-    var p1sidecard = document.querySelector('.TEST1'); // Corrected selector
-    var p2sidecard = document.querySelector('.TEST2');
-    p1sidecard.classList.add("card3");
-    p2sidecard.classList.add("card4");
-    
+function flipCards(cardid) {
+    var sideCard = document.querySelector("#dropr div"); // Corrected selector
+    sideCard.classList.add("card4");
+
     // Set the src attribute at 50% of the animation
     setTimeout(function() {
-        let modifiedSvgp1 = getCard(p1cardid, 'curr');
-        p1sidecard.innerHTML =  modifiedSvgp1
-        let modifiedSvgp2 = getCard(p2cardid, 'opp');
-        p2sidecard.innerHTML =  modifiedSvgp2
+        sideCard.innerHTML =  getCard(cardid, 'opp');
     }, 1000);
-   
+
 }
 
 function goToClashPhase() {
     document.getElementsByClassName("home-ui")[0].style.display = "none";
     document.getElementsByClassName("wait-phase")[0].style.display = "none";
-    document.querySelector("#Main-phase").style.display = "none";
-    document.querySelector("#clash-page").style.display = "block";
+    document.querySelector("#drop_port").style.animation = "1s ease-in-out 0s 1 normal forwards running go-to-clash-phase";
+    document.querySelector("#p1handcontainer").style.animation = "1s ease-in-out 0s 1 normal forwards running move-down";
+    document.querySelector("#p2handcontainer").style.animation = "1s ease-in-out 0s 1 normal forwards running move-up";
+    document.querySelector(".bar1").style.animation = "1s ease-in-out 0s 1 normal forwards running bar1-transition";
+    document.querySelector(".bar2").style.animation = "1s ease-in-out 0s 1 normal forwards running bar2-transition";
     console.log("player1cards" + p1card, p2card)
     if(player1) {
-        flipCards(p1card, p2card);
+        flipCards(p2card);
     }
     else{
-        flipCards(p2card, p1card);
+        flipCards(p1card);
     }
 
   }
