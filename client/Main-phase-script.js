@@ -78,27 +78,26 @@ let countdownInterval; // Variable to hold the interval
 
 // Function to start the countdown timer
 function startTimer() {
-  // Synchronize the start time
-  const startTime = new Date().getTime() + 12000; // Start time after 5 seconds
+    // Synchronize the start time
+    const startTime = new Date().getTime() + 12000; // Start time after 5 seconds
 
-  // Start the countdown interval
-  countdownInterval = setInterval(() => {
-    // Calculate the remaining time
-    const currentTime = new Date().getTime();
-    const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
-
-    // Update the countdown element with the remaining time
-    updateCountdown(remainingTime);
-
-    // If the countdown reaches 0, clear the interval
-    if (remainingTime === 0) {
-      clearInterval(countdownInterval);
-      document.getElementById('timer').textContent = "Time's up!";
-      goToClashPhase();
-    }
-  }, 1000);
+    // Start the countdown interval
+    countdownInterval = setInterval(() => {
+        // Calculate the remaining time
+        const currentTime = new Date().getTime();
+        const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
+        updateCountdown(remainingTime);
+        if (remainingTime === 0) {
+            clearInterval(countdownInterval);
+            // document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
+            //     "<p class = \"v\" id = \"V\">V</p>\n" +
+            //     "<p class=\"s\">S</p>\n" +
+            //     "</div>";
+            document.getElementById('timer').innerHTML = "VS"
+            goToClashPhase();
+        }
+    }, 1000);
 }
-
 
 
 // Function to update the countdown element with the given time

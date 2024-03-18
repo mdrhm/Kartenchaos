@@ -56,7 +56,6 @@ body {
 @keyframes flip1 {
     0% {
         transform: perspective(600px) rotateY(180deg);
-
     }
     100% {
 
@@ -67,7 +66,6 @@ body {
 @keyframes flip2 {
     0% {
         transform: perspective(600px) rotateY(-180deg);
-
     }
     100% {
 
