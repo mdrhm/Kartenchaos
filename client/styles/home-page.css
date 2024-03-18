@@ -6,6 +6,7 @@ body {
     overflow: hidden;
     user-select: none;
     margin: 0px;
+    position: fixed;
 }
 
 :root {
@@ -404,6 +405,7 @@ html {
     align-items: center;
     justify-content: space-evenly;
     padding: 10px;
+    height: 250px;
 }
 
 #dropl, #dropr {
@@ -412,6 +414,7 @@ html {
     border: none !important;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #timer {
