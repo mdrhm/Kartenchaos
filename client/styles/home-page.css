@@ -6,6 +6,7 @@ body {
     overflow: hidden;
     user-select: none;
     margin: 0px;
+    position: fixed;
 }
 
 :root {
