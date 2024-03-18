@@ -201,6 +201,7 @@ function nextRound(){
     document.querySelector("#p2handcontainer").style.transform = "scale(1) translateY(0px)";
     document.querySelector(".bar1").style.transform = "scale(1) translate(0%, 0%)";
     document.querySelector(".bar2").style.transform = "scale(1) translate(0%, 0%)";
+    document.querySelector("#dropr div").classList.remove("card4")
     dropleft.innerHTML = ""
     dropright.innerHTML = ""
     resetCardI()
@@ -236,7 +237,7 @@ function goToClashPhase() {
         flipCards(p1card);
         setTimeout(function() {calculateHigher(p2card, p1card)}, 1000)
     }
-    setTimeout(nextRound, 2000)
+    setTimeout(nextRound, 3000)
   }
 
 function calculateHigher(card1, card2){
