@@ -17,15 +17,15 @@ const p1Attack = document.querySelector('.p1-attack');
 const p2Attack = document.querySelector('.p2-attack');
 var dmg = 10;
 
-p1Attack.addEventListener('click', () => {
-  p2Hp.value = attackEnemy(p2Hp.value, dmg);
-  displayDamageTaken(p2DamageIndicatorContainer, p2DamageTaken, p2Hp, 'right');
-});
+function damageP2(damage){
+  p2Hp.value = attackEnemy(p2Hp.value, damage);
+  displayDamageTaken(p2DamageIndicatorContainer, p2DamageTaken, p2Hp, 'right', damage);
+}
 
-p2Attack.addEventListener('click', () => {
-  p1Hp.value = attackEnemy(p1Hp.value, dmg);
-  displayDamageTaken(p1DamageIndicatorContainer, p1DamageTaken, p1Hp, 'left');
-});
+function damageP1(damage){
+  p1Hp.value = attackEnemy(p1Hp.value, damage);
+  displayDamageTaken(p1DamageIndicatorContainer, p1DamageTaken, p1Hp, 'left', damage);
+}
 
 function attackEnemy(hp, dmg){
   if(hp < 1) {
@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-function displayDamageTaken(damageIndicatorContainer, damageTaken, hp, direction) {
+function displayDamageTaken(damageIndicatorContainer, damageTaken, hp, direction, damage) {
   damageIndicatorContainer.style.animation = 'none';
   damageIndicatorContainer.offsetHeight; 
   damageIndicatorContainer.style[direction] = `${hp.value}%`;
-
+  damageIndicatorContainer.children[0].innerText = "-" + damage
   if(hp.value === 100) {
     return;
   }
