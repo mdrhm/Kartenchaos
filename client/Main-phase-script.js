@@ -41,13 +41,13 @@ function loadCards(hand) {
     }
 }
 
-function placeCard(i, card) {
+function placeCard(i) {
     console.log("placing card number " + i)
-    console.log("card div " + card)
+    console.log("card div " + cards[i])
     if (dropleft.children.length === 0) {
         sendCardChoice(playerhand[i]);
         let cardDiv = document.createElement('div');
-        cardDiv.appendChild(card.children[0])
+        cardDiv.appendChild(cards[i].children[0])
         cardDiv.style.borderRadius = '10px';
         cardDiv.style.width = "150px";
         dropleft.appendChild(cardDiv);

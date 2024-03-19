@@ -227,14 +227,19 @@ function goToClashPhase() {
     document.querySelector(".bar2").style.transform = "scale(1.6) translate(-20%, 30%)";
 
     console.log("player1cards" + p1card, p2card)
-    if(player1) {
-        flipCards(p2card);
-        setTimeout(function() {calculateHigher(p1card, p2card)}, 1000)
-    }
-    else{
-        flipCards(p1card);
-        setTimeout(function() {calculateHigher(p2card, p1card)}, 1000)
-    }
+    setTimeout(() => {
+        if (player1) {
+            flipCards(p2card);
+            setTimeout(function () {
+                calculateHigher(p1card, p2card)
+            }, 1000)
+        } else {
+            flipCards(p1card);
+            setTimeout(function () {
+                calculateHigher(p2card, p1card)
+            }, 1000)
+        }
+    },500)
     setTimeout(nextRound, 3000)
   }
 
