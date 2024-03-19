@@ -22,10 +22,10 @@ body {
 }
 
 .card1 {
-    animation: flip-card1 3s infinite;}
+    animation: flip-card1 2.5s infinite;}
 
 .card2 {
-    animation: flip-opposite-card2 3s infinite;
+    animation: flip-opposite-card2 2.5s infinite;
 }
 
 .card3 {
@@ -35,23 +35,6 @@ body {
 .card4 {
     animation: flip2 2.5s;
 }
-
-
-@keyframes flip {
-    0% {
-        transform: perspective(600px) rotateY(-180deg);
-        content: url("/client/cards/1B.svg");
-    }
-    50% {
-        transform: perspective(600px) rotateY(0deg);
-        content: initial;
-    }
-    100% {
-        transform: perspective(600px) rotateY(180deg);
-        content: url("/client/cards/1B.svg");
-    }
-}
-
 
 @keyframes flip-card1 {
     0% {
@@ -83,20 +66,6 @@ body {
     }
 }
 
-@keyframes flip-opposite {
-    0% {
-        transform: perspective(600px) rotateY(180deg);
-        content: url("/client/cards/1B.svg");
-    }
-    50% {
-        transform: perspective(600px) rotateY(0deg);
-        content: initial;
-    }
-    100% {
-        transform: perspective(600px) rotateY(-180deg);
-        content: url("/client/cards/1B.svg");
-    }
-}
 
 @font-face {
     font-family: myFirstFont;
