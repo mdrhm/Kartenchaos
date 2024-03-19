@@ -78,7 +78,7 @@ progress::-webkit-progress-bar {
   height: 100%;
   /* border: solid black; */
   border-radius: 10px;
-  
+
 }
 
 #p2-health-bar {
@@ -132,36 +132,36 @@ progress::-webkit-progress-bar {
 @keyframes colorTransparenter {
   0% {
     color: #ff3333;
-    text-shadow: 
-      -1.5px -1.5px 0 #000,  
-      1.5px -1.5px 0 #000,
-      -1.5px 1.5px 0 #000,
-      1.5px 1.5px 0 #000;
+    text-shadow:
+            -1.5px -1.5px 0 #000,
+            1.5px -1.5px 0 #000,
+            -1.5px 1.5px 0 #000,
+            1.5px 1.5px 0 #000;
   }
   60% {
     color: #ff3333b4;
-    text-shadow: 
-    -1.5px -1.5px 5px rgba(0, 0, 0, 0.5),  
-    1.5px -1.5px 5px rgba(0, 0, 0, 0.5),
-    -1.5px 1.5px 5px rgba(0, 0, 0, 0.5),
-    1.5px 1.5px 5px rgba(0, 0, 0, 0.5); /* Semi-transparent shadow */
+    text-shadow:
+            -1.5px -1.5px 5px rgba(0, 0, 0, 0.5),
+            1.5px -1.5px 5px rgba(0, 0, 0, 0.5),
+            -1.5px 1.5px 5px rgba(0, 0, 0, 0.5),
+            1.5px 1.5px 5px rgba(0, 0, 0, 0.5); /* Semi-transparent shadow */
   }
   100% {
     color: #ff333300;
-    text-shadow: 
-      -1.5px -1.5px 5px rgba(0, 0, 0, 0),  
-      1.5px -1.5px 5px rgba(0, 0, 0, 0),
-      -1.5px 1.5px 5px rgba(0, 0, 0, 0),
-      1.5px 1.5px 5px rgba(0, 0, 0, 0); /* Fully transparent shadow */
+    text-shadow:
+            -1.5px -1.5px 5px rgba(0, 0, 0, 0),
+            1.5px -1.5px 5px rgba(0, 0, 0, 0),
+            -1.5px 1.5px 5px rgba(0, 0, 0, 0),
+            1.5px 1.5px 5px rgba(0, 0, 0, 0); /* Fully transparent shadow */
   }
 }
 
 @keyframes fallingDown {
   0% {
-    top: 0; 
+    top: 0;
   }
   100% {
-    top: 80%; 
+    top: 80%;
   }
 }
 
@@ -197,7 +197,7 @@ progress::-webkit-progress-bar {
   border-radius: 15px;
   animation: shake 1.8s;
   position: relative;
-  
+
 }
 
 #c2c{
@@ -228,7 +228,7 @@ progress::-webkit-progress-bar {
 /* LAYER ON TOP OF ALL COMPONENETS (GIVES A SCREEN EFFECT) */
 .card1container::before, .card2container::before {
   content: ''; /* Create a pseudo-element */
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -285,7 +285,7 @@ progress::-webkit-progress-bar {
 .v {
   animation-fill-mode: forwards;
   position: relative;
-    
+
 }
 
 /* V ELEMENT NEW POSITION + ANIMATION AFTER S FALLS */
@@ -295,14 +295,14 @@ progress::-webkit-progress-bar {
   left: 50%;
   transform: translate(-50%, -50%) rotate(0deg); /* Center the element and set initial rotation */
   animation: spin 0.1s 10;
-  transition: top 10s ease, left 10s ease; 
+  transition: top 10s ease, left 10s ease;
 }
 
 
 /* S ELEMENT ANIMATION*/
 .s {
   animation: fall-down-rotate 5s 0.5s;
-  
+
   animation-fill-mode: forwards; /* Makes sure the final state of the animation persists */
 }
 
@@ -356,17 +356,17 @@ progress::-webkit-progress-bar {
   20% {
     transform: translateY(-40%) rotate(-20deg);
   }
-  
+
   /* Moves down and rotates */
   40% {
     transform: translateY(50%) rotate(-20deg);
   }
-  
+
   /* Continue moving down with increased rotation */
   60% {
     transform: translateY(80%) rotate(-45deg);
   }
-  
+
   /* Move down to the bottom of the viewport and continue rotation */
   100% {
     transform: translateY(100vh) rotate(-360deg);
