@@ -95,6 +95,7 @@ function startTimer() {
             //     "</div>";
             document.getElementById('timer').innerHTML = "VS"
             goToClashPhase();
+            return 0;
         }
     }, 1000);
 }
