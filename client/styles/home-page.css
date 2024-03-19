@@ -320,7 +320,6 @@ html {
     align-items: center;
     gap: 15px;
     border: none !important;
-    transition: all 1s;
 }
 
 #p1handcontainer .card{
@@ -405,7 +404,6 @@ html {
     justify-content: space-evenly;
     padding: 10px;
     height: 250px;
-    transition: all 1s;
 }
 
 #dropl, #dropr {
