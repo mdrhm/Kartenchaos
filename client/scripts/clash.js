@@ -22,14 +22,16 @@ function damageP2(damage){
   displayDamageTaken(p2DamageIndicatorContainer, p2DamageTaken, p2Hp, 'right', damage);
   if(p2Hp.value === 0){
       gameOver = true;
-      document.querySelector("#victory").classList.remove("hidden")
-      document.querySelector("#victory").play()
-      document.querySelector("#victory").addEventListener("timeupdate", function(){
-          if(this.currentTime >= 5) {
-              this.pause();
-          }
-      });
-     console.log("you win")
+      setTimeout(() => {
+          document.querySelector("#victory").classList.remove("hidden")
+          document.querySelector("#victory").play()
+          document.querySelector("#victory").addEventListener("timeupdate", function () {
+              if (this.currentTime >= 5) {
+                  this.pause();
+              }
+          });
+          console.log("you win")
+      }, 1000)
   }
 }
 
@@ -39,14 +41,17 @@ function damageP1(damage){
   displayDamageTaken(p1DamageIndicatorContainer, p1DamageTaken, p1Hp, 'left', damage);
     if(p1Hp.value === 0){
         gameOver = true;
-        document.querySelector("#defeat").classList.remove("hidden")
-        document.querySelector("#defeat").play()
-        document.querySelector("#defeat").addEventListener("timeupdate", function(){
-            if(this.currentTime >= 5) {
-                this.pause();
-            }
-        });
-        console.log("you lose")
+        setTimeout(() => {
+            document.querySelector("#defeat").classList.remove("hidden")
+            document.querySelector("#defeat").play()
+            document.querySelector("#defeat").addEventListener("timeupdate", function () {
+                if (this.currentTime >= 5) {
+                    this.pause();
+                }
+            });
+            console.log("you lose")
+        }, 1000)
+
     }
 }
 
