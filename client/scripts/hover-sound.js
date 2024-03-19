@@ -11,7 +11,6 @@ function initializeApp() {
         });
     });
 
-// Add hover sound effect for card style options
     const cardStyleOptions = document.querySelectorAll('.card-style-option');
     cardStyleOptions.forEach(option => {
         option.addEventListener('mouseover', () => {
@@ -25,7 +24,6 @@ function initializeApp() {
     });
 
     window.addEventListener('DOMContentLoaded', () => {
-        // Call the functions to update the card style and background
         const storedCardStyle = localStorage.getItem('cardstyle');
         if (storedCardStyle) {
             updateCardStyle(storedCardStyle);
@@ -35,8 +33,6 @@ function initializeApp() {
         if (storedBackground) {
             updateBg(storedBackground);
         }
-
-        // Load custom backgrounds
         loadCustomBgs();
     });
 }
