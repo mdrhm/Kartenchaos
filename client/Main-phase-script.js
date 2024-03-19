@@ -88,18 +88,21 @@ function startTimer() {
         const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
         updateCountdown(remainingTime);
         if (remainingTime === 0) {
-            clearInterval(countdownInterval);
-            // document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
-            //     "<p class = \"v\" id = \"V\">V</p>\n" +
-            //     "<p class=\"s\">S</p>\n" +
-            //     "</div>";
-            document.getElementById('timer').innerHTML = "VS"
-            goToClashPhase();
-            return 0;
+            stopTimer();
         }
     }, 1000);
 }
 
+function stopTimer(){
+    clearInterval(countdownInterval);
+    // document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
+    //     "<p class = \"v\" id = \"V\">V</p>\n" +
+    //     "<p class=\"s\">S</p>\n" +
+    //     "</div>";
+    document.getElementById('timer').innerHTML = "VS"
+    goToClashPhase();
+    return 0;
+}
 
 // Function to update the countdown element with the given time
 function updateCountdown(time) {
