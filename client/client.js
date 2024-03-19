@@ -129,7 +129,6 @@ socket.on("updatep2withp1card", (data) => {
     p1card = data.cardChosen;
     console.log(p1card);
     if(!player1){
-        
         console.log(p2card)
         if (dropright) {
             dropright.appendChild(cardi);
@@ -150,8 +149,9 @@ socket.on("updatep1withp2card", (data) => {
         p2card = data.cardChosen;
         console.log(p1card)
       if (dropright) {
-            dropright.appendChild(cardi);
-            document.querySelectorAll(".opp-card")[0].remove();
+          dropright.appendChild(cardi);
+          document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
+          document.querySelectorAll(".opp-card:not(.hidden)")[0].classList.add("hidden")
         } else {
             console.log("Element with id 'dropright' not found.");
         }
@@ -171,27 +171,20 @@ socket.on('loadCardStyles', (data) => {
     document.querySelector("#c2c").classList = displayStyle;
 })
 
-socket.on('gotoVSContainer', (data) => {
-    setTimeout(function() {
-        document.querySelector(".vs-container").classList.remove("hidden")
-        if(data.p1hand.length === 0 && data.p2hand.length === 0){
-            if(socket.id === data.player1) {
-                let hand = generateHand(30);
-                data.p1hand = hand;
-                loadCards(data.p1hand)
-                loadOppCards()
-                socket.emit("updatePlayer1Hand", data)
-            }
-            else {
-                data.p2hand = generateHand(30);
-                loadCards(data.p2hand)
-                loadOppCards()
-                socket.emit("updatePlayer2Hand", data)
-            }
-            console.log("hands changed")
-            // socket.emit("newHand", data)
-        }
-    }, 1500);
+socket.on('getNewHands', (data) => {
+    if (socket.id === data.player1) {
+        data.p1hand = generateHand(30);
+        loadCards(data.p1hand)
+        loadOppCards()
+        socket.emit("updatePlayer1Hand", data)
+    } else {
+        data.p2hand = generateHand(30);
+        loadCards(data.p2hand)
+        loadOppCards()
+        socket.emit("updatePlayer2Hand", data)
+    }
+    console.log("hands changed")
+    // socket.emit("newHand", data)
 })
 
 

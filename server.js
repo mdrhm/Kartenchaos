@@ -95,10 +95,8 @@ io.on('connection', (socket) => {
             console.log("Hand 1 Size: " + (rooms[data.roomID].p1hand.length === 0))
             io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
             player1Played = true;
-            if(player2Played){
-                player1Played = false;
-                player2Played = false;
-                io.to(data.roomID).emit("gotoVSContainer", rooms[data.roomID]);
+            if (rooms[data.roomID].p1hand.length === 0 && rooms[data.roomID].p2hand.length === 0) {
+                io.to(data.roomID).emit("getNewHands", rooms[data.roomID]);
             }
         } else {
             console.error(`Room ${data.roomID} does not exist.`);
@@ -119,15 +117,13 @@ io.on('connection', (socket) => {
             rooms[data.roomID].p2hand.splice(rooms[data.roomID].p2hand.indexOf(cardChosen), 1);
             console.log(rooms)
             console.log("Hand 2 Size: " + (rooms[data.roomID].p2hand.length === 0))
-            io.to(data.roomID).emit("updatep1withp2card", {cardChosen : data.cardChosen});
+            io.to(data.roomID).emit("updatep1withp2card", {cardChosen: data.cardChosen});
             player2Played = true;
-            if(player1Played){
-                player1Played = false;
-                player2Played = false;
-                io.to(data.roomID).emit("gotoVSContainer", rooms[data.roomID]);
+            if (rooms[data.roomID].p1hand.length === 0 && rooms[data.roomID].p2hand.length === 0) {
+                io.to(data.roomID).emit("getNewHands", rooms[data.roomID]);
+            } else {
+                console.error(`Room ${data.roomID} does not exist.`);
             }
-        } else {
-            console.error(`Room ${data.roomID} does not exist.`);
         }
         console.log(rooms)
 
