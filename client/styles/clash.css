@@ -187,13 +187,13 @@ progress::-webkit-progress-bar {
   align-items: center;
   border: solid 10px black !important;
   /* box-shadow:
-  inset #000000 0 0 0 5px, 
-  inset hsl(0, 8%, 3%) 0 0 0 1px, 
-  inset #9c0101 0 0 0 8px, 
-  inset #550e00 0 0 0 9px, 
-  inset #0a0a0a 0 0 0 11px, 
-  inset #ff220a 0 0 0 12px, 
-  inset #730000 0 0 0 15px, 
+  inset #000000 0 0 0 5px,
+  inset hsl(0, 8%, 3%) 0 0 0 1px,
+  inset #9c0101 0 0 0 8px,
+  inset #550e00 0 0 0 9px,
+  inset #0a0a0a 0 0 0 11px,
+  inset #ff220a 0 0 0 12px,
+  inset #730000 0 0 0 15px,
   inset #050505 0 0 0 18px; */
   border-radius: 15px;
   animation: shake 1.8s;
@@ -213,13 +213,13 @@ progress::-webkit-progress-bar {
   align-items: center;
   border: solid 10px black !important;
   /* box-shadow:
-  inset #77c2ff 0 0 0 1px, 
-  inset #009688 0 0 0 5px, 
-  inset #059c8e 0 0 0 1px, 
-  inset #34ffeb 0 0 0 9px, 
-  inset #1fbdae 0 0 0 11px, 
-  inset #8ce9ff 0 0 0 11px, 
-  inset #48e4d6 0 0 0 12px, 
+  inset #77c2ff 0 0 0 1px,
+  inset #009688 0 0 0 5px,
+  inset #059c8e 0 0 0 1px,
+  inset #34ffeb 0 0 0 9px,
+  inset #1fbdae 0 0 0 11px,
+  inset #8ce9ff 0 0 0 11px,
+  inset #48e4d6 0 0 0 12px,
   inset #80d8ee 0 0 0 18px; */
   border-radius: 15px;
   animation: shake 1.8s;
@@ -416,4 +416,3 @@ canvas {
   bottom: 0;
   margin: auto;
 }
-
