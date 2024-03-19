@@ -15,7 +15,26 @@
     <style class="custom-bg-style" type="text/css"></style>
 </head>
 <body>
-
+<video class="hidden" id="defeat" style="
+    z-index: 10000;
+    position: absolute;
+    height: 100vh;
+    opacity: 0.8;
+    width: 100vw;
+    background: black;
+">
+    <source src="/Audio/defeat.mp4" type="video/mp4">
+</video>
+<video class="hidden" id="victory" style="
+    z-index: 10000;
+    position: absolute;
+    height: 100vh;
+    opacity: 0.8;
+    width: 100vw;
+    background: black;
+">
+    <source src="/Audio/victory.mp4" type="video/mp4">
+</video>
 <audio id="music" controls autoplay hidden loop>
     <source src="/Audio/Default.mp3" type="audio/mp3">
 </audio>

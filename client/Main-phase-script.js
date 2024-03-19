@@ -7,6 +7,7 @@ let min = 25;
 let max = 35;
 const cardsInner = document.querySelectorAll(".card-inner");
 const suits = ["D","H","S","C"]
+let gameOver = false;
 
 function generateHand(sum) {
 // Initialize an array with five cells

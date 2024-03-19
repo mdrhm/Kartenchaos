@@ -194,6 +194,9 @@ socket.on('stopTimer', (data) => {
 })
 
 function nextRound(){
+    if(gameOver){
+        return;
+    }
     document.querySelector("#drop_port").style.transform = "scale(1)";
     document.querySelector("#p1handcontainer").style.transform = "scale(1) translateY(0px)";
     document.querySelector("#p2handcontainer").style.transform = "scale(1) translateY(0px)";
