@@ -1,0 +1,77 @@
+#bg{
+    position: fixed;
+    z-index: -1000;
+}
+
+.bg-0{
+    background-color: #245324 !important;
+    background-image: url("../Images/classy-fabric.png");
+    background-repeat: repeat;
+    height: 1000vh;
+    width: 1000vw;
+    z-index: -1000;
+    position: fixed;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+.bg-1{
+    background-color: #49745E !important;
+    opacity: 0.8;
+    background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
+    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    height: 1000vh;
+    width: 1000vw;
+    background-repeat: repeat;
+    z-index: -1000;
+    position: fixed;
+}
+
+.bg-2 {
+    background-color:#0a0800 !important;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+    background-repeat: repeat;
+    height: 1000vh;
+    width: 1000vw;
+    z-index: -1000;
+    position: fixed;
+}
+
+.bg-4{
+    background-color: darkred !important;
+    background-image: url("../Images/classy-fabric.png");
+    background-repeat: repeat;
+    height: 1000vh;
+    width: 1000vw;
+    z-index: -1000;
+    position: fixed;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+
+.bg-3{
+    background-color: #1488df !important;
+    background-image: url("../Images/classy-fabric.png");
+    background-repeat: repeat;
+    height: 1000vh;
+    width: 1000vw;
+    z-index: -1000;
+    position: fixed;
+    animation-name: bg-animate;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
