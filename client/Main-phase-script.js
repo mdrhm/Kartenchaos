@@ -80,12 +80,10 @@ function startTimer() {
         const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
         updateCountdown(remainingTime);
         if (remainingTime === 0) {
-            if (dropleft.children.length === 0) {
-                let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
-                console.log(index)
-                console.log(cards[index])
-                placeCard(index, cards[index])
-            }
+            let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
+            console.log(index)
+            console.log(cards[index])
+            placeCard(index, cards[index])
         }
     }, 1000);
 }
