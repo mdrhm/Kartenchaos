@@ -3,7 +3,7 @@ const backgroundAudio = document.getElementById("music");
 const masterSlider = document.querySelector('.master-slider');
 const masterInput = document.querySelector('.master-input');
 
-// On load Volume is Lower
+// Set Initial Volume
 backgroundAudio.volume = 0.010;
 masterSlider.value = 10;
 masterInput.value = 10;

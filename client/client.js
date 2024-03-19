@@ -63,7 +63,7 @@ function showNotification(message) {
     notification.style.display = 'block';
     setTimeout(function() {
         notification.style.display = 'none';
-    }, 3000); // Hide notification after 3 seconds
+    }, 3000);
 }
 
 function joinGame() {
