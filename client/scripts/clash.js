@@ -20,18 +20,22 @@ var dmg = 10;
 function damageP2(damage){
   p2Hp.value = attackEnemy(p2Hp.value, damage);
   displayDamageTaken(p2DamageIndicatorContainer, p2DamageTaken, p2Hp, 'right', damage);
+  if(p2Hp.value === 0){
+     console.log("you win")
+  }
 }
 
 function damageP1(damage){
   p1Hp.value = attackEnemy(p1Hp.value, damage);
+  console.log(p1Hp.value)
   displayDamageTaken(p1DamageIndicatorContainer, p1DamageTaken, p1Hp, 'left', damage);
+    if(p1Hp.value === 0){
+        console.log("you lose")
+    }
 }
 
 function attackEnemy(hp, dmg){
-  if(hp < 1) {
-    return 100;
-  }
-  return hp - dmg;
+  return Math.max(0, hp - dmg);
 }
 
 

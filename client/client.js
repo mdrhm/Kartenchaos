@@ -5,7 +5,7 @@ let roomID = null;
 let player1 = false;
 let cardi = document.createElement('div');
 resetCardI()
-let currplayerhand;
+let currplayerhand, playerhand;
 let p1card;
 let p2card;
 let p1cardID;

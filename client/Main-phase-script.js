@@ -1,4 +1,4 @@
-let cards = document.querySelectorAll("#p1handcontainer .card");
+let cards = document.querySelectorAll("#p1handcontainer div:not(.hidden)")
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
 
@@ -26,7 +26,8 @@ function generateHand(sum) {
 
 // Assign the remaining sum to the last cell, ensuring it doesn't exceed 10
     cells[4] = Math.min(sum, 10) + suits[Math.floor(Math.random() * suits.length)];
-    currplayerhand = cells;
+    currplayerhand = cells.join("-").split("-");
+    playerhand = cells.join("-").split("-");
     return cells;
 }
 function getRandominRange(min, max) {
@@ -40,29 +41,19 @@ function loadCards(hand) {
     }
 }
 
-let selected = null;
-for (let i = 0; i < cards.length; i++) {
-    cards[i].addEventListener("dblclick", () => {
-        if (dropleft.children.length === 0) {
-            if (dropleft.children.length > 0) {
-                // Set draggable attribute to false
-                cards[i].draggable = false;
-            } else {
-                sendCardChoice(currplayerhand[i]);
-                let cardDiv = document.createElement('div');
-                cardDiv.appendChild(cards[i].children[0])
-                console.log(" checking for id " + currplayerhand[i].id)
-                cardDiv.style.borderRadius = '10px';
-                cardDiv.style.width = "150px";
-                dropleft.appendChild(cardDiv);
-                cards[i].classList.add("hidden");
-
-                // Remove the dblclick event listener after the first double-click
-            }
-        } else {
-            console.log("You already put a card down dipstick");
-        }
-    })
+function placeCard(i, card) {
+    console.log("placing card number " + i)
+    console.log("card div " + card)
+    if (dropleft.children.length === 0) {
+        sendCardChoice(playerhand[i]);
+        let cardDiv = document.createElement('div');
+        cardDiv.appendChild(card.children[0])
+        cardDiv.style.borderRadius = '10px';
+        cardDiv.style.width = "150px";
+        dropleft.appendChild(cardDiv);
+        cards[i].classList.add("hidden");
+        currplayerhand.splice(currplayerhand.indexOf(playerhand[i]),1)
+    }
 }
 
 function getCard(card, tag){
@@ -88,7 +79,12 @@ function startTimer() {
         const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
         updateCountdown(remainingTime);
         if (remainingTime === 0) {
-            stopTimer();
+            if (dropleft.children.length === 0) {
+                let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
+                console.log(index)
+                console.log(cards[index])
+                placeCard(index, cards[index])
+            }
         }
     }, 1000);
 }
@@ -101,7 +97,6 @@ function stopTimer(){
     //     "</div>";
     document.getElementById('timer').innerHTML = "VS"
     goToClashPhase();
-    return 0;
 }
 
 // Function to update the countdown element with the given time
