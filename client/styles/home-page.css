@@ -22,15 +22,14 @@ body {
 }
 
 .card1 {
-    animation: flip 2s infinite;
-}
+    animation: flip-card1 3s infinite;}
 
 .card2 {
-    animation: flip-opposite 2s infinite;
+    animation: flip-opposite-card2 3s infinite;
 }
 
 .card3 {
-    animation: flip1 2.5s;
+    animation: flip1 2s.5s;
 }
 
 .card4 {
@@ -53,26 +52,36 @@ body {
     }
 }
 
-@keyframes flip1 {
+
+@keyframes flip-card1 {
     0% {
         transform: perspective(600px) rotateY(180deg);
+        content: url("/client/cards/1B.svg");
+    }
+    50% {
+        transform: perspective(600px) rotateY(0deg);
+        content: initial;
     }
     100% {
-
-        transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(-180deg);
+        content: url("/client/cards/1B.svg");
     }
 }
 
-@keyframes flip2 {
+@keyframes flip-opposite-card2 {
     0% {
         transform: perspective(600px) rotateY(-180deg);
+        content: url("/client/cards/1B.svg");
+    }
+    50% {
+        transform: perspective(600px) rotateY(0deg);
+        content: initial;
     }
     100% {
-
-        transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(180deg);
+        content: url("/client/cards/1B.svg");
     }
 }
-
 
 @keyframes flip-opposite {
     0% {
