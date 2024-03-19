@@ -172,21 +172,26 @@ socket.on('loadCardStyles', (data) => {
 })
 
 socket.on('getNewHands', (data) => {
-    if (socket.id === data.player1) {
-        data.p1hand = generateHand(30);
-        loadCards(data.p1hand)
-        loadOppCards()
-        socket.emit("updatePlayer1Hand", data)
-    } else {
-        data.p2hand = generateHand(30);
-        loadCards(data.p2hand)
-        loadOppCards()
-        socket.emit("updatePlayer2Hand", data)
-    }
-    console.log("hands changed")
-    // socket.emit("newHand", data)
+    setTimeout(() => {
+        if (socket.id === data.player1) {
+            data.p1hand = generateHand(30);
+            loadCards(data.p1hand)
+            loadOppCards()
+            socket.emit("updatePlayer1Hand", data)
+        } else {
+            data.p2hand = generateHand(30);
+            loadCards(data.p2hand)
+            loadOppCards()
+            socket.emit("updatePlayer2Hand", data)
+        }
+        console.log("hands changed")
+        // socket.emit("newHand", data)
+    }, 2000)
 })
 
+socket.on('stopTimer', (data) => {
+    stopTimer()
+})
 
 function nextRound(){
     document.querySelector("#drop_port").style.transform = "scale(1)";

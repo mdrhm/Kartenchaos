@@ -95,6 +95,11 @@ io.on('connection', (socket) => {
             console.log("Hand 1 Size: " + (rooms[data.roomID].p1hand.length === 0))
             io.to(data.roomID).emit("updatep2withp1card", {cardChosen : data.cardChosen});
             player1Played = true;
+            if(player2Played){
+                io.to(data.roomID).emit("stopTimer", rooms[data.roomID]);
+                player1Played = false;
+                player2Played = false;
+            }
             if (rooms[data.roomID].p1hand.length === 0 && rooms[data.roomID].p2hand.length === 0) {
                 io.to(data.roomID).emit("getNewHands", rooms[data.roomID]);
             }
@@ -119,6 +124,11 @@ io.on('connection', (socket) => {
             console.log("Hand 2 Size: " + (rooms[data.roomID].p2hand.length === 0))
             io.to(data.roomID).emit("updatep1withp2card", {cardChosen: data.cardChosen});
             player2Played = true;
+            if(player1Played){
+                io.to(data.roomID).emit("stopTimer", rooms[data.roomID]);
+                player1Played = false;
+                player2Played = false;
+            }
             if (rooms[data.roomID].p1hand.length === 0 && rooms[data.roomID].p2hand.length === 0) {
                 io.to(data.roomID).emit("getNewHands", rooms[data.roomID]);
             } else {
