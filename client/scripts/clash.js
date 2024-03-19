@@ -25,11 +25,6 @@ function damageP2(damage){
       setTimeout(() => {
           document.querySelector("#victory").classList.remove("hidden")
           document.querySelector("#victory").play()
-          document.querySelector("#victory").addEventListener("timeupdate", function () {
-              if (this.currentTime >= 5) {
-                  this.pause();
-              }
-          });
           console.log("you win")
       }, 1000)
   }
@@ -44,11 +39,6 @@ function damageP1(damage){
         setTimeout(() => {
             document.querySelector("#defeat").classList.remove("hidden")
             document.querySelector("#defeat").play()
-            document.querySelector("#defeat").addEventListener("timeupdate", function () {
-                if (this.currentTime >= 5) {
-                    this.pause();
-                }
-            });
             console.log("you lose")
         }, 1000)
 
