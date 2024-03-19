@@ -196,10 +196,16 @@ socket.on('gotoVSContainer', (data) => {
 
 
 function nextRound(){
-    document.querySelector(".vs-container").classList.add("hidden")
+    document.querySelector("#drop_port").style.transform = "scale(1)";
+    document.querySelector("#p1handcontainer").style.transform = "scale(1) translateY(0px)";
+    document.querySelector("#p2handcontainer").style.transform = "scale(1) translateY(0px)";
+    document.querySelector(".bar1").style.transform = "scale(1) translate(0%, 0%)";
+    document.querySelector(".bar2").style.transform = "scale(1) translate(0%, 0%)";
+    document.querySelector("#dropr div").classList.remove("card4")
     dropleft.innerHTML = ""
     dropright.innerHTML = ""
     resetCardI()
+    startTimer()
 }
 
 function flipCards(cardid) {
@@ -216,19 +222,31 @@ function flipCards(cardid) {
 function goToClashPhase() {
     document.getElementsByClassName("home-ui")[0].style.display = "none";
     document.getElementsByClassName("wait-phase")[0].style.display = "none";
-    document.querySelector("#drop_port").style.animation = "1s ease-in-out 0s 1 normal forwards running go-to-clash-phase";
-    document.querySelector("#p1handcontainer").style.animation = "1s ease-in-out 0s 1 normal forwards running move-down";
-    document.querySelector("#p2handcontainer").style.animation = "1s ease-in-out 0s 1 normal forwards running move-up";
-    document.querySelector(".bar1").style.animation = "1s ease-in-out 0s 1 normal forwards running bar1-transition";
-    document.querySelector(".bar2").style.animation = "1s ease-in-out 0s 1 normal forwards running bar2-transition";
+    document.querySelector("#drop_port").style.transform = "scale(2)";
+    document.querySelector("#p1handcontainer").style.transform = "scale(2) translateY(250px)";
+    document.querySelector("#p2handcontainer").style.transform = "scale(2) translateY(-250px)";
+    document.querySelector(".bar1").style.transform = "scale(1.6) translate(20%, -30%)";
+    document.querySelector(".bar2").style.transform = "scale(1.6) translate(-20%, 30%)";
+
     console.log("player1cards" + p1card, p2card)
     if(player1) {
         flipCards(p2card);
+        setTimeout(function() {calculateHigher(p1card, p2card)}, 1000)
     }
     else{
         flipCards(p1card);
+        setTimeout(function() {calculateHigher(p2card, p1card)}, 1000)
     }
-
+    setTimeout(nextRound, 3000)
   }
 
-
+function calculateHigher(card1, card2){
+    card1 =  parseInt((card1).replace((card1).at(-1), ""));
+    card2 =  parseInt((card2).replace((card2).at(-1), ""));
+    if(card1 > card2) {
+        damageP2((card1 + card2)/2)
+    }
+    else if(card2 > card1){
+        damageP1((card2 + card1)/2)
+    }
+}

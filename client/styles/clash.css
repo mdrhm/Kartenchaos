@@ -91,6 +91,7 @@ progress::-webkit-progress-bar {
   border-radius: 10px;
   position: fixed;
   z-index: 1000;
+  transition: all 1s;
 }
 
 .bar1{
@@ -416,47 +417,3 @@ canvas {
   margin: auto;
 }
 
-@keyframes go-to-clash-phase {
-  0%{
-    transform: scale(1);
-  }
-  100%{
-    transform: scale(2);
-  }
-}
-
-@keyframes move-down {
-  0%{
-    transform:  scale(1) translateY(0px);
-  }
-  100%{
-    transform: scale(2) translateY(250px);
-  }
-}
-
-@keyframes move-up {
-  0%{
-    transform:  scale(1) translateY(0px);
-  }
-  100%{
-    transform: scale(2) translateY(-250px);
-  }
-}
-
-@keyframes bar1-transition {
-  0%{
-    transform: scale(1) translate(0%, 0%);
-  }
-  100%{
-    transform: scale(1.6) translate(20%, -30%);
-  }
-}
-
-@keyframes bar2-transition {
-  0%{
-    transform: scale(1) translate(0%, 0%);
-  }
-  100%{
-    transform: scale(1.6) translate(-20%, 30%);
-  }
-}
