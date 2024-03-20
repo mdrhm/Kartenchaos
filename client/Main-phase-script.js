@@ -7,6 +7,7 @@ let min = 25;
 let max = 35;
 const cardsInner = document.querySelectorAll(".card-inner");
 const suits = ["D","H","S","C"]
+let gameOver = false;
 
 function generateHand(sum) {
 // Initialize an array with five cells
@@ -41,13 +42,13 @@ function loadCards(hand) {
     }
 }
 
-function placeCard(i, card) {
+function placeCard(i) {
     console.log("placing card number " + i)
-    console.log("card div " + card)
+    console.log("card div " + cards[i])
     if (dropleft.children.length === 0) {
         sendCardChoice(playerhand[i]);
         let cardDiv = document.createElement('div');
-        cardDiv.appendChild(card.children[0])
+        cardDiv.appendChild(cards[i].children[0])
         cardDiv.style.borderRadius = '10px';
         cardDiv.style.width = "150px";
         dropleft.appendChild(cardDiv);
@@ -79,12 +80,10 @@ function startTimer() {
         const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
         updateCountdown(remainingTime);
         if (remainingTime === 0) {
-            if (dropleft.children.length === 0) {
-                let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
-                console.log(index)
-                console.log(cards[index])
-                placeCard(index, cards[index])
-            }
+            let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
+            console.log(index)
+            console.log(cards[index])
+            placeCard(index, cards[index])
         }
     }, 1000);
 }

@@ -21,7 +21,12 @@ function damageP2(damage){
   p2Hp.value = attackEnemy(p2Hp.value, damage);
   displayDamageTaken(p2DamageIndicatorContainer, p2DamageTaken, p2Hp, 'right', damage);
   if(p2Hp.value === 0){
-     console.log("you win")
+      gameOver = true;
+      setTimeout(() => {
+          document.querySelector("#victory").classList.remove("hidden")
+          document.querySelector("#victory").play()
+          console.log("you win")
+      }, 1000)
   }
 }
 
@@ -30,7 +35,13 @@ function damageP1(damage){
   console.log(p1Hp.value)
   displayDamageTaken(p1DamageIndicatorContainer, p1DamageTaken, p1Hp, 'left', damage);
     if(p1Hp.value === 0){
-        console.log("you lose")
+        gameOver = true;
+        setTimeout(() => {
+            document.querySelector("#defeat").classList.remove("hidden")
+            document.querySelector("#defeat").play()
+            console.log("you lose")
+        }, 1000)
+
     }
 }
 
