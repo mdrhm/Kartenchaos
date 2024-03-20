@@ -24,6 +24,7 @@ function resetCardI(){
 
 function makeGame() {
     player1= true;
+    gameOver = false;
     let hand = generateHand(30)
     loadCards(hand)
     loadOppCards()
@@ -34,7 +35,6 @@ function makeGame() {
 
 window.onload = function () {
     const extractedRoomID = getRoomIDFromURL();
-
     if (extractedRoomID) {
         // Call joinGame with the extracted room ID
         joinGame(extractedRoomID);
@@ -71,7 +71,6 @@ function joinGame() {
     let hand = generateHand(30)
     loadCards(hand)
     loadOppCards()
-    socket.emit('joinGame', { roomID: roomID, cardstyle: localStorage.getItem("cardstyle"), hand: hand});
     roomID = getRoomIDFromURL();
     socket.emit('joinGame', {roomID: roomID, cardstyle: localStorage.getItem("cardstyle"), hand: hand});
 }
@@ -168,7 +167,6 @@ socket.on('loadCardStyles', (data) => {
     }
     document.querySelector("#p2handcontainer").classList = displayStyle;
     document.querySelector("#dropr").classList = displayStyle;
-    document.querySelector("#c2c").classList = displayStyle;
 })
 
 socket.on('getNewHands', (data) => {
@@ -194,6 +192,9 @@ socket.on('stopTimer', (data) => {
 })
 
 function nextRound(){
+    if(gameOver){
+        return;
+    }
     document.querySelector("#drop_port").style.transform = "scale(1)";
     document.querySelector("#p1handcontainer").style.transform = "scale(1) translateY(0px)";
     document.querySelector("#p2handcontainer").style.transform = "scale(1) translateY(0px)";
@@ -227,14 +228,19 @@ function goToClashPhase() {
     document.querySelector(".bar2").style.transform = "scale(1.6) translate(-20%, 30%)";
 
     console.log("player1cards" + p1card, p2card)
-    if(player1) {
-        flipCards(p2card);
-        setTimeout(function() {calculateHigher(p1card, p2card)}, 1000)
-    }
-    else{
-        flipCards(p1card);
-        setTimeout(function() {calculateHigher(p2card, p1card)}, 1000)
-    }
+    setTimeout(() => {
+        if (player1) {
+            flipCards(p2card);
+            setTimeout(function () {
+                calculateHigher(p1card, p2card)
+            }, 1000)
+        } else {
+            flipCards(p1card);
+            setTimeout(function () {
+                calculateHigher(p2card, p1card)
+            }, 1000)
+        }
+    },500)
     setTimeout(nextRound, 3000)
   }
 
@@ -248,3 +254,9 @@ function calculateHigher(card1, card2){
         damageP1((card2 + card1)/2)
     }
 }
+socket.on("errorDialogue", (data) => {
+    document.querySelector("#error").classList.remove("hidden")
+    document.querySelector(".error-header").innerHTML = data.text;
+    document.querySelector(".home-ui").style.display = "none"
+    document.querySelector("#Main-phase").style.display = "none"
+})

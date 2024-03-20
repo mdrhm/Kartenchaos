@@ -4,7 +4,7 @@ const card2 = document.querySelector('.card2')
 var time = 1;
 var interval = setInterval(function() {
     if (time <= 3) {
-        card1.src = "/client//cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
+        card1.src = "/client/cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
         card2.src = "/client/cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
     }
     else {
