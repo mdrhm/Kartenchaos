@@ -1,4 +1,4 @@
-#rules-page {
+#rules-page, #error {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +23,7 @@
     opacity: 1;
 }
 
-#rules-page-exit {
+#rules-page-exit, #error-exit {
     display: block;
     font-family: 'myFirstFont';
     font-size: 60px;
@@ -41,7 +41,7 @@
     border-radius: 15px;
 }
 
-.rules-header{
+.rules-header, .error-header{
     border-radius: 20px;
     font-size: 80px;
     font-family: my-first-font;

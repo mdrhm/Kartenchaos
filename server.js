@@ -10,7 +10,6 @@ const rooms = {};
 let player1Played = false, player2Played = false;
 
 
-
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname)));
 
@@ -40,37 +39,48 @@ function makeid(length) {
 io.on('connection', (socket) => {
     console.log('a user has connected');
 
-    socket.on('disconnect', () => {
+    socket.on('disconnecting', () => {
         console.log('user disconnected');
+        let rID = ((Object.entries(rooms)).filter((room) => room[1].player1 === socket.id || room[1].player2 === socket.id)[0])
+        if(rID){
+            rID = rID.toString().split(",")[0]
+            socket.broadcast.in(rID).emit("errorDialogue", {text: "Your opponent disconnected"});
+            delete rooms[rID]
+        }
     });
-
+    // socket.on('disconnecting', () => {
+    //
+    // });
     socket.on('makeGame', (data) => {
         console.log("making game");
         const roomID = makeid(6);
         rooms[roomID] = {roomID: roomID, player1: socket.id, p1cardstyle: data.cardstyle, p1hand: data.hand};
-        console.log(roomID);
+        console.log(rooms);
         socket.join(roomID);
         socket.emit('newGame', { roomID: roomID, p1cardstyle: data.cardstyle });
     });
 
-
-
-
     socket.on('joinGame', (data) => {
-        if (rooms[data.roomID] != null) {
+        if (rooms[data.roomID]) {
             console.log("joininggame");
             console.log(data);
             console.log("joingame" + data.roomID);
-            socket.join(data.roomID);
-            if (rooms[data.roomID]) {
+            if (!rooms[data.roomID].player2) {
+                socket.join(data.roomID);
                 rooms[data.roomID].player2 = socket.id;
                 rooms[data.roomID].p2cardstyle = data.cardstyle
                 rooms[data.roomID].p2hand = data.hand
                 io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
+                io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
             }
-            io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
-        }
+            else {
+                socket.emit("errorDialogue", {text: "This room is full"})
 
+            }
+        }
+        else{
+            socket.emit("errorDialogue", {text: "This room doesn't exist"})
+        }
     });
 
     socket.on('getRoomLink', () => {

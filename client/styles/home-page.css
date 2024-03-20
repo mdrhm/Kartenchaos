@@ -539,3 +539,17 @@ html {
 .wait-phase .p1handcontainer {
     margin-top: 2rem;
 }
+
+#error-background{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 400px;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid white;
+    border-radius: 20px;
+    animation: none;
+    opacity: 1;
+}

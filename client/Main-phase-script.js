@@ -102,3 +102,10 @@ function stopTimer(){
 function updateCountdown(time) {
   document.getElementById('timer').textContent = time;
 }
+
+function goHome(){
+    document.querySelector("#error").classList.add("hidden")
+    document.querySelector(".home-ui").classList.remove("hidden")
+    document.querySelector("#Main-phase").style.display = "none"
+    history.pushState({}, '',window.location.origin)
+}
