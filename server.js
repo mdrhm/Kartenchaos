@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
         let rID = ((Object.entries(rooms)).filter((room) => room[1].player1 === socket.id || room[1].player2 === socket.id)[0])
         if(rID){
             rID = rID.toString().split(",")[0]
-            socket.broadcast.in(rID).emit("errorDialogue", {text: "Your opponent disconnected"});
+            socket.broadcast.in(rID).emit("errorDialogue", {text: "Your opponent has disconnected"});
             delete rooms[rID]
         }
     });

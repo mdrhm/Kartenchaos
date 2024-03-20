@@ -257,6 +257,6 @@ function calculateHigher(card1, card2){
 socket.on("errorDialogue", (data) => {
     document.querySelector("#error").classList.remove("hidden")
     document.querySelector(".error-header").innerHTML = data.text;
-    document.querySelector(".home-ui").classList.add("hidden")
+    document.querySelector(".home-ui").style.display = "none"
     document.querySelector("#Main-phase").style.display = "none"
 })

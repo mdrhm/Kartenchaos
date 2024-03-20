@@ -105,7 +105,7 @@ function updateCountdown(time) {
 
 function goHome(){
     document.querySelector("#error").classList.add("hidden")
-    document.querySelector(".home-ui").classList.remove("hidden")
+    document.querySelector(".home-ui").style.display = ""
     document.querySelector("#Main-phase").style.display = "none"
     history.pushState({}, '',window.location.origin)
 }
