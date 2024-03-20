@@ -111,6 +111,7 @@ const backgroundDiv = document.querySelector("#bg")
 
 const settingsButton = document.querySelector("#settings");
 const settingsDiv = document.querySelector("#settings-page");
+const errorDiv = document.querySelector("#error-background");
 const saveButtons = document.querySelectorAll(".save-btn")
 settingsButton.addEventListener("click", () => {
     settingsDiv.classList.remove("hidden")
@@ -244,6 +245,7 @@ function updateBg(bg){
     backgroundDiv.classList = bg;
     rulesBg.classList = bg;
     settingsBg.classList = bg;
+    errorDiv.classList = bg;
     localStorage.setItem("background", bg);
 }
 
@@ -255,6 +257,7 @@ function updateCustomBg(bg, index, event){
     backgroundDiv.classList = bg + "-" + index;
     rulesBg.classList = bg + "-" + index;
     settingsBg.classList = bg + "-" + index;
+    errorDiv.classList = bg + "-" + index;
     localStorage.setItem("background", bg + "-"+ index);
 }
 
