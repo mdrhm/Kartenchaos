@@ -90,11 +90,13 @@ function startTimer() {
 
 function stopTimer(){
     clearInterval(countdownInterval);
-    // document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
-    //     "<p class = \"v\" id = \"V\">V</p>\n" +
-    //     "<p class=\"s\">S</p>\n" +
-    //     "</div>";
-    document.getElementById('timer').innerHTML = "VS"
+    document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
+    "<p class = \"v\" id = \"V\">V</p>\n" +
+    "<p class=\"s\">S</p>\n" +
+      "</div>";
+       
+    document.getElementById("timer").style.display = "flex"
+    document.getElementById("timer").style.justifyContent = "center"
     goToClashPhase();
 }
 
