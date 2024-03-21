@@ -24,6 +24,7 @@ function resetCardI(){
 
 function makeGame() {
     player1= true;
+    gameOver = false;
     let hand = generateHand(30)
     loadCards(hand)
     loadOppCards()
@@ -34,7 +35,6 @@ function makeGame() {
 
 window.onload = function () {
     const extractedRoomID = getRoomIDFromURL();
-
     if (extractedRoomID) {
         // Call joinGame with the extracted room ID
         joinGame(extractedRoomID);
@@ -71,7 +71,6 @@ function joinGame() {
     let hand = generateHand(30)
     loadCards(hand)
     loadOppCards()
-    socket.emit('joinGame', { roomID: roomID, cardstyle: localStorage.getItem("cardstyle"), hand: hand});
     roomID = getRoomIDFromURL();
     socket.emit('joinGame', {roomID: roomID, cardstyle: localStorage.getItem("cardstyle"), hand: hand});
 }
@@ -168,7 +167,6 @@ socket.on('loadCardStyles', (data) => {
     }
     document.querySelector("#p2handcontainer").classList = displayStyle;
     document.querySelector("#dropr").classList = displayStyle;
-    document.querySelector("#c2c").classList = displayStyle;
 })
 
 socket.on('getNewHands', (data) => {
@@ -263,3 +261,9 @@ function calculateHigher(card1, card2){
     }, 1000); 
     }
 }
+socket.on("errorDialogue", (data) => {
+    document.querySelector("#error").classList.remove("hidden")
+    document.querySelector(".error-header").innerHTML = data.text;
+    document.querySelector(".home-ui").style.display = "none"
+    document.querySelector("#Main-phase").style.display = "none"
+})
