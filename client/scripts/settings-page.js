@@ -92,6 +92,34 @@ btnElList.forEach(btnEl => {
 });
 
 
+const audioResetBtn = document.querySelector('.reset-btn');
+const generalResetBtn = document.querySelector('.general-reset-btn');
+
+// Audio-Reset
+audioResetBtn.addEventListener('click', () => {
+    document.querySelector('.menu').innerHTML = "Default";
+    var i = 0;
+    sliderInputs.forEach(sliderInput => {
+        sliderInput.value = 50;
+        sliders[i].value = sliderInputs[i].value;
+        backgroundAudio.volume = defaultVolume;
+        musicMultiplier = 1;
+        i++;    
+    })
+    // sliderInputs[i].addEventListener("change", ()=>{
+    //     if(sliderInputs[i].value === "") {
+    //         sliderInputs[i].value = sliderInputs[i].placeholder;/
+    //         sliders[i].value = sliderInputs[i].value;
+    //     }
+    //     sliderInputs[i].placeholder = sliderInputs[i].value
+    // })
+    // sliders[i].addEventListener("input", () => {
+    //     sliderInputs[i].value = sliders[i].value;
+    // })
+});
+
+
+
 
 //LOADS UP CLICKED SECTION
 const audioEl = document.querySelector('#Audio-Setting-Option');
@@ -154,6 +182,9 @@ dropdowns.forEach(dropdown => {
 });
 
 
+
+
+
 // const bgStockOptions = document.querySelectorAll(".bg-stock")
 // let bgCustomOptions = document.querySelectorAll(".bg-custom")
 let bgDelete = document.querySelectorAll(".delete-bg")
@@ -192,33 +223,7 @@ for(let i = 0; i < 3; i++) {
 }
 
 
-//RESET OPTION
 
-const audioResetBtn = document.querySelector('.reset-btn');
-const generalResetBtn = document.querySelector('.general-reset-btn');
-
-// Audio-Reset
-audioResetBtn.addEventListener('click', () => {
-    document.querySelector('.menu').innerHTML = "Default";
-    var i = 0;
-    sliderInputs.forEach(sliderInput => {
-        sliderInput.value = 50;
-        sliders[i].value = sliderInputs[i].value;
-        backgroundAudio.volume = defaultVolume;
-        musicMultiplier = 1;
-        i++;    
-    })
-    // sliderInputs[i].addEventListener("change", ()=>{
-    //     if(sliderInputs[i].value === "") {
-    //         sliderInputs[i].value = sliderInputs[i].placeholder;
-    //         sliders[i].value = sliderInputs[i].value;
-    //     }
-    //     sliderInputs[i].placeholder = sliderInputs[i].value
-    // })
-    // sliders[i].addEventListener("input", () => {
-    //     sliderInputs[i].value = sliders[i].value;
-    // })
-});
 function bgUpload(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
