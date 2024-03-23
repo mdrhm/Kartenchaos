@@ -50,7 +50,7 @@ function loadOppCards() {
         var data = request.responseText;
         // console.log(data)
         document.querySelectorAll(".opp-card")[i].classList.remove("hidden")
-        document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"", "");
+        document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"", "").replaceAll("back", "back-" + i);
     }
 }
 
