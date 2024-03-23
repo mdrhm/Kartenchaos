@@ -1,43 +1,75 @@
-// Adjusting Background Music Slider
+// AUDIO SETTINGS SLIDERS AND INPUTS FUNCTIONALITY
+
+// Selectors
+const musicSlider = document.querySelector('.music-slider');
+const musicInput = document.querySelector('.music-input');
 const backgroundAudio = document.getElementById("music");
 const masterSlider = document.querySelector('.master-slider');
 const masterInput = document.querySelector('.master-input');
+// const sfxAudio = document.getElementById('voiceover');
+const sfxSlider = document.querySelector('.sfx-slider');
+const sfxInput = document.querySelector('.sfx-input'); 
 
-// On load Volume is Lower
-backgroundAudio.volume = 0.010;
-masterSlider.value = 10;
-masterInput.value = 10;
+// Initial volume settings
+const defaultVolume = 0.05;
+// const defaultSfxVolume = 0.03;
+backgroundAudio.volume = defaultVolume;
+// sfxAudio.volume = defaultSfxVolume;
 
-// Update the volume of the background audio when the master volume slider is changed
-masterSlider.addEventListener('input', () => {
-    backgroundAudio.volume = masterSlider.value / 100;
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('voiceover');
+    audio.volume = 0.003; // Set volume to 0.3 (30% of maximum)
+  });
+
+// Note: Music Slider will act as a multiplier to the Master Volume.
+let musicMultiplier = 1;
+// let sfxMultiplier = 1;
+
+// Event listeners
+masterSlider.addEventListener('input', updateVolume);
+masterInput.addEventListener('input', handleInputChange);
+musicSlider.addEventListener('input', updateVolume);
+musicInput.addEventListener('input', handleInputChange);
+// sfxSlider.addEventListener('input', updateVolume);
+// sfxInput.addEventListener('input', handleInputChange);
+
+// Function to update volume
+function updateVolume() {
+    const masterVolume = masterSlider.value / 100;
+    musicMultiplier = musicSlider.value / 50;
+    const adjustedVolume = (masterVolume / 10) * musicMultiplier;
+
+    // sfxMultiplier = sfxSlider.value / 50;
+    // const adjustedSfxVolume = (masterVolume / 10) * sfxMultiplier;
+
+    backgroundAudio.volume = adjustedVolume;
+    sfxAudio.volume = adjustedSfxVolume;
+
+    // Update input values
     masterInput.value = masterSlider.value;
-});
+    musicInput.value = musicSlider.value;
+    // sfxInput.value = sfxSlider.value;
 
-// Update the value of the master volume slider when the master volume input field is changed
-masterInput.addEventListener('input', () => {
-    masterSlider.value = masterInput.value;
-    backgroundAudio.volume = masterInput.value / 100;
-});
+}
 
+// Function to handle direct input into input fields
+function handleInputChange() {
+    const inputValue = parseInt(this.value, 10);
 
-//GENERAL/AUDIO BUTTONS ON CLICK
-const btnElList = document.querySelectorAll('.main-btn');
+    if (!isNaN(inputValue)) {
+        if (this === masterInput) {
+            masterSlider.value = inputValue;
+        } 
+        else if (this === musicInput) {
+            musicSlider.value = inputValue;
+        } 
+        // else if (this === sfxInput) {
+        //     sfxSlider.value = inputValue;
+        // }
 
-btnElList.forEach(btnEl => {
-    btnEl.addEventListener('click', () => {
-        // Check if any button element has class 'clicked'
-        const clickedBtns = document.querySelectorAll('.clicked');
-        // Remove 'clicked' class from all elements with class 'clicked'
-        clickedBtns.forEach(clickedBtn => {
-            clickedBtn.classList.remove('clicked');
-            clickedBtn.classList.add('hover-enabled');
-        });
-        // Add 'clicked' class to the currently clicked button
-        btnEl.classList.remove('hover-enabled');
-        btnEl.classList.add('clicked');
-    });
-});
+        updateVolume();
+    }
+}
 
 
 
