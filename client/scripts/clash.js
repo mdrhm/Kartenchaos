@@ -341,8 +341,6 @@ Fragment.prototype = {
     applied to image before it gets drawn in.
 */
 function cardStyleShatter(tempSvg, style) {
-    var recEls = tempSvg.querySelectorAll('rect'); // Select all rect elements
-    var symbolEls = tempSvg.querySelectorAll('symbol'); // Select all symbol elements
     let rules = document.styleSheets[0].rules;
     let matchingRule = Object.values(rules).find(rule => rule.selectorText === "." + style);
     let styleObjString = matchingRule.style.cssText;
@@ -367,20 +365,15 @@ function cardStyleShatter(tempSvg, style) {
         })
         styleObj[innerRules[i].selectorText] = innerObj
     }
-
-    recEls.forEach(function (rect) {
-        rect.setAttribute('fill', styleObj["rect"]["fill"]);
-        rect.setAttribute('stroke', styleObj["rect"]["stroke"]);
-        rect.setAttribute('stroke-width', styleObj["rect"]["stroke-width"]);
-    });
-
-    symbolEls[0].querySelector('path').setAttribute('fill', styleObj["symbol:nth-child(1) path"]["fill"]);
-    if (styleObj["symbol:nth-child(1) path"]["d"]) {
-        symbolEls[0].querySelector('path').setAttribute('d', styleObj["symbol:nth-child(1) path"]["d"]);
+    for (const [key, value] of Object.entries(styleObj)) {
+        if (typeof styleObj[key] === "object") {
+            for (const [keyInner, valueInner] of Object.entries(styleObj[key])) {
+                tempSvg.querySelectorAll(key).forEach(function (rect) {
+                    rect.setAttribute(keyInner, valueInner);
+                });
+            }
+        }
     }
-    symbolEls[1].querySelector('path').setAttribute('stroke', styleObj["symbol:nth-child(2) path"]["stroke"]);
-    tempSvg.style.border = styleObj["border"];
-
 }
 
 
