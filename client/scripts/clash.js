@@ -368,20 +368,18 @@ function cardStyleShatter(tempSvg, style) {
         styleObj[innerRules[i].selectorText] = innerObj
     }
 
-    let styleJSON = JSON.stringify(styleObj);
-    let parsedStyleObj = JSON.parse(styleJSON);
     recEls.forEach(function (rect) {
-        rect.setAttribute('fill', parsedStyleObj["rect"]["fill"]);
-        rect.setAttribute('stroke', parsedStyleObj["rect"]["stroke"]);
-        rect.setAttribute('stroke-width', parsedStyleObj["rect"]["stroke-width"]);
+        rect.setAttribute('fill', styleObj["rect"]["fill"]);
+        rect.setAttribute('stroke', styleObj["rect"]["stroke"]);
+        rect.setAttribute('stroke-width', styleObj["rect"]["stroke-width"]);
     });
 
-    symbolEls[0].querySelector('path').setAttribute('fill', parsedStyleObj["symbol:nth-child(1) path"]["fill"]);
-    if (parsedStyleObj["symbol:nth-child(1) path"]["d"]) {
-        symbolEls[0].querySelector('path').setAttribute('d', parsedStyleObj["symbol:nth-child(1) path"]["d"]);
+    symbolEls[0].querySelector('path').setAttribute('fill', styleObj["symbol:nth-child(1) path"]["fill"]);
+    if (styleObj["symbol:nth-child(1) path"]["d"]) {
+        symbolEls[0].querySelector('path').setAttribute('d', styleObj["symbol:nth-child(1) path"]["d"]);
     }
-    symbolEls[1].querySelector('path').setAttribute('stroke', parsedStyleObj["symbol:nth-child(2) path"]["stroke"]);
-    tempSvg.style.border = parsedStyleObj["border"];
+    symbolEls[1].querySelector('path').setAttribute('stroke', styleObj["symbol:nth-child(2) path"]["stroke"]);
+    tempSvg.style.border = styleObj["border"];
 
 }
 
