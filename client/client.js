@@ -195,6 +195,8 @@ function nextRound(){
     if(gameOver){
         return;
     }
+  
+   
     document.querySelector("#drop_port").style.transform = "scale(1)";
     document.querySelector("#p1handcontainer").style.transform = "scale(1) translateY(0px)";
     document.querySelector("#p2handcontainer").style.transform = "scale(1) translateY(0px)";
@@ -226,7 +228,6 @@ function goToClashPhase() {
     document.querySelector("#p2handcontainer").style.transform = "scale(2) translateY(-250px)";
     document.querySelector(".bar1").style.transform = "scale(1.6) translate(20%, -30%)";
     document.querySelector(".bar2").style.transform = "scale(1.6) translate(-20%, 30%)";
-
     console.log("player1cards" + p1card, p2card)
     setTimeout(() => {
         if (player1) {
@@ -241,7 +242,7 @@ function goToClashPhase() {
             }, 1000)
         }
     },500)
-    setTimeout(nextRound, 3000)
+    setTimeout(nextRound, 5000)
   }
 
 function calculateHigher(card1, card2){
@@ -249,9 +250,15 @@ function calculateHigher(card1, card2){
     card2 =  parseInt((card2).replace((card2).at(-1), ""));
     if(card1 > card2) {
         damageP2((card1 + card2)/2)
+        setTimeout(function() {
+        document.getElementById("V").classList.add("vleft")
+    },  1000); 
     }
     else if(card2 > card1){
         damageP1((card2 + card1)/2)
+        setTimeout(function() {
+        document.getElementById("V").classList.add("vright")
+    }, 1000); 
     }
 }
 socket.on("errorDialogue", (data) => {

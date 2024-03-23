@@ -99,8 +99,7 @@
         const TWO_PI = Math.PI * 2.5;
         const imageWidth = 240; // Assuming image width
         const imageHeight = 366; // Assuming image height
-        const images = document.querySelectorAll('.TEST2 img');
-
+        const images = document.querySelectorAll('.TEST2 svg');
         var imageIndex = 0;
         var vertices = [];
         var indices = [];
@@ -110,6 +109,7 @@
         document.getElementById('shatterButton').addEventListener('click', function () {
             var shatterSound = document.getElementById('breaksound');
             shatterSound.currentTime = .5;
+            
             shatter();
             shatterSound.play();
             //
@@ -117,7 +117,10 @@
         });
 
         function shatter() {
+            
             var clickPosition = [randomRange(0, imageWidth), randomRange(0, imageHeight)];
+           
+
             triangulate(clickPosition);
             shatterAnimation(clickPosition);
         }
@@ -261,16 +264,47 @@
     this.ctx = this.canvas.getContext('2d');
 },
 
-            clip: function () {
-                this.ctx.translate(-this.box.x, -this.box.y);
-                this.ctx.beginPath();
-                this.ctx.moveTo(this.v0[0], this.v0[1]);
-                this.ctx.lineTo(this.v1[0], this.v1[1]);
-                this.ctx.lineTo(this.v2[0], this.v2[1]);
-                this.ctx.closePath();
-                this.ctx.clip();
-                this.ctx.drawImage(images[imageIndex], 0, 0);
-            }
+clip: function () {
+    this.ctx.translate(-this.box.x, -this.box.y);
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.v0[0], this.v0[1]);
+    this.ctx.lineTo(this.v1[0], this.v1[1]);
+    this.ctx.lineTo(this.v2[0], this.v2[1]);
+    this.ctx.closePath();
+    this.ctx.clip();
+    
+    var image = images[imageIndex];
+
+if (image instanceof SVGElement) {
+    // Convert SVG to data URL
+    var svgString = new XMLSerializer().serializeToString(image);
+    var blob = new Blob([svgString], { type: 'image/svg+xml' });
+    var url = URL.createObjectURL(blob);
+
+    // Create a new Image object
+    var img = new Image();
+    img.onload = function() {
+        // Draw the image onto the canvas
+        this.ctx.drawImage(img, 0, 0);
+        // Clean up by revoking the URL
+        URL.revokeObjectURL(url);
+    }.bind(this);
+    img.src = url;
+} else if (image instanceof HTMLImageElement || 
+           image instanceof HTMLCanvasElement || 
+           image instanceof HTMLVideoElement || 
+           image instanceof OffscreenCanvas || 
+           image instanceof ImageBitmap) {
+    // Draw other supported image types directly onto the canvas
+    this.ctx.drawImage(image, 0, 0);
+} else {
+    // Handle unsupported image types
+    console.error(images);
+    console.error(image);
+    console.error("Unsupported image type:", typeof image);
+}
+
+}
         };
     </script>
 </body>
