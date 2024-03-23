@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playSound(audio) {
         if (audio) {
-            audio.volume = 0.2;
             audio.currentTime = 0;
             audio.play();
         }

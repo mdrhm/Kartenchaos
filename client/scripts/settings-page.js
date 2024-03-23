@@ -6,50 +6,46 @@ const musicInput = document.querySelector('.music-input');
 const backgroundAudio = document.getElementById("music");
 const masterSlider = document.querySelector('.master-slider');
 const masterInput = document.querySelector('.master-input');
-// const sfxAudio = document.getElementById('voiceover');
+const sfxAudio = document.getElementById('voiceover');
+const sfxMenuSelectAudio = document.getElementById('menu-select');
 const sfxSlider = document.querySelector('.sfx-slider');
 const sfxInput = document.querySelector('.sfx-input'); 
 
 // Initial volume settings
 const defaultVolume = 0.05;
-// const defaultSfxVolume = 0.03;
+const defaultSfxVolume = 0.5;
 backgroundAudio.volume = defaultVolume;
-// sfxAudio.volume = defaultSfxVolume;
-
-document.addEventListener('DOMContentLoaded', function() {
-    var audio = document.getElementById('voiceover');
-    audio.volume = 0.003; // Set volume to 0.3 (30% of maximum)
-  });
+sfxAudio.volume = defaultSfxVolume;
+sfxMenuSelectAudio.volume = defaultSfxVolume;
 
 // Note: Music Slider will act as a multiplier to the Master Volume.
 let musicMultiplier = 1;
-// let sfxMultiplier = 1;
+let sfxMultiplier = 1;
 
 // Event listeners
 masterSlider.addEventListener('input', updateVolume);
 masterInput.addEventListener('input', handleInputChange);
 musicSlider.addEventListener('input', updateVolume);
 musicInput.addEventListener('input', handleInputChange);
-// sfxSlider.addEventListener('input', updateVolume);
-// sfxInput.addEventListener('input', handleInputChange);
+sfxSlider.addEventListener('input', updateVolume);
+sfxInput.addEventListener('input', handleInputChange);
 
 // Function to update volume
 function updateVolume() {
     const masterVolume = masterSlider.value / 100;
     musicMultiplier = musicSlider.value / 50;
-    const adjustedVolume = (masterVolume / 10) * musicMultiplier;
+    const adjustedMusicVolume = (masterVolume / 10) * musicMultiplier;
 
-    // sfxMultiplier = sfxSlider.value / 50;
-    // const adjustedSfxVolume = (masterVolume / 10) * sfxMultiplier;
-
-    backgroundAudio.volume = adjustedVolume;
+    sfxMultiplier = sfxSlider.value / 50;
+    const adjustedSfxVolume = (masterVolume) * sfxMultiplier;
+    backgroundAudio.volume = adjustedMusicVolume;
     sfxAudio.volume = adjustedSfxVolume;
+    sfxMenuSelectAudio.volume = adjustedSfxVolume;
 
     // Update input values
     masterInput.value = masterSlider.value;
     musicInput.value = musicSlider.value;
-    // sfxInput.value = sfxSlider.value;
-
+    sfxInput.value = sfxSlider.value;
 }
 
 // Function to handle direct input into input fields
@@ -63,9 +59,9 @@ function handleInputChange() {
         else if (this === musicInput) {
             musicSlider.value = inputValue;
         } 
-        // else if (this === sfxInput) {
-        //     sfxSlider.value = inputValue;
-        // }
+        else if (this === sfxInput) {
+            sfxSlider.value = inputValue;
+        }
 
         updateVolume();
     }
@@ -97,29 +93,33 @@ const generalResetBtn = document.querySelector('.general-reset-btn');
 
 // Audio-Reset
 audioResetBtn.addEventListener('click', () => {
-    document.querySelector('.menu').innerHTML = "Default";
     var i = 0;
     sliderInputs.forEach(sliderInput => {
         sliderInput.value = 50;
         sliders[i].value = sliderInputs[i].value;
         backgroundAudio.volume = defaultVolume;
+        sfxAudio.volume = defaultSfxVolume;
+        sfxMenuSelectAudio.volume = defaultSfxVolume;   
         musicMultiplier = 1;
+        sfxMultiplier = 1;
         i++;    
     })
-    // sliderInputs[i].addEventListener("change", ()=>{
-    //     if(sliderInputs[i].value === "") {
-    //         sliderInputs[i].value = sliderInputs[i].placeholder;/
-    //         sliders[i].value = sliderInputs[i].value;
-    //     }
-    //     sliderInputs[i].placeholder = sliderInputs[i].value
-    // })
-    // sliders[i].addEventListener("input", () => {
-    //     sliderInputs[i].value = sliders[i].value;
-    // })
+
+
+    const defaultSound = document.querySelector('.menu .default-sound');
+    document.querySelector('.menu .hidden').classList.remove('hidden');
+    defaultSound.classList.add('hidden');
+    document.querySelector('.selected').innerText = defaultSound.innerText;
+    audioChoiceLoad(defaultSound);
+
+   
 });
 
 
-
+generalResetBtn.addEventListener('click', () => {
+    updateBg("bg-0");
+    updateCardStyle('default');
+});
 
 //LOADS UP CLICKED SECTION
 const audioEl = document.querySelector('#Audio-Setting-Option');
@@ -163,10 +163,7 @@ dropdowns.forEach(dropdown => {
             })
             option.classList.add("hidden")
             selected.innerText = option.innerText;
-            const audioElement = document.getElementById("music");
-            audioElement.src = "Audio/" + option.innerText + ".mp3";
-            audioElement.load();
-            audioElement.play();
+            audioChoiceLoad(option);
 
             // Save music option to local storage
             localStorage.setItem("musicOption", i);
@@ -180,6 +177,13 @@ dropdowns.forEach(dropdown => {
         }
     })
 });
+
+function audioChoiceLoad(audioOption) {
+    const audioElement = document.getElementById("music");
+    audioElement.src = "Audio/" + audioOption.innerText + ".mp3";
+    audioElement.load();
+    audioElement.play();
+}
 
 
 
@@ -214,6 +218,17 @@ for(let i = 0; i < 3; i++) {
         if(sliderInputs[i].value < 0){
             sliderInputs[i].value = 0;
         }
+        sliderInputs[i].addEventListener("change", ()=>{
+            if(sliderInputs[i].value === "") {
+                sliderInputs[i].value = sliderInputs[i].placeholder;
+                sliders[i].value = sliderInputs[i].value;
+                updateVolume();
+            }
+            sliderInputs[i].placeholder = sliderInputs[i].value
+        })
+        sliders[i].addEventListener("input", () => {
+            sliderInputs[i].value = sliders[i].value;
+        })
         sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
         sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
     });

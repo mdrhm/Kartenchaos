@@ -329,7 +329,7 @@
   width: 25%;
 }
 
-.reset-btn, .save-btn {
+.reset-btn, .save-btn, .general-reset-btn {
   display: block;
   font-family: 'myFirstFont';
   font-size: 60px;

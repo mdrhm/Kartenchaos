@@ -21,12 +21,17 @@
 </audio>
 
 
-<audio autoplay class="voiceover" id="voiceover" src="/Audio/click.mp3"></audio>
+<audio autoplay id="voiceover">
+    <source src="/Audio/click.mp3"
+    type="audio/mp3">
+</audio>
 
 
+<audio autoplay id="menu-select">
+    <source src="/Audio/menu-select.mp3"
+    type="audio/mp3">
+</audio>
 
-
-<audio autoplay class="menu-select" id="menu-select" src="/Audio/menu-select.mp3"></audio>
 
 <div class="bg-0" id="bg"></div>
 <div class="home-ui">
@@ -140,7 +145,7 @@
                             </div>
                             <ul class="menu">
                                 <li>None</li>
-                                <li>Default</li>
+                                <li class="default-sound">Default</li>
                                 <li>Alone</li>
                                 <li>Turn Down for What</li>
                                 <li>Gangnam Style</li>
