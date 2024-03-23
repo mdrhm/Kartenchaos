@@ -73,6 +73,26 @@ function handleInputChange() {
 
 
 
+//GENERAL & AUDIO BUTTONS ON CLICK
+const btnElList = document.querySelectorAll('.main-btn');
+
+btnElList.forEach(btnEl => {
+    btnEl.addEventListener('click', () => {
+        // Check if any button element has class 'clicked'
+        const clickedBtns = document.querySelectorAll('.clicked');
+        // Remove 'clicked' class from all elements with class 'clicked'
+        clickedBtns.forEach(clickedBtn => {
+            clickedBtn.classList.remove('clicked');
+            clickedBtn.classList.add('hover-enabled');
+        });
+        // Add 'clicked' class to the currently clicked button
+        btnEl.classList.remove('hover-enabled');
+        btnEl.classList.add('clicked');
+    });
+});
+
+
+
 //LOADS UP CLICKED SECTION
 const audioEl = document.querySelector('#Audio-Setting-Option');
 
@@ -184,17 +204,20 @@ audioResetBtn.addEventListener('click', () => {
     sliderInputs.forEach(sliderInput => {
         sliderInput.value = 50;
         sliders[i].value = sliderInputs[i].value;
+        backgroundAudio.volume = defaultVolume;
+        musicMultiplier = 1;
+        i++;    
     })
-    sliderInputs[i].addEventListener("change", ()=>{
-        if(sliderInputs[i].value === "") {
-            sliderInputs[i].value = sliderInputs[i].placeholder;
-            sliders[i].value = sliderInputs[i].value;
-        }
-        sliderInputs[i].placeholder = sliderInputs[i].value
-    })
-    sliders[i].addEventListener("input", () => {
-        sliderInputs[i].value = sliders[i].value;
-    })
+    // sliderInputs[i].addEventListener("change", ()=>{
+    //     if(sliderInputs[i].value === "") {
+    //         sliderInputs[i].value = sliderInputs[i].placeholder;
+    //         sliders[i].value = sliderInputs[i].value;
+    //     }
+    //     sliderInputs[i].placeholder = sliderInputs[i].value
+    // })
+    // sliders[i].addEventListener("input", () => {
+    //     sliderInputs[i].value = sliders[i].value;
+    // })
 });
 function bgUpload(event) {
     var selectedFile = event.target.files[0];
