@@ -67,8 +67,6 @@ function handleInputChange() {
     }
 }
 
-
-
 //GENERAL & AUDIO BUTTONS ON CLICK
 const btnElList = document.querySelectorAll('.main-btn');
 
@@ -114,7 +112,6 @@ audioResetBtn.addEventListener('click', () => {
 
    
 });
-
 
 generalResetBtn.addEventListener('click', () => {
     updateBg("bg-0");
@@ -185,10 +182,6 @@ function audioChoiceLoad(audioOption) {
     audioElement.play();
 }
 
-
-
-
-
 // const bgStockOptions = document.querySelectorAll(".bg-stock")
 // let bgCustomOptions = document.querySelectorAll(".bg-custom")
 let bgDelete = document.querySelectorAll(".delete-bg")
@@ -237,8 +230,6 @@ for(let i = 0; i < 3; i++) {
     });
 }
 
-
-
 function bgUpload(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
@@ -286,20 +277,6 @@ function loadCustomBgs() {
     const uploadDiv = document.querySelector(".bg-custom-upload-container")
     bgOptions.innerHTML += uploadDiv.outerHTML
     bgOptions.querySelector(".bg-custom-upload-container").classList.remove("hidden")
-    // let bgCustomOptions = document.querySelectorAll(".bg-custom")
-    // bgDelete = document.querySelectorAll(".delete-bg")
-    // for(let i = 0; i < bgCustomOptions.length; i++) {
-    //     bgDelete[i].addEventListener("click", () => {
-    //         console.log(custombgs)
-    //         custombgs.splice(i, 1);
-    //         console.log(custombgs)
-    //         localStorage.setItem("custombgs", custombgs.join("\n"))
-    //         if (localStorage.getItem("background") === "custombg-" + i) {
-    //             updateBg("bg-1")
-    //         }
-    //         loadCustomBgs()
-    //     })
-    // }
 }
 
 function deleteBg(i) {
@@ -336,6 +313,5 @@ function updateCustomBg(bg, index, event){
 function updateCardStyle(style) {
     document.querySelector("#p1handcontainer").classList = style
     document.querySelector("#dropl").classList = style
-    document.querySelector("#c1c").classList = style
     localStorage.setItem("cardstyle", style);
 }
