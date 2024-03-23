@@ -1,27 +1,75 @@
-// Adjusting Background Music Slider
+// AUDIO SETTINGS SLIDERS AND INPUTS FUNCTIONALITY
+
+// Selectors
+const musicSlider = document.querySelector('.music-slider');
+const musicInput = document.querySelector('.music-input');
 const backgroundAudio = document.getElementById("music");
 const masterSlider = document.querySelector('.master-slider');
 const masterInput = document.querySelector('.master-input');
+const sfxAudio = document.getElementById('voiceover');
+const sfxMenuSelectAudio = document.getElementById('menu-select');
+const sfxSlider = document.querySelector('.sfx-slider');
+const sfxInput = document.querySelector('.sfx-input'); 
 
-// Set Initial Volume
-backgroundAudio.volume = 0.010;
-masterSlider.value = 10;
-masterInput.value = 10;
+// Initial volume settings
+const defaultVolume = 0.05;
+const defaultSfxVolume = 0.5;
+backgroundAudio.volume = defaultVolume;
+sfxAudio.volume = defaultSfxVolume;
+sfxMenuSelectAudio.volume = defaultSfxVolume;
 
-// Update the volume of the background audio when the master volume slider is changed
-masterSlider.addEventListener('input', () => {
-    backgroundAudio.volume = masterSlider.value / 100;
+// Note: Music Slider will act as a multiplier to the Master Volume.
+let musicMultiplier = 1;
+let sfxMultiplier = 1;
+
+// Event listeners
+masterSlider.addEventListener('input', updateVolume);
+masterInput.addEventListener('input', handleInputChange);
+musicSlider.addEventListener('input', updateVolume);
+musicInput.addEventListener('input', handleInputChange);
+sfxSlider.addEventListener('input', updateVolume);
+sfxInput.addEventListener('input', handleInputChange);
+
+// Function to update volume
+function updateVolume() {
+    const masterVolume = masterSlider.value / 100;
+    musicMultiplier = musicSlider.value / 50;
+    const adjustedMusicVolume = (masterVolume / 10) * musicMultiplier;
+
+    sfxMultiplier = sfxSlider.value / 50;
+    const adjustedSfxVolume = (masterVolume) * sfxMultiplier;
+    backgroundAudio.volume = adjustedMusicVolume;
+    sfxAudio.volume = adjustedSfxVolume;
+    sfxMenuSelectAudio.volume = adjustedSfxVolume;
+
+    // Update input values
     masterInput.value = masterSlider.value;
-});
+    musicInput.value = musicSlider.value;
+    sfxInput.value = sfxSlider.value;
+}
 
-// Update the value of the master volume slider when the master volume input field is changed
-masterInput.addEventListener('input', () => {
-    masterSlider.value = masterInput.value;
-    backgroundAudio.volume = masterInput.value / 100;
-});
+// Function to handle direct input into input fields
+function handleInputChange() {
+    const inputValue = parseInt(this.value, 10);
+
+    if (!isNaN(inputValue)) {
+        if (this === masterInput) {
+            masterSlider.value = inputValue;
+        } 
+        else if (this === musicInput) {
+            musicSlider.value = inputValue;
+        } 
+        else if (this === sfxInput) {
+            sfxSlider.value = inputValue;
+        }
+
+        updateVolume();
+    }
+}
 
 
-//GENERAL/AUDIO BUTTONS ON CLICK
+
+//GENERAL & AUDIO BUTTONS ON CLICK
 const btnElList = document.querySelectorAll('.main-btn');
 
 btnElList.forEach(btnEl => {
@@ -40,6 +88,38 @@ btnElList.forEach(btnEl => {
 });
 
 
+const audioResetBtn = document.querySelector('.reset-btn');
+const generalResetBtn = document.querySelector('.general-reset-btn');
+
+// Audio-Reset
+audioResetBtn.addEventListener('click', () => {
+    var i = 0;
+    sliderInputs.forEach(sliderInput => {
+        sliderInput.value = 50;
+        sliders[i].value = sliderInputs[i].value;
+        backgroundAudio.volume = defaultVolume;
+        sfxAudio.volume = defaultSfxVolume;
+        sfxMenuSelectAudio.volume = defaultSfxVolume;   
+        musicMultiplier = 1;
+        sfxMultiplier = 1;
+        i++;    
+    })
+
+
+    const defaultSound = document.querySelector('.menu .default-sound');
+    document.querySelector('.menu .hidden').classList.remove('hidden');
+    defaultSound.classList.add('hidden');
+    document.querySelector('.selected').innerText = defaultSound.innerText;
+    audioChoiceLoad(defaultSound);
+
+   
+});
+
+
+generalResetBtn.addEventListener('click', () => {
+    updateBg("bg-0");
+    updateCardStyle('default');
+});
 
 //LOADS UP CLICKED SECTION
 const audioEl = document.querySelector('#Audio-Setting-Option');
@@ -83,10 +163,7 @@ dropdowns.forEach(dropdown => {
             })
             option.classList.add("hidden")
             selected.innerText = option.innerText;
-            const audioElement = document.getElementById("music");
-            audioElement.src = "Audio/" + option.innerText + ".mp3";
-            audioElement.load();
-            audioElement.play();
+            audioChoiceLoad(option);
 
             // Save music option to local storage
             localStorage.setItem("musicOption", i);
@@ -101,6 +178,16 @@ dropdowns.forEach(dropdown => {
     })
 });
 
+function audioChoiceLoad(audioOption) {
+    const audioElement = document.getElementById("music");
+    audioElement.src = "Audio/" + audioOption.innerText + ".mp3";
+    audioElement.load();
+    audioElement.play();
+}
+
+
+
+
 
 // const bgStockOptions = document.querySelectorAll(".bg-stock")
 // let bgCustomOptions = document.querySelectorAll(".bg-custom")
@@ -111,7 +198,6 @@ const backgroundDiv = document.querySelector("#bg")
 
 const settingsButton = document.querySelector("#settings");
 const settingsDiv = document.querySelector("#settings-page");
-const errorDiv = document.querySelector("#error-background");
 const saveButtons = document.querySelectorAll(".save-btn")
 settingsButton.addEventListener("click", () => {
     settingsDiv.classList.remove("hidden")
@@ -132,6 +218,17 @@ for(let i = 0; i < 3; i++) {
         if(sliderInputs[i].value < 0){
             sliderInputs[i].value = 0;
         }
+        sliderInputs[i].addEventListener("change", ()=>{
+            if(sliderInputs[i].value === "") {
+                sliderInputs[i].value = sliderInputs[i].placeholder;
+                sliders[i].value = sliderInputs[i].value;
+                updateVolume();
+            }
+            sliderInputs[i].placeholder = sliderInputs[i].value
+        })
+        sliders[i].addEventListener("input", () => {
+            sliderInputs[i].value = sliders[i].value;
+        })
         sliderInputs[i].value = parseInt(sliderInputs[i].value).toFixed(0)
         sliders[i].value = sliderInputs[i].value; // Update corresponding slider value
     });
@@ -141,30 +238,7 @@ for(let i = 0; i < 3; i++) {
 }
 
 
-//RESET OPTION
 
-const audioResetBtn = document.querySelector('.reset-btn');
-const generalResetBtn = document.querySelector('.general-reset-btn');
-
-// Audio-Reset
-audioResetBtn.addEventListener('click', () => {
-    document.querySelector('.menu').innerHTML = "Default";
-    var i = 0;
-    sliderInputs.forEach(sliderInput => {
-        sliderInput.value = 50;
-        sliders[i].value = sliderInputs[i].value;
-    })
-    sliderInputs[i].addEventListener("change", ()=>{
-        if(sliderInputs[i].value === "") {
-            sliderInputs[i].value = sliderInputs[i].placeholder;
-            sliders[i].value = sliderInputs[i].value;
-        }
-        sliderInputs[i].placeholder = sliderInputs[i].value
-    })
-    sliders[i].addEventListener("input", () => {
-        sliderInputs[i].value = sliders[i].value;
-    })
-});
 function bgUpload(event) {
     var selectedFile = event.target.files[0];
     var reader = new FileReader();
@@ -245,7 +319,6 @@ function updateBg(bg){
     backgroundDiv.classList = bg;
     rulesBg.classList = bg;
     settingsBg.classList = bg;
-    errorDiv.classList = bg;
     localStorage.setItem("background", bg);
 }
 
@@ -257,12 +330,12 @@ function updateCustomBg(bg, index, event){
     backgroundDiv.classList = bg + "-" + index;
     rulesBg.classList = bg + "-" + index;
     settingsBg.classList = bg + "-" + index;
-    errorDiv.classList = bg + "-" + index;
     localStorage.setItem("background", bg + "-"+ index);
 }
 
 function updateCardStyle(style) {
     document.querySelector("#p1handcontainer").classList = style
     document.querySelector("#dropl").classList = style
+    document.querySelector("#c1c").classList = style
     localStorage.setItem("cardstyle", style);
 }
