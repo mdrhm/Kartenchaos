@@ -165,6 +165,7 @@ socket.on('loadCardStyles', (data) => {
     else {
         displayStyle = data.p1cardstyle
     }
+    displayStyle = (displayStyle) ? displayStyle : "default"
     document.querySelector("#p2handcontainer").classList = displayStyle;
     document.querySelector("#dropr").classList = displayStyle;
 })

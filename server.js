@@ -155,13 +155,14 @@ io.on('connection', (socket) => {
         rooms[data.roomID].p2hand = data.p2hand;
     })
     socket.on("updateCardStyleForAll", (data) => {
-        if(socket.id === rooms[data.roomID].player1) {
-            rooms[data.roomID].p1cardstyle = data.style;
+        if(rooms[data.roomID]) {
+            if (socket.id === rooms[data.roomID].player1) {
+                rooms[data.roomID].p1cardstyle = data.style;
+            } else if (socket.id === rooms[data.roomID].player2) {
+                rooms[data.roomID].p2cardstyle = data.style;
+            }
+            io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
         }
-        else if(socket.id === rooms[data.roomID].player2) {
-            rooms[data.roomID].p2cardstyle = data.style;
-        }
-        io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
     })
 });
 server.listen(3000, () => {
