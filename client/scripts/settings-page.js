@@ -265,7 +265,5 @@ function updateCardStyle(style) {
     document.querySelector("#p1handcontainer").classList = style
     document.querySelector("#dropl").classList = style
     localStorage.setItem("cardstyle", style);
-    if(getRoomIDFromURL()){
-        updateCardStyleForAll(getRoomIDFromURL(), style)
-    }
+    updateCardStyleForAll(getRoomIDFromURL(), style)
 }
