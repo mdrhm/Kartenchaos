@@ -315,3 +315,45 @@ function updateCardStyle(style) {
     document.querySelector("#dropl").classList = style
     localStorage.setItem("cardstyle", style);
 }
+
+function updateBg(bg) {
+    const bgOptions = document.querySelectorAll('.bg-option');
+    bgOptions.forEach(option => option.classList.remove('selected-option'));
+
+    const selectedOption = document.querySelector(`.bg-option.${bg}`);
+    if (selectedOption) {
+        selectedOption.classList.add('selected-option');
+    }
+
+    backgroundDiv.classList = bg;
+    rulesBg.classList = bg;
+    settingsBg.classList = bg;
+    localStorage.setItem("background", bg);
+}
+function updateCustomBg(bg, index, event){
+    if(document.querySelectorAll(".delete-bg")[index].contains(event.target)){
+        return;
+    }
+    updateBg(bg + "-" + index);
+    const bgOptions = document.querySelectorAll('.bg-option');
+    bgOptions.forEach(option => option.classList.remove('selected-option'));
+
+    const selectedOption = document.querySelector(`.bg-option.${bg}-${index}`);
+    if (selectedOption) {
+        selectedOption.classList.add('selected-option');
+    }
+}
+
+function updateCardStyle(style) {
+    const cardStyleOptions = document.querySelectorAll('.card-style-option');
+    cardStyleOptions.forEach(option => option.classList.remove('selected-option'));
+
+    const selectedOption = document.querySelector(`.card-style-option.${style}`);
+    if (selectedOption) {
+        selectedOption.classList.add('selected-option');
+    }
+
+    document.querySelector("#p1handcontainer").classList = style;
+    document.querySelector("#dropl").classList = style;
+    localStorage.setItem("cardstyle", style);
+}
