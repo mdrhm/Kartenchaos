@@ -165,6 +165,7 @@ socket.on('loadCardStyles', (data) => {
     else {
         displayStyle = data.p1cardstyle
     }
+    displayStyle = (displayStyle) ? displayStyle : "default"
     document.querySelector("#p2handcontainer").classList = displayStyle;
     document.querySelector("#dropr").classList = displayStyle;
 })
@@ -260,3 +261,7 @@ socket.on("errorDialogue", (data) => {
     document.querySelector(".home-ui").style.display = "none"
     document.querySelector("#Main-phase").style.display = "none"
 })
+
+function updateCardStyleForAll(roomID, style){
+    socket.emit("updateCardStyleForAll", {roomID: roomID, style: style})
+}
