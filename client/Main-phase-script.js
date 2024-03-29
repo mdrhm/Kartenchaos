@@ -78,13 +78,13 @@ function startTimer() {
     let remainingTime = 10;
     countdownInterval = setInterval(() => {
         updateCountdown(remainingTime);
-        remainingTime--;
         if (remainingTime === 0) {
             let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
             console.log(index)
             console.log(cards[index])
             placeCard(index, cards[index])
         }
+        remainingTime = Math.max(remainingTime - 1, 0)
     }, 1000);
 }
 
