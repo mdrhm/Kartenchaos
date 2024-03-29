@@ -37,22 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
 var customBgStyle = document.querySelector('.custom-bg-style');
 loadCustomBgs()
 
-var request = new XMLHttpRequest();
-
 const cardStyleOptions = document.querySelectorAll(".card-style-option")
 for(let i = 0; i < cardStyleOptions.length; i++){
-    request.open("GET", "/client/cards/1" + suits[i%4] + ".svg", false);
-    request.send(null);
-    cardStyleOptions[i].innerHTML = request.responseText.replaceAll("S" + suits[i%4] + "A", "S" + suits[i%4] + "A-" + i).replaceAll("V" + suits[i%4] + "A", "V" + suits[i%4] + "A-" + i);
+    cardStyleOptions[i].innerHTML = getCard("1" + suits[i%4], i)
 }
 
 function loadOppCards() {
     for (let i = 0; i < 5; i++) {
-        request.open("GET", "/client/cards/2B.svg", false);
-        request.send(null);
-        var data = request.responseText;
-        // console.log(data)
         document.querySelectorAll(".opp-card")[i].classList.remove("hidden")
-        document.querySelectorAll(".opp-card")[i].innerHTML = data.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"", "");
+        document.querySelectorAll(".opp-card")[i].innerHTML = getCard("2B", "opp")
     }
 }

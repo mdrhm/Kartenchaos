@@ -4,7 +4,6 @@ const socket = io();
 let roomID = null;
 let player1 = false;
 let cardi = document.createElement('div');
-resetCardI()
 let currplayerhand, playerhand;
 let p1card;
 let p2card;
@@ -14,10 +13,7 @@ let valsum;
 let greater;
 
 function resetCardI(){
-    var request = new XMLHttpRequest();
-    request.open("GET", "/client/cards/2B.svg", false);
-    request.send(null);
-    cardi.innerHTML = request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
+    cardi.innerHTML = getCard("2B", "opp")
     cardi.style.borderRadius = '10px';
     cardi.style.width = "150px";
 }
@@ -30,8 +26,6 @@ function makeGame() {
     loadOppCards()
     socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle"), hand: hand});
 }
-
-
 
 window.onload = function () {
     const extractedRoomID = getRoomIDFromURL();
@@ -84,7 +78,7 @@ function goToMainPhase() {
 
 
 socket.on('newGame', (data) => {
-    
+
     roomID = data.roomID;
     console.log(roomID);
     // Hide the home screen
@@ -106,21 +100,21 @@ socket.on("2playersConnected", () => {
 // Note that cardChosen is not the card element but its ID
 function sendCardChoice(cardChosen) {
     let choiceEvent;
-    
+
     console.log(roomID);
     if (player1){
         choiceEvent = "player1Choice";
-        
+
     }
     else {
         choiceEvent = "player2Choice";
         console.log("its player2 choice");
     }
-   
+
     socket.emit(choiceEvent, {
-      
+
         cardChosen:cardChosen,
-        
+
         roomID: roomID,
     });
 }
@@ -197,6 +191,8 @@ function nextRound() {
     if (gameOver) {
         return;
     }
+    resetCardI()
+    startTimer()
     document.querySelector("#drop_port").style.transform = "scale(1)";
     document.querySelector("#p1handcontainer").style = "transform: scale(1) translateY(0px); opacity: 1;";
     document.querySelector("#p2handcontainer").style = "transform: scale(1) translateY(0px); opacity: 1";
@@ -205,8 +201,6 @@ function nextRound() {
     document.querySelector("#dropr div").classList.remove("card4")
     dropleft.innerHTML = ""
     dropright.innerHTML = ""
-    resetCardI()
-    startTimer()
 }
 
 function flipCards(cardid) {

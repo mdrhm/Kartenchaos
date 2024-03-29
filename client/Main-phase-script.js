@@ -67,7 +67,7 @@ function getCard(card, tag){
     var request = new XMLHttpRequest();
     request.open("GET", "/client/cards/" + card + ".svg", false);
     request.send(null);
-    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","").replaceAll("V" + suit, tag + "-V" + suit).replaceAll("S" + suit, tag + "-S" + suit);
+    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","").replaceAll("V" + suit, tag + "-V" + suit).replaceAll("S" + suit, tag + "-S" + suit).replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
 }
 
 let countdownTime = 10; // Initial countdown time
@@ -75,15 +75,10 @@ let countdownInterval; // Variable to hold the interval
 
 // Function to start the countdown timer
 function startTimer() {
-    // Synchronize the start time
-    const startTime = new Date().getTime() + 12000; // Start time after 5 seconds
-
-    // Start the countdown interval
+    let remainingTime = 10;
     countdownInterval = setInterval(() => {
-        // Calculate the remaining time
-        const currentTime = new Date().getTime();
-        const remainingTime = Math.max(0, Math.floor((startTime - currentTime) / 1000));
         updateCountdown(remainingTime);
+        remainingTime--;
         if (remainingTime === 0) {
             let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
             console.log(index)
