@@ -351,14 +351,12 @@
 }
 
 .bg-options, .change-card-options {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 7px;
+  display: grid;
+  grid-template-rows: 112px repeat(auto-fit, 112px);
+  grid-template-columns: 112px repeat(auto-fill, 112px);
   height: fit-content;
-  padding: 10px;
+  padding-top: 10px;
+  justify-content: center;
 }
 
 .bg-stock-container {
@@ -593,5 +591,23 @@ input[type="file"] {
 }
 
 .selected-option {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  --b: 30px;
+  --c: white;
+  --_p: 75%;
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg, var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg, var(--_c)) repeat-y;
+  background: var(--_g1) var(--_p, 25%) 0, var(--_g2) 0 var(--_p, 125%), var(--_g1) var(--_p, 125%) 100%, var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b), var(--b) 200%;
+  cursor: pointer;
+  transition: 0s;
+  position: relative;
+  top: -2.5px;
+  left: -2.5px;
+  border-radius: 12px;
+  width: 109px;
+  height: 109px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

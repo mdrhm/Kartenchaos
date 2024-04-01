@@ -10,7 +10,6 @@
     height: 1000vh;
     width: 1000vw;
     z-index: -1000;
-    position: fixed;
     animation-name: bg-animate;
     animation-duration: 3s;
     animation-timing-function: linear;
@@ -20,7 +19,6 @@
 
 .bg-1{
     background-color: #49745E !important;
-    opacity: 0.8;
     background-image: radial-gradient(#E5E5F7 1.1px, #49745E 1.1px);
     background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
     animation-name: bg-animate;
@@ -32,7 +30,6 @@
     width: 1000vw;
     background-repeat: repeat;
     z-index: -1000;
-    position: fixed;
 }
 
 .bg-2 {
@@ -42,7 +39,6 @@
     height: 1000vh;
     width: 1000vw;
     z-index: -1000;
-    position: fixed;
 }
 
 .bg-4{
@@ -52,7 +48,6 @@
     height: 1000vh;
     width: 1000vw;
     z-index: -1000;
-    position: fixed;
     animation-name: bg-animate;
     animation-duration: 3s;
     animation-timing-function: linear;
@@ -68,7 +63,6 @@
     height: 1000vh;
     width: 1000vw;
     z-index: -1000;
-    position: fixed;
     animation-name: bg-animate;
     animation-duration: 3s;
     animation-timing-function: linear;

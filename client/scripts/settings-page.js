@@ -291,12 +291,12 @@ function deleteBg(i) {
 }
 
 function updateBg(bg) {
-    const bgOptions = document.querySelectorAll('.bg-option');
-    bgOptions.forEach(option => option.classList.remove('selected-option'));
-
+    if(document.querySelector(".bg-options .selected-option")) {
+        document.querySelector(".bg-options .selected-option").outerHTML = document.querySelector(".bg-options .selected-option").innerHTML
+    }
     const selectedOption = document.querySelector(`.bg-option.${bg}`);
     if (selectedOption) {
-        selectedOption.classList.add('selected-option');
+        selectedOption.outerHTML = `<div class = "selected-option"> ${selectedOption.outerHTML}</div>`
     }
 
     backgroundDiv.classList = bg;
@@ -309,21 +309,14 @@ function updateCustomBg(bg, index, event){
         return;
     }
     updateBg(bg + "-" + index);
-    const bgOptions = document.querySelectorAll('.bg-option');
-    bgOptions.forEach(option => option.classList.remove('selected-option'));
-
-    const selectedOption = document.querySelector(`.bg-option.${bg}-${index}`);
-    if (selectedOption) {
-        selectedOption.classList.add('selected-option');
-    }
 }
 function updateCardStyle(style) {
-    const cardStyleOptions = document.querySelectorAll('.card-style-option');
-    cardStyleOptions.forEach(option => option.classList.remove('selected-option'));
-
+    if(document.querySelector(".change-card-options .selected-option")) {
+        document.querySelector(".change-card-options .selected-option").outerHTML = document.querySelector(".change-card-options .selected-option").innerHTML
+    }
     const selectedOption = document.querySelector(`.card-style-option.${style}`);
     if (selectedOption) {
-        selectedOption.classList.add('selected-option');
+        selectedOption.outerHTML = `<div class = "selected-option"> ${selectedOption.outerHTML}</div>`
     }
 
     document.querySelector("#p1handcontainer").classList = style;
