@@ -187,6 +187,7 @@ function audioChoiceLoad(audioOption) {
 let bgDelete = document.querySelectorAll(".delete-bg")
 const rulesBg = document.querySelector("#rules-background")
 const settingsBg = document.querySelector("#setting-background")
+const errorBg = document.querySelector("#error-background")
 const backgroundDiv = document.querySelector("#bg")
 
 const settingsButton = document.querySelector("#settings");
@@ -302,6 +303,7 @@ function updateBg(bg) {
     backgroundDiv.classList = bg;
     rulesBg.classList = bg;
     settingsBg.classList = bg;
+    errorBg.classList = bg;
     localStorage.setItem("background", bg);
 }
 function updateCustomBg(bg, index, event){
