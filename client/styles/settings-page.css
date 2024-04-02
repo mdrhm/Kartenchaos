@@ -352,11 +352,12 @@
 
 .bg-options, .change-card-options {
   display: grid;
-  grid-template-rows: 112px repeat(auto-fit, 112px);
-  grid-template-columns: 112px repeat(auto-fill, 112px);
+  grid-template-rows: 109px repeat(auto-fit, 109px);
+  grid-template-columns: 109px repeat(auto-fill, 109px);
   height: fit-content;
   padding-top: 10px;
   justify-content: center;
+  place-items: center;
 }
 
 .bg-stock-container {
@@ -399,6 +400,7 @@
   border-radius: 10px;
   cursor: pointer;
   padding: 5px;
+  scale: 0.95;
 }
 
 input[type='range'] {
@@ -602,8 +604,6 @@ input[type="file"] {
   cursor: pointer;
   transition: 0s;
   position: relative;
-  top: -2.5px;
-  left: -2.5px;
   border-radius: 12px;
   width: 109px;
   height: 109px;
