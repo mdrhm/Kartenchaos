@@ -354,7 +354,7 @@
   display: grid;
   grid-template-rows: 109px repeat(auto-fit, 109px);
   grid-template-columns: 109px repeat(auto-fill, 109px);
-  height: fit-content;
+  max-height: 1000vh;
   padding-top: 10px;
   justify-content: center;
   place-items: center;
