@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem("background")) {
         updateBg(localStorage.getItem("background"))
     }
+    else{
+        updateBg("bg-0")
+    }
     if (localStorage.getItem("cardstyle")) {
         updateCardStyle(localStorage.getItem("cardstyle"))
     }
