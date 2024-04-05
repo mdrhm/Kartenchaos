@@ -4,24 +4,19 @@
     text-decoration: none;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
     background: none;
-    font-size: 3.5rem;
+    font-size: 40px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     margin-bottom: 2rem;
-    transform: translate(20%, 0);
-}
-
-.wait-container h1 {
-    transform: translate(-45%, 0);
-    position: relative;
-    display: flex;
+    width: 100%;
 }
 
 .button-container button {
     display: block;
     font-family: 'myFirstFont';
-    font-size: 5em;
+    font-size: 60px;
     color: black;
     border: none;
     font-weight: 800;
@@ -32,7 +27,7 @@
     max-width: fit-content;
     cursor: pointer;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-    padding: 60px;
+    padding: 30px;
 }
 
 .button-container button:hover {
@@ -74,10 +69,12 @@
 }
 
 .gangham-loading {
-    width:100%; height:400px;
+    width: 200%;
+    height: 400px;
     background-image: url(https://estelle.github.io/10/files/sprite.png);
     animation: gangham 4s steps(23,start) infinite, movearound 12s steps(69,end) infinite alternate 44ms;
     animation-direction: normal, alternate;
+    background-size: cover;
 }
 
 @keyframes gangham {

@@ -55,9 +55,12 @@ io.on('connection', (socket) => {
         console.log("making game");
         const roomID = makeid(6);
         rooms[roomID] = {roomID: roomID, player1: socket.id, p1cardstyle: data.cardstyle, p1hand: data.hand};
+        if(data.status){
+            rooms[roomID].status = data.status
+        }
         console.log(rooms);
         socket.join(roomID);
-        socket.emit('newGame', { roomID: roomID, p1cardstyle: data.cardstyle });
+        socket.emit('newGame', rooms[roomID]);
     });
 
     socket.on('joinGame', (data) => {
@@ -130,8 +133,6 @@ io.on('connection', (socket) => {
         if (rooms[data.roomID]) {
             rooms[data.roomID].player2Choice = cardChosen;
             rooms[data.roomID].p2hand.splice(rooms[data.roomID].p2hand.indexOf(cardChosen), 1);
-            console.log(rooms)
-            console.log("Hand 2 Size: " + (rooms[data.roomID].p2hand.length === 0))
             io.to(data.roomID).emit("updatep1withp2card", {cardChosen: data.cardChosen});
             player2Played = true;
             if(player1Played){
@@ -163,6 +164,13 @@ io.on('connection', (socket) => {
             }
             io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
         }
+    })
+    socket.on("lookingForGame", (data) => {
+        let rID = Object.entries(rooms).filter((rooms) => rooms[1].status === 'Looking For Opponent')[0]
+        if(rID) {
+            rID = rID.toString().split(",")[0]
+        }
+        socket.emit("gameFound", {roomID: rID})
     })
 });
 server.listen(3000, () => {

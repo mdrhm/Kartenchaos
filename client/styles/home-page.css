@@ -511,3 +511,11 @@ html {
     animation: none;
     opacity: 1;
 }
+
+#play-game-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+

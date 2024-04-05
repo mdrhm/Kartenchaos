@@ -51,3 +51,13 @@ function loadOppCards() {
         document.querySelectorAll(".opp-card")[i].innerHTML = getCard("2B", "opp")
     }
 }
+
+document.querySelector("#play-game").addEventListener("mouseover", () => {
+    document.querySelector("#play-game").classList.add("hidden")
+    document.querySelector("#play-game-options").classList.remove("hidden")
+})
+
+document.querySelector("#play-game-options").addEventListener("mouseout", () => {
+    document.querySelector("#play-game").classList.remove("hidden")
+    document.querySelector("#play-game-options").classList.add("hidden")
+})

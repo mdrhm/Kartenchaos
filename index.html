@@ -65,7 +65,12 @@
         <div class="logo"></div>
     </div>
     <div class="home-screen-buttons">
-        <button onclick="makeGame()" id="play-game">Play Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button id="play-game">Play Game <img alt="selection-icon" src="client/Images/ace-of-spades.png">
+        </button>
+        <div id="play-game-options" class ="hidden">
+        <button onclick="lookForGame()" id="play-game-random">Against a Random<img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <button onclick="makeGame()" id="play-game-friend">Against a Friend<img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        </div>
         <button id="rules">Rules <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
         <button id="settings">Settings <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
     </div>
@@ -235,17 +240,17 @@
 <!-- Waiting Page/Phase -->
 <div class="wait-phase" style="display: none;">
     <div class="wait-container">
-        <h1>Waiting For Player<span class="loading-dots">
-            <span class="loading-dot">.</span>
-            <span class="loading-dot">.</span>
-            <span class="loading-dot">.</span>
-        </span></h1>
+        <h1>Waiting For Player</h1>
+        <span class="loading-dots">
+        <span class="loading-dot">.</span>
+        <span class="loading-dot">.</span>
+        <span class="loading-dot">.</span>
+        </span>
     </div>
     <div class="gangham-loading">
     </div>
     <div class="button-container">
         <button id="link-button" onclick="copyLinkToClipboard()">Copy Link to Clipboard <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
-        <button id="join-button" onclick="joinGame()">Join Game <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
     </div>
     <div id="clipboard-notification" class="notification">Link Copied to Clipboard!</div>
 </div>

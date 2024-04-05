@@ -18,13 +18,13 @@ function resetCardI(){
     cardi.style.width = "150px";
 }
 
-function makeGame() {
+function makeGame(status) {
     player1= true;
     gameOver = false;
     let hand = generateHand(30)
     loadCards(hand)
     loadOppCards()
-    socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle"), hand: hand});
+    socket.emit('makeGame', {cardstyle: localStorage.getItem("cardstyle"), hand: hand, status: status});
 }
 
 window.onload = function () {
@@ -37,7 +37,7 @@ window.onload = function () {
 
 function getRoomIDFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('roomID');
+    return urlParams.get('room');
 }
 
 // Copy Link to Clipboard from button
@@ -60,12 +60,12 @@ function showNotification(message) {
     }, 3000);
 }
 
-function joinGame() {
+function joinGame(rID) {
+    roomID = rID;
     console.log("joingame room id" + roomID);
     let hand = generateHand(30)
     loadCards(hand)
     loadOppCards()
-    roomID = getRoomIDFromURL();
     socket.emit('joinGame', {roomID: roomID, cardstyle: localStorage.getItem("cardstyle"), hand: hand});
 }
 function goToMainPhase() {
@@ -76,7 +76,6 @@ function goToMainPhase() {
     nextRound();
 }
 
-
 socket.on('newGame', (data) => {
 
     roomID = data.roomID;
@@ -84,17 +83,36 @@ socket.on('newGame', (data) => {
     // Hide the home screen
     document.getElementsByClassName("home-ui")[0].style.display = "none";
 
-    document.getElementsByClassName("wait-phase")[0].style.display = "block";
+    document.getElementsByClassName("wait-phase")[0].style.display = "flex";
 
-    // Update the URL without a full page reload
-    const roomUrl = window.location.origin + '/?roomID=' + roomID;
-    history.pushState({ roomID: roomID }, 'Room Created', roomUrl);
+    if(!data.status) {
+        const roomUrl = window.location.origin + '/?room=' + roomID;
+        history.replaceState({roomID: roomID}, 'Room Created', roomUrl);
+    }
 });
 
+function lookForGame(){
+    socket.emit("lookingForGame", {cardstyle: localStorage.getItem("cardstyle"), hand: generateHand(30)})
+}
+
+socket.on("gameFound", (data) => {
+    if(data.roomID){
+        joinGame(data.roomID)
+    }
+    else{
+        makeGame("Looking For Opponent")
+        document.querySelector(".wait-container h1").innerHTML = "Searching For Opponent"
+        document.querySelector("#link-button").classList.add("hidden")
+    }
+})
+
 socket.on("2playersConnected", () => {
+    const roomUrl = window.location.origin + '/?room=' + roomID;
+    history.replaceState({ roomID: roomID }, 'Room Created', roomUrl);
     console.log(roomID);
     goToMainPhase();
     startTimer();
+
 });
 
 // Note that cardChosen is not the card element but its ID
