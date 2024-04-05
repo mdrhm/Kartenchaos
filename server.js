@@ -75,6 +75,7 @@ io.on('connection', (socket) => {
                 rooms[data.roomID].p2hand = data.hand
                 io.to(data.roomID).emit('loadCardStyles', rooms[data.roomID]);
                 io.to(data.roomID).emit("2playersConnected", { roomID: data.roomID });
+                delete rooms[data.roomID].status
             }
             else {
                 socket.emit("errorDialogue", {text: "This room is full"})
