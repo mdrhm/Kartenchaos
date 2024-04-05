@@ -92,7 +92,13 @@ socket.on('newGame', (data) => {
 });
 
 function lookForGame(){
-    socket.emit("lookingForGame", {cardstyle: localStorage.getItem("cardstyle"), hand: generateHand(30)})
+    document.querySelector(".wait-container h1").innerHTML = "Searching For Opponent"
+    document.querySelector("#link-button").classList.add("hidden")
+    document.querySelector(".wait-phase").style.display = "flex"
+    document.querySelector(".home-ui").style.display = "none"
+    setTimeout(() => {
+        socket.emit("lookingForGame", {cardstyle: localStorage.getItem("cardstyle"), hand: generateHand(30)})
+    }, 1000)
 }
 
 socket.on("gameFound", (data) => {
@@ -160,10 +166,10 @@ socket.on("updatep1withp2card", (data) => {
     if(player1){
         p2card = data.cardChosen;
         console.log(p1card)
-      if (dropright) {
-          dropright.appendChild(cardi);
-          document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
-          document.querySelectorAll(".opp-card:not(.hidden)")[0].classList.add("hidden")
+        if (dropright) {
+            dropright.appendChild(cardi);
+            document.querySelectorAll(".opp-card:not(.hidden)")[0].innerHTML = "";
+            document.querySelectorAll(".opp-card:not(.hidden)")[0].classList.add("hidden")
         } else {
             console.log("Element with id 'dropright' not found.");
         }
@@ -255,7 +261,7 @@ function goToClashPhase() {
         }
     },500)
     setTimeout(nextRound, 3000)
-  }
+}
 
 function calculateHigher(card1, card2){
     card1 =  parseInt((card1).replace((card1).at(-1), ""));

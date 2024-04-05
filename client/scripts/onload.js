@@ -52,12 +52,31 @@ function loadOppCards() {
     }
 }
 
-document.querySelector("#play-game").addEventListener("mouseover", () => {
+let playGameOptions = document.querySelectorAll("#play-game-options-inner button")
+let playGameTranslate = 0;
+
+document.querySelector("#play-game").addEventListener("click", () => {
     document.querySelector("#play-game").classList.add("hidden")
     document.querySelector("#play-game-options").classList.remove("hidden")
 })
+document.querySelector("#play-game-prev").addEventListener("click", () => {
+    playGameTranslate = Math.min(playGameTranslate + 650, 0)
+    if(playGameTranslate === 0){
+        document.querySelector("#play-game-prev").classList.add("invisible")
+    }
+    document.querySelector("#play-game-next").classList.remove("invisible")
+    playGameOptions.forEach((playGameOption) => {
+        playGameOption.style.transform = `translateX(-${playGameTranslate}px)`
+    })
+})
 
-document.querySelector("#play-game-options").addEventListener("mouseout", () => {
-    document.querySelector("#play-game").classList.remove("hidden")
-    document.querySelector("#play-game-options").classList.add("hidden")
+document.querySelector("#play-game-next").addEventListener("click", () => {
+    playGameTranslate = Math.max(playGameTranslate - 650, (playGameOptions.length - 1) * -650)
+    if(playGameTranslate === (playGameOptions.length - 1) * -650){
+        document.querySelector("#play-game-next").classList.add("invisible")
+    }
+    document.querySelector("#play-game-prev").classList.remove("invisible")
+    playGameOptions.forEach((playGameOption) => {
+        playGameOption.style.transform = `translateX(${playGameTranslate}px)`
+    })
 })

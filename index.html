@@ -67,9 +67,13 @@
     <div class="home-screen-buttons">
         <button id="play-game">Play Game <img alt="selection-icon" src="client/Images/ace-of-spades.png">
         </button>
-        <div id="play-game-options" class ="hidden">
-        <button onclick="lookForGame()" id="play-game-random">Against a Random<img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
-        <button onclick="makeGame()" id="play-game-friend">Against a Friend<img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
+        <div id="play-game-options" class="hidden">
+            <button id="play-game-prev" class="invisible">‹</button>
+            <div id="play-game-options-inner">
+                <button onclick="lookForGame()" id="play-game-random">Against a Random</button>
+                <button onclick="makeGame()" id="play-game-friend">Against a Friend</button>
+            </div>
+            <button id="play-game-next">›</button>
         </div>
         <button id="rules">Rules <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>
         <button id="settings">Settings <img alt="selection-icon" src="client/Images/ace-of-spades.png"></button>

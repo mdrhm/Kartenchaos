@@ -169,7 +169,6 @@ html {
     cursor: pointer;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
     1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-    padding-left: 57px;
 }
 
 .home-screen-buttons button:hover {
@@ -390,6 +389,9 @@ html {
     display: none !important;
 }
 
+.invisible{
+    visibility: hidden;
+}
 
 .wait {
     margin: auto;
@@ -519,3 +521,13 @@ html {
     align-items: center;
 }
 
+#play-game-options-inner button{
+    min-width: 650px;
+}
+
+#play-game-options-inner{
+    display: flex;
+    max-width: 650px;
+    max-height: 100px;
+    overflow: hidden;
+}

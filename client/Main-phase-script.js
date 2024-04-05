@@ -55,7 +55,7 @@ function placeCard(i) {
         cardDiv.style.height = "209.38px";
         cardDiv.style.display= 'flex'
         cardDiv.style.justifyContent= 'center'
-        
+
         dropleft.appendChild(cardDiv);
         cards[i].classList.add("hidden");
         currplayerhand.splice(currplayerhand.indexOf(playerhand[i]),1)
@@ -91,10 +91,10 @@ function startTimer() {
 function stopTimer(){
     clearInterval(countdownInterval);
     document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
-    "<p class = \"v\" id = \"V\">V</p>\n" +
-    "<p class=\"s\">S</p>\n" +
-      "</div>";
-       
+        "<p class = \"v\" id = \"V\">V</p>\n" +
+        "<p class=\"s\">S</p>\n" +
+        "</div>";
+
     document.getElementById("timer").style.display = "flex"
     document.getElementById("timer").style.justifyContent = "center"
     goToClashPhase();
@@ -102,7 +102,7 @@ function stopTimer(){
 
 // Function to update the countdown element with the given time
 function updateCountdown(time) {
-  document.getElementById('timer').textContent = time;
+    document.getElementById('timer').textContent = time;
 }
 
 function goHome(){
@@ -110,58 +110,8 @@ function goHome(){
     document.querySelector(".home-ui").style.display = ""
     document.querySelector("#Main-phase").style.display = "none"
     history.replaceState({}, '',window.location.origin)
-}
-
-// Remove the 'selected' class from all options
-function deselectAllOptions() {
-    const bgOptions = document.querySelectorAll('.bg-option');
-    const cardStyleOptions = document.querySelectorAll('.card-style-option');
-
-    bgOptions.forEach(option => option.classList.remove('selected'));
-    cardStyleOptions.forEach(option => option.classList.remove('selected'));
-}
-
-function updateBg(bg) {
-    deselectAllOptions();
-
-    const selectedOption = document.querySelector(`.bg-option.${bg}`);
-    if (selectedOption) {
-        selectedOption.classList.add('selected');
-    }
-
-    backgroundDiv.classList = bg;
-    rulesBg.classList = bg;
-    settingsBg.classList = bg;
-    localStorage.setItem("background", bg);
-}
-
-function updateCustomBg(bg, index, event) {
-    if (document.querySelectorAll(".delete-bg")[index].contains(event.target)) {
-        return;
-    }
-
-    deselectAllOptions();
-
-    const selectedOption = document.querySelector(`.bg-option.${bg}-${index}`);
-    if (selectedOption) {
-        selectedOption.classList.add('selected');
-    }
-
-    backgroundDiv.classList = `${bg}-${index}`;
-    rulesBg.classList = `${bg}-${index}`;
-    settingsBg.classList = `${bg}-${index}`;
-    localStorage.setItem("background", `${bg}-${index}`);
-}
-
-function updateCardStyle(style) {
-    deselectAllOptions();
-
-    const selectedOption = document.querySelector(`.card-style-option.${style}`);
-    if (selectedOption) {
-        selectedOption.classList.add('selected');
-    }
-
-    document.querySelector("#p1handcontainer").classList = style;
-    document.querySelector("#dropl").classList = style;
-    localStorage.setItem("cardstyle", style);
+    document.querySelector(".wait-container h1").innerHTML = "Waiting For Opponent"
+    document.querySelector("#link-button").classList.remove("hidden")
+    document.querySelector("#play-game").classList.remove("hidden")
+    document.querySelector("#play-game-options").classList.add("hidden")
 }
