@@ -109,7 +109,7 @@ function goHome(){
     document.querySelector("#error").classList.add("hidden")
     document.querySelector(".home-ui").style.display = ""
     document.querySelector("#Main-phase").style.display = "none"
-    history.pushState({}, '',window.location.origin)
+    history.replaceState({}, '',window.location.origin)
 }
 
 // Remove the 'selected' class from all options
