@@ -99,7 +99,6 @@ function stopTimer(){
 
     document.getElementById("timer").style.display = "flex"
     document.getElementById("timer").style.justifyContent = "center"
-    goToClashPhase();
 }
 
 function updateCountdown(time) {

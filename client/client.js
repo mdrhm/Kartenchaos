@@ -216,6 +216,7 @@ socket.on('getNewHands', (data) => {
 
 socket.on('stopTimer', (data) => {
     stopTimer()
+    goToClashPhase();
 })
 
 function nextRound() {
