@@ -1,5 +1,3 @@
-const initialHTML = document.querySelector("body")
-
 let cards = document.querySelectorAll("#p1handcontainer div:not(.hidden)")
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
@@ -111,6 +109,5 @@ function goHome(){
     document.querySelector("#Main-phase").style.display = "none"
     history.replaceState({}, '',window.location.origin)
     document.querySelector("#play-game").classList.remove("hidden")
-    document.querySelector("#play-game-options").classList.add("hidden")
     document.querySelector("#play-game-options").classList.add("hidden")
 }

@@ -167,7 +167,7 @@ io.on('connection', (socket) => {
         }
     })
     socket.on("lookingForGame", (data) => {
-        let rID = Object.entries(rooms).filter((rooms) => rooms[1].status === 'Looking For Opponent')[0]
+        let rID = Object.entries(rooms).filter((rooms) => rooms[1].status === 'Looking For Opponent' && !rooms[1].player2)[0]
         if(rID) {
             rID = rID.toString().split(",")[0]
         }
