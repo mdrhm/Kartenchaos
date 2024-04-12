@@ -320,9 +320,6 @@ function updateCardStyle(style) {
     if (selectedOption) {
         selectedOption.outerHTML = `<div class = "selected-option"> ${selectedOption.outerHTML}</div>`
     }
-
-    document.querySelector("#p1handcontainer").classList = style;
-    document.querySelector("#dropl").classList = style;
     localStorage.setItem("cardstyle", style);
     updateCardStyleForAll(getRoomIDFromURL(), style);
 }

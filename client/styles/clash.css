@@ -436,7 +436,7 @@ body {
   justify-content: flex-end;
 }
 
-.settings-main-phase{
+.settings-main-phase, .chat-main-phase{
   width: 85px;
   cursor: pointer;
 }

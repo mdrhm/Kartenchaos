@@ -1,0 +1,141 @@
+.chat {
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    width: 300px;
+    height: 500px;
+    z-index: 5;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+    font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.chat-inner {
+    height: 450px;
+    width: 100%;
+    background: rgba(256, 256, 256, 0.2);
+    color: white;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.chat-header {
+    margin: 0px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.chat-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-input{
+    width: 215px;
+    height: 56px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    resize: none;
+    background: rgba(256, 256, 256, 0.2);
+    color: white;
+}
+
+.chat-input:focus{
+    outline: none;
+}
+
+.send-chat {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    font-size: 30px;
+    background: rgba(256, 256, 256, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message {
+    padding: 20px;
+    font-size: 15px;
+}
+
+.message-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message-time {
+    font-size: 13px;
+    color: rgba(256, 256, 256, 0.4);
+}
+
+.message-edited {
+    font-size: 13px;
+    color: rgba(256,256,256,0.4);
+}
+
+.message-content {
+    margin: 0px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.message-header {
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    text-transform: uppercase;
+}
+
+.chat-exit {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.chat-close{
+    transform: translateY(600px);
+    transition: all 1.5s;
+}
+
+.chat-open{
+    transform: translateY(0px);
+    transition: all 1.5s;
+}
+
+.chat-notification {
+    background: #fa3e3e;
+    width: 30px;
+    height: 30px;
+    color: white;
+    border-radius: 30px;
+    font-size: 20px;
+    font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: fixed;
+    bottom: 75px;
+    right: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}

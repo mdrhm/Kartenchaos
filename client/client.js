@@ -97,8 +97,14 @@ function lookForGame(){
     document.querySelector(".wait-phase").style.display = "flex"
     document.querySelector(".home-ui").style.display = "none"
     setTimeout(() => {
-        socket.emit("lookingForGame", {cardstyle: localStorage.getItem("cardstyle"), hand: generateHand(30)})
+        socket.emit("lookingForGame", {})
     }, 1000)
+}
+
+function playWithFriend() {
+    document.querySelector(".wait-container h1").innerHTML = "Waiting For Opponent"
+    document.querySelector("#link-button").classList.remove("hidden")
+    makeGame()
 }
 
 socket.on("gameFound", (data) => {
@@ -107,15 +113,13 @@ socket.on("gameFound", (data) => {
     }
     else{
         makeGame("Looking For Opponent")
-        document.querySelector(".wait-container h1").innerHTML = "Searching For Opponent"
-        document.querySelector("#link-button").classList.add("hidden")
     }
 })
 
 socket.on("2playersConnected", () => {
     const roomUrl = window.location.origin + '/?room=' + roomID;
     history.replaceState({ roomID: roomID }, 'Room Created', roomUrl);
-    console.log(roomID);
+    document.querySelector(".chat-header").innerHTML = "Room " + roomID
     goToMainPhase();
     startTimer();
 
@@ -177,16 +181,19 @@ socket.on("updatep1withp2card", (data) => {
 });
 
 socket.on('loadCardStyles', (data) => {
-    let displayStyle
+    let p1style, p2style
     if(socket.id === data.player1){
-        displayStyle = data.p2cardstyle
+        p1style = data.p1cardstyle
+        p2style = data.p2cardstyle
     }
     else {
-        displayStyle = data.p1cardstyle
+        p1style = data.p2cardstyle
+        p2style = data.p1cardstyle
     }
-    displayStyle = (displayStyle) ? displayStyle : "default"
-    document.querySelector("#p2handcontainer").classList = displayStyle;
-    document.querySelector("#dropr").classList = displayStyle;
+    document.querySelector("#p1handcontainer").classList = p1style;
+    document.querySelector("#dropl").classList = p1style;
+    document.querySelector("#p2handcontainer").classList = p2style;
+    document.querySelector("#dropr").classList = p2style;
 })
 
 socket.on('getNewHands', (data) => {
@@ -301,3 +308,30 @@ socket.on("errorDialogue", (data) => {
 function updateCardStyleForAll(roomID, style){
     socket.emit("updateCardStyleForAll", {roomID: roomID, style: style})
 }
+
+function sendMessage(message){
+    let player = (player1) ? "Player 1" : "Player 2"
+    socket.emit("sendMessage", {roomID: roomID, player: player, message: message})
+}
+
+socket.on("updateChat", (data) => {
+    switch(data.code) {
+        case "send":
+            let ampm = (new Date().getHours() < 12) ? "AM" : "PM"
+            let hour = (new Date().getHours() % 12 === 0) ? 12 : new Date().getHours() % 12
+            document.querySelector(".chat-inner").innerHTML += `<div class="message">
+                <div class="message-inner">
+                <h3 class="message-header">${data.player}
+                <span class="message-time">${hour + ":" + String(new Date().getMinutes()).padStart(2, '0') + " " + ampm}</span>
+                </h3>
+                    <p class="message-content">${data.message}<span class="message-edited hidden"> (edited)</span></p>
+                </div>
+                </div>`
+            document.querySelector(".chat-inner").scrollTo(0, document.querySelector(".chat-inner").scrollHeight)
+            if(document.querySelector(".chat").classList.contains("chat-close")){
+                document.querySelector(".chat-notification").classList.remove("hidden")
+                document.querySelector(".chat-notification").innerHTML = parseInt(document.querySelector(".chat-notification").innerHTML) + 1;
+            }
+            break;
+    }
+})

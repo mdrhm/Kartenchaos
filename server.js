@@ -173,6 +173,9 @@ io.on('connection', (socket) => {
         }
         socket.emit("gameFound", {roomID: rID})
     })
+    socket.on("sendMessage", (data) => {
+        io.to(data.roomID).emit("updateChat", {code: "send", player: data.player, message: data.message})
+    })
 });
 server.listen(3000, () => {
     console.log('listening on *:3000');

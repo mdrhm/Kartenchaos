@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/client/styles/rules-page.css">
     <link rel="stylesheet" href="/client/styles/clash.css">
     <link rel="stylesheet" href="/client/styles/waiting-page.css">
+    <link rel="stylesheet" href="/client/styles/chat.css">
     <style class="custom-bg-style" type="text/css"></style>
 </head>
 <body>
@@ -71,7 +72,7 @@
             <button id="play-game-prev" class="invisible">‹</button>
             <div id="play-game-options-inner">
                 <button onclick="lookForGame()" id="play-game-random">Against a Random</button>
-                <button onclick="makeGame()" id="play-game-friend">Against a Friend</button>
+                <button onclick="playWithFriend()" id="play-game-friend">Against a Friend</button>
             </div>
             <button id="play-game-next">›</button>
         </div>
@@ -209,7 +210,7 @@
         <progress value="30" max="30" id="p2-health-bar">Player 2 Health</progress>
         <div class="p2-damage-indicator-container"><h1 class="p2-damage-taken hidden">-10</h1></p></div>
     </div>
-    <div id="p2handcontainer" class="default">
+    <div id="p2handcontainer">
         <div class="opp-card"></div>
         <div class="opp-card"></div>
         <div class="opp-card"></div>
@@ -217,12 +218,12 @@
         <div class="opp-card"></div>
     </div>
     <div class="dropport" id=drop_port>
-        <div class="default" id="dropl"></div>
+        <div id="dropl"></div>
         <div id = timer>&nbsp;</div>
-        <div class="default" id="dropr"></div>
+        <div id="dropr"></div>
     </div>
     
-    <div id="p1handcontainer"class="default">
+    <div id="p1handcontainer">
         <div class="card" ondblclick="placeCard(0)"></div>
         <div class="card" ondblclick="placeCard(1)"></div>
         <div class="card" ondblclick="placeCard(2)"></div>
@@ -236,9 +237,23 @@
 
     </div>
     <div class = "main-phase-buttons">
+        <div>
+            <div class="chat-notification hidden">0</div>
+            <img src="/client/Images/chat.svg" class="chat-main-phase">
+        </div>
         <img src="/client/Images/settings.svg" class = "settings-main-phase">
     </div>
-    
+    <div class="chat chat-close">
+        <div class="chat-exit">⛌</div>
+        <h2 class="chat-header">Chat</h2>
+        <div class="chat-inner">
+            <div style = "flex: 1 1 auto;"></div>
+        </div>
+        <div class="chat-input-container">
+            <textarea class = "chat-input" rows="5" col="10" ></textarea>
+            <button class="send-chat">↵</button>
+        </div>
+    </div>
 </div>
 
 <!-- Waiting Page/Phase -->
@@ -268,6 +283,7 @@
 <script src="/client/scripts/rules-page.js" defer></script>
 <script src="/client/scripts/onload.js" defer></script>
 <script src="/client/scripts/hover-sound.js"></script>
+<script src="/client/scripts/chat.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/delaunay.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
 

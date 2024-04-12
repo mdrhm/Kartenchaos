@@ -1,3 +1,5 @@
+const initialHTML = document.querySelector("body")
+
 let cards = document.querySelectorAll("#p1handcontainer div:not(.hidden)")
 const dropleft = document.querySelector("#dropl");
 const dropright = document.querySelector("#dropr");
@@ -100,7 +102,6 @@ function stopTimer(){
     goToClashPhase();
 }
 
-// Function to update the countdown element with the given time
 function updateCountdown(time) {
     document.getElementById('timer').textContent = time;
 }
@@ -110,8 +111,7 @@ function goHome(){
     document.querySelector(".home-ui").style.display = ""
     document.querySelector("#Main-phase").style.display = "none"
     history.replaceState({}, '',window.location.origin)
-    document.querySelector(".wait-container h1").innerHTML = "Waiting For Opponent"
-    document.querySelector("#link-button").classList.remove("hidden")
     document.querySelector("#play-game").classList.remove("hidden")
+    document.querySelector("#play-game-options").classList.add("hidden")
     document.querySelector("#play-game-options").classList.add("hidden")
 }
