@@ -501,12 +501,11 @@ html {
 }
 
 #error-background{
-    background-color: white;
     display: flex;
     flex-direction: column;
     width: 600px;
     height: 400px;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     border: solid white;
     border-radius: 20px;

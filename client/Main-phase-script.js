@@ -110,4 +110,5 @@ function goHome(){
     history.replaceState({}, '',window.location.origin)
     document.querySelector("#play-game").classList.remove("hidden")
     document.querySelector("#play-game-options").classList.add("hidden")
+    stopTimer()
 }
