@@ -83,7 +83,7 @@ io.on('connection', (socket) => {
             }
         }
         else{
-            socket.emit("errorDialogue", {text: "This room doesn't exist"})
+            socket.emit("errorDialogue", {text: "This room <br> doesn't exist"})
         }
     });
 
