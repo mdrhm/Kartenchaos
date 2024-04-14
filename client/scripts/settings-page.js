@@ -336,7 +336,6 @@ songQuery.addEventListener("keyup", () => {
         songsContainer.innerHTML = ""
         return;
     }
-
     var request = new XMLHttpRequest();
     request.open("GET", "https://ws.audioscrobbler.com/2.0/?method=track.search&track=" + song +`&api_key=${lastfm_key}&format=json&limit=20`, false);
     request.send(null);
