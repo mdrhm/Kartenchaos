@@ -323,6 +323,7 @@ document.querySelector(".settings-main-phase").addEventListener("click", ()=> {
 const songQuery = document.querySelector(".song-query")
 const songsContainer = document.querySelector(".songs")
 let songs;
+
 songQuery.addEventListener("keyup", () => {
     let song = songQuery.value
     if(song.replaceAll(" ", "") === ""){
@@ -375,6 +376,15 @@ function showSongSearch(){
             document.querySelector(".song-search").classList.add("hidden")
         }
     })
+    songQuery.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            if(songQuery.value === ""){
+                document.querySelector(".song-search").classList.add("hidden")
+            }
+            songQuery.value = ""
+            songsContainer.classList.add("invisible")
+        }
+    });
 }
 
 function loadSongOptions(){
