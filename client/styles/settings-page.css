@@ -1,3 +1,7 @@
+:root {
+  --translate: 0px;
+}
+
 @import url("home-page.css");
 .html {
   margin: 0;
@@ -690,4 +694,21 @@ input[type="file"] {
 .custom-songs{
   display: flex;
   flex-direction: column-reverse;
+}
+
+.selected{
+  position: relative;
+  animation: song-animation 10s infinite ease-in-out;
+}
+
+@keyframes song-animation {
+  0%{
+    right: 0;
+  }
+  50%{
+    right: var(--translate);
+  }
+  100%{
+    right: 0;
+  }
 }

@@ -156,6 +156,11 @@ function addMusicClick(){
             // selected.innerText = option.innerText;
             playSong(option.getAttribute("link"))
             document.querySelector(".selected").innerText = option.innerText;
+            let translateDistance = document.querySelector(".selected").offsetWidth - document.querySelector(".selected-outer").offsetWidth + 1
+            if(translateDistance < 1){
+                translateDistance = 0;
+            }
+            document.documentElement.style.setProperty('--translate', translateDistance + "px");
             localStorage.setItem("musicOption", i);
         });
     }
