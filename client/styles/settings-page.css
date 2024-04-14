@@ -698,7 +698,7 @@ input[type="file"] {
 
 .selected{
   position: relative;
-  animation: song-animation 10s infinite ease-in-out;
+  animation: song-animation 15s infinite ease-in-out;
 }
 
 @keyframes song-animation {
