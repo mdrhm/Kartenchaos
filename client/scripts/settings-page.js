@@ -14,7 +14,6 @@ const sfxInput = document.querySelector('.sfx-input');
 // Initial volume settings
 const defaultVolume = 0.05;
 const defaultSfxVolume = 0.5;
-backgroundAudio.volume = defaultVolume;
 sfxAudio.volume = defaultSfxVolume;
 sfxMenuSelectAudio.volume = defaultSfxVolume;
 
@@ -32,17 +31,13 @@ sfxInput.addEventListener('input', handleInputChange);
 
 // Function to update volume
 function updateVolume() {
+    localStorage.setItem("audioVolumes", masterSlider.value + "-" + musicSlider.value + "-" + sfxSlider.value)
     const masterVolume = masterSlider.value / 100;
-    musicMultiplier = musicSlider.value / 50;
-    const adjustedMusicVolume = (masterVolume / 10) * musicMultiplier;
-
-    sfxMultiplier = sfxSlider.value / 50;
-    const adjustedSfxVolume = (masterVolume) * sfxMultiplier;
-    backgroundAudio.volume = adjustedMusicVolume;
+    const adjustedMusicVolume = (masterVolume / 100) * musicSlider.value;
+    const adjustedSfxVolume = (masterVolume / 100) * sfxSlider.value ;
+    player.setVolume(adjustedMusicVolume * 100);
     sfxAudio.volume = adjustedSfxVolume;
     sfxMenuSelectAudio.volume = adjustedSfxVolume;
-
-    // Update input values
     masterInput.value = masterSlider.value;
     musicInput.value = musicSlider.value;
     sfxInput.value = sfxSlider.value;
@@ -62,7 +57,6 @@ function handleInputChange() {
         else if (this === sfxInput) {
             sfxSlider.value = inputValue;
         }
-
         updateVolume();
     }
 }
@@ -138,42 +132,41 @@ generalBtn.addEventListener('click', () => {
 });
 
 // Select between options for bg music
-const dropdowns = document.querySelectorAll('.dropdown');
-dropdowns.forEach(dropdown => {
-    const select = dropdown.querySelector('.select');
-    const caret = dropdown.querySelector('.caret');
-    const menu = dropdown.querySelector('.menu');
-    const options = dropdown.querySelectorAll('.menu li');
-    const selected = dropdown.querySelector('.selected');
+const dropdown = document.querySelector('.dropdown');
+const select = dropdown.querySelector('.select');
+const caret = dropdown.querySelector('.caret');
+const menu = dropdown.querySelector('.menu');
+const selected = dropdown.querySelector('.selected');
 
-    select.addEventListener('click', () => {
-        select.classList.toggle('selected-clicked');
-        caret.classList.toggle('caret-rotate');
-        menu.classList.toggle('menu-open');
-    });
+select.addEventListener('click', () => {
+    select.classList.toggle('selected-clicked');
+    caret.classList.toggle('caret-rotate');
+    menu.classList.toggle('menu-open');
+});
 
-    for(let i = 0; i < options.length; i++){
+function addMusicClick(){
+    const options = dropdown.querySelectorAll('.menu li:not(.custom-song)');
+    for(let i = 0; i < options.length; i++) {
         let option = options[i]
         option.addEventListener('click', () => {
             options.forEach(optionTemp => {
                 optionTemp.classList.remove("hidden");
             })
             option.classList.add("hidden")
-            selected.innerText = option.innerText;
-            audioChoiceLoad(option);
-
-            // Save music option to local storage
+            // selected.innerText = option.innerText;
+            playSong(option.getAttribute("link"))
+            document.querySelector(".selected").innerText = option.innerText;
             localStorage.setItem("musicOption", i);
         });
     }
-    document.addEventListener("click", (event) => {
-        if(!select.contains(event.target)){
-            menu.classList.remove('menu-open');
-            caret.classList.remove('caret-rotate');
-            select.classList.remove('selected-clicked');
-        }
-    })
-});
+}
+document.addEventListener("click", (event) => {
+    if (!select.contains(event.target)) {
+        menu.classList.remove('menu-open');
+        caret.classList.remove('caret-rotate');
+        select.classList.remove('selected-clicked');
+    }
+})
 
 function audioChoiceLoad(audioOption) {
     const audioElement = document.getElementById("music");
@@ -326,3 +319,69 @@ function updateCardStyle(style) {
 document.querySelector(".settings-main-phase").addEventListener("click", ()=> {
     settingsDiv.classList.remove("hidden")
 })
+
+const songQuery = document.querySelector(".song-query")
+const songsContainer = document.querySelector(".songs")
+let songs;
+songQuery.addEventListener("keyup", () => {
+    let song = songQuery.value
+    if(song.replaceAll(" ", "") === ""){
+        songsContainer.classList.add("invisible")
+        songsContainer.innerHTML = ""
+        return;
+    }
+
+    var request = new XMLHttpRequest();
+    request.open("GET", "https://ws.audioscrobbler.com/2.0/?method=track.search&track=" + song +`&api_key=${lastfm_key}&format=json&limit=20`, false);
+    request.send(null);
+    songs = JSON.parse(request.responseText).results.trackmatches.track;
+    songsContainer.innerHTML = ""
+    songsContainer.classList.remove("invisible")
+    for(let i = 0; i < songs.length; i++){
+        songsContainer.innerHTML += `<div class = "song" onclick = \"addSong(\'${songs[i].artist.replaceAll("\'", "")} - ${songs[i].name}\', \'${songs[i].artist} - ${songs[i].name}\')\"> ${songs[i].artist} - ${songs[i].name}</div>`
+    }
+})
+
+function addSong(songQuery, songName){
+    var request = new XMLHttpRequest();
+    request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${songQuery}&type=video&key=${youtube_key}`, false);
+    request.send(null);
+    document.querySelector(".song-search").classList.add("hidden")
+    document.querySelector(".song-query").value = ""
+    songsContainer.innerHTML = ""
+    songsContainer.classList.add("invisible")
+    let songs = JSON.parse(localStorage.getItem("customMusic"))
+    let song = {songID: JSON.parse(request.responseText).items[0].id.videoId, songName: songName}
+    if(!localStorage.getItem("customMusic") .includes(JSON.stringify(song))) {
+        songs.songs.push(song)
+    }
+    if(songs.songs.length === 6){
+        songs.songs.splice(0,1)
+    }
+    localStorage.setItem("customMusic", JSON.stringify(songs))
+    loadSongOptions()
+    dropdown.querySelector('.menu li:not(.custom-song):last-child').click()
+}
+
+function playSong(songID){
+    player.loadVideoById(songID,0)
+}
+
+function showSongSearch(){
+    document.querySelector(".song-search").classList.remove("hidden")
+    songQuery.focus()
+    document.querySelector(".song-search").addEventListener("click", (e) =>{
+        if(!songQuery.contains(e.target) && !songsContainer.contains(e.target)){
+            document.querySelector(".song-search").classList.add("hidden")
+        }
+    })
+}
+
+function loadSongOptions(){
+    document.querySelector(".custom-songs").innerHTML = ""
+    let songs = JSON.parse(localStorage.getItem("customMusic")).songs
+    for(let i = 0; i < songs.length; i++){
+        document.querySelector(".custom-songs").innerHTML += `<li link="${songs[i].songID}">${songs[i].songName}</li>`
+    }
+    addMusicClick()
+}

@@ -1,6 +1,5 @@
 const card1 = document.querySelector('.card1')
 const card2 = document.querySelector('.card2')
-// const suits = ["D","S","H","C"];
 var time = 1;
 var interval = setInterval(function() {
     if (time <= 3) {
@@ -24,16 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     else {
         updateCardStyle("default")
-    }
-    const savedMusicOption = parseInt(localStorage.getItem("musicOption"));
-    const options = document.querySelectorAll('.menu li');
-    if (savedMusicOption) {
-        const audioElement = document.getElementById("music");
-        audioElement.src = "Audio/" + options[savedMusicOption].innerHTML + ".mp3";
-        audioElement.load();
-        audioElement.play();
-        document.querySelector(".selected").innerHTML = options[savedMusicOption].innerHTML
-        options[savedMusicOption].classList.add("hidden")
     }
 });
 
@@ -80,3 +69,54 @@ document.querySelector("#play-game-next").addEventListener("click", () => {
         playGameOption.style.transform = `translateX(${playGameTranslate}px)`
     })
 })
+
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: '',
+        playerVars: {
+            'playsinline': 1
+        },
+        events: {
+            'onReady': onPlayerReady,
+        }
+    });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+    const customMusic = localStorage.getItem("customMusic");
+    const options = document.querySelectorAll('.menu li:not(.custom-song)');
+    if (customMusic) {
+        loadSongOptions()
+    }
+    else{
+        localStorage.setItem("customMusic", JSON.stringify({songs:[]}))
+    }
+    const savedMusicOption = localStorage.getItem("musicOption");
+    if (savedMusicOption) {
+        dropdown.querySelectorAll('.menu li:not(.custom-song)')[savedMusicOption].click()
+    }
+    else{
+        dropdown.querySelectorAll('.menu li:not(.custom-song)')[1].click()
+    }
+    if(!localStorage.getItem("audioVolumes")){
+        masterSlider.value = 50;
+        musicSlider.value = 50;
+        sfxSlider.value = 50;
+    }
+    else{
+        masterSlider.value = localStorage.getItem("audioVolumes").split("-")[0];
+        musicSlider.value = localStorage.getItem("audioVolumes").split("-")[1];
+        sfxSlider.value = localStorage.getItem("audioVolumes").split("-")[2];
+    }
+    updateVolume()
+    event.target.playVideo();
+}

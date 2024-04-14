@@ -240,6 +240,12 @@
   box-sizing: border-box;
 }
 
+.selected-outer{
+  white-space: nowrap;
+  overflow: hidden;
+  width: 140px;
+}
+
 .select {
   background: rgb(0, 0, 0, 0.3);
   color: #fff;
@@ -614,4 +620,73 @@ input[type="file"] {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.song-search {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.song-query, .song {
+  width: 600px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  font-size: 25px;
+  font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px !important;
+  padding-left: 10px !important;
+  border-radius: 0.5em;
+}
+
+.song-query{
+  color: white;
+}
+
+.song:hover{
+  background: rgba(256, 256, 256, 0.15);
+  color: white;
+}
+
+.song-query:focus-visible {
+  outline: none;
+}
+
+
+.song {
+  background: transparent;
+  color: #9fa5b5;
+  padding: 5px !important;
+  cursor: pointer;
+  width: 580px !important;
+}
+
+.songs {
+  height: 250px;
+  width: 590px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(0, 0, 0, 0.8);
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 0.5em;
+  padding: 10px;
+}
+
+.custom-songs{
+  display: flex;
+  flex-direction: column-reverse;
 }
