@@ -24,6 +24,24 @@ document.addEventListener('DOMContentLoaded', () => {
     else {
         updateCardStyle("default")
     }
+    const customMusic = localStorage.getItem("customMusic");
+    const options = document.querySelectorAll('.menu li:not(.custom-song)');
+    if (customMusic) {
+        loadSongOptions()
+    }
+    else{
+        localStorage.setItem("customMusic", JSON.stringify({songs:[]}))
+    }
+    if(!localStorage.getItem("audioVolumes")){
+        masterSlider.value = 50;
+        musicSlider.value = 50;
+        sfxSlider.value = 50;
+    }
+    else{
+        masterSlider.value = localStorage.getItem("audioVolumes").split("-")[0];
+        musicSlider.value = localStorage.getItem("audioVolumes").split("-")[1];
+        sfxSlider.value = localStorage.getItem("audioVolumes").split("-")[2];
+    }
 });
 
 var customBgStyle = document.querySelector('.custom-bg-style');
@@ -90,32 +108,13 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-// 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-    const customMusic = localStorage.getItem("customMusic");
-    const options = document.querySelectorAll('.menu li:not(.custom-song)');
-    if (customMusic) {
-        loadSongOptions()
-    }
-    else{
-        localStorage.setItem("customMusic", JSON.stringify({songs:[]}))
-    }
     const savedMusicOption = localStorage.getItem("musicOption");
     if (savedMusicOption) {
         dropdown.querySelectorAll('.menu li:not(.custom-song)')[savedMusicOption].click()
     }
     else{
         dropdown.querySelectorAll('.menu li:not(.custom-song)')[1].click()
-    }
-    if(!localStorage.getItem("audioVolumes")){
-        masterSlider.value = 50;
-        musicSlider.value = 50;
-        sfxSlider.value = 50;
-    }
-    else{
-        masterSlider.value = localStorage.getItem("audioVolumes").split("-")[0];
-        musicSlider.value = localStorage.getItem("audioVolumes").split("-")[1];
-        sfxSlider.value = localStorage.getItem("audioVolumes").split("-")[2];
     }
     updateVolume()
     event.target.playVideo();

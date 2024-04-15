@@ -156,11 +156,10 @@ function addMusicClick(){
             // selected.innerText = option.innerText;
             playSong(option.getAttribute("link"))
             document.querySelector(".selected").innerText = option.innerText;
-            let translateDistance = document.querySelector(".selected").offsetWidth - document.querySelector(".selected-outer").offsetWidth + 1
-            if(translateDistance < 1){
-                translateDistance = 0;
-            }
-            document.documentElement.style.setProperty('--translate', translateDistance + "px");
+            const selectedOuter = document.querySelector(".selected-outer")
+            document.addEventListener("mousemove", () => {
+                addOverflowAnimation(selectedOuter, 1)
+            })
             localStorage.setItem("musicOption", i);
         });
     }
@@ -327,6 +326,7 @@ document.querySelector(".settings-main-phase").addEventListener("click", ()=> {
 
 const songQuery = document.querySelector(".song-query")
 const songsContainer = document.querySelector(".songs")
+const customSongsDiv = document.querySelector(".custom-songs")
 let songs;
 
 songQuery.addEventListener("keyup", () => {
@@ -342,13 +342,19 @@ songQuery.addEventListener("keyup", () => {
     songs = JSON.parse(request.responseText).results.trackmatches.track;
     songsContainer.innerHTML = ""
     songsContainer.classList.remove("invisible")
-    for(let i = 0; i < songs.length; i++){
-        songsContainer.innerHTML += `<div class = "song"> ${songs[i].artist} - ${songs[i].name}</div>`
+    for(let i = 0; i < songs.length; i++) {
+        songsContainer.innerHTML += `<div class = "song"> <div class = "song-inner">${songs[i].artist} - ${songs[i].name}</div></div>`
+        document.addEventListener("mousemove", () => {
+            addOverflowAnimation(songsContainer.childNodes[i], 10)
+        })
     }
     for(let i = 0; i < songsContainer.childNodes.length; i++){
         songsContainer.childNodes[i].addEventListener(("click"), ()=> {
             addSong(`${songs[i].artist} - ${songs[i].name}`)
         })
+    }
+    if(!songsContainer.hasChildNodes()){
+        songsContainer.innerHTML = `<span class = "no-song-found">Looks like we don't know that one</span>`
     }
 })
 
@@ -397,10 +403,21 @@ function showSongSearch(){
 }
 
 function loadSongOptions(){
-    document.querySelector(".custom-songs").innerHTML = ""
+    customSongsDiv.innerHTML = ""
     let songs = JSON.parse(localStorage.getItem("customMusic")).songs
     for(let i = 0; i < songs.length; i++){
-        document.querySelector(".custom-songs").innerHTML += `<li link="${songs[i].songID}">${songs[i].songName}</li>`
+        customSongsDiv.innerHTML += `<li link="${songs[i].songID}"><div class = "li-inner">${songs[i].songName}</div></li>`
+        document.addEventListener("mousemove", () => {
+            addOverflowAnimation(customSongsDiv.childNodes[i], 10)
+        })
     }
     addMusicClick()
+}
+
+function addOverflowAnimation(divContainer, offset) {
+        let translateDistance = divContainer.firstElementChild.offsetWidth - divContainer.offsetWidth + offset
+        if (translateDistance <= offset) {
+            translateDistance = 0;
+        }
+        divContainer.firstElementChild.style = `--translate: ${translateDistance}px`
 }
