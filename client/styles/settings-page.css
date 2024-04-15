@@ -704,7 +704,8 @@ input[type="file"] {
 
 .selected, li:hover .li-inner, .song:hover .song-inner{
   position: relative;
-  animation: song-animation 15s infinite ease-in-out;
+  animation: song-animation infinite ease-in-out;
+  animation-duration: var(--translate-duration);
 }
 
 @keyframes song-animation {

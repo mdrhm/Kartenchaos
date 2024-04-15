@@ -419,5 +419,5 @@ function addOverflowAnimation(divContainer, offset) {
         if (translateDistance <= offset) {
             translateDistance = 0;
         }
-        divContainer.firstElementChild.style = `--translate: ${translateDistance}px`
+        divContainer.firstElementChild.style = `--translate: ${translateDistance}px; --translate-duration: ${translateDistance/4}s`
 }
