@@ -343,11 +343,16 @@ songQuery.addEventListener("keyup", () => {
     songsContainer.innerHTML = ""
     songsContainer.classList.remove("invisible")
     for(let i = 0; i < songs.length; i++){
-        songsContainer.innerHTML += `<div class = "song" onclick = \"addSong(\'${songs[i].artist.replaceAll("\'", "")} - ${songs[i].name}\', \'${songs[i].artist} - ${songs[i].name}\')\"> ${songs[i].artist} - ${songs[i].name}</div>`
+        songsContainer.innerHTML += `<div class = "song"> ${songs[i].artist} - ${songs[i].name}</div>`
+    }
+    for(let i = 0; i < songsContainer.childNodes.length; i++){
+        songsContainer.childNodes[i].addEventListener(("click"), ()=> {
+            addSong(`${songs[i].artist} - ${songs[i].name}`)
+        })
     }
 })
 
-function addSong(songQuery, songName){
+function addSong(songQuery){
     var request = new XMLHttpRequest();
     request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${songQuery}&type=video&key=${youtube_key}`, false);
     request.send(null);
@@ -356,7 +361,7 @@ function addSong(songQuery, songName){
     songsContainer.innerHTML = ""
     songsContainer.classList.add("invisible")
     let songs = JSON.parse(localStorage.getItem("customMusic"))
-    let song = {songID: JSON.parse(request.responseText).items[0].id.videoId, songName: songName}
+    let song = {songID: JSON.parse(request.responseText).items[0].id.videoId, songName: songQuery}
     if(!localStorage.getItem("customMusic") .includes(JSON.stringify(song))) {
         songs.songs.push(song)
     }
