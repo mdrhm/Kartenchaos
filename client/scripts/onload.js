@@ -100,10 +100,14 @@ function onYouTubeIframeAPIReady() {
         width: '0',
         videoId: '',
         playerVars: {
-            'playsinline': 1
+            'playsinline': 1,
+            'controls': 0,
+            'showinfo': 0,
+            'rel': 0,
         },
         events: {
             'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
         }
     });
 }
@@ -118,4 +122,10 @@ function onPlayerReady(event) {
     }
     updateVolume()
     event.target.playVideo();
+}
+
+function onPlayerStateChange(event){
+    if (event.target.getPlayerState() === 0) {
+        event.target.playVideo();
+    }
 }

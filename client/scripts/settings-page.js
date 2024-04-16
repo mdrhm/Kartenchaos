@@ -337,16 +337,14 @@ songQuery.addEventListener("keyup", () => {
         return;
     }
     var request = new XMLHttpRequest();
-    request.open("GET", "https://ws.audioscrobbler.com/2.0/?method=track.search&track=" + song +`&api_key=${lastfm_key}&format=json&limit=20`, false);
+    request.open("GET", `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${song}&api_key=${lastfm_key}&format=json&limit=20`, false);
     request.send(null);
     songs = JSON.parse(request.responseText).results.trackmatches.track;
     songsContainer.innerHTML = ""
     songsContainer.classList.remove("invisible")
     for(let i = 0; i < songs.length; i++) {
         songsContainer.innerHTML += `<div class = "song"> <div class = "song-inner">${songs[i].artist} - ${songs[i].name}</div></div>`
-        document.addEventListener("mousemove", () => {
-            addOverflowAnimation(songsContainer.childNodes[i], 10)
-        })
+        addOverflowAnimation(songsContainer.childNodes[i], 10)
     }
     for(let i = 0; i < songsContainer.childNodes.length; i++){
         songsContainer.childNodes[i].addEventListener(("click"), ()=> {
@@ -360,7 +358,7 @@ songQuery.addEventListener("keyup", () => {
 
 function addSong(songQuery){
     var request = new XMLHttpRequest();
-    request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${songQuery}&type=video&key=${youtube_key}`, false);
+    request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${songQuery} \"topic\"&type=video&key=${youtube_key}`, false);
     request.send(null);
     document.querySelector(".song-search").classList.add("hidden")
     document.querySelector(".song-query").value = ""
@@ -415,9 +413,9 @@ function loadSongOptions(){
 }
 
 function addOverflowAnimation(divContainer, offset) {
-        let translateDistance = divContainer.firstElementChild.offsetWidth - divContainer.offsetWidth + offset
-        if (translateDistance <= offset) {
-            translateDistance = 0;
-        }
-        divContainer.firstElementChild.style = `--translate: ${translateDistance}px; --translate-duration: ${translateDistance/4}s`
+    let translateDistance = divContainer.firstElementChild.offsetWidth - divContainer.offsetWidth + offset
+    if (translateDistance <= offset) {
+        translateDistance = 0;
+    }
+    divContainer.firstElementChild.style = `--translate: ${translateDistance}px; --translate-duration: ${translateDistance / 4}s`
 }
