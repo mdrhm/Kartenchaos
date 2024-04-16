@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const path = require('path');
+require('dotenv').config()
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server);
@@ -175,6 +176,12 @@ io.on('connection', (socket) => {
     })
     socket.on("sendMessage", (data) => {
         io.to(data.roomID).emit("updateChat", {code: "send", player: data.player, message: data.message})
+    })
+    socket.on("lastfm_api_key", (data) => {
+        socket.emit("lastfm_api_call", {song: data.song, key: process.env.LASTFM_API_KEY})
+    })
+    socket.on("youtube_api_key", (data) => {
+        socket.emit("youtube_api_call", {query: data.query, key: process.env.YOUTUBE_API_KEY})
     })
 });
 server.listen(3000, () => {

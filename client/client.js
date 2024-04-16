@@ -336,3 +336,64 @@ socket.on("updateChat", (data) => {
             break;
     }
 })
+
+const songQuery = document.querySelector(".song-query")
+const songsContainer = document.querySelector(".songs")
+const customSongsDiv = document.querySelector(".custom-songs")
+let songs;
+
+songQuery.addEventListener("keyup", () => {
+    let song = songQuery.value
+    if(song.replaceAll(" ", "") === ""){
+        songsContainer.classList.add("invisible")
+        songsContainer.innerHTML = ""
+        return;
+    }
+    socket.emit("lastfm_api_key", {song: song})
+})
+
+socket.on("lastfm_api_call", (data)=>{
+    var request = new XMLHttpRequest();
+    request.open("GET", `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${data.song}&api_key=${data.key}&format=json&limit=20`, false);
+    request.send(null);
+    songs = JSON.parse(request.responseText).results.trackmatches.track;
+    songsContainer.innerHTML = ""
+    songsContainer.classList.remove("invisible")
+    for(let i = 0; i < songs.length; i++) {
+        songsContainer.innerHTML += `<div class = "song"> <div class = "song-inner">${songs[i].artist} - ${songs[i].name}</div></div>`
+        addOverflowAnimation(songsContainer.childNodes[i], 10)
+    }
+    for(let i = 0; i < songsContainer.childNodes.length; i++){
+        songsContainer.childNodes[i].addEventListener(("click"), ()=> {
+            addSong(`${songs[i].artist} - ${songs[i].name}`)
+        })
+    }
+    if(!songsContainer.hasChildNodes()){
+        songsContainer.innerHTML = `<span class = "no-song-found">Looks like we don't know that one</span>`
+    }
+})
+
+function addSong(query){
+    socket.emit("youtube_api_key", {query: query})
+}
+
+socket.on("youtube_api_call", (data) => {
+    var request = new XMLHttpRequest();
+    request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${data.query} \"topic\"&type=video&key=${data.key}`, false);
+    request.send(null);
+    document.querySelector(".song-search").classList.add("hidden")
+    document.querySelector(".song-query").value = ""
+    songsContainer.innerHTML = ""
+    songsContainer.classList.add("invisible")
+    let songs = JSON.parse(localStorage.getItem("customMusic"))
+    let song = {songID: JSON.parse(request.responseText).items[0].id.videoId, songName: data.query}
+    if (!localStorage.getItem("customMusic").includes(JSON.stringify(song))) {
+        songs.songs.push(song)
+    }
+    if (songs.songs.length === 6) {
+        songs.songs.splice(0, 1)
+    }
+    localStorage.setItem("customMusic", JSON.stringify(songs))
+    loadSongOptions()
+    dropdown.querySelector('.menu li:not(.custom-song):last-child').click()
+})
