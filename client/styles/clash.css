@@ -436,6 +436,11 @@ body {
   justify-content: flex-end;
 }
 
+.main-phase-buttons button {
+  background: transparent;
+  border: none;
+}
+
 .settings-main-phase, .chat-main-phase{
   width: 85px;
   cursor: pointer;
