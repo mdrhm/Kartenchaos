@@ -305,4 +305,3 @@ socket.on("errorDialogue", (data) => {
     document.querySelector(".home-ui").style.display = "none"
     document.querySelector("#Main-phase").style.display = "none"
 })
-

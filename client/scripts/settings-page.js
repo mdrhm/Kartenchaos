@@ -389,7 +389,7 @@ function addSong(query){
 
 socket.on("youtube_api_call", (data) => {
     var request = new XMLHttpRequest();
-    request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${data.query} \"topic\"&type=video&key=${data.key}`, false);
+    request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=\"${data.query}\" \"topic\"&type=video&key=${data.key}`, false);
     request.send(null);
     document.querySelector(".song-search").classList.add("hidden")
     document.querySelector(".song-query").value = ""
