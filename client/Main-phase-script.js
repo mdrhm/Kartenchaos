@@ -70,26 +70,30 @@ function getCard(card, tag){
     return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","").replaceAll("V" + suit, tag + "-V" + suit).replaceAll("S" + suit, tag + "-S" + suit).replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
 }
 
-let countdownTime = 10; // Initial countdown time
 let countdownInterval; // Variable to hold the interval
-
+let remainingTime;
 // Function to start the countdown timer
 function startTimer() {
-    let remainingTime = 10;
-    countdownInterval = setInterval(() => {
-        updateCountdown(remainingTime);
-        if (remainingTime === 0) {
-            let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
-            console.log(index)
-            console.log(cards[index])
-            placeCard(index, cards[index])
-        }
-        remainingTime = Math.max(remainingTime - 1, 0)
-    }, 1000);
+    remainingTime = 10;
+    if(!countdownInterval) {
+        countdownInterval = setInterval(() => {
+            if (remainingTime === 0) {
+                let index = playerhand.indexOf(currplayerhand[Math.floor(Math.random() * currplayerhand.length)])
+                console.log(index)
+                console.log(cards[index])
+                placeCard(index, cards[index])
+            }
+            if (remainingTime >= 0) {
+                updateCountdown(remainingTime);
+                remainingTime = Math.max(remainingTime - 1, 0)
+            }
+        }, 1000);
+    }
 }
 
 function stopTimer(){
-    clearInterval(countdownInterval);
+    // clearInterval(countdownInterval);
+    remainingTime = -1
     document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
         "<p class = \"v\" id = \"V\">V</p>\n" +
         "<p class=\"s\">S</p>\n" +

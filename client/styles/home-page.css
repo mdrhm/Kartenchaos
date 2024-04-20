@@ -369,10 +369,13 @@ html {
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
-    background-color: rgba(0, 255, 0, 0.8);
+    background-color: rgba(0, 256, 0, 0.4);
     color: #fff;
     border-radius: 5px;
     z-index: 9999;
+    font-family: "Inter", "Roobert", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 

@@ -3,9 +3,20 @@ const socket = io();
 
 let roomID = null;
 let player1 = false;
+let cardi = document.createElement('div');
 let currplayerhand, playerhand;
 let p1card;
 let p2card;
+let p1cardID;
+let p2cardID;
+let valsum;
+let greater;
+
+function resetCardI(){
+    cardi.innerHTML = getCard("2B", "opp")
+    cardi.style.borderRadius = '10px';
+    cardi.style.width = "150px";
+}
 
 function makeGame(status) {
     player1= true;
@@ -137,6 +148,8 @@ function sendCardChoice(cardChosen) {
 }
 
 socket.on("updatep2withp1card", (data) => {
+    p1card = data.cardChosen;
+    console.log(p1card);
     if(!player1){
         console.log(p2card)
         if (dropright) {
@@ -151,6 +164,9 @@ socket.on("updatep2withp1card", (data) => {
     }
 });
 socket.on("updatep1withp2card", (data) => {
+    console.log(player1);
+    p2card = data.cardChosen;
+    console.log(p2card);
     if(player1){
         p2card = data.cardChosen;
         console.log(p1card)
@@ -207,6 +223,7 @@ function nextRound() {
     if (gameOver) {
         return;
     }
+    resetCardI()
     startTimer()
     document.querySelector("#drop_port").style.transform = "scale(1)";
     document.querySelector("#p1handcontainer").style = "transform: scale(1) translateY(0px); opacity: 1;";
