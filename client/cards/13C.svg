@@ -43,7 +43,6 @@
         <rect id="XCK" width="164.8" height="260.8" x="-82.4" y="-130.4"></rect>
     </defs>
     <rect width="239" height="335" x="-119.5" y="-167.5" rx="12" ry="12" fill="white" stroke="black"></rect>
-    <use xlink:href="#XCK" stroke="#44F" fill="none"></use>
     <use width="164.8" height="260.8" x="-82.4" y="-130.4" xlink:href="#CK1"></use>
     <use transform="rotate(180)" width="164.8" height="260.8" x="-82.4" y="-130.4" xlink:href="#CK1"></use>
     <use width="164.8" height="260.8" x="-82.4" y="-130.4" xlink:href="#CK2"></use>
@@ -64,4 +63,5 @@
         <use xlink:href="#SCK" height="26.769" width="26.769" x="-111.784" y="-119"></use>
         <use xlink:href="#SCK" height="55.68" width="55.68" x="-86.595" y="-132.16"></use>
     </g>
+    <use xlink:href="#XCK" stroke="#44F" fill="none"></use>
 </svg>

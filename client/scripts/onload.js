@@ -1,10 +1,12 @@
-const card1 = document.querySelector('.card1')
-const card2 = document.querySelector('.card2')
+document.querySelectorAll(".home-pictures-front")[0].innerHTML = getCard("1B", "home")
+document.querySelectorAll(".home-pictures-front")[1].innerHTML = getCard("1B", "home")
+document.querySelectorAll(".home-pictures-back")[0].innerHTML = getCard(Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)], "home")
+document.querySelectorAll(".home-pictures-back")[1].innerHTML = getCard(Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)], "home")
 var time = 1;
 var interval = setInterval(function() {
     if (time <= 3) {
-        card1.src = "/client/cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
-        card2.src = "/client/cards/" + Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)]+ ".svg"
+        document.querySelectorAll(".home-pictures-back")[0].innerHTML = getCard(Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)], "home")
+        document.querySelectorAll(".home-pictures-back")[1].innerHTML = getCard(Math.floor(Math.random()*3 + 11) + suits[Math.floor(Math.random()*4)], "home")
     }
     else {
         clearInterval(interval);

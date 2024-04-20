@@ -108,8 +108,8 @@ function displayDamageTaken(damageIndicatorContainer, damageTaken, hp, direction
 }
 
 const TWO_PI = Math.PI * 2.5;
-const imageWidth = 149.38; // Assuming image width
-const imageHeight = 209.38; // Assuming image height
+const imageWidth = 150; // Assuming image width
+const imageHeight = 210; // Assuming image height
 
 var imageIndex = 0;
 var vertices = [];

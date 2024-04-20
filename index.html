@@ -57,11 +57,21 @@
 <div class="home-ui">
     <div class="header">
         <div class="home-pictures left">
-            <img src="/client/cards/13D.svg" alt="" class="card1">
+            <div id="home-pictures-inner-left">
+                <div class="home-pictures-front left">
+                </div>
+                <div class="home-pictures-back">
+                </div>
+            </div>
         </div>
         <h1 id="title-of-game">KARTENCHAOS</h1>
         <div class="home-pictures right">
-            <img src="/client/cards/12C.svg" alt="" class="card2">
+            <div id="home-pictures-inner-right">
+                <div class="home-pictures-front right">
+                </div>
+                <div class="home-pictures-back">
+                </div>
+            </div>
         </div>
         <div style = "position: absolute"><div class="logo"></div></div>
     </div>
@@ -225,9 +235,15 @@
     <div class="dropport" id=drop_port>
         <div id="dropl"></div>
         <div id = timer>&nbsp;</div>
-        <div id="dropr"></div>
-    </div>
-    
+        <div id="dropr">
+            <div class="dropr-inner">
+                <div class="dropr-inner-front">
+                </div>
+                <div class="dropr-inner-back">
+                </div>
+            </div>
+        </div>
+        </div>
     <div id="p1handcontainer">
         <div class="card" ondblclick="placeCard(0)"></div>
         <div class="card" ondblclick="placeCard(1)"></div>

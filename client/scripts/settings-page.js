@@ -317,6 +317,8 @@ function updateCardStyle(style) {
     if (selectedOption) {
         selectedOption.outerHTML = `<div class = "selected-option"> ${selectedOption.outerHTML}</div>`
     }
+    document.querySelector("#home-pictures-inner-left").classList = style;
+    document.querySelector("#home-pictures-inner-right").classList = style;
     localStorage.setItem("cardstyle", style);
     socket.emit("updateCardStyleForAll", {roomID: getRoomIDFromURL(), style: style})
 }

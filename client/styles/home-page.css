@@ -34,37 +34,31 @@ body {
 }
 
 .card4 {
-    animation: flip2 2.5s;
+    animation: flip2 2.5s forwards running;
 }
 
 
 @keyframes flip-card1 {
     0% {
         transform: perspective(600px) rotateY(180deg);
-        content: url("/client/cards/1B.svg");
     }
     50% {
         transform: perspective(600px) rotateY(0deg);
-        content: initial;
     }
     100% {
         transform: perspective(600px) rotateY(-180deg);
-        content: url("/client/cards/1B.svg");
     }
 }
 
 @keyframes flip-opposite-card2 {
     0% {
         transform: perspective(600px) rotateY(-180deg);
-        content: url("/client/cards/1B.svg");
     }
     50% {
         transform: perspective(600px) rotateY(0deg);
-        content: initial;
     }
     100% {
         transform: perspective(600px) rotateY(180deg);
-        content: url("/client/cards/1B.svg");
     }
 }
 
@@ -80,11 +74,11 @@ body {
 
 @keyframes flip2 {
     0% {
-        transform: perspective(600px) rotateY(-180deg);
+        transform: perspective(600px) rotateY(0deg);
     }
     100% {
 
-        transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(180deg);
     }
 }
 
@@ -99,12 +93,20 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Adjust height as needed */
-    width: 45%; /* Occupy 45% of the viewport width */
-    padding: 20px; /* Add some padding for spacing */
-    scale: 50%;
+    height: 285px;
+    width: 225px;
+    scale: 52%;
 }
 
+#home-pictures-inner-left, #home-pictures-inner-right, .dropr-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border: none !important;
+}
 .home-pictures.left {
     /*left: 0; !* Position the container on the left side *!*/
     transform: rotate(-10deg)
@@ -115,9 +117,36 @@ body {
     transform: rotate(10deg)
 }
 
+#home-pictures-inner-left{
+    animation: flip-card1 3s infinite;
+}
+
+#home-pictures-inner-right{
+    animation: flip-opposite-card2 3s infinite;
+}
+
+.home-pictures-front, .home-pictures-back, .dropr-inner-front, .dropr-inner-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.home-pictures-back, .dropr-inner-back{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.home-pictures-front, .dropr-inner-front{
+    transform: scaleX(-1);
+}
+
+.dropr-inner{
+    width: 150px;
+    height: 210px;
+}
+
 .home-ui {
     display: flex;
-    flex-direction: column;
     flex-direction: column;
     /* gap: 250px; */
     height: 100%;
