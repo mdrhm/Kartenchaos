@@ -3,20 +3,9 @@ const socket = io();
 
 let roomID = null;
 let player1 = false;
-let cardi = document.createElement('div');
 let currplayerhand, playerhand;
 let p1card;
 let p2card;
-let p1cardID;
-let p2cardID;
-let valsum;
-let greater;
-
-function resetCardI(){
-    cardi.innerHTML = getCard("2B", "opp")
-    cardi.style.borderRadius = '10px';
-    cardi.style.width = "150px";
-}
 
 function makeGame(status) {
     player1= true;
@@ -223,7 +212,6 @@ function nextRound() {
     if (gameOver) {
         return;
     }
-    resetCardI()
     startTimer()
     document.querySelector("#drop_port").style.transform = "scale(1)";
     document.querySelector("#p1handcontainer").style = "transform: scale(1) translateY(0px); opacity: 1;";

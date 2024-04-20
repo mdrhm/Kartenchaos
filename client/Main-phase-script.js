@@ -92,7 +92,6 @@ function startTimer() {
 }
 
 function stopTimer(){
-    // clearInterval(countdownInterval);
     remainingTime = -1
     document.getElementById('timer').innerHTML = "<div class=\"vs-container\">\n" +
         "<p class = \"v\" id = \"V\">V</p>\n" +
