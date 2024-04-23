@@ -67,7 +67,7 @@ function getCard(card, tag){
     var request = new XMLHttpRequest();
     request.open("GET", "/client/cards/" + card + ".svg", false);
     request.send(null);
-    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","").replaceAll("V" + suit, tag + "-V" + suit).replaceAll("S" + suit, tag + "-S" + suit).replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
+    return request.responseText.replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","").replaceAll("V" + suit, tag + "-V" + suit).replaceAll("S" + suit, tag + "-S" + suit).replaceAll(`back`, `back ${tag}`).replaceAll("height=\"3.5in\"", "").replaceAll("width=\"2.5in\"","");
 }
 
 let countdownInterval; // Variable to hold the interval
