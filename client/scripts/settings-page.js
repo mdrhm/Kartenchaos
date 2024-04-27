@@ -399,9 +399,10 @@ socket.on("youtube_api_call", (data) => {
     songsContainer.classList.add("invisible")
     let songs = JSON.parse(localStorage.getItem("customMusic"))
     let song = {songID: JSON.parse(request.responseText).items[0].id.videoId, songName: data.query}
-    if (!localStorage.getItem("customMusic").includes(JSON.stringify(song))) {
-        songs.songs.push(song)
+    if (localStorage.getItem("customMusic").includes(JSON.stringify(song))) {
+        songs.songs.splice(songs.songs.map(e => e.songID).indexOf(song.songID), 1)
     }
+    songs.songs.push(song)
     if (songs.songs.length === 6) {
         songs.songs.splice(0, 1)
     }
