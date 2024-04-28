@@ -415,7 +415,7 @@ function loadSongOptions(){
             <img src=${songs[i].songImg}><div class="li-inner"><div class="li-inner-title">${songs[i].songName}</div><div class="li-inner-artist">${songs[i].songArtist}</div></div></li>`
         document.addEventListener("mousemove", () => {
             addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-title"), 0)
-            addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-title"), 0)
+            addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-artist"), 0)
         })
     }
     addMusicClick()
