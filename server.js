@@ -4,7 +4,6 @@ const http = require('http');
 const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
-require('dotenv').config()
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server);
@@ -179,18 +178,34 @@ io.on('connection', (socket) => {
     socket.on("sendMessage", (data) => {
         io.to(data.roomID).emit("updateChat", {code: "send", player: data.player, message: data.message})
     })
-    socket.on("lastfm_api_key", (data) => {
-        socket.emit("lastfm_api_call", {song: data.song, key: process.env.LASTFM_API_KEY})
+    socket.on("lastfm_api_call", (data) => {
+        axios.get(`https://www.last.fm/search?q=${data.song}`)
+            .then((response) => {
+                if(response.status === 200) {
+                    const html = response.data;
+                    const $ = cheerio.load(html);
+                    let songs = [];
+                    $('.chartlist-row').each(function(i, elem) {
+                        songs[i] = {
+                            img: (!$(this).children('.chartlist-image').children('a').children('img').attr('src') || $(this).children('.chartlist-image').children('a').children('img').attr('src') === 'https://lastfm.freetls.fastly.net/i/u/64s/c6f59c1e5e7240a4c0d427abd71f3dbb.jpg') ? "/client/Images/music.svg" : $(this).children('.chartlist-image').children('a').children('img').attr('src'),
+                            name: $(this).children('.chartlist-name').children('a').attr('title'),
+                            artist: $(this).children('.chartlist-artist').children('a').attr('title')
+                        }
+
+                    });
+                    socket.emit("lastfm_api_response", {songs: songs})
+                }
+            }, (error) => console.log(error) );
     })
     socket.on("youtube_api_call", (data) => {
         let videoId;
-        axios.get(`https://www.youtube.com/results?search_query=%22${data.query}%22+%22topic%22`)
+        axios.get(`https://www.youtube.com/results?search_query=%22${data.artist} - ${data.name}%22+%22topic%22`)
             .then((response) => {
                 if(response.status === 200) {
                     const html = response.data;
                     videoId = html.split("</script>").filter((h) => {return h.includes("var ytInitialData")})[0].split('"videoId":"')[1].split('"')[0]
                     if(videoId) {
-                        socket.emit("youtube_api_response", {query: data.query, videoId: videoId})
+                        socket.emit("youtube_api_response", {name: data.name, artist: data.artist, img: data.img, videoId: videoId})
                     }
                 }
             }, (error) => console.log(error) );

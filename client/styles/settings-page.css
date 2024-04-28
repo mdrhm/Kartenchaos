@@ -309,9 +309,14 @@
   margin: 0.3em 0;
   border-radius: 0.5em;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 .li-inner, .song-inner{
   width: fit-content;
+  overflow: hidden;
 }
 
 .menu li:hover {
@@ -679,10 +684,12 @@ input[type="file"] {
 .song {
   background: transparent;
   color: #9fa5b5;
-  padding: 5px !important;
+  padding: 7px !important;
   cursor: pointer;
   width: 580px !important;
-  min-height: 28px;
+  min-height: 35px;
+  gap: 10px;
+  border-radius: 0px !important;
 }
 
 .songs {
@@ -702,7 +709,7 @@ input[type="file"] {
   flex-direction: column-reverse;
 }
 
-.selected, li:hover .li-inner, .song:hover .song-inner{
+.selected .li-inner-title, .selected .li-inner-artist, .song:hover .song-inner-title, .song:hover .song-inner-artist, li:hover .li-inner-title, li:hover .li-inner-artist {
   position: relative;
   animation: song-animation infinite ease-in-out;
   animation-duration: var(--translate-duration);
@@ -728,4 +735,39 @@ input[type="file"] {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.song img, li img, .select img {
+  min-height: 40px;
+  max-height: 40px;
+  min-width: 40px;
+  max-width: 40px;
+}
+
+.song-inner-artist {
+  font-size: 15px;
+  font-weight: normal;
+  width: fit-content;
+}
+
+.song-inner-title {
+  font-size: 25px;
+  width: fit-content;
+}
+
+.li-inner-artist {
+  font-size: 12px;
+  font-weight: normal;
+  width: fit-content;
+}
+
+.li-inner-title {
+  font-size: 15px;
+  width: fit-content;
+}
+
+.selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

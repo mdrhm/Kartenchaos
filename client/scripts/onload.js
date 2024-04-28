@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const customMusic = localStorage.getItem("customMusic");
     const options = document.querySelectorAll('.menu li:not(.custom-song)');
     if (customMusic) {
+        localStorage.setItem("customMusic", JSON.stringify({songs: JSON.parse(localStorage.getItem("customMusic")).songs.filter((song) => {return song.songImg})}))
         loadSongOptions()
     }
     else{
@@ -116,7 +117,7 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerReady(event) {
     const savedMusicOption = localStorage.getItem("musicOption");
-    if (savedMusicOption) {
+    if (savedMusicOption && savedMusicOption < dropdown.querySelectorAll('.menu li:not(.custom-song)').length) {
         dropdown.querySelectorAll('.menu li:not(.custom-song)')[savedMusicOption].click()
     }
     else{

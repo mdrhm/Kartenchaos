@@ -155,10 +155,11 @@ function addMusicClick(){
             option.classList.add("hidden")
             // selected.innerText = option.innerText;
             playSong(option.getAttribute("link"))
-            document.querySelector(".selected").innerText = option.innerText;
+            document.querySelector(".selected").innerHTML = option.innerHTML;
             const selectedOuter = document.querySelector(".selected-outer")
             document.addEventListener("mousemove", () => {
-                addOverflowAnimation(selectedOuter, 1)
+                addOverflowAnimation(document.querySelector(".selected .li-inner-title"), 1)
+                addOverflowAnimation(document.querySelector(".selected .li-inner-artist"), 1)
             })
             localStorage.setItem("musicOption", i);
         });
@@ -361,23 +362,21 @@ songQuery.addEventListener("keyup", () => {
         songsContainer.innerHTML = ""
         return;
     }
-    socket.emit("lastfm_api_key", {song: song})
+    socket.emit("lastfm_api_call", {song: song})
 })
 
-socket.on("lastfm_api_call", (data)=>{
-    var request = new XMLHttpRequest();
-    request.open("GET", `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${data.song}&api_key=${data.key}&format=json&limit=20`, false);
-    request.send(null);
-    songs = JSON.parse(request.responseText).results.trackmatches.track;
+socket.on("lastfm_api_response", (data)=>{
+    songs = data.songs;
     songsContainer.innerHTML = ""
     songsContainer.classList.remove("invisible")
     for(let i = 0; i < songs.length; i++) {
-        songsContainer.innerHTML += `<div class = "song"> <div class = "song-inner">${songs[i].artist} - ${songs[i].name}</div></div>`
-        addOverflowAnimation(songsContainer.childNodes[i], 10)
+        songsContainer.innerHTML += `<div class="song"><img src=${songs[i].img} style="--translate: 0px; --translate-duration: 0s;"><div class="song-inner"> <div class="song-inner-title">${songs[i].name}</div><div class="song-inner-artist">${songs[i].artist}</div></div></div>`
+        addOverflowAnimation(songsContainer.childNodes[i].querySelector(".song-inner-title"), 0)
+        addOverflowAnimation(songsContainer.childNodes[i].querySelector(".song-inner-artist"), 0)
     }
     for(let i = 0; i < songsContainer.childNodes.length; i++){
         songsContainer.childNodes[i].addEventListener(("click"), ()=> {
-            addSong(`${songs[i].artist} - ${songs[i].name}`)
+            addSong({artist: songs[i].artist,  name: songs[i].name, artist: songs[i].artist, img: songs[i].img})
         })
     }
     if(!songsContainer.hasChildNodes()){
@@ -385,8 +384,8 @@ socket.on("lastfm_api_call", (data)=>{
     }
 })
 
-function addSong(query){
-    socket.emit("youtube_api_call", {query: query})
+function addSong(data){
+    socket.emit("youtube_api_call", data)
 }
 
 socket.on("youtube_api_response", (data) => {
@@ -395,7 +394,7 @@ socket.on("youtube_api_response", (data) => {
     songsContainer.innerHTML = ""
     songsContainer.classList.add("invisible")
     let songs = JSON.parse(localStorage.getItem("customMusic"))
-    let song = {songID: data.videoId, songName: data.query}
+    let song = {songID: data.videoId, songName: data.name, songArtist: data.artist, songImg: data.img}
     if (localStorage.getItem("customMusic").includes(JSON.stringify(song))) {
         songs.songs.splice(songs.songs.map(e => e.songID).indexOf(song.songID), 1)
     }
@@ -412,18 +411,20 @@ function loadSongOptions(){
     customSongsDiv.innerHTML = ""
     let songs = JSON.parse(localStorage.getItem("customMusic")).songs
     for(let i = 0; i < songs.length; i++){
-        customSongsDiv.innerHTML += `<li link="${songs[i].songID}"><div class = "li-inner">${songs[i].songName}</div></li>`
+        customSongsDiv.innerHTML += `<li link="${songs[i].songID}">
+            <img src=${songs[i].songImg}><div class="li-inner"><div class="li-inner-title">${songs[i].songName}</div><div class="li-inner-artist">${songs[i].songArtist}</div></div></li>`
         document.addEventListener("mousemove", () => {
-            addOverflowAnimation(customSongsDiv.childNodes[i], 10)
+            addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-title"), 0)
+            addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-title"), 0)
         })
     }
     addMusicClick()
 }
 
 function addOverflowAnimation(divContainer, offset) {
-    let translateDistance = divContainer.firstElementChild.offsetWidth - divContainer.offsetWidth + offset
+    let translateDistance = divContainer.offsetWidth - divContainer.parentElement.offsetWidth + offset
     if (translateDistance <= offset) {
         translateDistance = 0;
     }
-    divContainer.firstElementChild.style = `--translate: ${translateDistance}px; --translate-duration: ${translateDistance / 4}s`
+    divContainer.style = `--translate: ${translateDistance}px; --translate-duration: ${translateDistance / 4}s`
 }
