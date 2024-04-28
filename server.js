@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const path = require('path');
+const axios = require('axios');
+const cheerio = require('cheerio');
 require('dotenv').config()
 const server = http.createServer(app);
 const { Server } = require('socket.io');
@@ -180,8 +182,18 @@ io.on('connection', (socket) => {
     socket.on("lastfm_api_key", (data) => {
         socket.emit("lastfm_api_call", {song: data.song, key: process.env.LASTFM_API_KEY})
     })
-    socket.on("youtube_api_key", (data) => {
-        socket.emit("youtube_api_call", {query: data.query, key: process.env.YOUTUBE_API_KEY})
+    socket.on("youtube_api_call", (data) => {
+        let videoId;
+        axios.get(`https://www.youtube.com/results?search_query=%22${data.query}%22+%22topic%22`)
+            .then((response) => {
+                if(response.status === 200) {
+                    const html = response.data;
+                    videoId = html.split("</script>").filter((h) => {return h.includes("var ytInitialData")})[0].split('"videoId":"')[1].split('"')[0]
+                    if(videoId) {
+                        socket.emit("youtube_api_response", {query: data.query, videoId: videoId})
+                    }
+                }
+            }, (error) => console.log(error) );
     })
 });
 server.listen(3000, () => {

@@ -386,19 +386,16 @@ socket.on("lastfm_api_call", (data)=>{
 })
 
 function addSong(query){
-    socket.emit("youtube_api_key", {query: query})
+    socket.emit("youtube_api_call", {query: query})
 }
 
-socket.on("youtube_api_call", (data) => {
-    var request = new XMLHttpRequest();
-    request.open("GET", `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=\"${data.query}\" \"topic\"&type=video&key=${data.key}`, false);
-    request.send(null);
+socket.on("youtube_api_response", (data) => {
     document.querySelector(".song-search").classList.add("hidden")
     document.querySelector(".song-query").value = ""
     songsContainer.innerHTML = ""
     songsContainer.classList.add("invisible")
     let songs = JSON.parse(localStorage.getItem("customMusic"))
-    let song = {songID: JSON.parse(request.responseText).items[0].id.videoId, songName: data.query}
+    let song = {songID: data.videoId, songName: data.query}
     if (localStorage.getItem("customMusic").includes(JSON.stringify(song))) {
         songs.songs.splice(songs.songs.map(e => e.songID).indexOf(song.songID), 1)
     }
