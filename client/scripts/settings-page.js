@@ -353,7 +353,7 @@ function showSongSearch(){
 const songQuery = document.querySelector(".song-query")
 const songsContainer = document.querySelector(".songs")
 const customSongsDiv = document.querySelector(".custom-songs")
-let songs, typingTimer;
+let songs, typingTimer, date;
 
 songQuery.addEventListener("keyup", () => {
     clearTimeout(typingTimer);
@@ -363,12 +363,14 @@ songQuery.addEventListener("keyup", () => {
         songsContainer.innerHTML = ""
         return;
     }
+    date = new Date()
     typingTimer = setTimeout(() => {
         socket.emit("lastfm_api_call", {song: song})
-    }, 500)
+    }, 250)
 })
 
 socket.on("lastfm_api_response", (data)=>{
+    console.log(new Date() - date)
     songs = data.songs;
     songsContainer.innerHTML = ""
     songsContainer.classList.remove("invisible")
@@ -425,6 +427,9 @@ function loadSongOptions(){
 }
 
 function addOverflowAnimation(divContainer, offset) {
+    if(!divContainer){
+        return;
+    }
     let translateDistance = divContainer.offsetWidth - divContainer.parentElement.offsetWidth + offset
     if (translateDistance <= offset) {
         translateDistance = 0;
