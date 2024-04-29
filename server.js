@@ -199,7 +199,7 @@ io.on('connection', (socket) => {
     })
     socket.on("youtube_api_call", (data) => {
         let videoId;
-        axios.get(`https://www.youtube.com/results?search_query=%22${data.artist} - ${data.name}%22+%22topic%22`)
+        axios.get(`https://www.youtube.com/results?search_query=%22${data.artist}%22+%22${data.name}%22+%22topic%22`)
             .then((response) => {
                 if(response.status === 200) {
                     const html = response.data;
