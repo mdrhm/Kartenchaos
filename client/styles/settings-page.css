@@ -686,22 +686,26 @@ input[type="file"] {
   color: #9fa5b5;
   padding: 7px !important;
   cursor: pointer;
-  width: 580px !important;
-  min-height: 35px;
+  width: 582px !important;
+  min-height: 44px;
   gap: 10px;
-  border-radius: 0px !important;
+  border-radius: 10px !important;
 }
 
 .songs {
   height: 250px;
-  width: 590px;
+  width: 596px;
   display: flex;
   flex-direction: column;
   background: rgb(0, 0, 0, 0.8);
   overflow-y: auto;
   overflow-x: hidden;
-  border-radius: 0.5em;
-  padding: 10px;
+  border-radius: 17px;
+  padding: 7px !important;
+}
+
+.songs::-webkit-scrollbar {
+  display: none;
 }
 
 .custom-songs{
@@ -738,20 +742,20 @@ input[type="file"] {
 }
 
 .song img, li img, .select img {
-  min-height: 40px;
-  max-height: 40px;
-  min-width: 40px;
-  max-width: 40px;
+  min-height: 44px;
+  max-height: 44px;
+  min-width: 44px;
+  max-width: 44px;
 }
 
 .song-inner-artist {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: normal;
   width: fit-content;
 }
 
 .song-inner-title {
-  font-size: 25px;
+  font-size: 22px;
   width: fit-content;
 }
 

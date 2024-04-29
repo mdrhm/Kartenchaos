@@ -353,16 +353,19 @@ function showSongSearch(){
 const songQuery = document.querySelector(".song-query")
 const songsContainer = document.querySelector(".songs")
 const customSongsDiv = document.querySelector(".custom-songs")
-let songs;
+let songs, typingTimer;
 
 songQuery.addEventListener("keyup", () => {
+    clearTimeout(typingTimer);
     let song = songQuery.value
-    if(song.replaceAll(" ", "") === ""){
+    if (song.replaceAll(" ", "") === "") {
         songsContainer.classList.add("invisible")
         songsContainer.innerHTML = ""
         return;
     }
-    socket.emit("lastfm_api_call", {song: song})
+    typingTimer = setTimeout(() => {
+        socket.emit("lastfm_api_call", {song: song})
+    }, 500)
 })
 
 socket.on("lastfm_api_response", (data)=>{
