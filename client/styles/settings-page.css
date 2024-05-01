@@ -775,3 +775,34 @@ input[type="file"] {
   align-items: center;
   gap: 10px;
 }
+
+.loader-outer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  white-space: pre;
+  font-size: 20px;
+  line-height: 1.2em;
+  height: 1.2em;
+  overflow: hidden;
+  color: #9fa5b5;
+}
+.loader:before {
+  content:"Searching...\A⌰earching...\A⌰⍜arching...\A⌰⍜⏃rching...\A⌰⍜⏃⎅ching...\A⌰⍜⏃⎅⟟hing...\A⌰⍜⏃⎅⟟⋏ing...\A⌰⍜⏃⎅⟟⋏ng...\A⌰⍜⏃⎅⟟⋏☌g..\A⌰⍜⏃⎅⟟⋏☌⟒⏁.\A⌰⍜⏃⎅⟟⋏☌⟒⏁⋔";
+  white-space: pre;
+  display: inline-block;
+  animation: l39 1s infinite steps(11) alternate;
+}
+
+@keyframes l39 {
+  100%{transform: translateY(-100%)}
+}
+

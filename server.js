@@ -203,7 +203,7 @@ io.on('connection', (socket) => {
                             songs[i] = {
                                 img: (responseData[i].album.images[0].url) ? responseData[i].album.images[0].url: "/client/Images/settings.svg",
                                 name: responseData[i].name,
-                                artist: responseData[i].artists.map(artist => artist.name).join(", ")
+                                artist: responseData[i].artists[0].name
                             }
                         }
                         socket.emit("spotify_api_response", {songs: songs})

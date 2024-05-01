@@ -363,6 +363,10 @@ songQuery.addEventListener("input", () => {
         songsContainer.innerHTML = ""
         return;
     }
+    if(songsContainer.innerHTML !== '<div class="loader-outer"> <div class="loader"></div></div>') {
+        songsContainer.innerHTML = '<div class="loader-outer"> <div class="loader"></div></div>'
+    }
+    songsContainer.classList.remove("invisible")
     date = new Date()
     typingTimer = setTimeout(() => {
         socket.emit("spotify_api_call", {song: song})
