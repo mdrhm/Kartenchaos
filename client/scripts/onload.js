@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const customMusic = localStorage.getItem("customMusic");
     const options = document.querySelectorAll('.menu li:not(.custom-song)');
     if (customMusic) {
-        localStorage.setItem("customMusic", JSON.stringify({songs: JSON.parse(localStorage.getItem("customMusic")).songs.filter((song) => {return song.songImg})}))
+        localStorage.setItem("customMusic", JSON.stringify({songs: JSON.parse(localStorage.getItem("customMusic")).songs.filter((song) => {return song.id && song.name && song.artist && song.img})}))
         loadSongOptions()
     }
     else{

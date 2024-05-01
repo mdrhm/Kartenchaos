@@ -374,6 +374,10 @@ songQuery.addEventListener("input", () => {
 })
 
 socket.on("spotify_api_response", (data)=>{
+    if(data.error){
+        songsContainer.innerHTML = `<span class = "no-song-found">${data.error}</span>`
+        return;
+    }
     console.log(new Date() - date)
     songs = data.songs;
     songsContainer.innerHTML = ""
@@ -388,9 +392,6 @@ socket.on("spotify_api_response", (data)=>{
             socket.emit("youtube_api_call", {name: songs[i].name, artist: songs[i].artist, img: songs[i].img})
         })
     }
-    if(!songsContainer.hasChildNodes()){
-        songsContainer.innerHTML = `<span class = "no-song-found">Looks like we don't know that one</span>`
-    }
 })
 
 socket.on("youtube_api_response", (data) => {
@@ -399,7 +400,7 @@ socket.on("youtube_api_response", (data) => {
     songsContainer.innerHTML = ""
     songsContainer.classList.add("invisible")
     let songs = JSON.parse(localStorage.getItem("customMusic"))
-    let song = {songID: data.videoId, songName: data.name, songArtist: data.artist, songImg: data.img}
+    let song = {id: data.videoId, name: data.name, artist: data.artist, img: data.img}
     if (localStorage.getItem("customMusic").includes(JSON.stringify(song))) {
         songs.songs.splice(songs.songs.map(e => e.songID).indexOf(song.songID), 1)
     }
@@ -416,8 +417,8 @@ function loadSongOptions(){
     customSongsDiv.innerHTML = ""
     let songs = JSON.parse(localStorage.getItem("customMusic")).songs
     for(let i = 0; i < songs.length; i++){
-        customSongsDiv.innerHTML += `<li link="${songs[i].songID}">
-            <img src=${songs[i].songImg}><div class="li-inner"><div class="li-inner-title">${songs[i].songName}</div><div class="li-inner-artist">${songs[i].songArtist}</div></div></li>`
+        customSongsDiv.innerHTML += `<li link="${songs[i].id}">
+            <img src=${songs[i].img}><div class="li-inner"><div class="li-inner-title">${songs[i].name}</div><div class="li-inner-artist">${songs[i].artist}</div></div></li>`
         document.addEventListener("mousemove", () => {
             addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-title"), 0)
             addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-artist"), 0)

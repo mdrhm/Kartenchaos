@@ -206,15 +206,15 @@ io.on('connection', (socket) => {
                                 artist: responseData[i].artists[0].name
                             }
                         }
-                        socket.emit("spotify_api_response", {songs: songs})
+                        socket.emit("spotify_api_response", (songs.length > 0) ? {songs: songs} : {error: "Looks like we don't know that one"})
                     })
                     .catch(error => {
-                        socket.emit("spotify_api_response", {songs: []})
+                        socket.emit("spotify_api_response", {error: "Looks like we don't know that one"})
                     });
 
             })
             .catch(error => {
-                console.error(error);
+                socket.emit("spotify_api_response", {error: "Sorry. An error has occurred"})
             });
     })
     socket.on("youtube_api_call", (data) => {
