@@ -209,7 +209,7 @@ io.on('connection', (socket) => {
                         socket.emit("spotify_api_response", {songs: songs})
                     })
                     .catch(error => {
-                        console.error(error);
+                        socket.emit("spotify_api_response", {songs: []})
                     });
 
             })
