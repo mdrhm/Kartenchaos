@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const path = require('path');
 const axios = require('axios');
+require('dotenv').config();
 const cheerio = require('cheerio');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
@@ -178,24 +179,43 @@ io.on('connection', (socket) => {
     socket.on("sendMessage", (data) => {
         io.to(data.roomID).emit("updateChat", {code: "send", player: data.player, message: data.message})
     })
-    socket.on("lastfm_api_call", (data) => {
-        axios.get(`https://www.last.fm/search?q=${data.song}`)
-            .then((response) => {
-                if(response.status === 200) {
-                    const html = response.data;
-                    const $ = cheerio.load(html);
-                    let songs = [];
-                    $('.chartlist-row').each(function(i, elem) {
-                        songs[i] = {
-                            img: (!$(this).children('.chartlist-image').children('a').children('img').attr('src') || $(this).children('.chartlist-image').children('a').children('img').attr('src') === 'https://lastfm.freetls.fastly.net/i/u/64s/c6f59c1e5e7240a4c0d427abd71f3dbb.jpg') ? "/client/Images/music.svg" : $(this).children('.chartlist-image').children('a').children('img').attr('src'),
-                            name: $(this).children('.chartlist-name').children('a').attr('title'),
-                            artist: $(this).children('.chartlist-artist').children('a').attr('title')
-                        }
+    socket.on("spotify_api_call", (data) => {
+        const token = new URLSearchParams();
+        token.append('grant_type', 'client_credentials');
+        token.append('client_id',  process.env.SPOTIFY_API_ID);
+        token.append('client_secret', process.env.SPOTIFY_CLIENT_SECRET);
 
+        axios.post('https://accounts.spotify.com/api/token', token, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => {
+                axios.get(`https://api.spotify.com/v1/search?q=${data.song}&type=track`, {
+                    headers: {
+                        'Authorization': `Bearer ${response.data.access_token}`
+                    }
+                })
+                    .then(response => {
+                        let songs = [];
+                        let responseData = response.data.tracks.items;
+                        for(let i = 0; i < responseData.length; i++){
+                            songs[i] = {
+                                img: (responseData[i].album.images[0].url) ? responseData[i].album.images[0].url: "/client/Images/settings.svg",
+                                name: responseData[i].name,
+                                artist: responseData[i].artists.map(artist => artist.name).join(", ")
+                            }
+                        }
+                        socket.emit("spotify_api_response", {songs: songs})
+                    })
+                    .catch(error => {
+                        console.error(error);
                     });
-                    socket.emit("lastfm_api_response", {songs: songs})
-                }
-            }, (error) => console.log(error) );
+
+            })
+            .catch(error => {
+                console.error(error);
+            });
     })
     socket.on("youtube_api_call", (data) => {
         let videoId;

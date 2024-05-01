@@ -355,7 +355,7 @@ const songsContainer = document.querySelector(".songs")
 const customSongsDiv = document.querySelector(".custom-songs")
 let songs, typingTimer, date;
 
-songQuery.addEventListener("keyup", () => {
+songQuery.addEventListener("input", () => {
     clearTimeout(typingTimer);
     let song = songQuery.value
     if (song.replaceAll(" ", "") === "") {
@@ -365,11 +365,11 @@ songQuery.addEventListener("keyup", () => {
     }
     date = new Date()
     typingTimer = setTimeout(() => {
-        socket.emit("lastfm_api_call", {song: song})
+        socket.emit("spotify_api_call", {song: song})
     }, 250)
 })
 
-socket.on("lastfm_api_response", (data)=>{
+socket.on("spotify_api_response", (data)=>{
     console.log(new Date() - date)
     songs = data.songs;
     songsContainer.innerHTML = ""
@@ -381,17 +381,13 @@ socket.on("lastfm_api_response", (data)=>{
     }
     for(let i = 0; i < songsContainer.childNodes.length; i++){
         songsContainer.childNodes[i].addEventListener(("click"), ()=> {
-            addSong({artist: songs[i].artist,  name: songs[i].name, artist: songs[i].artist, img: songs[i].img})
+            socket.emit("youtube_api_call", {name: songs[i].name, artist: songs[i].artist, img: songs[i].img})
         })
     }
     if(!songsContainer.hasChildNodes()){
         songsContainer.innerHTML = `<span class = "no-song-found">Looks like we don't know that one</span>`
     }
 })
-
-function addSong(data){
-    socket.emit("youtube_api_call", data)
-}
 
 socket.on("youtube_api_response", (data) => {
     document.querySelector(".song-search").classList.add("hidden")
