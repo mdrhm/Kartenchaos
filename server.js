@@ -203,7 +203,7 @@ io.on('connection', (socket) => {
                             songs[i] = {
                                 img: (responseData[i].album.images[0].url) ? responseData[i].album.images[0].url: "/client/Images/settings.svg",
                                 name: responseData[i].name,
-                                artist: responseData[i].artists[0].name
+                                artist: responseData[i].artists.map(artist => artist.name).join("; ")
                             }
                         }
                         socket.emit("spotify_api_response", (songs.length > 0) ? {songs: songs} : {error: "Looks like we don't know that one"})
@@ -219,7 +219,7 @@ io.on('connection', (socket) => {
     })
     socket.on("youtube_api_call", (data) => {
         let videoId;
-        axios.get(`https://www.youtube.com/results?search_query=%22${data.artist}%22+%22${data.name}%22+%22topic%22`)
+        axios.get(`https://www.youtube.com/results?search_query=+%22topic%22+${data.artist.split(';')[0]}+${data.name}`)
             .then((response) => {
                 if(response.status === 200) {
                     const html = response.data;

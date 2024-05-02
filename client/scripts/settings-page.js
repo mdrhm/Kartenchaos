@@ -383,7 +383,7 @@ socket.on("spotify_api_response", (data)=>{
     songsContainer.innerHTML = ""
     songsContainer.classList.remove("invisible")
     for(let i = 0; i < songs.length; i++) {
-        songsContainer.innerHTML += `<div class="song"><img src=${songs[i].img} style="--translate: 0px; --translate-duration: 0s;"><div class="song-inner"> <div class="song-inner-title">${songs[i].name}</div><div class="song-inner-artist">${songs[i].artist}</div></div></div>`
+        songsContainer.innerHTML += `<div class="song"><img src=${songs[i].img} style="--translate: 0px; --translate-duration: 0s;"><div class="song-inner"> <div class="song-inner-title">${songs[i].name}</div><div class="song-inner-artist">${songs[i].artist.replaceAll(";", ",")}</div></div></div>`
         addOverflowAnimation(songsContainer.childNodes[i].querySelector(".song-inner-title"), 0)
         addOverflowAnimation(songsContainer.childNodes[i].querySelector(".song-inner-artist"), 0)
     }
@@ -418,7 +418,7 @@ function loadSongOptions(){
     let songs = JSON.parse(localStorage.getItem("customMusic")).songs
     for(let i = 0; i < songs.length; i++){
         customSongsDiv.innerHTML += `<li link="${songs[i].id}">
-            <img src=${songs[i].img}><div class="li-inner"><div class="li-inner-title">${songs[i].name}</div><div class="li-inner-artist">${songs[i].artist}</div></div></li>`
+            <img src=${songs[i].img}><div class="li-inner"><div class="li-inner-title">${songs[i].name}</div><div class="li-inner-artist">${songs[i].artist.replaceAll(";", ",")}</div></div></li>`
         document.addEventListener("mousemove", () => {
             addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-title"), 0)
             addOverflowAnimation(customSongsDiv.childNodes[i].querySelector(".li-inner-artist"), 0)

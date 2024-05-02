@@ -785,24 +785,27 @@ input[type="file"] {
 }
 
 .loader {
-  width: fit-content;
-  font-weight: bold;
-  font-family: monospace;
-  white-space: pre;
-  font-size: 20px;
-  line-height: 1.2em;
-  height: 1.2em;
-  overflow: hidden;
-  color: #9fa5b5;
+  animation: rotation 1s linear infinite;
 }
-.loader:before {
-  content:"Searching...\A⌰earching...\A⌰⍜arching...\A⌰⍜⏃rching...\A⌰⍜⏃⎅ching...\A⌰⍜⏃⎅⟟hing...\A⌰⍜⏃⎅⟟⋏ing...\A⌰⍜⏃⎅⟟⋏ng...\A⌰⍜⏃⎅⟟⋏☌g..\A⌰⍜⏃⎅⟟⋏☌⟒⏁.\A⌰⍜⏃⎅⟟⋏☌⟒⏁⋔";
-  white-space: pre;
-  display: inline-block;
-  animation: l39 1s infinite steps(11) alternate;
-}
-
-@keyframes l39 {
-  100%{transform: translateY(-100%)}
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: #9fa5b5;
 }
 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
