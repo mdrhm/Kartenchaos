@@ -203,7 +203,7 @@ io.on('connection', (socket) => {
                             songs[i] = {
                                 img: (responseData[i].album.images[0].url) ? responseData[i].album.images[0].url: "/client/Images/settings.svg",
                                 name: responseData[i].name,
-                                artist: responseData[i].artists.map(artist => artist.name).join(", "),
+                                artist: responseData[i].artists.map(artist => artist.name).join("; "),
                                 url: responseData[i]["external_urls"]["spotify"]
                             }
                         }
@@ -219,14 +219,17 @@ io.on('connection', (socket) => {
             });
     })
     socket.on("youtube_api_call", (data) => {
-        axios.get(`https://ytm2spotify.com/convert?to_service=youtube_ytm&url=${data.url}`)
-            .then(function (response) {
-                socket.emit("youtube_api_response", {name: data.name, artist: data.artist, img: data.img, videoId: response.data.results[0].url.split("v=").at(-1)})
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
+        console.log(`https://www.youtube.com/results?search_query=%22${data.artist.split(';')[0]}+-+topic%22+${data.name}`)
+        axios.get(`https://www.youtube.com/results?search_query=%22${data.artist.split(';')[0]}+-+topic%22+${data.name}`)
+            .then((response) => {
+                if(response.status === 200) {
+                    const html = response.data;
+                    let videoId = html.split("</script>").filter((h) => {return h.includes("var ytInitialData")})[0].split('"videoId":"')[1].split('"')[0]
+                    if(videoId) {
+                        socket.emit("youtube_api_response", {name: data.name, artist: data.artist, img: data.img, videoId: videoId})
+                    }
+                }
+            }, (error) => console.log(error) );
     })
 });
 server.listen(3000, () => {
