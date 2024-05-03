@@ -219,7 +219,6 @@ io.on('connection', (socket) => {
             });
     })
     socket.on("youtube_api_call", (data) => {
-        console.log(`https://www.youtube.com/results?search_query=%22${data.artist.split(';')[0]}+-+topic%22+${data.name}`)
         axios.get(`https://www.youtube.com/results?search_query=%22${data.artist.split(';')[0]}+-+topic%22+${data.name}`)
             .then((response) => {
                 if(response.status === 200) {
